@@ -4,7 +4,7 @@ interface data {
     
     height : 's' | 'm' | 'l',
     width : 's' | 'm' | 'l',
-    color : 'brown' | 'white'
+    color : 'brown' | 'white' | 'orange'
     // color : '#EEDBC4' |  '#3D342F',
     children: React.ReactNode;
 }
@@ -16,6 +16,9 @@ const Button: React.FC<data> = ({height , width ,color,children}) =>{
     }
     else if (color == 'brown'){
         color_button = 'bg-[#3D342F]'
+    }
+    else if (color == 'orange'){
+        color_button = 'bg-[#FFA537]'
     }
     else{
         color_button = 'bg-[#EEDBC4]'
