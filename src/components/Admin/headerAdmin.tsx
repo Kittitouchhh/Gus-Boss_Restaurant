@@ -10,11 +10,11 @@ const HeaderAdmin: React.FC = () =>{
             <img src="/public/logo/logo.png" alt="" className="w-[290px] h-[50px]  self-center left-[40px] relative"/>
 
             <div className="flex flex-row w-[700px] h-[113px] justify-center relative top-[20px] gap-[40px] ml-[250px]">
-                <Button height="m" width="m" color="white">HOME</Button>
-                <Button height="m" width="m" color="white">PROCESS</Button>
-                <Button height="m" width="m" color="white">POST IT!</Button>
-                <Button height="m" width="m" color="white">CONSTACT</Button>
-                <Button height="m" width="m" color="orange">ADMIN</Button>
+                <Button height="m" width="m" color="white" colortext="black">HOME</Button>
+                <Button height="m" width="m" color="white" colortext="black">PROCESS</Button>
+                <Button height="m" width="m" color="white" colortext="black">POST IT!</Button>
+                <Button height="m" width="m" color="white" colortext="black">CONSTACT</Button>
+                <Button height="m" width="m" color="orange"colortext="white" strokeColor="white" >ADMIN</Button>
             </div>
 
             <div className="self-center ml-auto relative flex flex-col w-[450px] h-[90px] overflow-hidden justify-center">

@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "Black Tea",
+    "price": 20,
+    "status": "Available",
+    "image": "/drink/2.png"
+  },
+  {
+    "id": 2,
+    "name": "Mint Tea",
+    "price": 22,
+    "status": "Available",
+    "image": "/drink/4.png"
+  }
+]

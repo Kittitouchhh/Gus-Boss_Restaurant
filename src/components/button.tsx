@@ -5,11 +5,12 @@ interface data {
     height : 's' | 'm' | 'l',
     width : 's' | 'm' | 'l',
     color : 'brown' | 'white' | 'orange'
-    // color : '#EEDBC4' |  '#3D342F',
+    colortext : 'black' | 'white'
+    strokeColor?: string
     children: React.ReactNode;
 }
 
-const Button: React.FC<data> = ({height , width ,color,children}) =>{
+const Button: React.FC<data> = ({height , width , color, children, colortext, strokeColor}) =>{
     let color_button : string ='';
     if (color == 'white'){
         color_button  = 'bg-[#EEDBC4]'
@@ -58,11 +59,30 @@ const Button: React.FC<data> = ({height , width ,color,children}) =>{
         width_button = 'w-[500px]';
     }
 
-    const combinedClassName: string = `${height_button} ${width_button} ${color_button}`.replace(/\s+/g, ' ').trim();
+    
+    let colortext_button : string = '';
+    
+        if (colortext == 'white')
+            {
+                colortext_button = 'text-white'
+            }
+        else if (colortext == 'black')
+            {
+                colortext_button = 'text-black'
+            }
+
+
+
+    const combinedClassName: string = `${height_button} ${width_button} ${color_button} ${colortext_button} `.replace(/\s+/g, ' ').trim();
+
+    const style = strokeColor
+    ? { WebkitTextStroke: `1px ${strokeColor}` }
+    : undefined
 
 
     return(
-        <button className={`${combinedClassName} rounded-full text-[18px] font-sans`} >
+        <button className={`${combinedClassName} rounded-full text-[px] font-sans `}
+        style={style} >
             {children}
         </button>
     )
