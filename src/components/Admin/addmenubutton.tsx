@@ -19,7 +19,7 @@ function AddMenuButton({ setMenus }: Props) {
   return (
     <button
     //   onClick={addMenu}
-      className="bg-green-500 text-white px-4 py-2 rounded"
+      className="bg-[#1D9D3F] text-white px-4 py-2 rounded mb-3"
     >
       Add Menu
     </button>

@@ -6,7 +6,7 @@ import Button from "../button"
 
 const HeaderAdmin: React.FC = () =>{
     return(
-        <nav className="fixed top-0 shadow w-full h-[110px] bg-[#3D342F] border-b-2 border-b-[#EEDBC4] flex flex-row  p-[5px] gap-[10px] "  >
+        <nav className="fixed top-0 shadow w-full h-[110px] bg-[#3D342F]   flex flex-row  p-[5px] gap-[10px] "  >
             <img src="/public/logo/logo.png" alt="" className="w-[290px] h-[50px]  self-center left-[40px] relative"/>
 
             <div className="flex flex-row w-[700px] h-[113px] justify-center relative top-[20px] gap-[40px] ml-[250px]">

@@ -9,9 +9,9 @@ type Props = {
 
 function MenuTable({ menus, setMenus }: Props) {
   return (
-    <table className="w-full border rounded shadow bg-white">
+    <table className="w-full rounded shadow bg-white">
       <thead>
-        <tr className="bg-gray-200">
+        <tr className="bg-[#3D342F] text-white shadow-lg">
           <th className="p-2">Image</th>
           <th className="p-2">Name</th>
           <th className="p-2">Price</th>

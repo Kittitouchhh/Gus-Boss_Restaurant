@@ -8,7 +8,7 @@ function Searchset() {
     const [status, setStatus] = useState("");
 
     return (
-        <div className="flex space-x-2">
+        <div className="space-x-7">
         <SearchBar  onSearchChange={setKeyword}  />
             <Select
                 value={type}
