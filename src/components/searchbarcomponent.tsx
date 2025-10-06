@@ -29,7 +29,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
       value={searchValue}
       onChange={handleChange}
       placeholder={placeholder}
-      className={` ${bgClass} border  rounded px-3 py-2  text-black w-full bg-#EEDBC4`}
+      className={` ${bgClass} border  rounded px-3 py-2  text-black w-[350px] bg-#EEDBC4`}
     />
   );
 };

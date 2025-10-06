@@ -1,7 +1,7 @@
 import React from "react";
 
 interface SelectProps {
-    color?: "black" | "cream" ;
+    bgcolor?: "black" | "cream" ;
     textColor?: "black" | "white" ;
     borderColor?: string;
     options: { value: string; label: string }[];
@@ -10,7 +10,7 @@ interface SelectProps {
 }
 
 const Select: React.FC<SelectProps> = ({
-    color = "cream",
+    bgcolor = "cream",
     textColor = "black",
     borderColor = "#ccc",
     options,
@@ -18,8 +18,8 @@ const Select: React.FC<SelectProps> = ({
     onChange,
 }) => {
     let bgClass = "";
-    if (color === "cream") bgClass = "bg-[#EEDBC4]";
-    else if (color === "black") bgClass = "bg-[#000000]";
+    if (bgcolor === "cream") bgClass = "bg-[#EEDBC4]";
+    else if (bgcolor === "black") bgClass = "bg-[#000000]";
 
 
     const textClass = textColor === "white" ? "text-white" : "text-black";

@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import Select from "../selecthbar";
 import SearchBar from "../searchbarcomponent.tsx";
 
-export default function Search() {
+function Searchset() {
     const [keyword, setKeyword] = useState("");
     const [type, setType] = useState("");
     const [status, setStatus] = useState("");
 
     return (
         <div className="flex space-x-2">
-        <SearchBar onSearchChange={setKeyword} />
+        <SearchBar  onSearchChange={setKeyword}  />
             <Select
                 value={type}
                 onChange={setType}
@@ -31,3 +31,5 @@ export default function Search() {
         </div>
     );
 }
+
+export default Searchset
