@@ -21,7 +21,7 @@ const Button: React.FC<data> = ({height , width ,color,stringColor,stringSize,ch
 
     let text_size : string = '';
     if(stringSize == 's'){
-        text_size = 'text-[18px]'
+        text_size = 'xl:text-[12px] lg:text-[10px] md:text-[8px] text-[6px]'
     }
     else if(stringSize == 'm'){
         text_size = 'lg:text-[16px] xl:text-[18px] md:text-[14px] text-[8px]'
@@ -44,7 +44,7 @@ const Button: React.FC<data> = ({height , width ,color,stringColor,stringSize,ch
 
     let height_button : string = '';
     if (height == 's'){
-        height_button = 'max-h-[17px]';
+        height_button = 'md:max-h-[36px] max-h-[20px]';
     }
     else if (height == 'm'){
         height_button = 'lg:h-[47px] md:h-[30px] h-[24px]';
@@ -62,7 +62,7 @@ const Button: React.FC<data> = ({height , width ,color,stringColor,stringSize,ch
 
     if (width == 's')
         {
-            width_button = 'max-w-[35px]';
+            width_button = 'xl:max-w-[150px] xl:p-[6px] md:max-w-[100px] md:p-[4px] p-[3px]';
         }
     else if (width == 'm'){
         width_button = 'lg:w-[90px] xl:w-[120px] md:w-[90px] w-[60px]';
