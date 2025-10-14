@@ -12,5 +12,61 @@
     "price": 22,
     "status": "Available",
     "image": "/drink/4.png"
+  },
+  {
+    "id": 3,
+    "name": "Black Tea",
+    "price": 20,
+    "status": "Available",
+    "image": "/drink/2.png"
+  },
+  {
+    "id": 4,
+    "name": "Mint Tea",
+    "price": 22,
+    "status": "Available",
+    "image": "/drink/4.png"
+  },
+  {
+    "id": 5,
+    "name": "Black Tea",
+    "price": 20,
+    "status": "Available",
+    "image": "/drink/2.png"
+  },
+  {
+    "id": 6,
+    "name": "Mint Tea",
+    "price": 22,
+    "status": "Available",
+    "image": "/drink/4.png"
+  },
+  {
+    "id": 7,
+    "name": "Black Tea",
+    "price": 20,
+    "status": "Available",
+    "image": "/drink/2.png"
+  },
+  {
+    "id": 8,
+    "name": "Mint Tea",
+    "price": 22,
+    "status": "Available",
+    "image": "/drink/4.png"
+  },
+  {
+    "id": 9,
+    "name": "Black Tea",
+    "price": 20,
+    "status": "Available",
+    "image": "/drink/2.png"
+  },
+  {
+    "id": 10,
+    "name": "Mint Tea",
+    "price": 22,
+    "status": "Available",
+    "image": "/drink/4.png"
   }
 ]

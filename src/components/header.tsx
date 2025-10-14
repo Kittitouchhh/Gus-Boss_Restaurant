@@ -6,25 +6,20 @@ import Button from "./button"
 
 const Header: React.FC = () =>{
     return(
-        <nav className="w-full h-[110px] bg-[#3D342F] border-b-2 border-b-[#EEDBC4] flex flex-row  p-[5px] gap-[10px] "  >
-            <img src="/public/logo/logo.png" alt="" className="w-[290px] h-[50px]  self-center left-[40px] relative"/>
+        <nav className="w-100% h-[110px] bg-[#3D342F] border-b-2 border-b-[#EEDBC4] flex flex-row  p-[5px] gap-[10px] items-center"  >
+            <img src="/public/logo/logo.png" alt="" className="lg:w-[180px] xl:w-[290px] md:w-[130px] xl:h-[50px] w-[140px] self-center xl:left-[40px] md:left-[20px] left-[10px] relative"/>
 
-            <div className="flex flex-row w-[700px] h-[113px] justify-center relative top-[20px] gap-[40px] ml-[250px]">
-                <Button height="m" width="m" color="white">HOME</Button>
-                <Button height="m" width="m" color="white">PROCESS</Button>
-                <Button height="m" width="m" color="white">POST IT!</Button>
-                <Button height="m" width="m" color="white">CONSTACT</Button>
-            </div>
-
-            <div className="self-center ml-auto relative flex flex-col w-[350px] h-[77px] overflow-hidden justify-center">
-                <User name="YANAMINDEV" image='https://cdn-images.dzcdn.net/images/artist/61bcbf8296b1669499064406c534d39d/1900x1900-000000-81-0-0.jpg' ></User>
-                {/* <div className="w-[240px] h-[50px] bg-[#2e2621] self-end top-[28px] relative border-b-2 border-l-2 border-[#EEDBC4] ml-auto flex justify-center ">
-                    <p className="text-white self-center text-[18px] font-sans">LOG OUT</p>
-                </div> */}
+            <div className="hidden md:flex flex-row justify-center relative lg:gap-[40px] gap-[10px] md:left-[35px] lg:left-[60px] xl:left-[90px] 2xl:left-[230px] left-[5px]">
+                <Button height="m" width="m" color="white" stringColor="brown" stringSize="m">HOME</Button>
+                <Button height="m" width="m" color="white" stringColor="brown" stringSize="m">PROCESS</Button>
+                <Button height="m" width="m" color="white" stringColor="brown" stringSize="m">POST IT!</Button>
+                <Button height="m" width="m" color="white" stringColor="brown" stringSize="m">CONSTACT</Button>
             </div>
             
-
-
+            <div className="self-center relative flex flex-col w-[180px] md:w-[280px] overflow-hidden justify-center md:ml-auto md:mr-[10px] lg:mr-[30px] left-[10px]">
+                <User name="YANAMINDEV" image='https://cdn-images.dzcdn.net/images/artist/61bcbf8296b1669499064406c534d39d/1900x1900-000000-81-0-0.jpg' ></User>
+            </div>
+            <button className='text-white ml-auto relative mr-[20px] text-[25px] md:hidden'>☰</button>
         </nav>
     )
 }

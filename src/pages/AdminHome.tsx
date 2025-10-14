@@ -56,7 +56,7 @@ function AdminHome() {
           </div>
 
         {/* Table */}
-        <div className="bg-[#f9f3e6] rounded-xl shadow-lg overflow-hidden  ">
+        <div className="bg-[#f9f3e6] rounded-xl shadow-lg ">
           <MenuTable menus={menus} setMenus={setMenus} />
         </div>
 
