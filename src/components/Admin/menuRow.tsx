@@ -1,15 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import type { MenuItem } from "../../pages/AdminHome";
-import { EllipsisVertical}  from "lucide-react";
+import { EllipsisVertical } from "lucide-react";
 import MenuStatus from "./statusbutton"
+import EditMenu from "./editMenu";
 
 type Props = {
   menu: MenuItem;
   setMenus: React.Dispatch<React.SetStateAction<MenuItem[]>>;
 };
 
-function MenuRow({ menu, setMenus }: Props) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export default function MenuRow({ menu, setMenus }: Props) {
+  const [open, setOpen] = useState<boolean>(false);
+  const [position, setPosition] = useState<{ x: number; y: number } | null>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+
+  const updatePosition = () => {
+    if (!buttonRef.current) return;
+    const rect = buttonRef.current.getBoundingClientRect();
+    setPosition({
+      x: rect.right + 5,
+      y: rect.top + window.scrollY + 10, // บวก scrollY เพื่อให้อยู่ตรงตำแหน่งจริง
+    });
+  };
+
+   useEffect(() => {
+    if (open) {
+      updatePosition();
+      window.addEventListener("scroll", updatePosition);
+      window.addEventListener("resize", updatePosition);
+    } else {
+      window.removeEventListener("scroll", updatePosition);
+      window.removeEventListener("resize", updatePosition);
+    }
+    return () => {
+      window.removeEventListener("scroll", updatePosition);
+      window.removeEventListener("resize", updatePosition);
+    };
+  }, [open]);
 
   return (
     <tr className="bg-[#FFF7ED] hover:bg-[#F2E3D3] border-b border-[#D2B48C]">
@@ -33,34 +60,26 @@ function MenuRow({ menu, setMenus }: Props) {
         <div className="flex justify-center items-center">
           <MenuStatus />
         </div>
-            
-      </td> 
+
+      </td>
 
       {/* Actions */}
       <td className="p-3 text-center">
         <div className="flex justify-center items-center" >
           <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="p-2 hover:bg-[#E6D4C3] "
+            ref={buttonRef}
+            onClick={() => setOpen(!open)}
+            className="p-2 hover:bg-[#E6D4C3]"
           >
             <EllipsisVertical className="text-[#4B3B2F] w-5 h-5" />
           </button>
+          <EditMenu
+            open={open}
+            onClose={() => setOpen(false)}
+            position={position}
+          />
         </div>
-
-
-        {isMenuOpen && (
-          <div className="right-2 mt-2 bg-white border border-gray-200 rounded-lg shadow-md w-28 z-10">
-            <button className="block w-full text-left px-3 py-2 hover:bg-[#FFF0E0] text-[#4B3B2F]">
-              Edit
-            </button>
-            <button className="block w-full text-left px-3 py-2 hover:bg-red-100 text-red-600">
-              Remove
-            </button>
-          </div>
-        )}
       </td>
     </tr>
   );
 }
-
-export default MenuRow;

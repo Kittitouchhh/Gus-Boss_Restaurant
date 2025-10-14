@@ -1,26 +1,32 @@
-import React from "react";
-import type { MenuItem } from "../../pages/AdminHome";
+import ReactDOM from "react-dom";
 
-type Props = {
-  menu: MenuItem;
-  setMenus: React.Dispatch<React.SetStateAction<MenuItem[]>>;
+type EditMenuProps = {
+  open: boolean;
+  onClose: () => void;
+  position: { x: number; y: number } | null;
 };
 
-function EditMenu({ menu, setMenus }: Props) {
-  const removeMenu = () => {
-    setMenus((prev) => prev.filter((m) => m.id !== menu.id));
-  };
+export default function EditMenu({ open, onClose, position }: EditMenuProps) {
 
-  const editMenu = () => {
-    alert(`Edit ${menu.name} (ยังไม่ทำ form)`);
-  };
 
-  return (
-    <div className="flex gap-2">
-      <button onClick={editMenu} className="text-blue-500">Edit</button>
-      <button onClick={removeMenu} className="text-red-500">Remove</button>
-    </div>
+  if (!open || !position) return null;
+
+  return ReactDOM.createPortal(
+    <div
+      className="z-49 absolute top-0 left-0 w-full h-full"
+      onClick={onClose}
+    >
+      <div
+        className="absolute bg-white border border-[#73594A] shadow-xl p-4 rounded-lg 
+             opacity-90 w-[100px] h-[90px]"
+        style={{ top: position.y - 7, 
+                left: position.x - 32 }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button className="block text-blue-500 w-full text-left">Edit</button>
+        <button className="block text-red-500 w-full text-left">Remove</button>
+      </div>
+    </div>,
+    document.body
   );
 }
-
-export default EditMenu

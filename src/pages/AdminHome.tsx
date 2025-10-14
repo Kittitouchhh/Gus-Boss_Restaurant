@@ -5,7 +5,8 @@ import MenuTable from "../components/Admin/menuTable";
 import MenuData from "../data/menu.json"
 import Searchset from "../components/Admin/search"
 import Savebuttons from "../components/Admin/savebuttons"
-import AddMenuButton from "../components/Admin/addmenubutton"
+import AddMenupage from "../components/Admin/addMenupage";
+
 
 export type MenuItem = {
   id: number;
@@ -17,6 +18,7 @@ export type MenuItem = {
 
 function AdminHome() {
   const [menus, setMenus] = useState<MenuItem[]>([]);
+  const [open, setOpen] = useState<boolean>(false)
 
   useEffect(() => {
     setMenus(MenuData as MenuItem[]);
@@ -28,7 +30,7 @@ function AdminHome() {
       <HeaderAdmin />
 
       {/* Content */}
-      <div className="max-w-[1100px] mx-auto pt-28 pb-10">
+      <div className="max-w-[1100px] mx-auto  pb-10">
 
         {/* Title + Total */}
         <div className="flex items-center justify-between border-b-4 border-[#a67c52] pb-5 pt-5 m-3">
@@ -48,12 +50,20 @@ function AdminHome() {
         {/* Search + Filter */}
         <div className="flex flex-wrap items-center justify-between  gap-3">
           <Searchset />
+          {/* Add Button */}
+          <button 
+            className=" rounded-lg 
+            py-3 px-10 my-2 bg-green-500 hover:bg-green-700 text-white"
+            onClick={() => setOpen(true)}
+            >
+              Add Menu
+          </button>
+           <AddMenupage open = {open}  onClose={() => setOpen(false)}> 
+            </AddMenupage>
+            
         </div>
         
-        {/* Add Button */}
-          <div className="text-right mb-2 mr-3">
-            <AddMenuButton setMenus={setMenus} />
-          </div>
+        
 
         {/* Table */}
         <div className="bg-[#f9f3e6] rounded-xl shadow-lg ">
