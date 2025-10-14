@@ -17,6 +17,10 @@ function Searchset() {
                     { value: "", label: "Type" },
                     { value: "tea", label: "Tea" },
                     { value: "coffee", label: "Coffee" },
+                    { value: "softdrink", label: "Softdrink" },
+                    { value: "maindishes", label: "Maindishes" },
+                    { value: "desserts", label: "Desserts" },
+                    
                 ]}
             />
             <Select
