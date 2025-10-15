@@ -3,9 +3,10 @@ import HeaderAdmin from "../components/Admin/headerAdmin"
 import Footer from "../components/footer"
 import MenuTable from "../components/Admin/menuTable";
 import MenuData from "../data/menu.json"
-import Searchset from "../components/Admin/search"
+import Searchset from "../components/Admin/searchtypeset"
 import Savebuttons from "../components/Admin/savebuttons"
 import AddMenupage from "../components/Admin/addMenupage";
+import CardMenu from "../components/Admin/CardMenu";
 
 
 export type MenuItem = {
@@ -14,15 +15,40 @@ export type MenuItem = {
   price: number;
   status: "Available" | "Sold Out";
   image: string;
+  type: string;
 };
 
 function AdminHome() {
   const [menus, setMenus] = useState<MenuItem[]>([]);
   const [open, setOpen] = useState<boolean>(false)
 
+  //  เก็บค่าจาก Searchset
+  const [filters, setFilters]= useState({
+    keyword:"",
+    type:"",
+    status:"",
+  })
+
   useEffect(() => {
     setMenus(MenuData as MenuItem[]);
   }, []);
+
+  // ฟังก์ชันรับค่าจาก Searchset
+  const handleFilterChange = (newFilters: any) => {
+    setFilters((prev) => ({ ...prev, ...newFilters }));
+  };
+
+  // กรองข้อมูลตาม filter
+  const filteredMenus = menus.filter((menu) => {
+    const matchType = filters.type ? menu.type === filters.type : true;
+    const matchStatus = filters.status ? menu.status === filters.status : true;
+    const matchKeyword = filters.keyword
+      ? menu.name.toLowerCase().includes(filters.keyword.toLowerCase())
+      : true;
+
+    return matchType && matchStatus && matchKeyword;
+  });
+
 
   return (
     <div className="min-h-screen bg-[#684A3A] font-sans">
@@ -49,7 +75,7 @@ function AdminHome() {
 
         {/* Search + Filter */}
         <div className="flex flex-wrap items-center justify-between  gap-3">
-          <Searchset />
+          <Searchset onFilterChange={handleFilterChange} />
           {/* Add Button */}
           <button 
             className=" rounded-lg 
@@ -67,7 +93,11 @@ function AdminHome() {
 
         {/* Table */}
         <div className="bg-[#f9f3e6] rounded-xl shadow-lg ">
-          <MenuTable menus={menus} setMenus={setMenus} />
+          <MenuTable menus={filteredMenus} setMenus={setMenus} />
+        </div>
+        
+        <div>
+          <CardMenu/>
         </div>
 
         {/* Buttons */}

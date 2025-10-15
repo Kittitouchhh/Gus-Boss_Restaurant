@@ -31,7 +31,7 @@ const AddMenupage: React.FC<Props> = ({ open, onClose, onAdd }) => {
             >
                 <div className="flex justify-end h-10 items-center ">
                     <button className="text-[28px] text-[#FFEED9] p-1 hover:text-[40px]
-                     hover:text-[#3D342F] " onClick={onClose} > X </button>
+                     " onClick={onClose} > X </button>
 
                 </div>
                 <p className="text-[48px] text-[#EEDBC4] font-bold text-center"
@@ -41,7 +41,7 @@ const AddMenupage: React.FC<Props> = ({ open, onClose, onAdd }) => {
                 >Add Menu</p>
 
 
-                <div className="flex mt-3 m-auto   justify-center bg-white w-25  w-[450px] h-[200px]
+                <div className="shadow-xl flex mt-3 m-auto   justify-center bg-white w-25  w-[450px] h-[200px]
                                 items-center rounded-lg ">
                     <img src="./user/Upimage.png" alt="Upimag" />
                 </div>
@@ -49,10 +49,10 @@ const AddMenupage: React.FC<Props> = ({ open, onClose, onAdd }) => {
                 <form onSubmit={handleSubmit} >
                     <div className="w-[100%] flex flex-wrap gap-2 mt-3">
                         <div className="ml-5 w-[60%]">
-                            <p className="font-bold text-[20px] text-[#EEDBC4]  " text->Name</p>
+                            <p className=" font-bold text-[20px] text-[#EEDBC4]  " text->Name</p>
 
                             <input
-                                className="bg-[#EEDBC4] border p-2 rounded-lg 
+                                className="shadow-xl bg-[#EEDBC4] border p-2 rounded-lg 
                                     border-3 w-[100%] "
                                 type="text"
                                 value={name}
@@ -61,7 +61,7 @@ const AddMenupage: React.FC<Props> = ({ open, onClose, onAdd }) => {
                             />
                         </div>
                         <div className="w-[30%]">
-                            <p className="font-bold text-[20px] text-[#EEDBC4] " text->Price</p>
+                            <p className="shadow-xl font-bold text-[20px] text-[#EEDBC4] " text->Price</p>
                             <input
                                 type="Number"
                                 value={price}
@@ -96,7 +96,7 @@ const AddMenupage: React.FC<Props> = ({ open, onClose, onAdd }) => {
                         <div className="flex justify-end m-5">
                             <button
                                 type="submit"
-                                className=" right-0 bg-green-500 text-white py-2  rounded-lg hover:bg-green-600 w-[120px]"
+                                className="shadow-xl  bg-[#18D34A] text-white py-2  rounded-lg hover:bg-green-600 w-[120px] hover:w-[130px] hover:h-[45px]"
                             >Save
                             </button></div>
 

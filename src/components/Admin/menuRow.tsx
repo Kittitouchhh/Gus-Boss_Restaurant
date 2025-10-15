@@ -3,6 +3,7 @@ import type { MenuItem } from "../../pages/AdminHome";
 import { EllipsisVertical } from "lucide-react";
 import MenuStatus from "./statusbutton"
 import EditMenu from "./editMenu";
+import CardMenu from "./CardMenu";
 
 type Props = {
   menu: MenuItem;
@@ -39,47 +40,50 @@ export default function MenuRow({ menu, setMenus }: Props) {
   }, [open]);
 
   return (
-    <tr className="bg-[#FFF7ED] hover:bg-[#F2E3D3] border-b border-[#D2B48C]">
-      {/* Image */}
-      <td className="p-3 text-center w-30 ">
-        <img
-          src={menu.image}
-          alt={menu.name}
-          className=" rounded-md object-cover mx-auto shadow "
-        />
-      </td>
-
-      {/* Name */}
-      <td className="p-3 text-[#4B3B2F] font-bold text-center ">{menu.name}</td>
-
-      {/* Price */}
-      <td className="p-3 text-[#4B3B2F] font-bold text-center ">${menu.price}</td>
-
-      {/* Status */}
-      <td className="p-3 text-center  min-w-[5rem] max-w-[5rem]">
-        <div className="flex justify-center items-center">
-          <MenuStatus />
-        </div>
-
-      </td>
-
-      {/* Actions */}
-      <td className="p-3 text-center">
-        <div className="flex justify-center items-center" >
-          <button
-            ref={buttonRef}
-            onClick={() => setOpen(!open)}
-            className="p-2 hover:bg-[#E6D4C3]"
-          >
-            <EllipsisVertical className="text-[#4B3B2F] w-5 h-5" />
-          </button>
-          <EditMenu
-            open={open}
-            onClose={() => setOpen(false)}
-            position={position}
-          />
-        </div>
-      </td>
-    </tr>
-  );
+    <></>
+  )
 }
+
+//   <tr className="bg-[#FFF7ED] hover:bg-[#F2E3D3] border-b border-[#D2B48C]">
+  //     {/* Image */}
+  //     <div className="w-[100px] h-[100px] m-auto  border-[#D2B48C] rounded-md 
+  //     overflow-hidden shadow-md flex items-center justify-center ">
+  //       <img
+  //         src={menu.image}
+  //         alt={menu.name}
+  //         className="object-cover w-full h-full"
+  //       />
+  //     </div>
+
+  //     {/* Name */}
+  //     <td className="p-3 text-[#4B3B2F] font-bold text-center text-[20px]">{menu.name}</td>
+
+  //     {/* Price */}
+  //     <td className="p-3 text-[#4B3B2F] font-bold text-center ">${menu.price}</td>
+
+  //     {/* Status */}
+  //     <td className="p-3 text-center  min-w-[5rem] max-w-[5rem]">
+  //       <div className="flex justify-center items-center">
+  //         <MenuStatus />
+  //       </div>
+
+  //     </td>
+
+  //     {/* Actions */}
+  //     <td className="p-3 text-center">
+  //       <div className="flex justify-center items-center" >
+  //         <button
+  //           ref={buttonRef}
+  //           onClick={() => setOpen(!open)}
+  //           className="p-2 hover:bg-[#E6D4C3]"
+  //         >
+  //           <EllipsisVertical className="text-[#4B3B2F] w-5 h-5" />
+  //         </button>
+  //         <EditMenu
+  //           open={open}
+  //           onClose={() => setOpen(false)}
+  //           position={position}
+  //         />
+  //       </div>
+  //     </td>
+  //   </tr>
