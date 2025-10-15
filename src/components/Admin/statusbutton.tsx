@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 
+type MenuStatusProps = {
+  status: "Available" | "Sold Out";
+};
+
 function MenuStatus() {
-  const [status, setStatus] = useState<"Available" | "Unavailable">("Available");
+  const [status, setStatus] = useState<"Available" | "Sold Out">("Available");
 
   const toggleStatus = () => {
-    setStatus((prev) => (prev === "Available" ? "Unavailable" : "Available"));
+    setStatus((prev) => (prev === "Available" ? "Sold Out" : "Available"));
   };
 
   return (

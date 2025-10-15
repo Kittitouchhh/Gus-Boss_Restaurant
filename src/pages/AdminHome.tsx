@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import HeaderAdmin from "../components/Admin/headerAdmin"
 import Footer from "../components/footer"
-import MenuTable from "../components/Admin/menuTable";
 import MenuData from "../data/menu.json"
 import Searchset from "../components/Admin/searchtypeset"
 import Savebuttons from "../components/Admin/savebuttons"
@@ -23,10 +22,10 @@ function AdminHome() {
   const [open, setOpen] = useState<boolean>(false)
 
   //  เก็บค่าจาก Searchset
-  const [filters, setFilters]= useState({
-    keyword:"",
-    type:"",
-    status:"",
+  const [filters, setFilters] = useState({
+    keyword: "",
+    type: "",
+    status: "",
   })
 
   useEffect(() => {
@@ -60,14 +59,14 @@ function AdminHome() {
 
         {/* Title + Total */}
         <div className="flex items-center justify-between border-b-4 border-[#a67c52] pb-5 pt-5 m-3">
-         
+
           {/* Title */}
           <h1 className="flex text-5xl font-bold text-white  ">
             DATA MENU
           </h1>
           {/* Total */}
           <span className="bg-[#FFEED9] px-1 py-2 text-black p-2 rounded-[10px] font-bold  ">
-              <b className="bg-[#684A3A] px-6 py-[3px] rounded-[5px] text-white font-normal ">{menus.length}</b> Total
+            <b className="bg-[#684A3A] px-6 py-[3px] rounded-[5px] text-white font-normal ">{menus.length}</b> Total
           </span>
 
         </div>
@@ -77,27 +76,21 @@ function AdminHome() {
         <div className="flex flex-wrap items-center justify-between  gap-3">
           <Searchset onFilterChange={handleFilterChange} />
           {/* Add Button */}
-          <button 
+          <button
             className=" rounded-lg 
             py-3 px-10 my-2 bg-green-500 hover:bg-green-700 text-white"
             onClick={() => setOpen(true)}
-            >
-              Add Menu
+          >
+            Add Menu
           </button>
-           <AddMenupage open = {open}  onClose={() => setOpen(false)}> 
-            </AddMenupage>
-            
-        </div>
-        
-        
+          <AddMenupage open={open} onClose={() => setOpen(false)}>
+          </AddMenupage>
 
-        {/* Table */}
-        <div className="bg-[#f9f3e6] rounded-xl shadow-lg ">
-          <MenuTable menus={filteredMenus} setMenus={setMenus} />
         </div>
-        
-        <div>
-          <CardMenu/>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
+          {filteredMenus.map((menu) => (
+            <CardMenu key={menu.id} menu={menu} setMenus={setMenus} />
+          ))}
         </div>
 
         {/* Buttons */}

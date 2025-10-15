@@ -1,36 +1,80 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { EllipsisVertical } from "lucide-react";
 import MenuStatus from "./statusbutton";
+import EditMenu from "./editMenu";
+import type { MenuItem } from "../../pages/AdminHome";
 
-export default function CardMenu() {
+type CardMenuProps = {
+  menu: MenuItem;
+  setMenus: React.Dispatch<React.SetStateAction<MenuItem[]>>;
+};
+
+export default function CardMenu({ menu, setMenus }: CardMenuProps) {
+  const [open, setOpen] = useState<boolean>(false);
+  const [position, setPosition] = useState<{ x: number; y: number } | null>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+
+  const updatePosition = () => {
+    if (!buttonRef.current) return;
+    const rect = buttonRef.current.getBoundingClientRect();
+    setPosition({
+      x: rect.right,
+      y: rect.top + window.scrollY,
+    });
+  };
+
+  useEffect(() => {
+    if (open) {
+      updatePosition();
+      window.addEventListener("scroll", updatePosition);
+      window.addEventListener("resize", updatePosition);
+    } else {
+      window.removeEventListener("scroll", updatePosition);
+      window.removeEventListener("resize", updatePosition);
+    }
+
+    return () => {
+      window.removeEventListener("scroll", updatePosition);
+      window.removeEventListener("resize", updatePosition);
+    };
+  }, [open]);
   return (
-    <div className="relative bg-[#FFEED9] w-80 h-60 rounded-md shadow-md p-3 flex flex-col">
-      {/* ปุ่ม ... มุมขวาบน */}
-      <button className="absolute top-2 right-2 text-[#3D342F] hover:text-[#6B5346]">
-        <EllipsisVertical />
-      </button>
-
-      {/* แถบชื่อและราคา */}
-      <div className="flex justify-between items-center mt-2">
-        <div className="bg-[#3D342F] text-white font-bold text-lg px-3 py-1 rounded-r-md shadow-md">
-          Black Tea
-        </div>
-        <div className="bg-[#3D342F] text-[#FFD900] font-semibold text-lg px-3 py-1 rounded-md shadow-md">
-          $20
-        </div>
+    <div className="relative bg-[#F8F5F2] rounded-2xl shadow-lg border border-[#E6D4C3] overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
+      {/* รูป */}
+      <div className="w-full h-40 overflow-hidden">
+        <img
+          src={menu.image || "/drink/default.png"}
+          alt={menu.name}
+          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+        />
       </div>
 
-      {/* ส่วนรูปและปุ่มสถานะ */}
-      <div className="flex items-center justify-between mt-5 px-3">
-        <div className="w-[110px] h-[80px] border-2 border-[#3D342F] rounded-md overflow-hidden shadow">
-          <img
-            src="/drink/2.png"
-            alt="Black Tea"
-            className="object-cover w-full h-full"
-          />
+      {/* ข้อมูลเมนู */}
+      <div className="p-4 flex flex-col items-center text-center">
+        <div className="mb-2">
+          <MenuStatus />
         </div>
-        <MenuStatus />
+        {/* ปุ่ม ... */}
+        <button
+          ref={buttonRef}
+          className="z-48 absolute top-3 right-3 text-[#000000] hover:text-[#3D342F]"
+          onClick={() => setOpen(!open)}
+        >
+          <EllipsisVertical />
+        </button>
+        <h3 className="text-[#3D342F] font-bold text-lg truncate">{menu.name}</h3>
+        <p className="text-[#C28B53] font-semibold mt-1">${menu.price}</p>
       </div>
+      {open && (
+        <EditMenu
+          menu={menu}
+          setMenus={setMenus}
+          onClose={() => setOpen(false)}
+          open={open}             
+          position={position}      
+        />
+      )}
     </div>
+
   );
 }

@@ -1,9 +1,12 @@
 import ReactDOM from "react-dom";
+import type { MenuItem } from "../../pages/AdminHome";
 
 type EditMenuProps = {
   open: boolean;
   onClose: () => void;
   position: { x: number; y: number } | null;
+  menu: MenuItem;
+  setMenus: React.Dispatch<React.SetStateAction<MenuItem[]>>;
 };
 
 export default function EditMenu({ open, onClose, position }: EditMenuProps) {
@@ -19,8 +22,8 @@ export default function EditMenu({ open, onClose, position }: EditMenuProps) {
       <div
         className="absolute bg-white border border-[#73594A] shadow-xl p-4 rounded-lg 
              opacity-90 w-[100px] h-[90px]"
-        style={{ top: position.y - 7, 
-                left: position.x - 32 }}
+        style={{ top: position.y , 
+                left: position.x  }}
         onClick={(e) => e.stopPropagation()}
       >
         <button className="block text-blue-500 w-full text-left">Edit</button>
