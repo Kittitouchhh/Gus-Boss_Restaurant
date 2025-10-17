@@ -1,4 +1,5 @@
 import React from 'react'
+import{Link} from 'react-router-dom'
 
 interface data {
     
@@ -7,10 +8,11 @@ interface data {
     color : 'brown' | 'white'
     stringColor : 'white' | 'brown',
     stringSize : 's' | 'm' | 'l',
+    linkdata? : string,
     children: React.ReactNode;
 }
 
-const Button: React.FC<data> = ({height , width ,color,stringColor,stringSize,children}) =>{
+const Button: React.FC<data> = ({height , width ,color,stringColor,stringSize,linkdata,children}) =>{
     let color_Text : string ='';
     if(stringColor == 'white'){
         color_Text = 'text-white';
@@ -77,12 +79,19 @@ const Button: React.FC<data> = ({height , width ,color,stringColor,stringSize,ch
 
     const combinedClassName: string = `${height_button} ${width_button} ${color_button} ${color_Text} ${text_size}`.replace(/\s+/g, ' ').trim();
 
-
-    return(
-        <button className={`${combinedClassName} rounded-full font-sans box-border`} >
-            {children}
-        </button>
-    )
+    if(!linkdata){
+        return(
+            <button className={`${combinedClassName} rounded-full font-sans box-border`} >
+                {children}
+            </button>
+        )
+    }
+    else{
+        return( 
+            <Link to={linkdata} className={`${combinedClassName} rounded-full font-sans box-border block text-center flex items-center justify-center`}>{children}</Link>
+        )
+    }
+    
 }
 
 export default Button
