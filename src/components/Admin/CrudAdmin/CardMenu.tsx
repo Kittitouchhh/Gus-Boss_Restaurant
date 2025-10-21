@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { EllipsisVertical } from "lucide-react";
 import MenuStatus from "./statusbutton";
 import EditMenu from "./editMenu";
-import type { MenuItem } from "../../pages/AdminHome";
+import type { MenuItem } from "../../../page/pagesAdmin/DataMenu";
 
 type CardMenuProps = {
   menu: MenuItem;

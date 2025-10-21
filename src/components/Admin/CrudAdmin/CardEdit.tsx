@@ -12,7 +12,7 @@ const AddMenupage: React.FC<Props> = ({ open, onClose, onAdd }) => {
     const [price, setPrice] = useState<number>(0);
 
     if (!open) return null;
-
+  
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         onAdd?.({ name, price });
@@ -23,7 +23,7 @@ const AddMenupage: React.FC<Props> = ({ open, onClose, onAdd }) => {
 
     return (
         <div
-            className="z-50 fixed inset-0 flex items-center justify-center " >
+            className=" z-50 fixed inset-0 flex items-center justify-center " >
             <div
                 className="bg-[#3D342F] border-3 border-[#FFEED9] 
                 shadow-xl p-3 rounded-lg w-[600px] h-[600px]"
@@ -38,7 +38,7 @@ const AddMenupage: React.FC<Props> = ({ open, onClose, onAdd }) => {
                     style={{
                         textShadow: '2px 2px 4px rgba(0,0,0,0.5)', // เงาเข้ม
                     }}
-                >Add Menu</p>
+                >Edit Menu</p>
 
 
                 <div className="shadow-xl flex mt-3 m-auto   justify-center bg-white w-25  w-[450px] h-[200px]
@@ -96,7 +96,7 @@ const AddMenupage: React.FC<Props> = ({ open, onClose, onAdd }) => {
                         <div className="flex justify-end m-5">
                             <button
                                 type="submit"
-                                className="shadow-xl  bg-[#18D34A] text-white py-2  rounded-lg hover:bg-green-600 w-[120px] hover:w-[130px] hover:h-[45px]"
+                                className="shadow-xl  bg-[#18D34A] text-white py-2  rounded-lg w-[120px] duration-500 hover:scale-105"
                             >Save
                             </button></div>
 

@@ -1,15 +1,9 @@
-import Header from "./components/header"
-import Footer from "./components/footer"
+import LoginPage from "./page/LoginPage";
 
-function App() {
+export default function App() {
   return (
-    <div>
-      <Header></Header>
-      <Footer></Footer>
-    </div>
-      
-      
-  )
+    <>
+      <LoginPage />
+    </>
+  );
 }
-
-export default App

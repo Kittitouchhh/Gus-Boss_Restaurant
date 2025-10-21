@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Select from "../selecthbar.tsx";
-import SearchBar from "../searchbarcomponent.tsx";
+import Select from "../../selecthbar.tsx";
+import SearchBar from "../../searchbarcomponent.tsx";
 
 interface SearchsetProps {
   onFilterChange: (filters: { keyword: string; type: string; status: string }) => void;
@@ -28,15 +28,6 @@ const Searchset: React.FC<SearchsetProps> = ({ onFilterChange }) => {
                     { value: "maindishes", label: "Maindishes" },
                     { value: "desserts", label: "Desserts" },
 
-                ]}
-            />
-            <Select
-                value={status}
-                onChange={setStatus}
-                options={[
-                    { value: "", label: "Status" },
-                    { value: "Available", label: "Available" },
-                    { value: "Sold Out", label: "Sold Out" },
                 ]}
             />
         </div>

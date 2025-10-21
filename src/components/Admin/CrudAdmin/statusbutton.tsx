@@ -1,8 +1,4 @@
-import React, { useState } from "react";
-
-type MenuStatusProps = {
-  status: "Available" | "Sold Out";
-};
+import { useState } from "react";
 
 function MenuStatus() {
   const [status, setStatus] = useState<"Available" | "Sold Out">("Available");

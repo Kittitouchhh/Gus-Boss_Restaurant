@@ -78,13 +78,5 @@
     "status": "Available",
     "image": "/drink/10.png"
     ,"type": "Tea"
-  },
-  {
-    "id": 11,
-    "name": "Latte",
-    "price": 22,
-    "status": "Available",
-    "image": "/drink/hot_late.jpg"
-    ,"type": "Coffe"
   }
 ]
