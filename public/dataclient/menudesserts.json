@@ -1,0 +1,97 @@
+[
+    {
+        "id" : 1,
+        "menuName" : "Chocolate Cake",
+        "imageMenu" : "desserts/ChocolateCake.jpg",
+        "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
+        "menuPrice" : "$20",
+        "menuLike" : "100",
+        "datajson" : "desserts"
+        
+    },
+    {
+        "id" : 2,
+        "menuName" : "Strawberry Shortcake",
+        "imageMenu" : "desserts/StrawberryShortcake.jpg",
+        "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
+        "menuPrice" : "$25",
+        "menuLike" : "84",
+        "datajson" : "desserts"
+    },
+    {
+        "id" : 3,
+        "menuName" : "Matcha Pudding",
+        "imageMenu" : "desserts/MatchaPudding.jpg",
+        "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
+        "menuPrice" : "$20",
+        "menuLike" : "76",
+        "datajson" : "desserts "
+    },
+    {
+        "id" : 4,
+        "menuName" : "Chocolate Brownie",
+        "imageMenu" : "desserts/ChocolateBrownie.jpg",
+        "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
+        "menuPrice" : "$15",
+        "menuLike" : "73",
+        "datajson" : "desserts"
+    },
+    {
+        "id" : 5,
+        "menuName" : "Fruit Tart",
+        "imageMenu" : "desserts/FruitTart.jpg",
+        "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
+        "menuPrice" : "$30",
+        "menuLike" : "62",
+        "datajson" : "desserts"
+    },
+    {
+        "id" : 6,
+        "menuName" : "Vanilla Ice Cream",
+        "imageMenu" : "desserts/VanillaIceCream.jpg",
+        "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
+        "menuPrice" : "$35",
+        "menuLike" : "57",
+        "datajson" : "desserts"
+    },
+    {
+        "id" : 7,
+        "menuName" : "Tiramisu",
+        "imageMenu" : "desserts/Tiramisu.jpg",
+        "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
+        "menuPrice" : "$40",
+        "menuLike" : "54",
+        "datajson" : "desserts"
+    },
+    {
+        "id" : 8,
+        "menuName" : "Cheesecake",
+        "imageMenu" : "desserts/Cheesecake.jpg",
+        "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
+        "menuPrice" : "$20",
+        "menuLike" : "46",
+        "datajson" : "desserts"
+    },
+    {
+        "id" : 9,
+        "menuName" : "Mango Sticky Rice",
+        "imageMenu" : "desserts/MangoStickyRice.jpg",
+        "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
+        "menuPrice" : "$10",
+        "menuLike" : "42",
+        "datajson" : "desserts"
+    },
+    {
+        
+        "id" : 10,
+        "menuName" : "Chocolate Lava Cake",
+        "imageMenu" : "desserts/Chocolate Lava Cake.jpg",
+        "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
+        "menuPrice" : "$20",
+        "menuLike" : "30",
+        "datajson" : "desserts"
+    
+    }
+    
+
+]

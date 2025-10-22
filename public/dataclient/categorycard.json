@@ -1,0 +1,29 @@
+[
+    {
+        "id" : "1",
+        "categoryName" : "Tea",
+        "imageCategory" : "category/TEALOGO.png"
+    },
+    {
+        "id" : "2",
+        "categoryName" : "Coffee",
+        "imageCategory" : "category/COFFEE LOGO.png"
+    },
+    {
+        "id" : "3",
+        "categoryName" : "Soft Drink",
+        "imageCategory" : "category/SOFTDRINK.png"
+    },
+    {
+        "id" : "4",
+        "categoryName" : "Main Dishes",
+        "imageCategory" : "category/MAIN DISHES.png"
+    },
+    {
+        "id" : "5",
+        "categoryName" : "Desserts",
+        "imageCategory" : "category/dessert.png"
+    }
+
+
+]

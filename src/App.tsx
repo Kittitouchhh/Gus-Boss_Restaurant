@@ -11,10 +11,12 @@ import SetCategoryCard from './components/set-categorycard'
 import {Routes,Route} from 'react-router-dom'
 
 // Pages
-import HomeClient from './page/Home-Client'
-import PostIt from './page/Post-It-Client'
-import ProcessOrder from './page/Process-Client'
-
+import HomeClient from './page/page-Client/Home-Client'
+import PostIt from './page/page-Client/Post-It-Client'
+import ProcessOrder from './page/page-Client/Process-Client'
+import MoreMenu from './page/page-Client/More-Menu-Client'
+import Menudetaile from './page/page-Client/MenuDetaile'
+import Contact from './page/page-Client/Contact-Client'
 
 function App() {
   return (
@@ -24,6 +26,9 @@ function App() {
               <Route path='/' element={<HomeClient></HomeClient>}></Route>
               <Route path='process' element={<ProcessOrder></ProcessOrder>}></Route>
               <Route path='PostIt' element={<PostIt></PostIt>}></Route>
+              <Route path='moremenu' element={<MoreMenu></MoreMenu>}></Route>
+              <Route path='MenuDetaile/:menuid/:menujson' element={<Menudetaile></Menudetaile>}></Route>
+              <Route path="contact" element={<Contact></Contact>}></Route>
           </Routes>
       <Footer></Footer>
     </div>

@@ -1,0 +1,97 @@
+[
+    {
+        "id" : 1,
+        "menuName" : "BLACK TEA",
+        "imageMenu" : "tea/black_Tea.png",
+        "menuOption" : ["Temperature","Sweet","Brew strength"],
+        "menuPrice" : "$20",
+        "menuLike" : "201",
+        "datajson" : "menutea"
+        
+    },
+    {
+        "id" : 2,
+        "menuName" : "GREEN TEA",
+        "imageMenu" : "tea/GREEN TEA.jpg",
+        "menuOption" : ["Temperature","Milk Option","Flavor add-on"],
+        "menuPrice" : "$25",
+        "menuLike" : "195",
+        "datajson" : "menutea"
+    },
+    {
+        "id" : 3,
+        "menuName" : "THAI ICED TED",
+        "imageMenu" : "tea/ชาเย็น.jpg",
+        "menuOption" : ["Topping Tea","Milk Option","Sweet"],
+        "menuPrice" : "$15",
+        "menuLike" : "152",
+        "datajson" : "menutea"
+    },
+    {
+        "id" : 4,
+        "menuName" : "LEMON TEA",
+        "imageMenu" : "tea/lemon tea.jpg",
+        "menuOption" : ["Temperature","Lemon level","Topping Tea"],
+        "menuPrice" : "$25",
+        "menuLike" : "120",
+        "datajson" : "menutea"
+    },
+    {
+        "id" : 5,
+        "menuName" : "CHAMOMILE TEA",
+        "imageMenu" : "tea/Chamomile tea.jpg",
+        "menuOption" : ["Temperature","Ice level","Flavor add-on"],
+        "menuPrice" : "$25",
+        "menuLike" : "115",
+        "datajson" : "menutea"
+    },
+    {
+        "id" : 6,
+        "menuName" : "Oolong Tea",
+        "imageMenu" : "tea/Oolong Tea.jpg",
+        "menuOption" : ["Temperature","Sweet","Brew strenght"],
+        "menuPrice" : "$10",
+        "menuLike" : "100",
+        "datajson" : "menutea"
+    },
+    {
+        "id" : 7,
+        "menuName" : "White Tea'",
+        "imageMenu" : "tea/White Tea.jpg",
+        "menuOption" : ["Temperature","Milk Option","Flavor add-on"],
+        "menuPrice" : "$25",
+        "menuLike" : "96",
+        "datajson" : "menutea"
+    },
+    {
+        "id" : 8,
+        "menuName" : "Earl Grey Tea'",
+        "imageMenu" : "tea/Earl Grey Tea.jpg",
+        "menuOption" : ["Topping Tea","Milk Option","Brew strenght"],
+        "menuPrice" : "$35",
+        "menuLike" : "87",
+        "datajson" : "menutea"
+    },
+    {
+        "id" : 9,
+        "menuName" : "Peppermint Tea",
+        "imageMenu" : "tea/Peppermint Tea.jpg",
+        "menuOption" : ["Topping Tea","Lemon level","Brew strenght"],
+        "menuPrice" : "$35",
+        "menuLike" : "79",
+        "datajson" : "menutea"
+    },
+    {
+        
+        "id" : 10,
+        "menuName" : "Hibiscus Tea",
+        "imageMenu" : "tea/Chamomile tea.jpg",
+        "menuOption" : ["Topping Tea","Lemon level","Brew strenght"],
+        "menuPrice" : "$20",
+        "menuLike" : "64",
+        "datajson" : "menutea"
+    
+    }
+    
+
+]

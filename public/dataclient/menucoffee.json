@@ -1,0 +1,97 @@
+[
+    {
+        "id" : 1,
+        "menuName" : "Espresso",
+        "imageMenu" : "coffee/Espresso.jpg ",
+        "menuOption" : ["Temperature","Sweet","Milk Options"],
+        "menuPrice" : "$25",
+        "menuLike" : "500",
+        "datajson" : "menucoffee"
+        
+    },
+    {
+        "id" : 2,
+        "menuName" : "Americano",
+        "imageMenu" : "coffee/Americano.jfif",
+        "menuOption" : ["Temperature","Milk Option","Flavor add-on"],
+        "menuPrice" : "$45",
+        "menuLike" : "496 ",
+        "datajson" : "menucoffee"
+    },
+    {
+        "id" : 3,
+        "menuName" : "Latte",
+        "imageMenu" : "coffee/Latte.jpg",
+        "menuOption" : ["Brew Strength","Sweetness","Milk options"],
+        "menuPrice" : "$20 ",
+        "menuLike" : "476",
+        "datajson" : "menucoffee "
+    },
+    {
+        "id" : 4,
+        "menuName" : "Cappuccino",
+        "imageMenu" : "coffee/Cappuccino.jfif",
+        "menuOption" : ["Temperature","Milk Options","Flavor Add-ons "],
+        "menuPrice" : "$35",
+        "menuLike" : "396",
+        "datajson" : "menucoffee"
+    },
+    {
+        "id" : 5,
+        "menuName" : "Mocha",
+        "imageMenu" : "coffee/Mocha.jpg",
+        "menuOption" : ["Temperature","Ice level","Flavor add-on"],
+        "menuPrice" : "$30",
+        "menuLike" : "356",
+        "datajson" : "menucoffee"
+    },
+    {
+        "id" : 6,
+        "menuName" : "Flat White ",
+        "imageMenu" : "coffee/Flat White.jpg",
+        "menuOption" : ["Temperature","Sweet","Brew strenght"],
+        "menuPrice" : "$20",
+        "menuLike" : "325",
+        "datajson" : "menucoffee"
+    },
+    {
+        "id" : 7,
+        "menuName" : "Macchiato",
+        "imageMenu" : "coffee/Macchiato.jpg",
+        "menuOption" : ["Temperature","Toppings Coffee","Flavor add-on"],
+        "menuPrice" : "$25",
+        "menuLike" : "285",
+        "datajson" : "menucoffee"
+    },
+    {
+        "id" : 8,
+        "menuName" : "Affogato",
+        "imageMenu" : "coffee/Affogato.jfif",
+        "menuOption" : ["Topping Coffee","Milk Option","Brew strenght"],
+        "menuPrice" : "$10",
+        "menuLike" : "252",
+        "datajson" : "menucoffee"
+    },
+    {
+        "id" : 9,
+        "menuName" : "Cold Brew Coffee ",
+        "imageMenu" : "coffee/Cold Brew.jfif",
+        "menuOption" : ["Temperature","Milk Options","Brew strenght"],
+        "menuPrice" : "$35",
+        "menuLike" : "221",
+        "datajson" : "menucoffee"
+    },
+    {
+        
+        "id" : 10,
+        "menuName" : "Iced Coffee",
+        "imageMenu" : "coffee/Iced Coffee.jpg",
+        "menuOption" : ["Temperature","Flavor add-on","Brew strenght"],
+        "menuPrice" : "$20",
+        "menuLike" : "64",
+        "datajson" : "menucoffee"
+    
+    }
+    
+
+]

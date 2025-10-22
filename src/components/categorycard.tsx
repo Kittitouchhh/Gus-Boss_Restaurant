@@ -1,5 +1,5 @@
 import React from 'react'
-
+import{Link} from 'react-router-dom'
 interface CategoryCardProps {
     image : string,
     name : string
@@ -11,6 +11,8 @@ const CategoryCard:React.FC<CategoryCardProps> = ({image,name}) => {
             <img src={image} className='2xl:w-[140px] 2xl:h-[140px] xl:w-[110px] xl:h-[110px] lg:w-[90px] lg:h-[90px] md:w-[70px] md:h-[70px] w-[px] h-[35px] md:mt-[15px] mt-[5px] self-center'></img>
             <p className='2xl:text-[26px] xl:text-[23px] lg:text-[18px] md:text-[16px] text-[7px] font-bold mt-auto text-[#3D342F]'>{name}</p>
         </div>
+        
+        
     )
 }
 

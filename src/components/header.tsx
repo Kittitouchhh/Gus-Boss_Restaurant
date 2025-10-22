@@ -9,7 +9,7 @@ import Button from "./button"
 const Header: React.FC = () =>{
     return(
         <nav className="w-full h-[110px] top-0 bg-[#3D342F] border-b-2 border-b-[#EEDBC4] flex flex-row fixed p-[5px] gap-[10px] items-center z-50"  >
-            <img src="/public/logo/logo.png" alt="" className="lg:w-[180px] xl:w-[290px] md:w-[130px] xl:h-[50px] w-[140px] self-center xl:left-[40px] md:left-[20px] left-[10px] relative"/>
+            <img src="logo/logo.png" alt="" className="lg:w-[180px] xl:w-[290px] md:w-[130px] xl:h-[50px] w-[140px] self-center xl:left-[40px] md:left-[20px] left-[10px] relative"/>
 
             <div className="hidden md:flex flex-row justify-center relative lg:gap-[40px] gap-[10px] md:left-[35px] lg:left-[60px] xl:left-[90px] 2xl:left-[390px] left-[5px]">
                 <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata="/">HOME</Button>

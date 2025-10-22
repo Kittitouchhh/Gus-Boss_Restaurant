@@ -1,0 +1,97 @@
+[
+    {
+        "id" : 1,
+        "menuName" : "7Up",
+        "imageMenu" : "softdrink/7Up.jpg",
+        "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
+        "menuPrice" : "$5",
+        "menuLike" : "402",
+        "datajson" : "softdrink"
+        
+    },
+    {
+        "id" : 2,
+        "menuName" : "Coca Cola",
+        "imageMenu" : "softdrink/cocacola.jpg",
+        "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
+        "menuPrice" : "$10",
+        "menuLike" : "396",
+        "datajson" : "softdrink"
+    },
+    {
+        "id" : 3,
+        "menuName" : "Dr Paper",
+        "imageMenu" : "softdrink/DrPepper.jpg",
+        "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
+        "menuPrice" : "$30",
+        "menuLike" : "387",
+        "datajson" : "softdrink"
+    },
+    {
+        "id" : 4,
+        "menuName" : "Fanta",
+        "imageMenu" : "softdrink/Fanta.jpeg",
+        "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
+        "menuPrice" : "$5",
+        "menuLike" : "354",
+        "datajson" : "softdrink"
+    },
+    {
+        "id" : 5,
+        "menuName" : "MinuteMaid",
+        "imageMenu" : "softdrink/MinuteMaid.jpg",
+        "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
+        "menuPrice" : "$20",
+        "menuLike" : "297",
+        "datajson" : "softdrink"
+    },
+    {
+        "id" : 6,
+        "menuName" : "Mirinda",
+        "imageMenu" : "softdrink/Mirinda.png",
+        "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
+        "menuPrice" : "$10",
+        "menuLike" : "286",
+        "datajson" : "softdrink"
+    },
+    {
+        "id" : 7,
+        "menuName" : "Mountain Dew'",
+        "imageMenu" : "softdrink/Mountain Dew.jpg",
+        "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
+        "menuPrice" : "$15",
+        "menuLike" : "214",
+        "datajson" : "softdrink"
+    },
+    {
+        "id" : 8,
+        "menuName" : "Red Bull",
+        "imageMenu" : "softdrink/RedBull.jpg",
+        "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
+        "menuPrice" : "$10",
+        "menuLike" : "180",
+        "datajson" : "softdrink"
+    },
+    {
+        "id" : 9,
+        "menuName" : "Schweppes",
+        "imageMenu" : "softdrink/Schweppes.jpg",
+        "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
+        "menuPrice" : "$5",
+        "menuLike" : "153",
+        "datajson" : "softdrink"
+    },
+    {
+        
+        "id" : 10,
+        "menuName" : "Sprite",
+        "imageMenu" : "softdrink/Sprite.jfif",
+        "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
+        "menuPrice" : "$25",
+        "menuLike" : "94",
+        "datajson" : "softdrink"
+    
+    }
+    
+
+]

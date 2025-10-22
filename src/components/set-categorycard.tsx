@@ -1,13 +1,32 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import CategoryCard from './categorycard'
+import axios from 'axios'
+
+interface CategoryProps{
+  id : string,
+  categoryName : string,
+  imageCategory : string
+}
+
 function SetCategoryCard(){
+
+  const [categorydata,Setcategorydata] = useState<CategoryProps[]>([])
+
+  useEffect(() =>{
+    axios.get("/dataclient/categorycard.json")
+    .then((res) => Setcategorydata(res.data))
+    .catch ((err) => {
+        console.log(`เกิดข้อผิดพลาด ${err}`)
+      })
+  },[] )
+  
+
     return(
         <div className='flex flex-row w-full justify-center md:mt-[110px] mt-[120px]'>
-          <CategoryCard image='/public/category/TEALOGO.png' name='Tea'></CategoryCard>
-          <CategoryCard image='/public/category/COFFEE LOGO.png' name='Coffee'></CategoryCard>
-          <CategoryCard image='/public/category/SOFTDRINK.png' name='Soft Drink'></CategoryCard>
-          <CategoryCard image='/public/category/MAIN DISHES.png' name='Main Dishes'></CategoryCard>
-          <CategoryCard image='/public/category/dessert.png' name='Dessert'></CategoryCard>
+          {categorydata.map((data)=>{
+            return(
+              <CategoryCard image={data.imageCategory} name={data.categoryName}></CategoryCard>
+            )})}
         </div>
     )
 }

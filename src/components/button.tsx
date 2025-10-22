@@ -29,7 +29,7 @@ const Button: React.FC<data> = ({height , width ,color,stringColor,stringSize,li
         text_size = 'lg:text-[16px] xl:text-[18px] md:text-[14px] text-[8px]'
     }
     else{
-        text_size = 'text-[64px]'
+        text_size = '2xl:text-[28px] xl:text-[24px] lg:text-[16px] md:text-[11px] text-[7px]'
     }
 
     let color_button : string ='';
@@ -52,7 +52,7 @@ const Button: React.FC<data> = ({height , width ,color,stringColor,stringSize,li
         height_button = 'lg:h-[47px] md:h-[30px] h-[24px]';
     }
     else if (height == 'l'){
-        height_button = 'max-h-[70px]';
+        height_button = '2xl:h-[70px] xl:h-[60px] lg:h-[40px] md:h-[35px] h-[20px]';
     }
     else{
         height_button = 'max-h-[500px]'
@@ -71,7 +71,7 @@ const Button: React.FC<data> = ({height , width ,color,stringColor,stringSize,li
 
     }
     else if (width == 'l'){
-        width_button = 'max-w-[300px]';
+        width_button = '2xl:w-[300px] xl:w-[250px] lg:w-[150px] md:w-[100px] w-[70px] ';
     }
     else{
         width_button = 'max-w-[500px]';
@@ -88,7 +88,7 @@ const Button: React.FC<data> = ({height , width ,color,stringColor,stringSize,li
     }
     else{
         return( 
-            <Link to={linkdata} className={`${combinedClassName} rounded-full font-sans box-border block text-center flex items-center justify-center`}>{children}</Link>
+            <Link to={linkdata} className={`${combinedClassName} rounded-full font-sans box-border  text-center flex items-center justify-center font-bold`}>{children}</Link>
         )
     }
     

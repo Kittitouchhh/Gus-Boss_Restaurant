@@ -1,0 +1,97 @@
+[
+    {
+        "id" : 1,
+        "menuName" : "Burger",
+        "imageMenu" : "maindishes/burger.jpg",
+        "menuOption" : ["Main Topping","Cheese","VegetableToppings"],
+        "menuPrice" : "$120",
+        "menuLike" : "200",
+        "datajson" : "maindishes"
+        
+    },
+    {
+        "id" : 2,
+        "menuName" : "Chicken Fried",
+        "imageMenu" : "maindishes/chickenfried.jpg",
+        "menuOption" : ["VegetableToppings","Spice Level","Flavor"],
+        "menuPrice" : "$60",
+        "menuLike" : "496 ",
+        "datajson" : "maindishes"
+    },
+    {
+        "id" : 3,
+        "menuName" : "Donburi",
+        "imageMenu" : "maindishes/Donburi.jpg",
+        "menuOption" : ["Main Topping","VegetableToppings","Spice Level"],
+        "menuPrice" : "$90",
+        "menuLike" : "476",
+        "datajson" : "maindishes "
+    },
+    {
+        "id" : 4,
+        "menuName" : "Fried Rice",
+        "imageMenu" : "maindishes/Fried Rice.jpg",
+        "menuOption" : ["Main Topping","Spice Level","Extra Topping"],
+        "menuPrice" : "$50",
+        "menuLike" : "396",
+        "datajson" : "maindishes"
+    },
+    {
+        "id" : 5,
+        "menuName" : "Gyoza",
+        "imageMenu" : "maindishes/Gyoza.jfif",
+        "menuOption" : ["Main Topping","Spice Level","Extra Topping"],
+        "menuPrice" : "$60",
+        "menuLike" : "356",
+        "datajson" : "maindishes"
+    },
+    {
+        "id" : 6,
+        "menuName" : "Papaya Salad",
+        "imageMenu" : "maindishes/papayasalad.jpg",
+        "menuOption" : ["Spice Level","Papaya Style","Extra Topping"],
+        "menuPrice" : "$80",
+        "menuLike" : "325",
+        "datajson" : "maindishes"
+    },
+    {
+        "id" : 7,
+        "menuName" : "Pizza",
+        "imageMenu" : "maindishes/pizza.jpg",
+        "menuOption" : ["Sauce","Cheese","Main Topping"],
+        "menuPrice" : "$200",
+        "menuLike" : "285",
+        "datajson" : "maindishes"
+    },
+    {
+        "id" : 8,
+        "menuName" : "Sandwich",
+        "imageMenu" : "maindishes/sandwich.jpg",
+        "menuOption" : ["Main Topping","Bread Type","VegetableToppings"],
+        "menuPrice" : "$30",
+        "menuLike" : "252",
+        "datajson" : "maindishes"
+    },
+    {
+        "id" : 9,
+        "menuName" : "Steak ",
+        "imageMenu" : "maindishes/steak.jpg",
+        "menuOption" : ["Temperature","Main Topping","Doneness Level"],
+        "menuPrice" : "$180",
+        "menuLike" : "221",
+        "datajson" : "maindishes"
+    },
+    {
+        
+        "id" : 10,
+        "menuName" : "Green Curry",
+        "imageMenu" : "maindishes/greencurrychicken.jpg",
+        "menuOption" : ["Main Topping","Spice Level","Extra Topping"],
+        "menuPrice" : "$100",
+        "menuLike" : "211",
+        "datajson" : "maindishes"
+    
+    }
+    
+
+]
