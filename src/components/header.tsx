@@ -8,13 +8,19 @@ const Header: React.FC = () => {
     // ✅ อ่านชื่อ user ปัจจุบันจาก localStorage
     const currentUsername = localStorage.getItem("username");
 
+    // ✅ ดึง user ที่สมัครไว้ใน localStorage (signup)
+    const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
+
+    // ✅ รวม users จาก login.json + localStorage
+    const allUsers = [...usersData, ...localUsers];
+
     // ✅ หา user ที่ login อยู่ใน login.json
-    const currentUser = usersData.find(
+    const currentUser = allUsers.find(
         (u) => u.username.toLowerCase() === currentUsername?.toLowerCase()
     );
 
     // ✅ ตั้งค่าชื่อและรูป (ถ้าไม่เจอ → ใช้ Unknown + default image)
-    const displayName = currentUser?.username || "Unknown";
+    const displayName = currentUser?.showname || "Unknown";
     const displayImage =
         currentUser?.image ||
         "https://cdn-icons-png.flaticon.com/512/6522/6522516.png";

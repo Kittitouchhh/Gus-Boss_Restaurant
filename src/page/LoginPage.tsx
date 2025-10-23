@@ -17,15 +17,24 @@ export default function LoginPage() {
     e.preventDefault();
     setError("");
 
-    // หา user ที่ตรงกับข้อมูล
-    const foundUser = userData.find(
-      (u) => u.username === username && u.password === password
-    );
+    //  โหลด user จาก localStorage (user ที่สมัครผ่าน signup)
+    const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
 
+    // ✅ รวม users จาก login.json + localStorage
+    const allUsers = [...userData, ...localUsers];
+
+    // ✅ ตรวจสอบ username/password
+    const foundUser = allUsers.find(
+      (u: any) => u.username === username && u.password === password
+    );
+    
     if (foundUser) {
-      localStorage.setItem("authToken", "true")
-      localStorage.setItem("userRole", foundUser.role)
-      localStorage.setItem("username", foundUser.username)
+      // ✅ บันทึก session
+      localStorage.setItem("authToken", "true");
+      localStorage.setItem("userRole", foundUser.role || "client");
+      localStorage.setItem("username", foundUser.username);
+      localStorage.setItem("showname", foundUser.showname || foundUser.username);
+      localStorage.setItem("image", foundUser.image || "");
 
       if (foundUser.role === "admin") {
         navigate("/admin")
@@ -34,7 +43,7 @@ export default function LoginPage() {
       }
     }else {
       //ถ้า ชื่อ รหัส ไม่ตรง
-      setError("Invalid username or password!");
+      setError("💻 Username or password mismatch!");
     }
   }
   return (

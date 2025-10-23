@@ -3,11 +3,13 @@
         "username": "gus",
         "password": "1111",
         "role": "admin",
-        "image": "/user/Gus.jpg"
+        "image": "/user/Gus.jpg",
+        "showname": "GUSSUKE"
     },
     {
         "username": "Boss",
         "password": "2222",
-        "role": "client"
+        "role": "client",
+        "showname": "Bossski"
     }
 ]
