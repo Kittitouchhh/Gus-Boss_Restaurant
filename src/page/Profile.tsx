@@ -49,7 +49,7 @@ export default function ProfileSetting() {
     // บันทึกชื่อใหม่
     const handleSaveProfile = () => {
         if (!showname.trim()) {
-            alert("⚠️ กรุณากรอกชื่อก่อนบันทึก");
+            alert(" กรุณากรอกชื่อก่อนบันทึก");
             return;
         }
 
@@ -67,7 +67,7 @@ export default function ProfileSetting() {
             localStorage.setItem("users", JSON.stringify(users));
         }
 
-        alert("✅ บันทึกโปรไฟล์เรียบร้อยแล้ว!");
+        alert(" บันทึกโปรไฟล์เรียบร้อยแล้ว!");
     };
 
     // เปลี่ยนรหัสผ่าน
@@ -79,7 +79,7 @@ export default function ProfileSetting() {
         const index = allUsers.findIndex((u: any) => u.username === username);
 
         if (index === -1) {
-            alert("❌ ไม่พบข้อมูลผู้ใช้ในระบบ");
+            alert(" ไม่พบข้อมูลผู้ใช้ในระบบ");
             return;
         }
 
@@ -94,39 +94,37 @@ export default function ProfileSetting() {
     const userIndex = localUsers.findIndex((u: any) => u.username === username);
 
     if (userIndex === -1) {
-      alert("❌ ไม่พบข้อมูลผู้ใช้ใน localStorage");
+      alert("ไม่พบข้อมูลผู้ใช้ใน localStorage");
       return;
     }
 
     if (localUsers[userIndex].password !== oldPassword) {
-      alert("❌ รหัสผ่านเดิมไม่ถูกต้อง");
+      alert("รหัสผ่านเดิมไม่ถูกต้อง");
       return;
     }
 
-    if (newPassword.length < 4) {
-      alert("⚠️ รหัสผ่านใหม่ควรมีอย่างน้อย 4 ตัวอักษร");
+    if (newPassword.length < 6) {
+      alert("รหัสผ่านใหม่ควรมีอย่างน้อย 6 ตัวอักษร");
       return;
     }
 
     if (newPassword !== confirmPassword) {
-      alert("⚠️ รหัสผ่านใหม่ไม่ตรงกัน");
+      alert("รหัสผ่านใหม่ไม่ตรงกัน");
       return;
     }
 
-    // ✅ อัปเดตรหัสผ่านใน localStorage.users
+    // อัปเดตรหัสผ่านใน localStorage.users
     localUsers[userIndex].password = newPassword;
     localStorage.setItem("users", JSON.stringify(localUsers));
 
-    // ✅ อัปเดตใน session ปัจจุบันด้วย
+    // อัปเดต session ปัจจุบัน
     localStorage.setItem("userpassword", newPassword);
 
-    alert("✅ เปลี่ยนรหัสผ่านเรียบร้อยแล้ว!");
+    alert("เปลี่ยนรหัสผ่านเรียบร้อยแล้ว!");
     setOldPassword("");
     setNewPassword("");
     setConfirmPassword("");
   };
-
-    // ✅ ส่วนแสดงผล UI
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-[#EEDBC4]">
             <div className="bg-white p-6 rounded-2xl shadow-xl w-[400px]">
