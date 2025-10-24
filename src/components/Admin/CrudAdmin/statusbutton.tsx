@@ -8,7 +8,7 @@ function MenuStatus() {
   };
 
   return (
-    <td className="p-3 text-center align-middle">
+    <div className="p-3 text-center align-middle">
       <div className="flex justify-center items-center gap-2 z-index-0">
         <label className="relative inline-flex items-center cursor-pointer">
           <input
@@ -33,7 +33,7 @@ function MenuStatus() {
           {status}
         </span>
       </div>
-    </td>
+    </div>
   );
 }
 

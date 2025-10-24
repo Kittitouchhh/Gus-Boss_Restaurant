@@ -1,5 +1,5 @@
 import type { BannerItem } from "../../../page/pagesAdmin/BannerPage";
-import Bannertatus from "./BannerStatu";
+import Bannerstatus from "./BannerStatus";
 
 type CardBannerProps = {
     banner: BannerItem;
@@ -14,7 +14,7 @@ export default function CardBanner({ banner }: CardBannerProps) {
                         <img className="shadow-2xl object-fill" src={banner.image} alt="banner" />
                     </div>
                     <div  className="mr-25 bg-black w-120 justify-center flex " >
-                        <Bannertatus />
+                        <Bannerstatus />
                     </div>
                 </div>
             </div>

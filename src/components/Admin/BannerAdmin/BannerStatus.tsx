@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Bannertatus() {
+export default function Bannerstatus() {
   const [status, setStatus] = useState<"Show" | "Hide">("Show");
 
   const toggleStatus = () => {
@@ -8,7 +8,7 @@ export default function Bannertatus() {
   };
 
   return (
-    <td className="p-3 text-center align-middle">
+    <div className="p-3 text-center align-middle">
       <div className="flex justify-center items-center gap-2 z-index-0">
         <label className="relative inline-flex items-center cursor-pointer">
           <input
@@ -41,6 +41,6 @@ export default function Bannertatus() {
           {status}
         </span>
       </div>
-    </td>
+    </div>
   );
 }
