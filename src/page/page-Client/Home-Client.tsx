@@ -5,13 +5,21 @@ import Button from '../../components/button'
 import Information from '../../components/informationTag'
 import Tagmenu from '../../components/tagmenu.tsx'
 import {Routes , Route} from 'react-router-dom'
+import SwiperCom from '../../components/swipercom'
 // page
 import MoreMenu from './More-Menu-Client.tsx'
 function HomeClient(){
     return(
 
         <div>
-            <SetCategoryCard></SetCategoryCard>
+            
+            <div className='mt-[110px]'>
+                <SwiperCom filejason='carousalitem.json'></SwiperCom>
+            </div>
+            
+            <div className='md:mt-[40px] mt-[10px]'>
+                <SetCategoryCard></SetCategoryCard>
+            </div>   
             <div className='md:mt-[50px] md:mb-[50px] mb-[20px]'>
                 <Tagmenu title='Tea'></Tagmenu>
                 <SetCardMenu filename='menutea.json'></SetCardMenu>

@@ -6,7 +6,8 @@
         "menuOption" : ["Temperature","Sweet","Brew strength"],
         "menuPrice" : "$20",
         "menuLike" : "201",
-        "datajson" : "menutea"
+        "datajson" : "menutea",
+        "description" : "Bold and robust tea with a deep, rich flavor."
         
     },
     {
@@ -16,7 +17,8 @@
         "menuOption" : ["Temperature","Milk Option","Flavor add-on"],
         "menuPrice" : "$25",
         "menuLike" : "195",
-        "datajson" : "menutea"
+        "datajson" : "menutea",
+        "description" : "Fresh and slightly grassy tea rich in antioxidants."
     },
     {
         "id" : 3,
@@ -25,7 +27,8 @@
         "menuOption" : ["Topping Tea","Milk Option","Sweet"],
         "menuPrice" : "$15",
         "menuLike" : "152",
-        "datajson" : "menutea"
+        "datajson" : "menutea",
+        "description" : "Sweet and creamy Thai-style tea served over ice."
     },
     {
         "id" : 4,
@@ -34,7 +37,8 @@
         "menuOption" : ["Temperature","Lemon level","Topping Tea"],
         "menuPrice" : "$25",
         "menuLike" : "120",
-        "datajson" : "menutea"
+        "datajson" : "menutea",
+        "description" : "Refreshing tea infused with the bright flavor of lemon."
     },
     {
         "id" : 5,
@@ -43,7 +47,8 @@
         "menuOption" : ["Temperature","Ice level","Flavor add-on"],
         "menuPrice" : "$25",
         "menuLike" : "115",
-        "datajson" : "menutea"
+        "datajson" : "menutea",
+        "description" : "Soothing herbal tea known for its calming aroma."
     },
     {
         "id" : 6,
@@ -52,25 +57,28 @@
         "menuOption" : ["Temperature","Sweet","Brew strenght"],
         "menuPrice" : "$10",
         "menuLike" : "100",
-        "datajson" : "menutea"
+        "datajson" : "menutea",
+        "description" : "Smooth semi-fermented tea with floral and roasted notes."
     },
     {
         "id" : 7,
-        "menuName" : "White Tea'",
+        "menuName" : "White Tea",
         "imageMenu" : "tea/White Tea.jpg",
         "menuOption" : ["Temperature","Milk Option","Flavor add-on"],
         "menuPrice" : "$25",
         "menuLike" : "96",
-        "datajson" : "menutea"
+        "datajson" : "menutea",
+        "description" : "Delicate tea with a light, natural sweetness and subtle aroma."
     },
     {
         "id" : 8,
-        "menuName" : "Earl Grey Tea'",
+        "menuName" : "Earl Grey Tea",
         "imageMenu" : "tea/Earl Grey Tea.jpg",
         "menuOption" : ["Topping Tea","Milk Option","Brew strenght"],
         "menuPrice" : "$35",
         "menuLike" : "87",
-        "datajson" : "menutea"
+        "datajson" : "menutea",
+        "description" : "Black tea infused with bergamot for a citrusy fragrance."
     },
     {
         "id" : 9,
@@ -79,7 +87,8 @@
         "menuOption" : ["Topping Tea","Lemon level","Brew strenght"],
         "menuPrice" : "$35",
         "menuLike" : "79",
-        "datajson" : "menutea"
+        "datajson" : "menutea",
+        "description" : "Cooling herbal tea with a refreshing minty taste."
     },
     {
         
@@ -89,7 +98,8 @@
         "menuOption" : ["Topping Tea","Lemon level","Brew strenght"],
         "menuPrice" : "$20",
         "menuLike" : "64",
-        "datajson" : "menutea"
+        "datajson" : "menutea",
+        "description" : "Tangy and vibrant red tea with a fruity, floral flavor."
     
     }
     

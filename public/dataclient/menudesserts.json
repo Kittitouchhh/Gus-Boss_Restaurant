@@ -6,7 +6,8 @@
         "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
         "menuPrice" : "$20",
         "menuLike" : "100",
-        "datajson" : "desserts"
+        "datajson" : "menudesserts",
+        "description" : "Rich and moist chocolate cake with a deep cocoa flavor."
         
     },
     {
@@ -16,7 +17,8 @@
         "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
         "menuPrice" : "$25",
         "menuLike" : "84",
-        "datajson" : "desserts"
+        "datajson" : "menudesserts",
+        "description" : "Soft sponge cake layered with fresh strawberries and whipped cream."
     },
     {
         "id" : 3,
@@ -25,7 +27,8 @@
         "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
         "menuPrice" : "$20",
         "menuLike" : "76",
-        "datajson" : "desserts "
+        "datajson" : "menudesserts",
+        "description" : "Creamy green tea pudding with a smooth and earthy taste."
     },
     {
         "id" : 4,
@@ -34,7 +37,8 @@
         "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
         "menuPrice" : "$15",
         "menuLike" : "73",
-        "datajson" : "desserts"
+        "datajson" : "menudesserts",
+        "description" : "Fudgy and dense brownie with an intense chocolate aroma."
     },
     {
         "id" : 5,
@@ -43,7 +47,8 @@
         "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
         "menuPrice" : "$30",
         "menuLike" : "62",
-        "datajson" : "desserts"
+        "datajson" : "menudesserts",
+        "description" : "Crispy tart crust filled with custard and topped with fresh fruits."
     },
     {
         "id" : 6,
@@ -52,7 +57,8 @@
         "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
         "menuPrice" : "$35",
         "menuLike" : "57",
-        "datajson" : "desserts"
+        "datajson" : "menudesserts",
+        "description" : "Classic creamy ice cream with a smooth vanilla flavor."
     },
     {
         "id" : 7,
@@ -61,7 +67,8 @@
         "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
         "menuPrice" : "$40",
         "menuLike" : "54",
-        "datajson" : "desserts"
+        "datajson" : "menudesserts",
+        "description" : "Italian dessert made with espresso-soaked ladyfingers and mascarpone cream."
     },
     {
         "id" : 8,
@@ -70,7 +77,8 @@
         "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
         "menuPrice" : "$20",
         "menuLike" : "46",
-        "datajson" : "desserts"
+        "datajson" : "menudesserts",
+        "description" : "Creamy and rich cake with a buttery biscuit crust."
     },
     {
         "id" : 9,
@@ -79,7 +87,8 @@
         "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
         "menuPrice" : "$10",
         "menuLike" : "42",
-        "datajson" : "desserts"
+        "datajson" : "menudesserts",
+        "description" : "Sweet ripe mango served with coconut milk and sticky rice."
     },
     {
         
@@ -89,7 +98,8 @@
         "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
         "menuPrice" : "$20",
         "menuLike" : "30",
-        "datajson" : "desserts"
+        "datajson" : "menudesserts",
+        "description" : "Warm chocolate cake with a gooey molten center."
     
     }
     

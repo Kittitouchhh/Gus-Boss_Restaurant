@@ -6,7 +6,8 @@
         "menuOption" : ["Temperature","Sweet","Milk Options"],
         "menuPrice" : "$25",
         "menuLike" : "500",
-        "datajson" : "menucoffee"
+        "datajson" : "menucoffee",
+        "description" : "Strong, concentrated coffee brewed under pressure with a rich aroma."
         
     },
     {
@@ -16,7 +17,8 @@
         "menuOption" : ["Temperature","Milk Option","Flavor add-on"],
         "menuPrice" : "$45",
         "menuLike" : "496 ",
-        "datajson" : "menucoffee"
+        "datajson" : "menucoffee",
+        "description" : "Espresso diluted with hot water for a smooth, mellow flavor."
     },
     {
         "id" : 3,
@@ -25,7 +27,8 @@
         "menuOption" : ["Brew Strength","Sweetness","Milk options"],
         "menuPrice" : "$20 ",
         "menuLike" : "476",
-        "datajson" : "menucoffee "
+        "datajson" : "menucoffee ",
+        "description" : "Espresso with steamed milk and a layer of creamy foam."
     },
     {
         "id" : 4,
@@ -34,7 +37,8 @@
         "menuOption" : ["Temperature","Milk Options","Flavor Add-ons "],
         "menuPrice" : "$35",
         "menuLike" : "396",
-        "datajson" : "menucoffee"
+        "datajson" : "menucoffee",
+        "description" : "Espresso mixed with steamed milk and thick milk foam; rich yet smooth."
     },
     {
         "id" : 5,
@@ -43,16 +47,18 @@
         "menuOption" : ["Temperature","Ice level","Flavor add-on"],
         "menuPrice" : "$30",
         "menuLike" : "356",
-        "datajson" : "menucoffee"
+        "datajson" : "menucoffee",
+        "description" : "A blend of espresso, chocolate, and milk for a sweet, comforting taste."
     },
     {
         "id" : 6,
-        "menuName" : "Flat White ",
+        "menuName" : "Flat White",
         "imageMenu" : "coffee/Flat White.jpg",
         "menuOption" : ["Temperature","Sweet","Brew strenght"],
         "menuPrice" : "$20",
         "menuLike" : "325",
-        "datajson" : "menucoffee"
+        "datajson" : "menucoffee",
+        "description" : "Smooth espresso with velvety microfoam; stronger than a latte."
     },
     {
         "id" : 7,
@@ -61,7 +67,8 @@
         "menuOption" : ["Temperature","Toppings Coffee","Flavor add-on"],
         "menuPrice" : "$25",
         "menuLike" : "285",
-        "datajson" : "menucoffee"
+        "datajson" : "menucoffee",
+        "description" : "Espresso topped with a small amount of milk foam; bold with a soft touch."
     },
     {
         "id" : 8,
@@ -70,16 +77,18 @@
         "menuOption" : ["Topping Coffee","Milk Option","Brew strenght"],
         "menuPrice" : "$10",
         "menuLike" : "252",
-        "datajson" : "menucoffee"
+        "datajson" : "menucoffee",
+        "description" : "A scoop of vanilla ice cream topped with a shot of hot espresso."
     },
     {
         "id" : 9,
-        "menuName" : "Cold Brew Coffee ",
+        "menuName" : "Cold Brew Coffee",
         "imageMenu" : "coffee/Cold Brew.jfif",
         "menuOption" : ["Temperature","Milk Options","Brew strenght"],
         "menuPrice" : "$35",
         "menuLike" : "221",
-        "datajson" : "menucoffee"
+        "datajson" : "menucoffee",
+        "description" : "Coffee brewed slowly with cold water for a smooth, low-acid taste."
     },
     {
         
@@ -89,7 +98,8 @@
         "menuOption" : ["Temperature","Flavor add-on","Brew strenght"],
         "menuPrice" : "$20",
         "menuLike" : "64",
-        "datajson" : "menucoffee"
+        "datajson" : "menucoffee",
+        "description" : "Chilled brewed coffee served over ice; refreshing and easy to drink."
     
     }
     

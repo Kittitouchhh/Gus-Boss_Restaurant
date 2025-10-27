@@ -27,10 +27,10 @@ function MoreMenu(){
 
     return(
         <div>
-            <div className='flex flex-row w-full justify-center md:mt-[110px] mt-[120px]'>
+            <div className='flex flex-row w-full justify-center md:mt-[40px] mt-[20px]'>
                 {categorydata.map((data)=>{
                 return(
-                <div onClick={() => {SetChangeFile(`menu${data.categoryName.toLowerCase().replace(/\s+/g, '')}.json`); Settagname(data.categoryName)}}>
+                <div onClick={() => {SetChangeFile(`menu${data.categoryName.toLowerCase().replace(/\s+/g, '')}.json`); Settagname(data.categoryName)}} className='md:mt-[110px] mt-[120px]'>
                     <CategoryCard image={data.imageCategory} name={data.categoryName}></CategoryCard>
                 </div>
                 )})}          

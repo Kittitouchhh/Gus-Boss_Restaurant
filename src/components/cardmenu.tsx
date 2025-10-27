@@ -9,9 +9,10 @@ interface datacard {
     price : string
     like : string
     datajson : string
+    description:string
 }
 
-const CardMenu: React.FC<datacard> = ({name,image,option,price,like,datajson}) => {
+const CardMenu: React.FC<datacard> = ({name,image,option,price,like,datajson,description}) => {
     return(
         <Link to={`MenuDetaile/${name}/${datajson}`}>     
             <div className='xl:w-[231px] xl:h-[290px] md:w-[180px] md:h-[230px] w-[100px] h-[130px]  bg-[url("/component-pic/card-bg.png")] bg-cover bg-center flex flex-col md:p-[10px] p-[4px] rounded-md md:rounded-xl md:gap-[5px] justify-start border-2 md:border-6 border-[#66574E] shadow-lg shadow-black/90 transform transition-transform duration-600 ease-in-out

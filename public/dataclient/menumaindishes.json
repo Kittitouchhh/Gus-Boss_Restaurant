@@ -5,8 +5,9 @@
         "imageMenu" : "maindishes/burger.jpg",
         "menuOption" : ["Main Topping","Cheese","VegetableToppings"],
         "menuPrice" : "$120",
-        "menuLike" : "200",
-        "datajson" : "maindishes"
+        "menuLike" : "507",
+        "datajson" : "menumaindishes",
+        "description" : "Juicy grilled patty served in a bun with fresh vegetables and sauce."
         
     },
     {
@@ -16,7 +17,8 @@
         "menuOption" : ["VegetableToppings","Spice Level","Flavor"],
         "menuPrice" : "$60",
         "menuLike" : "496 ",
-        "datajson" : "maindishes"
+        "datajson" : "menumaindishes",
+        "description" : "Crispy fried chicken with golden crust and tender meat inside."
     },
     {
         "id" : 3,
@@ -25,7 +27,8 @@
         "menuOption" : ["Main Topping","VegetableToppings","Spice Level"],
         "menuPrice" : "$90",
         "menuLike" : "476",
-        "datajson" : "maindishes "
+        "datajson" : "menumaindishes",
+        "description" : "Japanese rice bowl topped with meat, eggs, or vegetables."
     },
     {
         "id" : 4,
@@ -34,7 +37,8 @@
         "menuOption" : ["Main Topping","Spice Level","Extra Topping"],
         "menuPrice" : "$50",
         "menuLike" : "396",
-        "datajson" : "maindishes"
+        "datajson" : "menumaindishes",
+        "description" : "Stir-fried rice with eggs, vegetables, and savory seasoning."
     },
     {
         "id" : 5,
@@ -43,7 +47,8 @@
         "menuOption" : ["Main Topping","Spice Level","Extra Topping"],
         "menuPrice" : "$60",
         "menuLike" : "356",
-        "datajson" : "maindishes"
+        "datajson" : "menumaindishes",
+        "description" : "Japanese-style dumplings filled with minced pork and vegetables."
     },
     {
         "id" : 6,
@@ -52,7 +57,8 @@
         "menuOption" : ["Spice Level","Papaya Style","Extra Topping"],
         "menuPrice" : "$80",
         "menuLike" : "325",
-        "datajson" : "maindishes"
+        "datajson" : "menumaindishes",
+        "description" : "Spicy and tangy Thai salad made from shredded green papaya."
     },
     {
         "id" : 7,
@@ -61,7 +67,8 @@
         "menuOption" : ["Sauce","Cheese","Main Topping"],
         "menuPrice" : "$200",
         "menuLike" : "285",
-        "datajson" : "maindishes"
+        "datajson" : "menumaindishes",
+        "description" : "Baked flatbread topped with cheese, tomato sauce, and various toppings."
     },
     {
         "id" : 8,
@@ -70,16 +77,18 @@
         "menuOption" : ["Main Topping","Bread Type","VegetableToppings"],
         "menuPrice" : "$30",
         "menuLike" : "252",
-        "datajson" : "maindishes"
+        "datajson" : "menumaindishes",
+        "description" : "Freshly baked, soft bread generously filled with a delicious combination of high-quality meats, crisp fresh vegetables, and a rich, flavorful sauce. Perfectly balanced in taste and texture, making every bite a satisfying experience."
     },
     {
         "id" : 9,
-        "menuName" : "Steak ",
+        "menuName" : "Steak",
         "imageMenu" : "maindishes/steak.jpg",
         "menuOption" : ["Temperature","Main Topping","Doneness Level"],
         "menuPrice" : "$180",
         "menuLike" : "221",
-        "datajson" : "maindishes"
+        "datajson" : "menumaindishes",
+        "description" : "Grilled beef steak cooked to your preferred doneness, juicy and flavorful."
     },
     {
         
@@ -89,7 +98,8 @@
         "menuOption" : ["Main Topping","Spice Level","Extra Topping"],
         "menuPrice" : "$100",
         "menuLike" : "211",
-        "datajson" : "maindishes"
+        "datajson" : "menumaindishes",
+        "description" : "Spicy Thai green curry with coconut milk, herbs, and tender meat."
     
     }
     

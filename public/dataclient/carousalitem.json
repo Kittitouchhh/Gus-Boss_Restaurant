@@ -1,0 +1,14 @@
+[
+    {
+        "id" : 1 ,
+        "image" : "/carousalHome/cafe store.jpg"
+    },
+    {
+        "id" : 2 ,
+        "image" : "/carousalHome/cafe store1.jpg"
+    },
+    {
+        "id" : 3 ,
+        "image" : "/carousalHome/cafe store2.jpg"
+    }
+]

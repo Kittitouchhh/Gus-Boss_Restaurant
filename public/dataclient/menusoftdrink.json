@@ -6,7 +6,8 @@
         "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
         "menuPrice" : "$5",
         "menuLike" : "402",
-        "datajson" : "softdrink"
+        "datajson" : "menusoftdrink",
+        "description" : "Crisp and refreshing lemon-lime soda with a clean taste."
         
     },
     {
@@ -16,7 +17,8 @@
         "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
         "menuPrice" : "$10",
         "menuLike" : "396",
-        "datajson" : "softdrink"
+        "datajson" : "menusoftdrink",
+        "description" : "Classic cola with a sweet and slightly spicy flavor."
     },
     {
         "id" : 3,
@@ -25,7 +27,8 @@
         "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
         "menuPrice" : "$30",
         "menuLike" : "387",
-        "datajson" : "softdrink"
+        "datajson" : "menusoftdrink",
+        "description" : "Unique blend of 23 flavors with a bold, distinctive taste."
     },
     {
         "id" : 4,
@@ -34,7 +37,8 @@
         "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
         "menuPrice" : "$5",
         "menuLike" : "354",
-        "datajson" : "softdrink"
+        "datajson" : "menusoftdrink",
+        "description" : "Fruity and bubbly soft drink available in many flavors."
     },
     {
         "id" : 5,
@@ -43,7 +47,8 @@
         "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
         "menuPrice" : "$20",
         "menuLike" : "297",
-        "datajson" : "softdrink"
+        "datajson" : "menusoftdrink",
+        "description" : "Refreshing fruit juice drink made from real fruit."
     },
     {
         "id" : 6,
@@ -52,16 +57,18 @@
         "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
         "menuPrice" : "$10",
         "menuLike" : "286",
-        "datajson" : "softdrink"
+        "datajson" : "menusoftdrink",
+        "description" : "Sweet and tangy orange-flavored soda with bright bubbles."
     },
     {
         "id" : 7,
-        "menuName" : "Mountain Dew'",
+        "menuName" : "Mountain Dew",
         "imageMenu" : "softdrink/Mountain Dew.jpg",
         "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
         "menuPrice" : "$15",
         "menuLike" : "214",
-        "datajson" : "softdrink"
+        "datajson" : "menusoftdrink",
+        "description" : "Citrus-flavored soft drink with a bold, energizing kick."
     },
     {
         "id" : 8,
@@ -70,7 +77,8 @@
         "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
         "menuPrice" : "$10",
         "menuLike" : "180",
-        "datajson" : "softdrink"
+        "datajson" : "menusoftdrink",
+        "description" : "Popular energy drink that boosts focus and alertness."
     },
     {
         "id" : 9,
@@ -79,7 +87,8 @@
         "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
         "menuPrice" : "$5",
         "menuLike" : "153",
-        "datajson" : "softdrink"
+        "datajson" : "menusoftdrink",
+        "description" : "Sparkling beverage known for its crisp, slightly bitter taste."
     },
     {
         
@@ -89,7 +98,8 @@
         "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
         "menuPrice" : "$25",
         "menuLike" : "94",
-        "datajson" : "softdrink"
+        "datajson" : "menusoftdrink",
+        "description" : "Refreshing lemon-lime soda with a light, clean sweetness."
     
     }
     

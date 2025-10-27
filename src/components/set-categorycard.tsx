@@ -22,7 +22,7 @@ function SetCategoryCard(){
   
 
     return(
-        <div className='flex flex-row w-full justify-center md:mt-[110px] mt-[120px]'>
+        <div className='flex flex-row w-full justify-center '>
           {categorydata.map((data)=>{
             return(
               <CategoryCard image={data.imageCategory} name={data.categoryName}></CategoryCard>
