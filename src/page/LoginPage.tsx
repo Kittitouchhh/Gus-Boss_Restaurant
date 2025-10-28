@@ -102,7 +102,7 @@ export default function LoginPage() {
                 Click Here
               </Link>
             </p>
-            <button className="w-[30%] bg-[#3D342F] text-[#E7C699] font-semibold text-[15px] py-2 rounded-full mt-1 hover:bg-[#2C2926] duration-300">
+            <button className="cursor-pointer w-[30%] bg-[#3D342F] text-[#E7C699] font-semibold text-[15px] py-2 rounded-full mt-1 hover:bg-[#2C2926] duration-300">
               LOGIN
             </button>
           </div>

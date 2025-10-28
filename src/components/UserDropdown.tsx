@@ -76,7 +76,7 @@ const UserDropdown: React.FC<DropdownUserProps> = ({ name, image }) => {
     >
       <button
         onClick={handleSettings}
-        className="block w-full text-left px-4 py-2 hover:bg-[#E7C699]/40 text-[#3D342F] font-medium"
+        className="cursor-pointer block w-full text-left px-4 py-2 hover:bg-[#E7C699]/40 text-[#3D342F] font-medium"
       >
         ⚙️ Settings
       </button>
@@ -85,7 +85,7 @@ const UserDropdown: React.FC<DropdownUserProps> = ({ name, image }) => {
           setIsOpen(false);
           handleLogout();
         }}
-        className="block w-full text-left px-4 py-2 hover:bg-[#E7C699]/40 text-[#3D342F] font-medium"
+        className="cursor-pointer block w-full text-left px-4 py-2 hover:bg-[#E7C699]/40 text-[#3D342F] font-medium"
       >
         🚪 Logout
       </button>

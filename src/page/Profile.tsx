@@ -3,6 +3,8 @@ import ImageUploader from "../components/ImageUploader"; // component อัป�
 import Users from "../data/login.json";
 
 export default function ProfileSetting() {
+    // Dropdown password form
+    const [showFormPassword, setShowFormPassword] = useState(false);
     // 🌟 ข้อมูลชื่อและรูป
     const [showname, setShowname] = useState("");
     const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -15,7 +17,7 @@ export default function ProfileSetting() {
     // 🌟 ใช้เรียก input ของ ImageUploader จากภายนอก
     const uploaderRef = useRef<{ openFileDialog: () => void }>(null);
 
-    // หลดข้อมูลโปรไฟล์เมื่อเข้าเพจ
+    // โหลดข้อมูลโปรไฟล์เมื่อเข้าเพจ
     useEffect(() => {
         const storedName = localStorage.getItem("showname");
         const storedImage = localStorage.getItem("image");
@@ -90,41 +92,41 @@ export default function ProfileSetting() {
             return;
         }
         // ตรวจสอบ old password
-    const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
-    const userIndex = localUsers.findIndex((u: any) => u.username === username);
+        const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
+        const userIndex = localUsers.findIndex((u: any) => u.username === username);
 
-    if (userIndex === -1) {
-      alert("ไม่พบข้อมูลผู้ใช้ใน localStorage");
-      return;
-    }
+        if (userIndex === -1) {
+            alert("ไม่พบข้อมูลผู้ใช้ใน localStorage");
+            return;
+        }
 
-    if (localUsers[userIndex].password !== oldPassword) {
-      alert("รหัสผ่านเดิมไม่ถูกต้อง");
-      return;
-    }
+        if (localUsers[userIndex].password !== oldPassword) {
+            alert("รหัสผ่านเดิมไม่ถูกต้อง");
+            return;
+        }
 
-    if (newPassword.length < 6) {
-      alert("รหัสผ่านใหม่ควรมีอย่างน้อย 6 ตัวอักษร");
-      return;
-    }
+        if (newPassword.length < 6) {
+            alert("รหัสผ่านใหม่ควรมีอย่างน้อย 6 ตัวอักษร");
+            return;
+        }
 
-    if (newPassword !== confirmPassword) {
-      alert("รหัสผ่านใหม่ไม่ตรงกัน");
-      return;
-    }
+        if (newPassword !== confirmPassword) {
+            alert("รหัสผ่านใหม่ไม่ตรงกัน");
+            return;
+        }
 
-    // อัปเดตรหัสผ่านใน localStorage.users
-    localUsers[userIndex].password = newPassword;
-    localStorage.setItem("users", JSON.stringify(localUsers));
+        // อัปเดตรหัสผ่านใน localStorage.users
+        localUsers[userIndex].password = newPassword;
+        localStorage.setItem("users", JSON.stringify(localUsers));
 
-    // อัปเดต session ปัจจุบัน
-    localStorage.setItem("userpassword", newPassword);
+        // อัปเดต session ปัจจุบัน
+        localStorage.setItem("userpassword", newPassword);
 
-    alert("เปลี่ยนรหัสผ่านเรียบร้อยแล้ว!");
-    setOldPassword("");
-    setNewPassword("");
-    setConfirmPassword("");
-  };
+        alert("เปลี่ยนรหัสผ่านเรียบร้อยแล้ว!");
+        setOldPassword("");
+        setNewPassword("");
+        setConfirmPassword("");
+    };
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-[#EEDBC4]">
             <div className="bg-white p-6 rounded-2xl shadow-xl w-[400px]">
@@ -141,7 +143,7 @@ export default function ProfileSetting() {
                     />
                     <button
                         onClick={() => uploaderRef.current?.openFileDialog()}
-                        className="bg-[#3D342F] text-white py-2 px-4 rounded hover:bg-[#6b5e55] duration-300"
+                        className="cursor-pointer bg-[#3D342F] text-white py-2 px-4 rounded hover:bg-[#6b5e55] duration-300"
                     >
                         Upload New Photo
                     </button>
@@ -168,48 +170,56 @@ export default function ProfileSetting() {
 
                 <button
                     onClick={handleSaveProfile}
-                    className="w-full bg-[#3D342F] text-white py-2 rounded hover:bg-[#6b5e55] duration-300 mb-6"
+                    className="cursor-pointer w-full bg-[#3D342F] text-white py-2 rounded hover:bg-[#6b5e55] duration-300 mb-6"
                 >
                     Save Profile
                 </button>
 
                 {/* 🔹 เปลี่ยนรหัสผ่าน */}
-                <div className="border-t border-gray-300 pt-4">
+                <div className="border-t border-gray-300 pt-4 flex justify-between"
+                    onClick={() => setShowFormPassword(!showFormPassword)}>
                     <h2 className="text-xl font-bold mb-3 text-[#3D342F]">
                         Change Password
                     </h2>
-
-                    <input
-                        type="password"
-                        placeholder="Old Password"
-                        value={oldPassword}
-                        onChange={(e) => setOldPassword(e.target.value)}
-                        className="w-full p-2 mb-3 border rounded"
-                    />
-
-                    <input
-                        type="password"
-                        placeholder="New Password"
-                        value={newPassword}
-                        onChange={(e) => setNewPassword(e.target.value)}
-                        className="w-full p-2 mb-3 border rounded"
-                    />
-
-                    <input
-                        type="password"
-                        placeholder="Confirm New Password"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        className="w-full p-2 mb-4 border rounded"
-                    />
-
-                    <button
-                        onClick={handlePasswordChange}
-                        className="w-full bg-[#4ECDD2] text-white py-2 rounded hover:bg-[#38b9be] duration-300"
-                    >
-                        Update Password
-                    </button>
+                    <span className="text-[#3D342F] mr-3 cursor-pointer
+                    transition-transform duration-200 hover:scale-125 ">
+                        {showFormPassword ? "▲" : "▼"}
+                    </span>
                 </div>
+                {showFormPassword && (
+                    <>
+                        <input
+                            type="password"
+                            placeholder="Old Password"
+                            value={oldPassword}
+                            onChange={(e) => setOldPassword(e.target.value)}
+                            className="w-full p-2 mb-3 border rounded"
+                        />
+
+                        <input
+                            type="password"
+                            placeholder="New Password"
+                            value={newPassword}
+                            onChange={(e) => setNewPassword(e.target.value)}
+                            className="w-full p-2 mb-3 border rounded"
+                        />
+
+                        <input
+                            type="password"
+                            placeholder="Confirm New Password"
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            className="w-full p-2 mb-4 border rounded"
+                        />
+
+                        <button
+                            onClick={handlePasswordChange}
+                            className="cursor-pointer w-full bg-[#4ECDD2] text-white py-2 rounded hover:bg-[#38b9be] duration-300"
+                        >
+                            Update Password
+                        </button>
+                    </>
+                )}
             </div>
         </div>
     );

@@ -158,12 +158,12 @@ const Signup: React.FC = () => {
 
               <button
                 type="submit"
-                className="w-[50%] bg-[#3D342F] text-[#E7C699] font-semibold text-[16px] py-2 rounded-full mt-2 hover:bg-[#2C2926] duration-300"
+                className="cursor-pointer w-[50%] bg-[#3D342F] text-[#E7C699] font-semibold text-[16px] py-2 rounded-full mt-2 hover:bg-[#2C2926] duration-300"
               >
                 SIGN UP
               </button>
 
-              <p className="text-[#3D342F] text-sm mt-3">
+              <p className="text-[#3D342F] text-m mt-3">
                 Already have an account?{" "}
                 <Link
                   to="/login"
