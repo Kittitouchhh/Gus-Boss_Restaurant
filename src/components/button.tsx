@@ -1,13 +1,14 @@
 import React from 'react'
 import{Link} from 'react-router-dom'
 
+
 interface data {
     
-    height : 's' | 'm' | 'l',
-    width : 's' | 'm' | 'l',
-    color : 'brown' | 'white'
-    stringColor : 'white' | 'brown',
-    stringSize : 's' | 'm' | 'l',
+    height : 's' | 'm' | 'l' | 'xl',
+    width : 's' | 'm' | 'l'| 'xl',
+    color : 'brown' | 'white' | 'orange' | 'darkbrown',
+    stringColor : 'white' | 'brown' ,
+    stringSize : 's' | 'm' | 'l'| 'xl' ,
     linkdata? : string,
     children: React.ReactNode;
 }
@@ -28,6 +29,12 @@ const Button: React.FC<data> = ({height , width ,color,stringColor,stringSize,li
     else if(stringSize == 'm'){
         text_size = 'lg:text-[16px] xl:text-[18px] md:text-[14px] text-[8px]'
     }
+    else if(stringSize == 'l'){
+        text_size = '2xl:text-[28px] xl:text-[24px] lg:text-[16px] md:text-[11px] text-[7px]'
+    }
+    else if(stringSize == 'xl'){
+        text_size = '2xl:text-[32px] xl:text-[26px] lg:text-[22px] md:text-[16px] text-[10px]'
+    }
     else{
         text_size = '2xl:text-[28px] xl:text-[24px] lg:text-[16px] md:text-[11px] text-[7px]'
     }
@@ -38,6 +45,12 @@ const Button: React.FC<data> = ({height , width ,color,stringColor,stringSize,li
     }
     else if (color == 'brown'){
         color_button = 'bg-[#3D342F]'
+    }
+    else if (color == 'orange'){
+        color_button = 'bg-[#FFB458]'
+    }
+    else if (color == 'darkbrown'){
+        color_button = 'bg-[#251F1D]'
     }
     else{
         color_button = 'bg-[#EEDBC4]'
@@ -53,6 +66,9 @@ const Button: React.FC<data> = ({height , width ,color,stringColor,stringSize,li
     }
     else if (height == 'l'){
         height_button = '2xl:h-[70px] xl:h-[60px] lg:h-[40px] md:h-[35px] h-[20px]';
+    }
+    else if (height == 'xl'){
+        height_button = '2xl:h-[80px] xl:h-[70px] lg:h-[60px] md:h-[40px] h-[25px]'
     }
     else{
         height_button = 'max-h-[500px]'
@@ -72,6 +88,9 @@ const Button: React.FC<data> = ({height , width ,color,stringColor,stringSize,li
     }
     else if (width == 'l'){
         width_button = '2xl:w-[300px] xl:w-[250px] lg:w-[150px] md:w-[100px] w-[70px] ';
+    }
+    else if (width == 'xl'){
+        width_button = '2xl:w-[500px] xl:w-[450px] lg:w-[350px] md:w-[250px] w-[130px]'
     }
     else{
         width_button = 'max-w-[500px]';

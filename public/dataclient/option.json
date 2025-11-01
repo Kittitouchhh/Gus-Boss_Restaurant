@@ -1,0 +1,17 @@
+{
+    "menutea" : [
+        {"Temperature" : ["Hot" ,"Lukewarm", "Iced" ]},
+        {"Sweet" : ["No Sugar" , "Half Sugar" ,"Normal","Extra"  ]},
+        {"Brew strength" : ["Light", "Medium", "Strong", "Extra Strong"]},
+        {"MilkOption": ["Regular", "Skim", "Soy", "Oat", "Almond", "No Milk"]},
+        {"FlavorAddOn": ["Vanilla", "Caramel", "Hazelnut", "Chocolate", "Matcha"] },
+        {"ToppingTea": ["Boba", "Pudding", "Grass Jelly"]},
+        {"LemonLevel": ["No Lemon", "Less", "Half", "Normal", "Extra"]},
+        {}
+    ],
+    "menusoftdrink" : [
+
+    ]
+
+    
+}
