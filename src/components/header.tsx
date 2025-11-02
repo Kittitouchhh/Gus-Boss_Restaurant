@@ -5,25 +5,23 @@ import UserDropdown from "./UserDropdown";
 
 
 const Header: React.FC = () => {
-    // ✅ อ่านชื่อ user ปัจจุบันจาก localStorage
+    //อ่านชื่อ user จากlocalStorage
     const currentUsername = localStorage.getItem("username");
 
-    // ✅ ดึง user ที่สมัครไว้ใน localStorage (signup)
+    // ดึง user ที่สมัครไว้ใน localStorage (signup)
     const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
 
-    // ✅ รวม users จาก login.json + localStorage
+    // รวม users จาก login.json + localStorage
     const allUsers = [...usersData, ...localUsers];
 
-    // ✅ หา user ที่ login อยู่ใน login.json
+    // หา user ที่ login อยู่ใน login.json
     const currentUser = allUsers.find(
         (u) => u.username.toLowerCase() === currentUsername?.toLowerCase()
     );
 
-    // ✅ ตั้งค่าชื่อและรูป (ถ้าไม่เจอ → ใช้ Unknown + default image)
+    // ตั้งค่าชื่อและรูป (ถ้าไม่เจอ → ใช้ Unknown + default image)
     const displayName = currentUser?.showname || "Unknown";
-    const displayImage =
-        currentUser?.image ||
-        "https://cdn-icons-png.flaticon.com/512/6522/6522516.png";
+    const displayImage = currentUser?.image || "https://cdn-icons-png.flaticon.com/512/6522/6522516.png";
 
     return (
         <nav className="flex justify-between w-full h-[110px] top-0 bg-[#3D342F] border-b-2 border-b-[#EEDBC4] fixed p-[5px] gap-[10px] items-center z-50"  >

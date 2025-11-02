@@ -11,9 +11,22 @@ type EditMenuProps = {
   setMenus: React.Dispatch<React.SetStateAction<MenuItem[]>>;
 };
 
-export default function EditMenu({ open, onClose, position }: EditMenuProps) {
+
+
+export default function EditMenu({ open, onClose, position, setMenus, menu }: EditMenuProps) {
   
   const [openEdit, setOpenEdit ] = useState<boolean>(false)
+
+  const handleDelete = () => {
+  const storedMenus = JSON.parse(localStorage.getItem("menus") || "[]");
+  const updatedMenus = 
+  storedMenus.filter((item: MenuItem) => item.id !== menu.id); //เอาเฉพาะ item ที่ ไม่ตรงกับ id ของ item ที่ลบ
+
+  localStorage.setItem("menus", JSON.stringify(updatedMenus));
+  setMenus(updatedMenus);  
+  onClose(); 
+};
+  
 
   if (!open || !position) return null;
 
@@ -41,8 +54,9 @@ export default function EditMenu({ open, onClose, position }: EditMenuProps) {
         <CardEdit open={openEdit} onClose={() => setOpenEdit(false)}>
         </CardEdit>
 
-        <button className="
-        duration-500 hover:scale-105
+        <button 
+        onClick={handleDelete}
+        className=" duration-500 hover:scale-105
         block text-red-500 w-full text-left ">Remove</button>
 
       </div>
