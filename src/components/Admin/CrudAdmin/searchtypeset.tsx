@@ -22,11 +22,11 @@ const Searchset: React.FC<SearchsetProps> = ({ onFilterChange }) => {
                 value={type}
                 onChange={setType}
                 options={[
-                    { value: "tea", label: "Tea" },
-                    { value: "coffee", label: "Coffee" },
-                    { value: "softdrink", label: "Softdrink" },
-                    { value: "maindishes", label: "Maindishes" },
-                    { value: "desserts", label: "Desserts" },
+                    { value: "Tea", label: "Tea" },
+                    { value: "Coffee", label: "Coffee" },
+                    { value: "SoftDrink", label: "Softdrink" },
+                    { value: "MainDishes", label: "Maindishes" },
+                    { value: "Desserts", label: "Desserts" },
 
                 ]}
             />

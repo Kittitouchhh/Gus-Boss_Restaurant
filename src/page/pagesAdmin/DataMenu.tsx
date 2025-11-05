@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react"
 import MenuData from "../../data/menu.json"
 import Searchset from "../../components/Admin/CrudAdmin/searchtypeset"
-import Savebuttons from "../../components/Admin/CrudAdmin/savebuttons"
-import AddMenupage from "../../components/Admin/CrudAdmin/addMenupage";
+import AddMenupage from "../../components/Admin/CrudAdmin/addMenupage"
 import CardMenu from "../../components/Admin/CrudAdmin/CardMenu";
-
 
 export type MenuItem = {
   id: number;
@@ -27,8 +25,20 @@ export default function DataMenupage() {
   })
 
   useEffect(() => {
-    setMenus(MenuData as MenuItem[]);
-  }, []);
+    const defaultMenus = MenuData as MenuItem[];
+    const localMenus = JSON.parse(localStorage.getItem("menus") || "[]");
+    
+    const mergedMenus = [
+    ...defaultMenus,
+    ...localMenus.filter(
+      (item: MenuItem) => !defaultMenus.some((menu) => menu.id === item.id)
+    ),
+  ];
+
+  setMenus(mergedMenus);
+  localStorage.setItem("menus", JSON.stringify(mergedMenus));
+}, []);
+  
 
   // ฟังก์ชันรับค่าจาก Searchset
   const handleFilterChange = (newFilters: any) => {
@@ -37,7 +47,7 @@ export default function DataMenupage() {
 
   // กรองข้อมูลตาม filter
   const filteredMenus = menus.filter((menu) => {
-    const matchType = filters.type ? menu.type === filters.type : true;
+    const matchType = filters.type ? menu.type.toLowerCase() === filters.type.toLowerCase() : true;
     const matchStatus = filters.status ? menu.status === filters.status : true;
     const matchKeyword = filters.keyword
       ? menu.name.toLowerCase().includes(filters.keyword.toLowerCase())
@@ -90,11 +100,6 @@ export default function DataMenupage() {
             {filteredMenus.map((menu) => (
               <CardMenu key={menu.id} menu={menu} setMenus={setMenus} />
             ))}
-          </div>
-
-          {/* Buttons */}
-          <div className="">
-            <Savebuttons />
           </div>
         </div>
       </div>
