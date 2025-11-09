@@ -20,6 +20,7 @@ import ProcessOrder from './page/page-Client/Process-Client'
 import MoreMenu from './page/page-Client/More-Menu-Client'
 import Menudetaile from './page/page-Client/MenuDetaile'
 import Contact from './page/page-Client/Contact-Client'
+import Cart from './page/page-Client/Cart-Client' 
 
 function App() {
   const location = useLocation();
@@ -34,6 +35,7 @@ function App() {
                 <Route path='moremenu' element={<motion.div initial={{opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}><MoreMenu></MoreMenu></motion.div>}></Route>
                 <Route path='MenuDetaile/:menuname/:menutype' element={<motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}><Menudetaile></Menudetaile></motion.div>}></Route>
                 <Route path="contact" element={<motion.div initial={{ opacity: 0, y: 20}} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}><Contact></Contact></motion.div>}></Route>
+                <Route path="cart" element={<motion.div initial={{ opacity: 0, y: 20}} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}><Cart></Cart></motion.div>}></Route>
             </Routes>
             <motion.div initial={{ opacity: 0, y: 20}} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}><Footer></Footer></motion.div>
         </AnimatePresence>

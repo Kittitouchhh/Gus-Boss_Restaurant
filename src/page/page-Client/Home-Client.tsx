@@ -6,6 +6,7 @@ import Information from "../../components/informationTag";
 import Tagmenu from "../../components/tagmenu.tsx";
 import SwiperCom from "../../components/swipercom";
 import axios from "axios";
+import {Link} from 'react-router-dom'
 // page
 
 interface Post {
@@ -97,7 +98,10 @@ function HomeClient() {
 
   return (
     <div>
-        <img src= "/logo/cart.png" alt="" className='fixed 2xl:w-[150px] 2xl:h-[150px] xl:w-[120px] xl:h-[120px] lg:w-[100px] lg:h-[100px] md:w-[80px] md:h-[80px] w-[60px] h-[60px] md:right-[50px] md:bottom-[50px] right-[20px] bottom-[20px]'/>
+        <Link to='cart'>
+            <img src= "/logo/cart.png" alt="" className='fixed 2xl:w-[150px] 2xl:h-[150px] xl:w-[120px] xl:h-[120px] lg:w-[100px] lg:h-[100px] md:w-[80px] md:h-[80px] w-[60px] h-[60px] md:right-[50px] md:bottom-[50px] right-[20px] bottom-[20px]'/>
+        </Link>
+        
 
       <div className="mt-[110px]">
         <SwiperCom filejason="carousalitem.json"></SwiperCom>

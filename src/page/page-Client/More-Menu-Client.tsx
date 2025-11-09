@@ -12,17 +12,48 @@ interface CategoryProps{
   imageCategory : string
 }
 
+
+interface Post {
+  id: string;
+  menuName: string;
+  imageMenu: string;
+  menuOption: string[];
+  menuPrice: string;
+  menuLike: string;
+  datajson: string;
+  description: string;
+  status : number
+}
+
+
+
 function MoreMenu(){
     const [categorydata,Setcategorydata] = useState<CategoryProps[]>([])
-    const [tagname , Settagname] = useState<string>('Tea')
-    const [changefile , SetChangeFile] = useState<string>('menutea.json')
+    const [tagname , Settagname] = useState<string>('tea')
+    const [data , Setdata] = useState<Post[]>([])
 
     useEffect(() => {
+        const dataFromStorage = localStorage.getItem("menu");
+        if (dataFromStorage) {
+            Setdata(JSON.parse(dataFromStorage))};
+        
+
         axios.get("/dataclient/categorycard.json")
         .then((res) => Setcategorydata(res.data))
         .catch((err) => console.log(`เกิดข้อผิดพลาด ${err}`))
+
+    
         
-    },[])
+    },[tagname])
+
+
+    useEffect(() => {
+        const dataFromStorage = localStorage.getItem("menu");
+        if (dataFromStorage) {
+            Setdata(JSON.parse(dataFromStorage))};
+    },[] )
+    
+
     
 
     return(
@@ -30,14 +61,14 @@ function MoreMenu(){
             <div className='flex flex-row w-full justify-center md:mt-[40px] mt-[20px]'>
                 {categorydata.map((data)=>{
                 return(
-                <div onClick={() => {SetChangeFile(`menu${data.categoryName.toLowerCase().replace(/\s+/g, '')}.json`); Settagname(data.categoryName)}} className='md:mt-[110px] mt-[120px]'>
+                <div onClick={() => {Settagname(data.categoryName.toLowerCase().replace(/\s+/g, ''))}} className='md:mt-[110px] mt-[120px]'>
                     <CategoryCard image={data.imageCategory} name={data.categoryName}></CategoryCard>
                 </div>
                 )})}          
             </div>
             
             <Tagmenu title={tagname}></Tagmenu>
-            <SetCardMenu filename={changefile}></SetCardMenu>
+            <SetCardMenu filename={data.filter((data) => data.datajson === (`menu${tagname}`) && data.status === 1)}></SetCardMenu>
             
         </div>
 
