@@ -32,7 +32,7 @@ function App() {
                 <Route path='process' element={<motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}><ProcessOrder></ProcessOrder></motion.div>}></Route>
                 <Route path='PostIt' element={<motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}><PostIt></PostIt></motion.div>}></Route>
                 <Route path='moremenu' element={<motion.div initial={{opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}><MoreMenu></MoreMenu></motion.div>}></Route>
-                <Route path='MenuDetaile/:menuid/:menujson' element={<motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}><Menudetaile></Menudetaile></motion.div>}></Route>
+                <Route path='MenuDetaile/:menuname/:menutype' element={<motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}><Menudetaile></Menudetaile></motion.div>}></Route>
                 <Route path="contact" element={<motion.div initial={{ opacity: 0, y: 20}} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}><Contact></Contact></motion.div>}></Route>
             </Routes>
             <motion.div initial={{ opacity: 0, y: 20}} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}><Footer></Footer></motion.div>

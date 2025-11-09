@@ -7,7 +7,8 @@
         "menuPrice" : "$120",
         "menuLike" : "507",
         "datajson" : "menumaindishes",
-        "description" : "Juicy grilled patty served in a bun with fresh vegetables and sauce."
+        "description" : "Juicy grilled patty served in a bun with fresh vegetables and sauce.",
+        "status" : 1
         
     },
     {
@@ -18,7 +19,8 @@
         "menuPrice" : "$60",
         "menuLike" : "496 ",
         "datajson" : "menumaindishes",
-        "description" : "Crispy fried chicken with golden crust and tender meat inside."
+        "description" : "Crispy fried chicken with golden crust and tender meat inside.",
+        "status" : 1
     },
     {
         "id" : 3,
@@ -28,7 +30,8 @@
         "menuPrice" : "$90",
         "menuLike" : "476",
         "datajson" : "menumaindishes",
-        "description" : "Japanese rice bowl topped with meat, eggs, or vegetables."
+        "description" : "Japanese rice bowl topped with meat, eggs, or vegetables.",
+        "status" : 1
     },
     {
         "id" : 4,
@@ -38,7 +41,8 @@
         "menuPrice" : "$50",
         "menuLike" : "396",
         "datajson" : "menumaindishes",
-        "description" : "Stir-fried rice with eggs, vegetables, and savory seasoning."
+        "description" : "Stir-fried rice with eggs, vegetables, and savory seasoning.",
+        "status" : 1
     },
     {
         "id" : 5,
@@ -48,7 +52,8 @@
         "menuPrice" : "$60",
         "menuLike" : "356",
         "datajson" : "menumaindishes",
-        "description" : "Japanese-style dumplings filled with minced pork and vegetables."
+        "description" : "Japanese-style dumplings filled with minced pork and vegetables.",
+        "status" : 1
     },
     {
         "id" : 6,
@@ -58,7 +63,8 @@
         "menuPrice" : "$80",
         "menuLike" : "325",
         "datajson" : "menumaindishes",
-        "description" : "Spicy and tangy Thai salad made from shredded green papaya."
+        "description" : "Spicy and tangy Thai salad made from shredded green papaya.",
+        "status" : 1
     },
     {
         "id" : 7,
@@ -68,7 +74,8 @@
         "menuPrice" : "$200",
         "menuLike" : "285",
         "datajson" : "menumaindishes",
-        "description" : "Baked flatbread topped with cheese, tomato sauce, and various toppings."
+        "description" : "Baked flatbread topped with cheese, tomato sauce, and various toppings.",
+        "status" : 1
     },
     {
         "id" : 8,
@@ -78,7 +85,8 @@
         "menuPrice" : "$30",
         "menuLike" : "252",
         "datajson" : "menumaindishes",
-        "description" : "Freshly baked, soft bread generously filled with a delicious combination of high-quality meats, crisp fresh vegetables, and a rich, flavorful sauce. Perfectly balanced in taste and texture, making every bite a satisfying experience."
+        "description" : "Freshly baked, soft bread generously filled with a delicious combination of high-quality meats, crisp fresh vegetables, and a rich, flavorful sauce. Perfectly balanced in taste and texture, making every bite a satisfying experience.",
+        "status" : 1
     },
     {
         "id" : 9,
@@ -88,7 +96,8 @@
         "menuPrice" : "$180",
         "menuLike" : "221",
         "datajson" : "menumaindishes",
-        "description" : "Grilled beef steak cooked to your preferred doneness, juicy and flavorful."
+        "description" : "Grilled beef steak cooked to your preferred doneness, juicy and flavorful.",
+        "status" : 1
     },
     {
         
@@ -99,7 +108,8 @@
         "menuPrice" : "$100",
         "menuLike" : "211",
         "datajson" : "menumaindishes",
-        "description" : "Spicy Thai green curry with coconut milk, herbs, and tender meat."
+        "description" : "Spicy Thai green curry with coconut milk, herbs, and tender meat.",
+        "status" : 1
     
     }
     

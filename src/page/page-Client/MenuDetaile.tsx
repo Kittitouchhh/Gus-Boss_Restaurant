@@ -1,31 +1,99 @@
-import React from 'react'
+import React ,{useEffect,useState} from 'react'
+import {useParams} from 'react-router-dom'
 import ParagraphMenu from '../../components/detail-menu/paragraphsMenu' 
 import SetOption from "../../components/detail-menu/setoption"
 import Button from '../../components/button'
 import Tagmenu  from '../../components/tagmenu.tsx'
 import CommnetCard from '../../components/detail-menu/commentCard.tsx'
+import axios from 'axios'
+
+
+
+interface Post {
+  id: string;
+  menuName: string;
+  imageMenu: string;
+  menuOption: string[];
+  menuPrice: string;
+  menuLike: string;
+  datajson: string;
+  description: string;
+  status : number
+}
+
+interface OptionProps{
+    [optionName: string]: string[];
+}
+
+interface OptionCategoryProps{
+    [menuType: string]: OptionProps[];
+}
+
 
 function  Menudetaile(){
+    let [datamenu, Setdata] = useState<Post []>([]);
+    const {menuname , menutype} = useParams<{menuname: string; menutype: string }>()
+    let [selectedmenu , Setselected] = useState<Post | undefined>(undefined);
+
+    let [option , Setoption] = useState<OptionCategoryProps>({})
+
+    useEffect(() => {
+        axios.get('/dataclient/option.json')
+        .then((res) => { Setoption(res.data)
+        })
+        .catch((err) => {
+            console.log(`เกิดข้อผิดพลาด ${err}`)
+        })
+
+
+
+        const dataFromStorage = localStorage.getItem("menu");
+        if (dataFromStorage) {
+            Setdata(JSON.parse(dataFromStorage));
+        } else {
+            Setdata([]) 
+        }
+
+        
+
+        }, []);
+
+
+    useEffect(()=>{
+        const filteredMenu = datamenu.find((menu) => menu.menuName === menuname && menu.status === 1);
+        Setselected(filteredMenu) ;
+    },[datamenu, menuname])
+
+    
+
     return(
+
+
+
         <div className='mt-[110px]'>
             <div className="mb-[40px]">
-                <ParagraphMenu nameMenu='STEAK' image='/maindishes/steak.jpg' description='Freshly baked, soft bread generously filled with a delicious combination of high-quality meats, crisp fresh vegetables, and a rich, flavorful sauce. Perfectly balanced in taste and texture, making every bite a satisfying experience.'></ParagraphMenu>
+                <ParagraphMenu nameMenu={menuname || ""} image={`/${selectedmenu?.imageMenu || ""}`} description={selectedmenu?.description || ""}></ParagraphMenu>
             </div>
-            <div className="mb-[40px] flex flex-row  flex-wrap xl:gap-[80px] lg:gap-[60px] md:gap-[40px] gap-[30px] justify-start items-stretch mx-auto">
-                <SetOption title='Temperature' option_choice={['Hot','Medium','Cold']}></SetOption>
-                <SetOption title='Meat' option_choice={["Regular", "Skim", "Soy", "Oat", "Almond", "No Milk"]}></SetOption>
-                <SetOption title='Option' option_choice={['French Fries','Salad','Bacon','Grilled Vegetables']}></SetOption>
-                <SetOption title='Spicy Level' option_choice={['Mild / Not Spicy','Hot','Slightly Spicy']}></SetOption>
-                <SetOption title='Sauce' option_choice={['Pepper Sauce','BBQ Sauce','Red Wine Sauce' , 'Chimichurri']}></SetOption>  
+            <div className="w-full p-[20px]  lg:mb-[40px] md:mb-[30px] mb-[20px] flex flex-row flex-wrap 2xl:gap-[20px] xl:gap-[50px] lg:gap-[20px] md:gap-[30px] gap-[10px] justify-start items-stretch mx-auto">
+                {selectedmenu?.menuOption.map(optionname => {
+                    const category = option[menutype || ""]?.find(category => category.hasOwnProperty(optionname));
+                    if(!category) return null
+
+                    return(
+                        <SetOption title={optionname} option_choice={category[optionname]}></SetOption>
+                    )
+
+                })}
+                
             </div>
             
-            <form className='flex flex-col xl:gap-[20px] lg:gap-[15px] md:gap-[15px] gap-[10px] w-[80%]  mx-auto mt-[60px]'>
+            <form className='flex flex-col xl:gap-[20px] lg:gap-[15px] md:gap-[15px] gap-[10px] w-[80%]  mx-auto md:mt-[60px] mt-[20px]'>
                 <label className='xl:text-[30px] lg:text-[25px] md:text-[25px] text-[18px] font-bold '>MORE DETAIL</label>
                 <textarea className='w-full 2xl:h-[400px] xl:h-[350px] lg:h-[250px] md:h-[200px] h-[130px] bg-white mx-auto xl:rounded-2xl lg:rounded-xl rounded-md shadow-lg shadow-black/90 md:p-[20px] p-[10px] xl:text-[24px] md:text-[18px] text-[10px] text-[#3D342F] font-bold overflow-auto placeholder-gray-400 select-text' placeholder='พิมพ์ข้อความตรงนี้' ></textarea>
             </form>
 
             <div className='flex justify-center xl:mt-[80px] md:mt-[50px] mt-[30px]'>
-                <Button height="xl" width='xl' color='darkbrown' stringColor='white' stringSize='xl'  >Price :</Button>
+                <Button height="xl" width='xl' color='darkbrown' stringColor='white' stringSize='xl'  >{`Price : ${selectedmenu?.menuPrice}`}</Button>
             </div>
 
                

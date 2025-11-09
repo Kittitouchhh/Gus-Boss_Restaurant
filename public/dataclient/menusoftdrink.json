@@ -7,7 +7,8 @@
         "menuPrice" : "$5",
         "menuLike" : "402",
         "datajson" : "menusoftdrink",
-        "description" : "Crisp and refreshing lemon-lime soda with a clean taste."
+        "description" : "Crisp and refreshing lemon-lime soda with a clean taste.",
+        "status" : 1
         
     },
     {
@@ -18,7 +19,8 @@
         "menuPrice" : "$10",
         "menuLike" : "396",
         "datajson" : "menusoftdrink",
-        "description" : "Classic cola with a sweet and slightly spicy flavor."
+        "description" : "Classic cola with a sweet and slightly spicy flavor.",
+        "status" : 1
     },
     {
         "id" : 3,
@@ -28,7 +30,8 @@
         "menuPrice" : "$30",
         "menuLike" : "387",
         "datajson" : "menusoftdrink",
-        "description" : "Unique blend of 23 flavors with a bold, distinctive taste."
+        "description" : "Unique blend of 23 flavors with a bold, distinctive taste.",
+        "status" : 1
     },
     {
         "id" : 4,
@@ -38,7 +41,8 @@
         "menuPrice" : "$5",
         "menuLike" : "354",
         "datajson" : "menusoftdrink",
-        "description" : "Fruity and bubbly soft drink available in many flavors."
+        "description" : "Fruity and bubbly soft drink available in many flavors.",
+        "status" : 1
     },
     {
         "id" : 5,
@@ -48,7 +52,8 @@
         "menuPrice" : "$20",
         "menuLike" : "297",
         "datajson" : "menusoftdrink",
-        "description" : "Refreshing fruit juice drink made from real fruit."
+        "description" : "Refreshing fruit juice drink made from real fruit.",
+        "status" : 1
     },
     {
         "id" : 6,
@@ -58,7 +63,8 @@
         "menuPrice" : "$10",
         "menuLike" : "286",
         "datajson" : "menusoftdrink",
-        "description" : "Sweet and tangy orange-flavored soda with bright bubbles."
+        "description" : "Sweet and tangy orange-flavored soda with bright bubbles.",
+        "status" : 1
     },
     {
         "id" : 7,
@@ -68,7 +74,8 @@
         "menuPrice" : "$15",
         "menuLike" : "214",
         "datajson" : "menusoftdrink",
-        "description" : "Citrus-flavored soft drink with a bold, energizing kick."
+        "description" : "Citrus-flavored soft drink with a bold, energizing kick.",
+        "status" : 1
     },
     {
         "id" : 8,
@@ -78,7 +85,8 @@
         "menuPrice" : "$10",
         "menuLike" : "180",
         "datajson" : "menusoftdrink",
-        "description" : "Popular energy drink that boosts focus and alertness."
+        "description" : "Popular energy drink that boosts focus and alertness.",
+        "status" : 1
     },
     {
         "id" : 9,
@@ -88,7 +96,8 @@
         "menuPrice" : "$5",
         "menuLike" : "153",
         "datajson" : "menusoftdrink",
-        "description" : "Sparkling beverage known for its crisp, slightly bitter taste."
+        "description" : "Sparkling beverage known for its crisp, slightly bitter taste.",
+        "status" : 1
     },
     {
         
@@ -99,7 +108,8 @@
         "menuPrice" : "$25",
         "menuLike" : "94",
         "datajson" : "menusoftdrink",
-        "description" : "Refreshing lemon-lime soda with a light, clean sweetness."
+        "description" : "Refreshing lemon-lime soda with a light, clean sweetness.",
+        "status" : 1
     
     }
     

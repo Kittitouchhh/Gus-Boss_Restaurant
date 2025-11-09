@@ -8,7 +8,7 @@ import {Routes,Route} from 'react-router-dom'
 
 
 interface filenameProps{
-  filename:string,
+  filename:Post[]
 }
 
 interface Post{
@@ -19,29 +19,19 @@ interface Post{
   menuPrice:string,
   menuLike:string,
   datajson:string,
-  description:string
+  description:string,
+  status : number
 }
 
 
 const SetCardMenu:React.FC<filenameProps> = ({filename}) => {
-    const [filejson ,Setfile] = useState<string>(filename)
-    const [datajson , Setdata] = useState<Post[]>([])
+    
 
-    useEffect(() =>{
-      axios.get(`/dataclient/${filejson}`)
-      .then((res) => {Setdata(res.data) })
-      .catch ((err) => {
-        console.log(`เกิดข้อผิดพลาด ${err}`)
-      })
-    },[filejson])
 
-    useEffect(() => {
-      Setfile(filename)
-    }, [filename])
 
     return(
-      <div className='m-[20px] flex flex-row flex-wrap xl:gap-[20px] lg:gap-[15px] md:gap-[10px] gap-[5px] xl:w-[80%] 2xl:w-[65%] lg:w-[65%] md:w-[80%] w-[95%] mx-auto justify-center '>
-        {datajson.map((data) =>{
+      <div className='m-[20px] flex flex-row flex-wrap xl:gap-[20px] lg:gap-[15px] md:gap-[10px] gap-[5px] xl:w-[80%] 2xl:w-[55%] lg:w-[65%] md:w-[80%] w-[95%] mx-auto justify-center '>
+        {filename.map((data) =>{
           return(
             <div>
               <CardMenu name={data.menuName} image={data.imageMenu} option={data.menuOption} price={data.menuPrice} like={data.menuLike} datajson={data.datajson} description={data.description}></CardMenu>

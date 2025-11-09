@@ -7,7 +7,8 @@
         "menuPrice" : "$20",
         "menuLike" : "100",
         "datajson" : "menudesserts",
-        "description" : "Rich and moist chocolate cake with a deep cocoa flavor."
+        "description" : "Rich and moist chocolate cake with a deep cocoa flavor.",
+        "status" : 1
         
     },
     {
@@ -18,7 +19,8 @@
         "menuPrice" : "$25",
         "menuLike" : "84",
         "datajson" : "menudesserts",
-        "description" : "Soft sponge cake layered with fresh strawberries and whipped cream."
+        "description" : "Soft sponge cake layered with fresh strawberries and whipped cream.",
+        "status" : 1
     },
     {
         "id" : 3,
@@ -28,7 +30,8 @@
         "menuPrice" : "$20",
         "menuLike" : "76",
         "datajson" : "menudesserts",
-        "description" : "Creamy green tea pudding with a smooth and earthy taste."
+        "description" : "Creamy green tea pudding with a smooth and earthy taste.",
+        "status" : 1
     },
     {
         "id" : 4,
@@ -38,7 +41,8 @@
         "menuPrice" : "$15",
         "menuLike" : "73",
         "datajson" : "menudesserts",
-        "description" : "Fudgy and dense brownie with an intense chocolate aroma."
+        "description" : "Fudgy and dense brownie with an intense chocolate aroma.",
+        "status" : 1
     },
     {
         "id" : 5,
@@ -48,7 +52,8 @@
         "menuPrice" : "$30",
         "menuLike" : "62",
         "datajson" : "menudesserts",
-        "description" : "Crispy tart crust filled with custard and topped with fresh fruits."
+        "description" : "Crispy tart crust filled with custard and topped with fresh fruits.",
+        "status" : 1
     },
     {
         "id" : 6,
@@ -58,7 +63,8 @@
         "menuPrice" : "$35",
         "menuLike" : "57",
         "datajson" : "menudesserts",
-        "description" : "Classic creamy ice cream with a smooth vanilla flavor."
+        "description" : "Classic creamy ice cream with a smooth vanilla flavor.",
+        "status" : 1
     },
     {
         "id" : 7,
@@ -68,7 +74,8 @@
         "menuPrice" : "$40",
         "menuLike" : "54",
         "datajson" : "menudesserts",
-        "description" : "Italian dessert made with espresso-soaked ladyfingers and mascarpone cream."
+        "description" : "Italian dessert made with espresso-soaked ladyfingers and mascarpone cream.",
+        "status" : 1
     },
     {
         "id" : 8,
@@ -78,7 +85,8 @@
         "menuPrice" : "$20",
         "menuLike" : "46",
         "datajson" : "menudesserts",
-        "description" : "Creamy and rich cake with a buttery biscuit crust."
+        "description" : "Creamy and rich cake with a buttery biscuit crust.",
+        "status" : 1
     },
     {
         "id" : 9,
@@ -88,7 +96,8 @@
         "menuPrice" : "$10",
         "menuLike" : "42",
         "datajson" : "menudesserts",
-        "description" : "Sweet ripe mango served with coconut milk and sticky rice."
+        "description" : "Sweet ripe mango served with coconut milk and sticky rice.",
+        "status" : 1
     },
     {
         
@@ -99,7 +108,8 @@
         "menuPrice" : "$20",
         "menuLike" : "30",
         "datajson" : "menudesserts",
-        "description" : "Warm chocolate cake with a gooey molten center."
+        "description" : "Warm chocolate cake with a gooey molten center.",
+        "status" : 1
     
     }
     

@@ -1,46 +1,48 @@
-import React from "react";
+import React , {useState }from "react";
 import { RadioCards, Box, Flex, Text } from "@radix-ui/themes";
 import { div } from "framer-motion/client";
 import { wrap } from "framer-motion";
+
+import Button from '../button'
 
 interface SetOptionProps {
   title: string;
   option_choice: string[];
 }
 
+
+
+
 const SetOption: React.FC<SetOptionProps> = ({title, option_choice }) => {
+  const [selected, setSelected] = useState<string | null>(null);
+
+  const handleClick = (option: string) => {
+    setSelected(option);
+    console.log(`Selected ${title}:`, option);
+  };
+
+
   return (
-    <div className ='flex flex-col xl:gap-[35px] lg:gap-[25px] md:gap-[25px] gap-[15px] w-full mx-auto justify-center '>
-      <p className="xl:text-[25px] lg:text-[30px] md:text-[25px] font-bold text-center">{title}</p>
-      <Box className="w-full flex justify-center">
-        {/*จำกัดความกว้าง container ไม่เกิน 600px*/}
-        <form>
-          <RadioCards.Root
-            defaultValue={option_choice[0]}
-            className="!flex !flex-row  !gap-[20px] !flex-wrap !justify-center  "
+    <div className="mb-4 mx-auto">
+      <h3 className="font-semibold mb-2 2xl:text-[32px] xl:text-[26px] lg:text-[22px] md:text-[16px] text-[10px]">{title}</h3>
+      <div className="grid grid-cols-2 2xl:gap-[20px] gap-2 flex-wrap">
+        {option_choice.map((option) => (
+          <button
+            key={option}
+            onClick={() => handleClick(option)}
+            className={`font-bold lg:text-[12px] 2xl:text-[16px] xl:text-[14px] md:text-[11px] text-[8px] 2xl:w-[250px] xl:w-[140px] lg:w-[130px] md:w-[130px] w-[90px] 2xl:h-[70px] xl:h-[50px] lg:h-[50px] md:h-[40px] h-[35px] rounded-full px-3 py-1  border ${
+              selected === option
+                ? "bg-[#EEDBC4] text-[#201c19] border-[#201c19] md:border-4 border-2"
+                : "bg-[#201c19] text-[#EEDBC4] border-[#201c19]" 
+             }`}
           >
-            {/* container ของ radio card / ตัวเลือกถูกเลือกเป็นค่าเริ่มต้นคือ  */}
-            {option_choice.map((data) => {
-              return (
-  
-                  <RadioCards.Item 
-                    value={data}
-                    className=" group 2xl:!w-[270px] 2xl:!h-[55px] xl:!w-[220px] xl:!h-[45px] lg:!w-[190px] lg:!h-[50px] md:!w-[150px] md:!h-[40px] !w-[130px] !h-[30px] !bg-[#EEDBC4] !rounded-full !m-0 !p-0 data-[state=checked]:!bg-[#271f1a] data-[state=checked]:!border-2 data-[state=checked]:!border-[#EEDBC4] focus-visible:!outline-none focus-visible:!box-shadow-none
-                    before:!content-none focus-visible:!ring-0 !shadow-lg !shadow-black/90     "
-                  >
-                    <Flex direction="row" align="center" justify="center" className="w-full">
-                      <Text weight="bold" className="2xl:text-[20px] xl:text-[16px] lg:text-[16px] md:text-[12px] text-[10px] text-[#3D342F] group-data-[state=checked]:text-[#EEDBC4]  ">
-                        {data}
-                      </Text>
-                    </Flex>
-                  </RadioCards.Item>           
-              );
-            })}
-          </RadioCards.Root>
-        </form>
-      </Box>
+            {option}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };
+
 
 export default SetOption;
