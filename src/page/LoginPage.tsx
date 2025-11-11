@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { FcGoogle } from "react-icons/fc";
 import { useNavigate, Link } from "react-router-dom";
 import logo from "/logo/logo.png";
 import userData from "../data/login.json";
