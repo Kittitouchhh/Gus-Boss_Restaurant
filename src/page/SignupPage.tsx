@@ -70,7 +70,7 @@ const Signup: React.FC = () => {
       <div className="relative z-10 flex flex-col md:flex-row w-[90%] md:w-[1000px] h-auto md:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
 
         {/* ซ้าย: รูป */}
-        <div className="rounded-2xl mx-2 w-full md:w-1/2 h-[250px] md:h-full bg-[#3D342F]">
+        <div className="hidden md:block rounded-2xl mx-2 w-full md:w-1/2 h-[250px] md:h-full bg-[#3D342F]">
           <img
             src="/banner/login1.png"
             alt="coffee shop"
@@ -154,7 +154,7 @@ const Signup: React.FC = () => {
                 required
               />
 
-              
+
 
               <button
                 type="submit"
