@@ -16,7 +16,6 @@ const UserDropdown: React.FC<DropdownUserProps> = ({ name, image }) => {
   const navigate = useNavigate();
   const location = useLocation()
 
-  // ✅ ปิด dropdown ถ้าคลิกนอกทั้งปุ่มและเมนู
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -30,7 +29,6 @@ const UserDropdown: React.FC<DropdownUserProps> = ({ name, image }) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // ✅ Logout (ลบเฉพาะ auth)
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     localStorage.removeItem("username");
@@ -39,7 +37,6 @@ const UserDropdown: React.FC<DropdownUserProps> = ({ name, image }) => {
     navigate("/login", { replace: true });
   };
 
-  // ✅ คำนวณตำแหน่ง dropdown ให้ตรงใต้ปุ่ม User
   useEffect(() => {
     if (buttonRef.current && isOpen) {
       const rect = buttonRef.current.getBoundingClientRect();
@@ -51,19 +48,11 @@ const UserDropdown: React.FC<DropdownUserProps> = ({ name, image }) => {
     }
   }, [isOpen]);
 
-  // ✅ ฟังก์ชันตรวจเส้นทางแล้วนำทางให้ถูก
   const handleSettings = () => {
     setIsOpen(false);
-
-    // ✅ ถ้าขณะนี้อยู่ใน path ที่ขึ้นต้นด้วย /admin → ไป /admin/profile
-    if (location.pathname.startsWith("/admin")) {
-      navigate("/admin/profile");
-    } else {
-      navigate("/profile");
-    }
+    navigate("/profile");
   };
 
-  // ✅ dropdown ที่จะ render ด้วย Portal (ลอยนอก header จริง)
   const dropdownMenu = (
     <div
       ref={menuRef}
@@ -94,7 +83,6 @@ const UserDropdown: React.FC<DropdownUserProps> = ({ name, image }) => {
 
   return (
     <>
-      {/* ✅ ปุ่ม User */}
       <div
         ref={buttonRef}
         className="relative cursor-pointer select-none"
@@ -103,7 +91,6 @@ const UserDropdown: React.FC<DropdownUserProps> = ({ name, image }) => {
         <User name={name} image={image} />
       </div>
 
-      {/* ✅ render dropdown ด้วย Portal (ลอยข้างนอก root) */}
       {isOpen &&
         ReactDOM.createPortal(
           dropdownMenu,

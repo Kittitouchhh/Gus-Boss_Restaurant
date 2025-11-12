@@ -128,13 +128,11 @@ export default function ProfileSetting() {
         setConfirmPassword("");
     };
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-[#EEDBC4]">
-            <div className="bg-white p-6 rounded-2xl shadow-xl w-[400px]">
+        <div className="flex flex-col items-center min-h-screen bg-[#EEDBC4]">
+            <div className="bg-white p-6 rounded-2xl shadow-xl w-[380px] mt-10">
                 <h1 className="text-3xl font-bold text-center mb-6 text-[#3D342F]">
                     Profile Settings
                 </h1>
-
-                {/* 🔹 รูปโปรไฟล์ */}
                 <div className="flex flex-col items-center mb-5">
                     <img
                         src={imageUrl || "/user/default.png"}
@@ -155,7 +153,6 @@ export default function ProfileSetting() {
                     />
                 </div>
 
-                {/* 🔹 เปลี่ยนชื่อ */}
                 <div className="mb-5">
                     <label className="block text-[#3D342F] font-semibold mb-2">
                         Display Name
@@ -175,7 +172,6 @@ export default function ProfileSetting() {
                     Save Profile
                 </button>
 
-                {/* 🔹 เปลี่ยนรหัสผ่าน */}
                 <div className="border-t border-gray-300 pt-4 flex justify-between"
                     onClick={() => setShowFormPassword(!showFormPassword)}>
                     <h2 className="text-xl font-bold mb-3 text-[#3D342F]">

@@ -5,14 +5,15 @@ interface data {
 
     height: 's' | 'm' | 'l',
     width: 's' | 'm' | 'l',
-    color: 'brown' | 'white' | 'orange',
+    color: 'brown' | 'white' | 'orange'  | 'green',
     stringColor: 'white' | 'brown',
     stringSize: 's' | 'm' | 'l',
     linkdata? : string,
     children: React.ReactNode;
+    onClick?: () => void;
 }
 
-const Button: React.FC<data> = ({ height, width, color, stringColor, stringSize,linkdata, children }) => {
+const Button: React.FC<data> = ({onClick, height, width, color, stringColor, stringSize,linkdata, children }) => {
     let color_Text: string = '';
     if (stringColor == 'white') {
         color_Text = 'text-white';
@@ -26,7 +27,7 @@ const Button: React.FC<data> = ({ height, width, color, stringColor, stringSize,
         text_size = 'xl:text-[12px] lg:text-[10px] md:text-[8px] text-[6px]'
     }
     else if (stringSize == 'm') {
-        text_size = 'lg:text-[16px] xl:text-[18px] md:text-[14px] text-[8px]'
+        text_size = 'lg:text-[16px] xl:text-[18px] md:text-[18px] text-[15px]'
     }
     else {
         text_size = 'text-[64px]'
@@ -42,6 +43,9 @@ const Button: React.FC<data> = ({ height, width, color, stringColor, stringSize,
     else if (color == 'orange') {
         color_button = 'bg-[#FFA537]'
     }
+    else if (color == 'green') {
+        color_button = 'bg-green-500'
+    }
     else {
         color_button = 'bg-[#EEDBC4]'
     }
@@ -52,10 +56,10 @@ const Button: React.FC<data> = ({ height, width, color, stringColor, stringSize,
         height_button = 'md:max-h-[36px] max-h-[20px]';
     }
     else if (height == 'm') {
-        height_button = 'lg:h-[47px] md:h-[30px] h-[24px]';
+        height_button = 'lg:h-[47px] md:h-[50px] h-[40px]';
     }
     else if (height == 'l') {
-        height_button = 'max-h-[70px]';
+        height_button = 'max-h-[80px]';
     }
     else {
         height_button = 'max-h-[500px]'
@@ -69,7 +73,7 @@ const Button: React.FC<data> = ({ height, width, color, stringColor, stringSize,
         width_button = 'xl:max-w-[150px] xl:p-[6px] md:max-w-[100px] md:p-[4px] p-[3px]';
     }
     else if (width == 'm') {
-        width_button = 'lg:w-[90px] xl:w-[120px] md:w-[90px] w-[60px]';
+        width_button = 'lg:w-[90px] xl:w-[140px] md:w-[120px] w-[90px] p-[3px]';
 
     }
     else if (width == 'l') {
@@ -83,7 +87,8 @@ const Button: React.FC<data> = ({ height, width, color, stringColor, stringSize,
     
     if (!linkdata) {
         return (
-            <button className={`${combinedClassName} rounded-full font-sans box-border`} >
+            <button onClick={onClick}
+            className={`${combinedClassName} cursor-pointer hover:scale-120 transition duration-500 rounded-full font-sans box-border`} >
                 {children}
             </button>
         )

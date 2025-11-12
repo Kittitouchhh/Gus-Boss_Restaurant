@@ -1,35 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 
 interface SearchBarProps {
-  color?: "white" | "cream" ;
-  placeholder?: string;
-  onSearchChange?: (value: string) => void;
+  onSearchChange: (keyword: string) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({
-  color = "cream",
-  placeholder = "Search...",
-  onSearchChange,
-}) => {
-  let bgClass = "";
-    if (color === "cream") bgClass = "bg-[#EEDBC4]";
-    else if (color === "white") bgClass = "bg-[#ffffff]";
-
-  const [searchValue, setSearchValue] = useState("");
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setSearchValue(value);
-    onSearchChange?.(value); // ส่งค่าออกไปให้ parent ถ้ามี
-  };
-
+const SearchBar: React.FC<SearchBarProps> = ({ onSearchChange }) => {
   return (
     <input
       type="text"
-      value={searchValue}
-      onChange={handleChange}
-      placeholder={placeholder}
-      className={` ${bgClass} border  rounded-[10px] px-3 py-3  text-black w-[350px] bg-#EEDBC4`}
+      placeholder="Search..."
+      onChange={(e) => onSearchChange(e.target.value)}
+      className="px-3 py-2 border rounded-md w-[200px] md:w-[350px] focus:outline-none bg-white "
     />
   );
 };
