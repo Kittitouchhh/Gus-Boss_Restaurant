@@ -21,12 +21,19 @@ interface Post {
   status : number
 }
 
+interface Banner{
+  id : number ,
+  image : string,
+  page : string
+}
+
+
 function HomeClient() {
   let [datamenu, Setdata] = useState<Post[]>([]);
+  let [databanner , Setbanner] = useState<Banner[]>([])
 
   
   useEffect(() => {
-    localStorage.removeItem("menu");
     const fetchMenu = async () => {
     
       try {
@@ -51,6 +58,9 @@ function HomeClient() {
         const response4 = await axios.get<Post[]>(
           "/dataclient/menusoftdrink.json"
         );
+
+        
+        
         
 
         const allMenus = [
@@ -71,9 +81,45 @@ function HomeClient() {
             Setdata(allMenus);
             console.log(allMenus)
         }
+
+
+
+
+        // banner local get
+        const bannerJson1 = await axios.get<Banner[]>("/dataclient/carousalitem.json")
+        const bannerJson2 = await axios.get<Banner[]>("/dataclient/carousalitempostit.json")
+
+        const allbanner = [
+          ...bannerJson1.data,
+          ...bannerJson2.data
+        ]
+
+        const bannerFromStorage = localStorage.getItem("banner");
+        if (bannerFromStorage){
+          Setbanner(JSON.parse(bannerFromStorage))
+        }
+        else{
+          localStorage.setItem("banner", JSON.stringify(allbanner));
+          Setbanner(allbanner)
+          console.log(databanner)
+        }
+
+        console.log("databanner filtered:", databanner.filter(d => d.page === "home"));
+
+
+
+
       } catch (err) {
         console.log(err);
       }
+
+      
+
+
+
+
+
+
     };
     fetchMenu();
   }, []);
@@ -104,7 +150,7 @@ function HomeClient() {
         
 
       <div className="mt-[110px]">
-        <SwiperCom filejason="carousalitem.json"></SwiperCom>
+        <SwiperCom  key={databanner.length} databanner={databanner.filter((data)=>data.page === "home" )}></SwiperCom>
       </div>
 
       <div className="md:mt-[40px] mt-[10px]">

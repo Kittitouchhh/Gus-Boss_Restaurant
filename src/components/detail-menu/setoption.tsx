@@ -1,25 +1,28 @@
-import React , {useState }from "react";
-import { RadioCards, Box, Flex, Text } from "@radix-ui/themes";
-import { div } from "framer-motion/client";
-import { wrap } from "framer-motion";
+import React , {useEffect, useState }from "react";
 
-import Button from '../button'
 
 interface SetOptionProps {
   title: string;
   option_choice: string[];
+  onSelect?: (title: string, value: string) => void;
 }
 
 
 
 
-const SetOption: React.FC<SetOptionProps> = ({title, option_choice }) => {
-  const [selected, setSelected] = useState<string | null>(null);
+const SetOption: React.FC<SetOptionProps> = ({title, option_choice ,onSelect}) => {
+  const [selected, setSelected] = useState<string>(option_choice[0]);
+
+  useEffect(()=>{
+    if (onSelect) onSelect(title, option_choice[0]);
+  },[])
 
   const handleClick = (option: string) => {
     setSelected(option);
-    console.log(`Selected ${title}:`, option);
+    if (onSelect) onSelect(title, option);
   };
+
+  
 
 
   return (
@@ -32,7 +35,7 @@ const SetOption: React.FC<SetOptionProps> = ({title, option_choice }) => {
             onClick={() => handleClick(option)}
             className={`font-bold lg:text-[12px] 2xl:text-[16px] xl:text-[14px] md:text-[11px] text-[8px] 2xl:w-[250px] xl:w-[140px] lg:w-[130px] md:w-[130px] w-[90px] 2xl:h-[70px] xl:h-[50px] lg:h-[50px] md:h-[40px] h-[35px] rounded-full px-3 py-1  border ${
               selected === option
-                ? "bg-[#EEDBC4] text-[#201c19] border-[#201c19] md:border-4 border-2"
+                ? "bg-[#EEDBC4] text-[#201c19] border-[#201c19] md:border-4 border-2" 
                 : "bg-[#201c19] text-[#EEDBC4] border-[#201c19]" 
              }`}
           >

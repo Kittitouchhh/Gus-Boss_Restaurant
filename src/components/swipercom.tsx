@@ -6,25 +6,17 @@ import React from 'react'
 
 import 'swiper/swiper-bundle.css';
 
-interface datajasonProp{
-    filejason : string
+interface dataProp{
+    databanner : SwiperslideProps[]
 }
 
 interface SwiperslideProps{
-    id : string,
-    image : string
+    id : number,
+    image : string,
+    page : string,
 }
 
-const SwiperCom:React.FC<datajasonProp> = ({filejason}) =>{
-    const [dataswiper , Setdataswiper]= useState<SwiperslideProps[]>([])
-    const [filedata , Setfiledata] = useState<string>(filejason)
-
-
-    useEffect(() =>{
-        axios.get(`dataclient/${filedata}`)
-        .then((res) => {Setdataswiper(res.data)})
-        .catch((err) => {console.log(`เกิดข้อผิดพลาด ${err}`)})
-    },[])
+const SwiperCom:React.FC<dataProp> = ({databanner}) =>{
     
 
     return(
@@ -39,7 +31,7 @@ const SwiperCom:React.FC<datajasonProp> = ({filejason}) =>{
             className="h-full"
             speed={1000}
             >
-                {dataswiper.map((data) => {
+                {databanner.map((data) => {
                     return(
                         <SwiperSlide key={data.id}><img src={data.image} className='w-full h-full object-cover'></img></SwiperSlide>
                     )
