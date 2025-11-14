@@ -27,7 +27,7 @@ const Button: React.FC<data> = ({onClick, height, width, color, stringColor, str
         text_size = 'xl:text-[12px] lg:text-[10px] md:text-[8px] text-[6px]'
     }
     else if (stringSize == 'm') {
-        text_size = 'lg:text-[16px] xl:text-[18px] md:text-[18px] text-[15px]'
+        text_size = 'lg:text-[16px] xl:text-[18px] md:text-[18px] text-[12px] '
     }
     else {
         text_size = 'text-[64px]'
@@ -73,7 +73,7 @@ const Button: React.FC<data> = ({onClick, height, width, color, stringColor, str
         width_button = 'xl:max-w-[150px] xl:p-[6px] md:max-w-[100px] md:p-[4px] p-[3px]';
     }
     else if (width == 'm') {
-        width_button = 'lg:w-[90px] xl:w-[140px] md:w-[120px] w-[90px] p-[3px]';
+        width_button = 'lg:w-[90px] xl:w-[140px] md:w-[120px] w-[90px] p-[5px]';
 
     }
     else if (width == 'l') {
