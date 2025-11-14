@@ -1,5 +1,5 @@
 import React from 'react'
-import {useNavigate,useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 interface datauser{
@@ -10,11 +10,9 @@ interface datauser{
 
 const User: React.FC<datauser> = ({name,image}) => {
     const navigate = useNavigate();
-    const location = useLocation();
-    const isAdmin = location.pathname.startsWith("/admin")
 
     const handleCrownClick = () => {
-        navigate(isAdmin? "/admin/memberpage": "/memberpage")
+        navigate("/memberpage")
     }
 
     return (
@@ -25,7 +23,7 @@ const User: React.FC<datauser> = ({name,image}) => {
             src="/public/member/crownlogo.png" alt="membership" />
 
             <img src={image || 'https://cdn-icons-png.flaticon.com/256/6522/6522516.png'} alt="" 
-            className='m-auto  w-[50px] h-[50px] rounded-full xl:w-[70px] xl:h-[70px] '/>
+            className='m-auto w-[50px] h-[50px] rounded-full xl:w-[70px] xl:h-[70px] '/>
             <p className='text-center xl:flex xl:items-center text-white text-[18px] mb-2 xl:text-[25px]'>{name} </p>
         </div>
     )

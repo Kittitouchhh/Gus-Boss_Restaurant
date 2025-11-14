@@ -22,17 +22,20 @@ export default function DataMenupage() {
 
   useEffect(() => {
     const defaultMenus = MenuData as MenuItem[];
-    const localMenus = JSON.parse(localStorage.getItem("menus") || "[]");
+    const localMenus: MenuItem[] = JSON.parse(localStorage.getItem("menus") || "[]");
 
-    const mergedMenus = [
-      ...defaultMenus,
-      ...localMenus.filter(
-        (item: MenuItem) => !defaultMenus.some((menu) => menu.id === item.id)
-      ),
-    ];
+    const localMap = Object.fromEntries(localMenus.map(m => [m.id, m]));
 
-    setMenus(mergedMenus);
-    localStorage.setItem("menus", JSON.stringify(mergedMenus));
+    const mergedMenus = defaultMenus.map(d => localMap[d.id] || d);
+
+    const extraMenus = localMenus.filter(
+      (m: MenuItem) => !defaultMenus.some(d => d.id === m.id)
+    );
+
+    const finalMenus = [...mergedMenus, ...extraMenus];
+
+    setMenus(finalMenus);
+    localStorage.setItem("menus", JSON.stringify(finalMenus));
   }, []);
 
   const filteredMenus = menus.filter((menu) => {
@@ -57,7 +60,7 @@ export default function DataMenupage() {
           <div className="flex justify-center gap-2 h-10 mb-5 ">
             <SearchBar onSearchChange={setKeyword} />
             <div className="my-1">
-              <Select 
+              <Select
                 value={type}
                 onChange={setType}
                 options={[
@@ -75,10 +78,10 @@ export default function DataMenupage() {
           <div className="flex justify-center gap-10">
             <span className="bg-[#FFEED9]  rounded font-bold p-1 md:w-30 md:h-15   ">
               <div className="flex">
-                  <b className="bg-[#684A3A]  rounded text-white p-1 md:text-[30px]  ">{menus.length} </b> 
-                  <p className="text-[15px] m-auto p-1 md:text-[25px] md:m-auto"> Total</p>
+                <b className="bg-[#684A3A]  rounded text-white p-1 md:text-[30px]  ">{filteredMenus.length} </b>
+                <p className="text-[15px] m-auto p-1 md:text-[25px] md:m-auto"> Total</p>
               </div>
-              
+
             </span>
           </div>
           <div>
@@ -86,7 +89,8 @@ export default function DataMenupage() {
             >
               <Button
                 height="m" width="m" color="green" stringColor="white"
-                stringSize="m" onClick={() => { if (!adding) { setAdding(true); }
+                stringSize="m" onClick={() => {
+                  if (!adding) { setAdding(true); }
                 }}
               >
                 Add Menu
@@ -119,11 +123,11 @@ export default function DataMenupage() {
               onCancel={() => setAdding(false)}
             />
           )}
-          
+
           {filteredMenus.map((menu) => (
             <CardMenuAdmin key={menu.id} menu={menu} setMenus={setMenus} />
           ))}
-          
+
         </div>
 
       </div>

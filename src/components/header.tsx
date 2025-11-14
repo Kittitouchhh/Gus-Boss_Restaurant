@@ -12,6 +12,8 @@ const Header: React.FC = () => {
 
     const allUsers = [...usersData, ...localUsers];
 
+    const [openMenu, setOpenMenu] = React.useState(false);
+
     const currentUser = allUsers.find(
         (u) => u.username.toLowerCase() === currentUsername?.toLowerCase()
     );
@@ -30,33 +32,47 @@ const Header: React.FC = () => {
                     className="w-[140px] left-0 md:w-[180px] xl:w-[220px] "
                 />
             </div>
-            <div className=" hidden lg:flex flex-row gap-[40px]  md:gap-[20px]   ">
-                {role === "client" && (
-                    <>
-                        <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata="/">HOME</Button>
-                        <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata="process">PROCESS</Button>
-                        <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata="postit">POST IT!</Button>
-                        <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata="constact">CONSTACT</Button>
-                    </>
-                )}
-                {role === "admin" && (
-                    <>
-                        <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata={"/"}>HOME</Button>
-                        <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata={"/process"}>PROCESS</Button>
-                        <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata={"/postit"}>POST IT!</Button>
-                        <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata={"/constact"}>CONTACT</Button>
-                        <Button height="m" width="m" color="orange" stringColor="white" stringSize="m" linkdata={"/admin"}>Admin</Button>
-                    </>
-                )}
-            </div>
+                <div className=" hidden lg:flex flex-row gap-[40px]  md:gap-[20px]   ">
+                    {role === "client" && (
+                        <>
+                            <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata="/">HOME</Button>
+                            <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata="process">PROCESS</Button>
+                            <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata="postit">POST IT!</Button>
+                            <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata="constact">CONSTACT</Button>
+                        </>
+                    )}
+                    {role === "admin" && (
+                        <>
+                            <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata={"/"}>HOME</Button>
+                            <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata={"/process"}>PROCESS</Button>
+                            <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata={"/postit"}>POST IT!</Button>
+                            <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata={"/constact"}>CONTACT</Button>
+                            <Button height="m" width="m" color="orange" stringColor="white" stringSize="m" linkdata={"/admin"}>Admin</Button>
+                        </>
+                    )}
+                </div>
 
             <div className="flex items-center">
                 <div className="mr-20 md:mr-40 rounded-2xl transition-all duration-300 ease-out hover:bg-yellow-500 hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(231,198,153,0.3)]">
                     <UserDropdown name={displayName} image={displayImage} />
                 </div>
-                
+
             </div>
-            <button className="text-white text-[25px] lg:hidden">☰</button>
+            <button onClick={() => setOpenMenu(!openMenu)}
+                className="cursor-pointer hover:scale-130 text-white text-[25px] lg:hidden">☰</button>
+            {openMenu && (
+                <div className="justify-center absolute top-[110px] left-0 w-full bg-[#3D342F] flex  p-5 gap-4 lg:hidden">
+                    <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata="/">HOME</Button>
+                    <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata="/process">PROCESS</Button>
+                    <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata="/postit">POST IT!</Button>
+                    <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata="/constact">CONTACT</Button>
+
+                    {role === "admin" && (
+                        <Button height="m" width="m" color="orange" stringColor="white" stringSize="m" linkdata="/admin">ADMIN</Button>
+                    )}
+                </div>
+            )}
+
         </nav >
 
 

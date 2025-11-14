@@ -7,7 +7,6 @@ interface Props {
   label?: string;
 }
 
-// ✅ forwardRef เพื่อให้ component อื่นเรียกฟังก์ชันภายในได้
 const ImageUploader = forwardRef((props: Props, ref) => {
   const { folder, onUploaded, label } = props;
   const [preview, setPreview] = useState<string | null>(null);
@@ -29,7 +28,6 @@ const ImageUploader = forwardRef((props: Props, ref) => {
     }
   };
 
-  // ✅ ให้ component ภายนอกสามารถเรียก input.click() ได้
   useImperativeHandle(ref, () => ({
     openFileDialog: () => inputRef.current?.click(),
   }));

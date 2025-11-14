@@ -12,12 +12,12 @@ const Select: React.FC<SelectProps> = ({
     onChange,
 }) => {
     return (
-        <select className="bg-white rounded w-15 h-8 md:w-18 text-center"
+        <select className="cursor-pointer hover:scale-110 bg-white rounded w-15 h-8 md:w-18 text-center"
             value={value}
             onChange={(e) => onChange?.(e.target.value)}
         >
             {options.map((op) => (
-                <option 
+                <option  
                     key={op.value}
                     value={op.value}
                     className="text-black " 

@@ -22,6 +22,7 @@ export default function CardMenuAdmin({
   const [open, setOpen] = useState<boolean>(false);
   const [position, setPosition] = useState<{ x: number; y: number } | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const [editing, setEditing] = useState(false);
 
   const [form, setForm] = useState({
     name: menu.name || "",
@@ -80,9 +81,31 @@ export default function CardMenuAdmin({
     if (onSave) onSave(newMenu);
   };
 
+  if (editing) {
+    return (
+      <CardMenuAdmin mode="edit"
+        menu={menu}
+        setMenus={setMenus}
+        onSave={(updated) => {
+          setMenus(prev => {
+            const updatedList = prev.map(
+              m => (m.id === menu.id ? updated : m)
+            );
+
+            localStorage.setItem("menus", JSON.stringify(updatedList));
+            return updatedList;
+          });
+
+          setEditing(false);
+        }}
+        onCancel={() => setEditing(false)}
+      />
+    );
+  }
+
   if (mode === "view") {
     return (
-      <div className="max-w-100 grid grid-cols-2 md:grid-cols-1 relative bg-[#F8F5F2] rounded-2xl shadow-lg border border-[#E6D4C3] overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
+      <div className="cursor-pointer max-w-100 grid grid-cols-2 md:grid-cols-1 relative bg-[#F8F5F2] rounded-2xl shadow-lg border border-[#E6D4C3] overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
         <div className="w-full h-40 overflow-hidden">
           <img
             src={menu.image || "/drink/default.png"}
@@ -95,7 +118,7 @@ export default function CardMenuAdmin({
           <div className="mb-3">
             <button
               ref={buttonRef}
-              className="z-48 absolute top-3 right-3 text-[#000000] hover:text-[#3D342F]"
+              className="cursor-pointer z-48 absolute top-3 right-3 text-[#000000] hover:text-[#3D342F]"
               onClick={() => setOpen(!open)}
             >
               <EllipsisVertical />
@@ -118,6 +141,7 @@ export default function CardMenuAdmin({
             onClose={() => setOpen(false)}
             open={open}
             position={position}
+            onEdit={() => setEditing(true)}
           />
         )}
       </div>
@@ -126,14 +150,41 @@ export default function CardMenuAdmin({
   return (
     <div className="bg-white rounded-2xl shadow-lg border border-[#E6D4C3] overflow-hidden flex flex-col p-3">
 
-      <div className="relative w-full h-[150px] bg-gray-200 flex items-center justify-center rounded-lg overflow-hidden">
-        {form.image ? (
-          <img src={form.image} alt="preview" className="w-full h-full object-cover" />
-        ) : (
-          <label className="cursor-pointer text-center text-gray-500">
-            <input type="file" className="hidden" onChange={handleFileChange} />
-            <div className="text-sm font-semibold">UPLOAD IMAGE</div>
+      <div className="hover:scale-105 relative w-full h-[150px] bg-gray-200 flex items-center justify-center rounded-lg overflow-hidden">
+        
+        {mode === "edit" && (
+          <label className="relative w-full h-full cursor-pointer ">
+            <div className="absolute w-full h-full hover:scale-110   opacity-50 flex justify-center items-center">
+              <p className="opacity-100 font-bold text bg-white p-3 transition-all duration-500 ease-out  hover:text-center hover:scale-[1.02] rounded-xl ">Change Photo
+                </p></div>
+            <img
+              src={form.image || "/drink/default.png"}
+              className="w-full h-full object-cover "
+            />
+            <input
+              type="file"
+              className="hidden"
+              onChange={handleFileChange}
+            />
           </label>
+        )}
+        
+        {mode === "add" && (
+          form.image ? (
+            <img
+              src={form.image}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <label className="cursor-pointer text-center text-gray-500">
+              <input
+                type="file"
+                className="hidden"
+                onChange={handleFileChange}
+              />
+              <div className="text-sm font-semibold">UPLOAD IMAGE</div>
+            </label>
+          )
         )}
       </div>
 
@@ -182,14 +233,14 @@ export default function CardMenuAdmin({
         {onCancel && (
           <button
             onClick={onCancel}
-            className="bg-gray-400 text-white px-3 py-1 rounded hover:bg-gray-500 text-sm"
+            className="cursor-pointer  bg-gray-400 text-white px-3 py-1 rounded hover:bg-gray-500 text-sm"
           >
             Cancel
           </button>
         )}
         <button
           onClick={handleSave}
-          className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 text-sm ml-auto"
+          className="cursor-pointer bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 text-sm ml-auto"
         >
           Save
         </button>
