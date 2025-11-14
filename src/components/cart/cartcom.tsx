@@ -1,6 +1,8 @@
 import React , {useState} from 'react'
 import Button from '../button'
-import usersData from "../../data/login.json";
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 interface CartProps{
     imgUrl : string,
     title : string,
@@ -46,6 +48,14 @@ const Cartcom:React.FC<CartProps> = ({imgUrl , title,onRemove,option ,count}) =>
             const cart = JSON.parse(localStorage.getItem("cart") || "[]");
             const update = cart.filter((item: any) => item.menu_name !== title);
             localStorage.setItem("cart", JSON.stringify(update));
+            toast.error('สินค้าถูกลบจากตระกร้าเเล้ว!',{
+                position:"top-center",
+                autoClose:3000,
+                hideProgressBar:false,
+                closeOnClick:false,
+                pauseOnHover:false,
+                draggable: false ,// ลากไปวางที่อื่นไม่ได้
+                theme:'colored'})
         }
         
     }
@@ -53,7 +63,7 @@ const Cartcom:React.FC<CartProps> = ({imgUrl , title,onRemove,option ,count}) =>
     return(
         <div className='w-[95%] lg:h-[250px] md:h-[180px]  h-auto bg-[#201c19] md:rounded-3xl rounded-xl grid md:grid-cols-3  grid-cols-1   border-amber-100 border-2 justify-center'>
             <div className='w-full h-full flex flex-row md:p-[10px] p-[5px] lg:gap-[30px] md:gap-[15px] gap-[20px]'>
-                <img src={imgUrl} alt=""  className='2xl:w-[40%] xl:w-[40%] lg:w-[40%] md:w-[40%] w-[35%] h-[90%] object-cover rounded-xl self-center'/>
+                <img src={imgUrl} alt=""  className='2xl:w-[40%] xl:w-[40%] lg:w-[40%] md:w-[40%] w-[35%] h-[90%] object-cover rounded-xl self-center aspect-[4/3]'/>
                 <div className='flex flex-col'>
                     <p className='2xl:text-[32px] xl:text-[26px] lg:text-[22px] md:text-[16px] text-[10px] font-bold'>MENU NAME</p>
                     <p className='2xl:text-[28px] xl:text-[24px] lg:text-[16px] md:text-[11px] text-[7px]'>{title}</p>

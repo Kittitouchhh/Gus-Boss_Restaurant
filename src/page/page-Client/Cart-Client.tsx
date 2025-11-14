@@ -1,8 +1,8 @@
 import Cartcom from '../../components/cart/cartcom'
 import { useState , useEffect } from 'react'
 import Tagmenu from '../../components/tagmenu'
-
-
+import TagPrice from '../../components/cart/tagprice'
+import Button from '../../components/button'
 interface cart{
             menu_id : number,
             menu_name : string,
@@ -31,6 +31,16 @@ function Cart(){
      const removeItem = (id: number) => {
         Setdatacart(prev => prev.filter(item => item.menu_id !== id));
     };
+
+    function formatNumber(price : string): number{
+        const numberString = price.replace(/[^\d.]/g, '');
+        return parseFloat(numberString) || 0;
+    }
+    const subtotal = datacart.reduce((acc, item) => acc + formatNumber(item.menu_price) * item.quantity, 0);
+    const vat = (datacart.reduce((acc, item) => acc + formatNumber(item.menu_price) * item.quantity, 0) * 0.07);
+
+
+
     return(
         
         <div className='mt-[150px] mb-[120px]  gap-[20px]'> 
@@ -41,7 +51,21 @@ function Cart(){
                         <Cartcom key={data.menu_id} imgUrl={data.menu_image} title={data.menu_name} onRemove={() => removeItem(data.menu_id)} option={data.menu_option} count={data.quantity}></Cartcom>
                     )
                  })}
-            </div>  
+            </div> 
+
+            <div className='w-full mx-auto md:mt-[60px] md:mb-[60px] mt-[40px] mb-[30px] flex flex-col xl:gap-[90px] lg:gap-[70px] md:gap-[50px] gap-[20px]  '>
+                <TagPrice title = 'Sub Total Price' price={subtotal}></TagPrice>
+                <TagPrice title = 'VAT' price={vat}></TagPrice>
+                <TagPrice title = 'Total Price' price={subtotal +vat}></TagPrice>
+            </div> 
+            
+           <div className="w-full flex justify-center">
+                <div className='transform transition-transform duration-200 hover:scale-105 active:scale-95'>
+                    <Button height="xl" width='xl' color='white' stringColor='brown' stringSize='xl'>
+                        BUY ALL
+                    </Button>
+                </div>
+            </div>
             
         </div>
         

@@ -7,7 +7,8 @@ import Tagmenu  from '../../components/tagmenu.tsx'
 import CommnetCard from '../../components/detail-menu/commentCard.tsx'
 import axios from 'axios'
 import usersData from "../../data/login.json";
-
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 interface Post {
   id: number;
@@ -113,11 +114,25 @@ function  Menudetaile(){
             menu_option : selectedOptions ,
             quantity : 1,
         }
-         const updatedCart = [...datacart, order];
-         Setdatacart(updatedCart);
-         console.log(updatedCart)
+        const updatedCart = [...datacart, order];
+        Setdatacart(updatedCart);
+        console.log(updatedCart)
         localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+        toast.success('สินค้าถูกใส่ตระกร้าเเล้ว!',{
+        position:"top-center",
+        autoClose:3000,
+        hideProgressBar:false,
+        closeOnClick:false,
+        pauseOnHover:false,
+        draggable: false ,// ลากไปวางที่อื่นไม่ได้
+        theme:'colored'
+
+    })
     }
+
+
+    
 
     return(
 
@@ -151,10 +166,10 @@ function  Menudetaile(){
 
                
             <div className='w-full mx-auto  flex flex-row 2xl:mt-[100px] xl:mt-[70px] md:mt-[40px] mt-[20px] gap-[40px] 2xl:mb-[150px] justify-center items-center'>
-                <div onClick={() => {createOrder()}}>
+                <div onClick={() => {createOrder()}} className='transform transition-transform duration-200 hover:scale-105 active:scale-95'>
                     <Button height="xl" width='xl' color='orange' stringColor='white' stringSize='xl'>ADD TO CART</Button>
                 </div>
-                <div >
+                <div className='transform transition-transform duration-200 hover:scale-105 active:scale-95'>
                     <Button height="xl" width='xl' color='orange' stringColor='white' stringSize='xl'  >BUY NOW</Button>
                 </div>
                 

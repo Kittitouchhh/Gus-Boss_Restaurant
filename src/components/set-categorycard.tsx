@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import CategoryCard from './categorycard'
 import axios from 'axios'
+import{Link} from 'react-router-dom'
 
 interface CategoryProps{
   id : string,
@@ -25,7 +26,9 @@ function SetCategoryCard(){
         <div className='flex flex-row w-full justify-center '>
           {categorydata.map((data)=>{
             return(
-              <CategoryCard image={data.imageCategory} name={data.categoryName}></CategoryCard>
+              <Link to='moremenu'>
+                <CategoryCard image={data.imageCategory} name={data.categoryName}></CategoryCard>
+              </Link>
             )})}
         </div>
     )

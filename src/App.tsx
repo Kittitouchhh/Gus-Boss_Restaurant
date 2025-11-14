@@ -1,16 +1,9 @@
-import { useState } from 'react'
-import Banner from './components/banner'
-import SearchBar from './components/seachbar'
-import Menu from './components/menu'
 import Header from "./components/header"
 import Footer from "./components/footer"
-import CardMenu from './components/cardmenu'
-import SetCardMenu from './components/set-cardmenu'
-import CategoryCard from './components/categorycard'
-import SetCategoryCard from './components/set-categorycard'
 import {Routes,Route ,useLocation} from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion';
-
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 
 // Pages
@@ -26,6 +19,7 @@ function App() {
   const location = useLocation();
   return (
     <div className = "transition-colors duration-500 ease-in-out">
+      <ToastContainer />
       <Header></Header>
         <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
