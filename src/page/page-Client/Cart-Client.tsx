@@ -40,7 +40,7 @@ function Cart(){
     const vat = (datacart.reduce((acc, item) => acc + formatNumber(item.menu_price) * item.quantity, 0) * 0.07);
 
 
-
+    
     return(
         
         <div className='mt-[150px] mb-[120px]  gap-[20px]'> 
@@ -48,7 +48,7 @@ function Cart(){
             <div className=' flex flex-col gap-[30px] items-center'>
                  {datacart.map((data) => {
                     return(
-                        <Cartcom key={data.menu_id} imgUrl={data.menu_image} title={data.menu_name} onRemove={() => removeItem(data.menu_id)} option={data.menu_option} count={data.quantity}></Cartcom>
+                        <Cartcom key={data.menu_id} imgUrl={data.menu_image} title={data.menu_name} onRemove={() => removeItem(data.menu_id)} option={data.menu_option} count={data.quantity} type={1}></Cartcom>
                     )
                  })}
             </div> 
@@ -61,7 +61,7 @@ function Cart(){
             
            <div className="w-full flex justify-center">
                 <div className='transform transition-transform duration-200 hover:scale-105 active:scale-95'>
-                    <Button height="xl" width='xl' color='white' stringColor='brown' stringSize='xl'>
+                    <Button height="xl" width='xl' color='white' stringColor='brown' stringSize='xl' linkdata='payment'>
                         BUY ALL
                     </Button>
                 </div>

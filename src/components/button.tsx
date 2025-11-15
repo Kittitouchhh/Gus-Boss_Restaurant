@@ -100,7 +100,7 @@ const Button: React.FC<data> = ({height , width ,color,stringColor,stringSize,li
 
     if(!linkdata){
         return(
-            <button className={`${combinedClassName} rounded-full font-sans box-border`} >
+            <button className={`${combinedClassName} rounded-full font-sans box-border `} >
                 {children}
             </button>
         )
