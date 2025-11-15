@@ -69,6 +69,7 @@ export default function CardMenuAdmin({
 
   const handleSave = () => {
     if (!form.name || !form.price) return alert("กรอกข้อมูลให้ครบก่อนบันทึก");
+
     const newMenu: MenuItem = {
       id: mode === "add" ? Date.now() : menu.id,
       name: form.name,
@@ -78,7 +79,17 @@ export default function CardMenuAdmin({
       type: form.type,
     };
 
-    if (onSave) onSave(newMenu);
+    if (onSave) {
+      onSave(newMenu);
+    } else {
+      setMenus(prev => {
+        const updated = mode === "add"
+          ? [...prev, newMenu]
+          : prev.map(m => (m.id === menu.id ? newMenu : m));
+        localStorage.setItem("menu", JSON.stringify(updated));
+        return updated;
+      });
+    }
   };
 
   if (editing) {
@@ -92,7 +103,7 @@ export default function CardMenuAdmin({
               m => (m.id === menu.id ? updated : m)
             );
 
-            localStorage.setItem("menus", JSON.stringify(updatedList));
+            localStorage.setItem("menu", JSON.stringify(updatedList));
             return updatedList;
           });
 
@@ -151,12 +162,12 @@ export default function CardMenuAdmin({
     <div className="bg-white rounded-2xl shadow-lg border border-[#E6D4C3] overflow-hidden flex flex-col p-3">
 
       <div className="hover:scale-105 relative w-full h-[150px] bg-gray-200 flex items-center justify-center rounded-lg overflow-hidden">
-        
+
         {mode === "edit" && (
           <label className="relative w-full h-full cursor-pointer ">
             <div className="absolute w-full h-full hover:scale-110   opacity-50 flex justify-center items-center">
               <p className="opacity-100 font-bold text bg-white p-3 transition-all duration-500 ease-out  hover:text-center hover:scale-[1.02] rounded-xl ">Change Photo
-                </p></div>
+              </p></div>
             <img
               src={form.image || "/drink/default.png"}
               className="w-full h-full object-cover "
@@ -168,7 +179,7 @@ export default function CardMenuAdmin({
             />
           </label>
         )}
-        
+
         {mode === "add" && (
           form.image ? (
             <img

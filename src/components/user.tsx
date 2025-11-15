@@ -16,8 +16,8 @@ const User: React.FC<datauser> = ({name,image}) => {
     }
 
     return (
-        <div className="w-20  lg:flex lg:w-full lg:h-20 lg:p-3 lg:gap-3 lg:px-3 ">
-            <img className="mt-2 cursor-pointer hover:scale-120 hover:m-3 
+        <div className="xl:justify-center w-20  lg:flex lg:w-full lg:h-20 lg:p-3 lg:gap-3 lg:px-3 ">
+            <img className="mt-2 cursor-pointer
             ml-6 w-[35px] h-[35px] rounded-full self-center xl:w-[45px] xl:h-[45px] "
             onClick={handleCrownClick}
             src="/public/member/crownlogo.png" alt="membership" />

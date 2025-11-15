@@ -88,8 +88,8 @@ export default function DataMenupage() {
             <div className="mt-1 flex justify-end mx-5  md:justify-center md:mt-5"
             >
               <Button
-                height="m" width="m" color="green" stringColor="white"
-                stringSize="m" onClick={() => {
+                height="mg" width="mg" color="green" stringColor="white"
+                stringSize="mg" onClick={() => {
                   if (!adding) { setAdding(true); }
                 }}
               >

@@ -14,7 +14,6 @@ const UserDropdown: React.FC<DropdownUserProps> = ({ name, image }) => {
   const buttonRef = useRef<HTMLDivElement>(null); 
   const menuRef = useRef<HTMLDivElement>(null);  
   const navigate = useNavigate();
-  const location = useLocation()
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -41,8 +40,8 @@ const UserDropdown: React.FC<DropdownUserProps> = ({ name, image }) => {
     if (buttonRef.current && isOpen) {
       const rect = buttonRef.current.getBoundingClientRect();
       setPosition({
-        top: rect.bottom + window.scrollY + 8, // 8px เว้นระยะจากปุ่ม
-        left: rect.left,
+        top: rect.bottom + window.scrollY , // 8px เว้นระยะจากปุ่ม
+        left: rect.left + window.scrollX ,
         width: rect.width,
       });
     }

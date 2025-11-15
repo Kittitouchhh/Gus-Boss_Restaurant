@@ -3,11 +3,11 @@ import {Link} from 'react-router-dom'
 
 interface data {
 
-    height: 's' | 'm' | 'l',
-    width: 's' | 'm' | 'l',
+    height: 's' | 'm' | 'l'| 'mg',
+    width: 's' | 'm' | 'l' | 'mg',
     color: 'brown' | 'white' | 'orange'  | 'green' | 'red' | 'gray',
     stringColor: 'white' | 'brown',
-    stringSize: 's' | 'm' | 'l',
+    stringSize: 's' | 'm' | 'l' | 'mg',
     linkdata? : string,
     children: React.ReactNode;
     onClick?: () => void;
@@ -26,7 +26,10 @@ const Button: React.FC<data> = ({onClick, height, width, color, stringColor, str
     if (stringSize == 's') {
         text_size = 'xl:text-[12px] lg:text-[10px] md:text-[8px] text-[6px]'
     }
-    else if (stringSize == 'm') {
+    else if(stringSize == 'm'){
+        text_size = 'lg:text-[16px] xl:text-[18px] md:text-[14px] text-[8px]'
+    }
+    else if (stringSize == 'mg') {
         text_size = 'lg:text-[16px] xl:text-[18px] md:text-[18px] text-[15px] '
     }
     else {
@@ -61,7 +64,10 @@ const Button: React.FC<data> = ({onClick, height, width, color, stringColor, str
     if (height == 's') {
         height_button = 'md:max-h-[36px] max-h-[20px]';
     }
-    else if (height == 'm') {
+    else if (height == 'm'){
+        height_button = 'lg:h-[47px] md:h-[30px] h-[24px]';
+    }
+    else if (height == 'mg') {
         height_button = 'lg:h-[47px] md:h-[50px] h-[40px]';
     }
     else if (height == 'l') {
@@ -78,7 +84,10 @@ const Button: React.FC<data> = ({onClick, height, width, color, stringColor, str
     if (width == 's') {
         width_button = 'xl:max-w-[150px] xl:p-[6px] md:max-w-[100px] md:p-[4px] p-[3px]';
     }
-    else if (width == 'm') {
+    else if (height == 'm'){
+        height_button = 'lg:h-[47px] md:h-[30px] h-[24px]';
+    }
+    else if (width == 'mg') {
         width_button = 'lg:w-[90px] xl:w-[140px] md:w-[120px] w-[90px] p-[5px]';
 
     }
