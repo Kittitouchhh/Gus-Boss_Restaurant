@@ -13,9 +13,9 @@ const Signup: React.FC = () => {
     image: "",
   });
 
-  const uploaderRef = useRef<{ openFileDialog: () => void }>(null); // ✅ ref
+  const uploaderRef = useRef<{ openFileDialog: () => void }>(null);
 
-  //  รับ URL จาก Cloudinary แล้วอัปเดต form.image
+  // รับ URL จาก Cloudinary แล้วอัปเดต form.image
   const handleImageUploaded = (url: string) => {
     setForm((prev) => ({ ...prev, image: url }));
   };
@@ -27,6 +27,7 @@ const Signup: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
     // ดึง users เดิมจาก localStorage (หรือให้ [] ถ้าไม่มี)
     const users = JSON.parse(localStorage.getItem("users") || "[]");
 
@@ -35,25 +36,30 @@ const Signup: React.FC = () => {
       (u: any) => u.username.toLowerCase() === form.username.toLowerCase()
     );
     if (isDuplicate) {
-      alert("Username นี้ถูกใช้ไปแล้ว!");
+      alert("❌ Username นี้ถูกใช้ไปแล้ว!");
       return;
     }
 
-    // สร้าง user ใหม่
+    // ✅ สร้าง user ใหม่ (มี membership ตั้งต้น)
     const newUser = {
-      ...form,
-      role: "client", // หรือ admin ถ้าต้องการ
+      username: form.username,
+      password: form.password,
+      showname: form.showname || form.username,
+      image: form.image || "",
+      role: "client",
+      membership: { rank: "Bronze", level: 0, points: 0 },
     };
 
-    // เพิ่ม user ใหม่เข้า array แล้วบันทึกกลับ
+    // ✅ เพิ่ม user ใหม่เข้า array แล้วบันทึกกลับ
     const updatedUsers = [...users, newUser];
     localStorage.setItem("users", JSON.stringify(updatedUsers));
 
-    // ตั้งค่าการ login อัตโนมัติ (optional)
-    localStorage.setItem("username", form.username);
+    // ✅ ตั้ง user ปัจจุบัน
+    localStorage.setItem("currentUser", form.username);
+    localStorage.setItem("authToken", "true");
 
-    alert("สมัครสมาชิกสำเร็จ!");
-    navigate("/login");
+    alert("🎉 สมัครสมาชิกสำเร็จ! ยินดีต้อนรับ 😊");
+    navigate("/"); // ไปหน้าแรกเลย
   };
 
   return (
@@ -89,17 +95,16 @@ const Signup: React.FC = () => {
             onSubmit={handleSubmit}
             className="w-full flex flex-col items-center gap-4"
           >
+            {/* Upload Profile */}
             <div className="flex flex-col items-center m-auto gap-2">
               <p className="font-semibold text-[18px] text-gray-600">Upload your Profile</p>
-              {/* กล่องอัปโหลด */}
               <div
-                className=" relative bg-white w-[200px] h-[120px] md:w-[200px] md:h-[120px] 
+                className="relative bg-white w-[200px] h-[120px] md:w-[200px] md:h-[120px] 
                 rounded-xl flex flex-col items-center justify-center border-2 border-dashed 
                 border-[#3D342F]/50 cursor-pointer hover:border-black hover:scale-105 
                 transition duration-300 ease-out shadow-md hover:shadow-lg overflow-hidden"
                 onClick={() => uploaderRef.current?.openFileDialog()}
               >
-                {/* ถ้ายังไม่มีรูป -> แสดง Upimage.png */}
                 {!form.image && (
                   <img
                     className="w-20 transition-transform duration-300 ease-out hover:scale-110"
@@ -107,13 +112,11 @@ const Signup: React.FC = () => {
                     alt="Upload placeholder"
                   />
                 )}
-
-                {/* ถ้ามีรูป -> แสดงรูปที่อัปโหลด */}
                 {form.image && (
                   <img
                     src={form.image}
                     alt="Uploaded"
-                    className="absolute inset-0 w-full h-full object-cover rounded-xl z-50"
+                    className="absolute inset-0 w-full h-full object-cover rounded-xl"
                   />
                 )}
                 <ImageUploader
@@ -124,6 +127,7 @@ const Signup: React.FC = () => {
               </div>
             </div>
 
+            {/* Form Inputs */}
             <div className="flex flex-col gap-3 w-full flex flex-col items-center ">
               <input
                 type="text"
@@ -154,8 +158,6 @@ const Signup: React.FC = () => {
                 required
               />
 
-
-
               <button
                 type="submit"
                 className="cursor-pointer w-[50%] bg-[#3D342F] text-[#E7C699] font-semibold text-[16px] py-2 rounded-full mt-2 hover:bg-[#2C2926] duration-300"
@@ -173,7 +175,6 @@ const Signup: React.FC = () => {
                 </Link>
               </p>
             </div>
-
           </form>
         </div>
       </div>

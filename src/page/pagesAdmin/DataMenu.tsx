@@ -15,7 +15,7 @@ export type MenuItem = {
 };
 
 export default function DataMenupage() {
-  const [menus, setMenus] = useState<MenuItem[]>([]);
+  const [menu, setMenus] = useState<MenuItem[]>([]);
   const [adding, setAdding] = useState<boolean>(false);
   const [keyword, setKeyword] = useState("");
   const [type, setType] = useState("");
@@ -35,10 +35,10 @@ export default function DataMenupage() {
     const finalMenus = [...mergedMenus, ...extraMenus];
 
     setMenus(finalMenus);
-    localStorage.setItem("menus", JSON.stringify(finalMenus));
+    localStorage.setItem("menu", JSON.stringify(finalMenus));
   }, []);
 
-  const filteredMenus = menus.filter((menu) => {
+  const filteredMenus = menu.filter((menu) => {
     const matchType = type ? menu.type.toLowerCase() === type.toLowerCase() : true;
     const matchKeyword = keyword
       ? menu.name.toLowerCase().includes(keyword.toLowerCase())
@@ -115,9 +115,9 @@ export default function DataMenupage() {
               }}
               setMenus={setMenus}
               onSave={(newMenu) => {
-                const updated = [...menus, newMenu];
+                const updated = [...menu, newMenu];
                 setMenus(updated);
-                localStorage.setItem("menus", JSON.stringify(updated));
+                localStorage.setItem("menu", JSON.stringify(updated));
                 setAdding(false);
               }}
               onCancel={() => setAdding(false)}

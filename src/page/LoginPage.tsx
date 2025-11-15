@@ -21,16 +21,27 @@ export default function LoginPage() {
     );
 
     if (foundUser) {
-      localStorage.setItem("authToken", "true");
-      localStorage.setItem("userRole", foundUser.role || "client");
-      localStorage.setItem("username", foundUser.username);
-      localStorage.setItem("showname", foundUser.showname || foundUser.username);
-      localStorage.setItem("image", foundUser.image || "");
+      localStorage.setItem("currentUser", foundUser.username);
+       localStorage.setItem("authToken", "true");
 
-      if (foundUser.role === "admin") navigate("/admin");
-      else navigate("/");
+      // ถ้ายังไม่มี users ใน localStorage ให้สร้างใหม่่
+      const savedUsers = JSON.parse(localStorage.getItem("users") || "[]");
+      
+      const exists = savedUsers.some((u: any) => u.username === foundUser.username);
+      if (!exists) {
+        savedUsers.push({
+          username: foundUser.username,
+          password: foundUser.password,
+          role: foundUser.role || "client",
+          showname: foundUser.showname || foundUser.username,
+          image: foundUser.image || "",
+          membership: { rank: "Bronze", level: 0, points: 0 }, // default
+        });
+        localStorage.setItem("users", JSON.stringify(savedUsers));
+      }
+      navigate("/");
     } else {
-      setError("💻 Username or password mismatch!");
+      setError(" Username or password mismatch!");
     }
   };
 

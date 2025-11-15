@@ -1,27 +1,26 @@
 import React from "react";
 import Button from "./button"
-import usersData from "../data/login.json";
 import UserDropdown from "./UserDropdown";
 
 
 const Header: React.FC = () => {
-
-    const currentUsername = localStorage.getItem("username");
-
-    const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
-
-    const allUsers = [...usersData, ...localUsers];
-
     const [openMenu, setOpenMenu] = React.useState(false);
 
-    const currentUser = allUsers.find(
-        (u) => u.username.toLowerCase() === currentUsername?.toLowerCase()
-    );
+    const currentUsername = localStorage.getItem("currentUser");
+    
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    
+    const currentUser = users.find(
+    (u: any) => u.username.toLowerCase() === currentUsername?.toLowerCase()
+  );
+
 
     const displayName = currentUser?.showname || "Unknown";
+
     const displayImage = currentUser?.image || "https://cdn-icons-png.flaticon.com/512/6522/6522516.png";
 
     const role = currentUser?.role || "client";
+
 
     return (
         <nav className="relative w-full h-[110px] bg-[#3D342F] flex items-center justify-between px-4 md:px-8 fixed top-0 z-50 border-b-2 border-[#EEDBC4]">
