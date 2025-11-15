@@ -12,9 +12,11 @@ export default function NotFoundPage() {
 
       <Link
         to="/"
-        className="bg-[#E7C699] text-[#3D342F] font-semibold px-8 py-3 rounded-full hover:bg-[#FFEED9] duration-300"
       >
-        Back to Home
+        <button className="bg-[#E7C699] text-[#3D342F] font-semibold px-8 py-3 rounded-full hover:bg-[#FFEED9] duration-300">
+          Back to Home
+        </button>
+        
       </Link>
     </div>
   );
