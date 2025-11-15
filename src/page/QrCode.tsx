@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../components/button";
 
 export interface QRCodeProps {
   amount: number;
@@ -21,14 +22,14 @@ const QRCode: React.FC<QRCodeProps> = ({ amount, bgcard, bgtext }) => {
         "bg-{#4B2E05}";
 
   return (
-    <div className={`h-full max-w-[700px] mx-auto ${bgcolor}`}>
+    <div className={`rounded-xl shadow-xl  h-full max-w-[700px] mx-auto ${bgcolor}`}>
       <div className="flex flex-col justify-center items-center">
         <p className={`mt-15 text-center text-[50px] text-white ${bgfont} w-full`}>
           PAYMENT
         </p>
 
         <div className="mt-5  gap-1 text-white">
-          <div>
+          <div >
             <div className="flex items-center ">
               <img
                 src="/qr/icon-thaiqr.png"
@@ -52,15 +53,9 @@ const QRCode: React.FC<QRCodeProps> = ({ amount, bgcard, bgtext }) => {
                 นาย กิตติธัช สกุลศักดิ์พินิจ
               </p>
             </div>
-
           </div>
-
-
-
         </div>
-
-
-        <p className="mt-3 hover:mt-2 text-white text-[25px] bg-black w-full text-center">
+        <p className="mt-3  text-white text-[25px] bg-black w-full text-center">
           จำนวน: {amount.toLocaleString()} บาท
         </p>
         <img
@@ -68,10 +63,21 @@ const QRCode: React.FC<QRCodeProps> = ({ amount, bgcard, bgtext }) => {
           alt="PromptPay QR Code"
           className="w-64 h-64 mt-5"
         />
-
       </div>
-      <div>
-
+      <div className="flex justify-between mx-3 mt-7">
+        <Button height="m" width="m" color="gray" stringColor="white"
+                stringSize="m" onClick={() => {}
+                }>Canceld
+        </Button>
+        <button className=" cursor-pointer font-bold text-white mt-8 p-2 md:p-4 border-3 border-dotted shadow-xl rounded-xl hover:bg-blue-500  hover:scale-105 transition duration-500">
+          <img src="
+          " alt="" />
+          <p>Upload QR Code </p>
+        </button>
+        <Button height="m" width="m" color="green" stringColor="white"
+                stringSize="m" onClick={() => {}
+                }>Submit
+        </Button>
       </div>
 
     </div>

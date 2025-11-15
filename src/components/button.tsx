@@ -5,7 +5,7 @@ interface data {
 
     height: 's' | 'm' | 'l',
     width: 's' | 'm' | 'l',
-    color: 'brown' | 'white' | 'orange'  | 'green',
+    color: 'brown' | 'white' | 'orange'  | 'green' | 'red' | 'gray',
     stringColor: 'white' | 'brown',
     stringSize: 's' | 'm' | 'l',
     linkdata? : string,
@@ -27,7 +27,7 @@ const Button: React.FC<data> = ({onClick, height, width, color, stringColor, str
         text_size = 'xl:text-[12px] lg:text-[10px] md:text-[8px] text-[6px]'
     }
     else if (stringSize == 'm') {
-        text_size = 'lg:text-[16px] xl:text-[18px] md:text-[18px] text-[12px] '
+        text_size = 'lg:text-[16px] xl:text-[18px] md:text-[18px] text-[15px] '
     }
     else {
         text_size = 'text-[64px]'
@@ -45,6 +45,12 @@ const Button: React.FC<data> = ({onClick, height, width, color, stringColor, str
     }
     else if (color == 'green') {
         color_button = 'bg-green-500'
+    }
+    else if (color == 'red') {
+        color_button = 'bg-red-800'
+    }
+    else if (color == 'gray') {
+        color_button = 'bg-gray-700'
     }
     else {
         color_button = 'bg-[#EEDBC4]'
