@@ -1,9 +1,7 @@
 import RankCard from "../components/showdiscount"
 import { Link } from "react-router-dom"
 
-export default function Memberpage() {
-
-    const ranks = [
+export const ranks = [
         {
             icon: "member/bronze.png",
             title: "RANK BRONZE",
@@ -27,6 +25,9 @@ export default function Memberpage() {
         },
     ]
 
+
+
+export default function Memberpage() {
     return (
         <>
             <div className="grid md:grid-cols-2 md:flex md:justify-center md:mt-3">
@@ -54,7 +55,7 @@ export default function Memberpage() {
                             <p className="hover:text-orange-500">YOUR MEMBERSHIP RANK</p>
                             <p className="text-white hover:text-orange-500">RANK MEMBERSHIP</p>
                         </div>
-                        <Link to={"/paymentpage"}>
+                        <Link to={"/paymenmberpage"}>
                             <button
                                 className="transition duration-500  md:p-3 cursor-pointer hover:scale-110 bg-red-600 md:font-bold text-[#EEDBC4] px-2 py-1 rounded-xl flex m-auto">
                                 BUY MEMBERSHIP

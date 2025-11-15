@@ -11,7 +11,7 @@ import ProcessOrder from "./page/client/Process-Client";
 import Constact from "./page/client/Constact-Client";
 import Profile from "./page/Profile";
 import Memberpage from "./page/memberpage";
-import Paymentpage from "./page/paymentPage";
+import Paymenmberpage from "./page/paymemberPage";
 
 import LoginPage from "./page/LoginPage";
 import SignupPage from "./page/SignupPage";
@@ -37,7 +37,7 @@ export default function App() {
           <Route path="/profile" element={<ProtectedRoute> <Profile /> </ProtectedRoute>} />
           <Route path="/memberpage" element={<ProtectedRoute> <Memberpage /> </ProtectedRoute>} />
           <Route path="/admin" element={<ProtectedRoute> <AdminPage /> </ProtectedRoute>} />
-          <Route path="/paymentpage" element={<ProtectedRoute> <Paymentpage/> </ProtectedRoute>} />
+          <Route path="/paymenmberpage" element={<ProtectedRoute> <Paymenmberpage/> </ProtectedRoute>} />
          
 
           <Route path="*" element={<NotFoundPage />} />
