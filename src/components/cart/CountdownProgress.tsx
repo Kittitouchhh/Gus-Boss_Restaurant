@@ -29,9 +29,9 @@ const CountdownProgress: React.FC<CountdownProgressProps> = ({ durationSeconds ,
       <Progress 
         variant="soft"
         size="3"
-        value={value} // bar จะเต็มตอน value = durationSeconds
-        max={durationSeconds} // max = เวลาทั้งหมด
-        style={{ width: '100%', transition: 'width 1s linear' }} // ทำให้ smooth
+        value={value} 
+        max={durationSeconds} 
+        style={{ width: '100%', transition: 'width 1s linear' }} 
       />
     </Flex>
   );

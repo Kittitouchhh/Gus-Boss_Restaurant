@@ -20,7 +20,7 @@ const User: React.FC<datauser> = ({name,image}) => {
             <img className=" cursor-pointer hover:scale-120 hover:m-3 
              lg:w-[40px] lg:h-[40px] md:w-[30px] w-[26px] h-[26px] rounded-full self-center inline-block   xl:w-[45px] xl:h-[45px] transition-all duration-300 ease-out"
             onClick={handleCrownClick}
-            src="/public/member/crownlogo.png" alt="membership" />
+            src="/member/crownlogo.png" alt="membership" />
 
             <img src={image || 'https://cdn-icons-png.flaticon.com/256/6522/6522516.png'} alt="" className='lg:w-[40px] lg:h-[40px] md:w-[30px] md:h-[30px] w-[30px] h-[30px] rounded-full self-center    2xl:w-[50px] 2xl:h-[50px] xl:w-[40px] xl:h-[40px] '/>
             <p className='md:text-center text-start  text-white text-[12px] md:text-[18px]  lg:text-[20px] 2xl:text-[25px] xl:text-[20px]'>{name} </p>

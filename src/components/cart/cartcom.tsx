@@ -4,8 +4,10 @@ import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import {Flex,Progress} from "@radix-ui/themes"
 import CountdownProgress from './CountdownProgress'
+import Addcommentbox from '../comment/addcommentbox'
 
 interface CartProps{
+    id_menu?: number,
     imgUrl? : string,
     title? : string,
     option?: { [key: string]: string },
@@ -25,7 +27,7 @@ interface CartProps{
 
 
 
-const Cartcom:React.FC<CartProps> = ({imgUrl , title,onRemove,option ,count,type ,user_name ,user_image,onQuantityChange,listmenu,duration,onFinish}) =>{
+const Cartcom:React.FC<CartProps> = ({id_menu,imgUrl , title,onRemove,option ,count,type ,user_name ,user_image,onQuantityChange,listmenu,duration,onFinish}) =>{
     const [quantity , setquantity] = useState<number>(count ?? 1)
 
 
@@ -75,6 +77,12 @@ const Cartcom:React.FC<CartProps> = ({imgUrl , title,onRemove,option ,count,type
         }
         
     }
+
+    // popup comment
+    const [isCommentOpen, setIsCommentOpen] = useState(false);
+
+
+
     if(type == 1)
     {
         return(
@@ -146,15 +154,19 @@ const Cartcom:React.FC<CartProps> = ({imgUrl , title,onRemove,option ,count,type
     }
     else{
         return(
-            <div className='w-[95%] lg:h-[250px] md:h-[180px]  h-auto bg-[#201c19] md:rounded-2xl rounded-md grid   grid-cols-1   border-amber-100 md:border-2 border-1 justify-center'>
-                <div className='w-full h-full flex flex-row md:p-[10px] p-[5px] lg:gap-[30px] md:gap-[15px] gap-[20px]'>
-                    <img src={imgUrl} alt=""  className=' 2xl:w-[30%] xl:w-[40%] lg:w-[40%] md:w-[40%] w-[35%] xl:h-auto 2xl:h-full object-cover  self-center aspect-[4/3] md:rounded-2xl rounded-md'/>
+            <div className='w-[95%] lg:h-[250px] md:h-[180px]  h-auto bg-[#201c19] md:rounded-2xl rounded-md grid  grid-cols-[3fr_1fr]   border-amber-100 md:border-2 border-1 justify-center'>
+                <div className='w-full h-full flex flex-row md:p-[10px] p-[5px] lg:gap-[30px] md:gap-[15px] gap-[10px]'>
+                    <img src={imgUrl} alt=""  className=' 2xl:w-[30%] xl:w-[40%] lg:w-[40%] md:w-[40%] w-[35%] h-full object-cover  self-center aspect-[4/3] md:rounded-2xl rounded-md'/>
                     <div className='flex flex-col'>
-                        <p className='2xl:text-[32px] xl:text-[26px] lg:text-[22px] md:text-[16px] text-[10px] font-bold '>MENU NAME</p>
-                        <p className='2xl:text-[28px] xl:text-[24px] lg:text-[16px] md:text-[11px] text-[7px]'>{title}</p>
+                        <p className='2xl:text-[32px] xl:text-[24px] lg:text-[18px] md:text-[12px] text-[6px] font-bold '>MENU NAME</p>
+                        <p className='2xl:text-[28px] xl:text-[24px] lg:text-[16px] md:text-[11px] text-[4px]'>{title}</p>
                     </div >
                 </div>
-        </div>
+                <div className='w-full h-full xl:p-[10px] lg:p-[10px] md:p-[10px] p-[5px] flex flex-row  lg:gap-[20px] md:gap-[10px] gap-[10px] justify-center items-center' onClick={()=> setIsCommentOpen(!isCommentOpen)}>         
+                    <Button height="m" width="sm" color="white" stringColor="brown" stringSize="s">COMMENT</Button>
+                </div>
+                {isCommentOpen && <Addcommentbox onClose={() => setIsCommentOpen(false)} image={imgUrl} menu_name={title}/>}
+            </div>
         )
         
     }

@@ -5,7 +5,7 @@ import{Link} from 'react-router-dom'
 interface data {
     
     height : 's' | 'm' | 'l' | 'xl',
-    width : 's' | 'm' | 'l'| 'xl',
+    width : 's' | 'sm' | 'm' | 'l'| 'xl',
     color : 'brown' | 'white' | 'orange' | 'darkbrown',
     stringColor : 'white' | 'brown' ,
     stringSize : 's' | 'm' | 'l'| 'xl' ,
@@ -61,6 +61,7 @@ const Button: React.FC<data> = ({height , width ,color,stringColor,stringSize,li
     if (height == 's'){
         height_button = 'md:max-h-[36px] max-h-[20px]';
     }
+    
     else if (height == 'm'){
         height_button = 'lg:h-[47px] md:h-[30px] h-[24px]';
     }
@@ -82,8 +83,11 @@ const Button: React.FC<data> = ({height , width ,color,stringColor,stringSize,li
         {
             width_button = 'xl:max-w-[150px] xl:p-[6px] md:max-w-[100px] md:p-[4px] p-[3px]';
         }
+    else if (width == 'sm'){
+        width_button = 'xl:w-[120px] lg:w-[80px] md:w-[60px] w-[40px]';
+    }
     else if (width == 'm'){
-        width_button = 'lg:w-[90px] xl:w-[120px] md:w-[90px] w-[60px]';
+        width_button = 'xl:w-[120px] lg:w-[90px] md:w-[90px] w-[60px]';
 
     }
     else if (width == 'l'){
