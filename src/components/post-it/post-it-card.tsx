@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import { motion } from "framer-motion";
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 interface PostItCardProps {
+  post_id : number,
   username: string;
   imguser: string;
   content: string;
@@ -9,34 +12,74 @@ interface PostItCardProps {
   star: number;
   wow: number;
   angry: number;
+  
 }
 
-const PostItCard: React.FC<PostItCardProps> = ({
-  username,
-  imguser,
-  content,
-  love,
-  star,
-  wow,
-  angry,
-}) => {
+const PostItCard: React.FC<PostItCardProps> = ({ post_id,username,imguser,content,love,star,wow,angry,}) => {
   const [islove, Setlove] = useState<number>(love);
   const [iswow, Setwow] = useState<number>(wow);
   const [isstar, Setstar] = useState<number>(star);
   const [isangry, Setangry] = useState<number>(angry);
+  const [hasreact , Sethasreact] = useState<boolean>(false)
+  const [datapostit , Setdatapostit] = useState<PostItCardProps[]>([])
 
-  function handleLove() {
-    Setlove((prev) => prev + 1);
+  useEffect(() =>{
+
+    const datapostitStorage = localStorage.getItem("postit");
+        if(datapostitStorage){
+            Setdatapostit(JSON.parse(datapostitStorage))
+        }
+        else{
+            Setdatapostit([])
+        }
+  },[])
+
+  function reaction(type: "love" | "wow" | "star" | "angry") {
+  if (hasreact) {
+    toast.error('คุณโหวตไปแล้ว!', {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      theme: 'colored'
+    });
+    return;
   }
-  function handleWow() {
-    Setwow((prev) => prev + 1);
+
+  let newvalue: number;
+
+  switch(type) {
+    case "love":
+      newvalue = islove + 1;
+      Setlove(newvalue);
+      break;
+    case "wow":
+      newvalue = iswow + 1;
+      Setwow(newvalue);
+      break;
+    case "star":
+      newvalue = isstar + 1;
+      Setstar(newvalue);
+      break;
+    case "angry":
+      newvalue = isangry + 1;
+      Setangry(newvalue);
+      break;
   }
-  function handleStar() {
-    Setstar((prev) => prev + 1);
-  }
-  function handleAngry() {
-    Setangry((prev) => prev + 1);
-  }
+
+  const updated = datapostit.map(item => 
+    item.post_id === post_id ? { ...item, [type]: newvalue } : item
+  );
+
+  Setdatapostit(updated);
+  localStorage.setItem("postit", JSON.stringify(updated));
+  Sethasreact(true);
+}
+
+
+  
 
   return (
     <div className="flex flex-col 2xl:w-[450px]  xl:w-[350px]  lg:w-[250px]  md:w-[200px] w-[130px] h-auto md:p-[15px] p-[10px] bg-[#9A867B] md:rounded-3xl rounded-xl gap-[30px] shadow-lg shadow-black/90">
@@ -56,7 +99,7 @@ const PostItCard: React.FC<PostItCardProps> = ({
           className="flex flex-row 2xl:w-[90px] 2xl:h-[50px] xl:w-[80px] xl:h-[40px] lg:w-[70px] lg:h-[40px] md:w-[60px] md:h-[30px] w-[50px] h-[30px] bg-[#362E2A]  gap-[10px] items-center p-[10px] rounded-4xl cursor-pointer"
           whileTap={{ scale: 1.2 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          onClick={handleLove}
+          onClick={() => reaction("love")}
         >
           <img
             src="emoji/emoji.png"
@@ -72,7 +115,7 @@ const PostItCard: React.FC<PostItCardProps> = ({
           className="flex flex-row 2xl:w-[90px] 2xl:h-[50px] xl:w-[80px] xl:h-[40px] lg:w-[70px] lg:h-[40px] md:w-[60px] md:h-[30px] w-[50px] h-[30px] bg-[#362E2A]  gap-[10px] items-center p-[10px] rounded-4xl cursor-pointer"
           whileTap={{ scale: 1.2 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          onClick={handleWow}
+          onClick={() => reaction("wow")}
         >
           <img
             src="emoji/wow.png"
@@ -88,7 +131,7 @@ const PostItCard: React.FC<PostItCardProps> = ({
           className="flex flex-row 2xl:w-[90px] 2xl:h-[50px] xl:w-[80px] xl:h-[40px] lg:w-[70px] lg:h-[40px] md:w-[60px] md:h-[30px] w-[50px] h-[30px] bg-[#362E2A]  gap-[10px] items-center p-[10px] rounded-4xl cursor-pointer"
           whileTap={{ scale: 1.2 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          onClick={handleStar}
+          onClick={() => reaction("star")}
         >
           <img
             src="emoji/star.png"
@@ -103,7 +146,7 @@ const PostItCard: React.FC<PostItCardProps> = ({
           className="flex flex-row 2xl:w-[90px] 2xl:h-[50px] xl:w-[80px] xl:h-[40px] lg:w-[70px] lg:h-[40px] md:w-[60px] md:h-[30px] w-[50px] h-[30px] bg-[#362E2A]  gap-[10px] items-center p-[10px] rounded-4xl cursor-pointer"
           whileTap={{ scale: 1.2 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          onClick={handleAngry}
+          onClick={() => reaction("angry")}
         >
           <img
             src="emoji/angry.png"

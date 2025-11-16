@@ -10,19 +10,25 @@ const CountdownProgress: React.FC<CountdownProgressProps> = ({ durationSeconds ,
   const [value, setValue] = useState(durationSeconds);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setValue(prev => {
-        if (prev <= 0) {
-          clearInterval(interval);
-          onFinish?.();
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
+  let endTime = localStorage.getItem("countdownEnd");
+  if (!endTime) {
+    const target = Date.now() + durationSeconds * 1000;
+    localStorage.setItem("countdownEnd", target.toString());
+    endTime = target.toString();
+  }
 
-    return () => clearInterval(interval);
-  }, [durationSeconds]);
+  const interval = setInterval(() => {
+    const remaining = Math.max(0, Math.ceil((parseInt(endTime!) - Date.now()) / 1000));
+    setValue(remaining);
+    if (remaining <= 0) {
+      clearInterval(interval);
+      onFinish?.();
+      localStorage.removeItem("countdownEnd");
+    }
+  }, 1000);
+
+  return () => clearInterval(interval);
+  }, [durationSeconds, onFinish]);
 
   return (
     <Flex direction="column" style={{ width: '100%' }}>

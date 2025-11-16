@@ -1,4 +1,4 @@
-import React , {useState} from 'react'
+import React , {useState , useEffect} from 'react'
 import Button from '../button'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -29,6 +29,7 @@ interface CartProps{
 
 const Cartcom:React.FC<CartProps> = ({id_menu,imgUrl , title,onRemove,option ,count,type ,user_name ,user_image,onQuantityChange,listmenu,duration,onFinish}) =>{
     const [quantity , setquantity] = useState<number>(count ?? 1)
+
 
 
     function updatelocalstorage(newQty : number){
@@ -165,7 +166,7 @@ const Cartcom:React.FC<CartProps> = ({id_menu,imgUrl , title,onRemove,option ,co
                 <div className='w-full h-full xl:p-[10px] lg:p-[10px] md:p-[10px] p-[5px] flex flex-row  lg:gap-[20px] md:gap-[10px] gap-[10px] justify-center items-center' onClick={()=> setIsCommentOpen(!isCommentOpen)}>         
                     <Button height="m" width="sm" color="white" stringColor="brown" stringSize="s">COMMENT</Button>
                 </div>
-                {isCommentOpen && <Addcommentbox onClose={() => setIsCommentOpen(false)} image={imgUrl} menu_name={title}/>}
+                {isCommentOpen && <Addcommentbox onClose={() => setIsCommentOpen(false)} image={imgUrl} menu_name={title} type={1}></Addcommentbox>}
             </div>
         )
         

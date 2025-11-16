@@ -38,13 +38,12 @@ function ProcessOrder(){
    
 
     return(
-        <div className='mt-[120px] mb-[120px]'>
+        <div className='mt-[120px] mb-[900px]'>
             <div className='flex flex-col items-center gap-[20px]'>
                 {dataprocess.map((data , index)=>{
                 return(
                     <Cartcom type ={2} user_image={data.user_image} user_name={data.user} listmenu={data.all_menu} duration={data.duration} onFinish={() => remove(index)}></Cartcom>
-                )
-})}
+                )})}
             </div>
             
             
