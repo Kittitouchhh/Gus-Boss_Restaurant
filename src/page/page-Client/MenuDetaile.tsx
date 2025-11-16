@@ -39,6 +39,14 @@ interface OptionCategoryProps{
     [menuType: string]: OptionProps[];
 }
 
+interface CommentProps {
+    menuname: string, 
+    userName : string,
+    userImage : string,
+    content : string,
+    like : boolean
+}
+
 
 function  Menudetaile(){
     let [datamenu, Setdata] = useState<Post []>([]);
@@ -47,6 +55,7 @@ function  Menudetaile(){
     let [text, setText] = useState("");
     let [option , Setoption] = useState<OptionCategoryProps>({})
     let [datacart,Setdatacart] = useState<cart[]>([])
+    let [datacomment,Setcomment] = useState<CommentProps[]>([])
 
 
     useEffect(() => {
@@ -74,7 +83,15 @@ function  Menudetaile(){
             Setdatacart([])
         }
 
-        
+        // ส่วนคอมเม้นต์
+        const datacommentFromStorage = localStorage.getItem("comment")
+        if(datacommentFromStorage){
+            Setcomment(JSON.parse(datacommentFromStorage))
+        }
+        else{
+            Setcomment([])
+        }
+
 
         }, []);
 
@@ -82,6 +99,9 @@ function  Menudetaile(){
     useEffect(()=>{
         const filteredMenu = datamenu.find((menu) => menu.menuName === menuname && menu.status === 1);
         Setselected(filteredMenu) ;
+
+
+
     },[datamenu, menuname])
 
 
@@ -90,6 +110,7 @@ function  Menudetaile(){
 
     
     const [selectedOptions, setSelectedOptions] = useState<{ [key: string]: string }>({});
+
 
     function createOrder(){
         const newId = datacart.length > 0 ? Math.max(...datacart.map(item => item.menu_id)) + 1 : 1;
@@ -119,6 +140,10 @@ function  Menudetaile(){
 
     })
     }
+
+
+
+    // ส่วนคอมเม้นต์
 
 
     
@@ -169,16 +194,15 @@ function  Menudetaile(){
             
             <div className='flex flex-col justify-start items-center 2xl:w-[80%] xl:w-[100%] md:w-[95%] w-[95%] mx-auto'>
                 <div className='flex flex-row justify-center items-center flex-wrap mb-[30px] p-[10px] lg:gap-[15px] md:gap-[10px] gap-[15px] mx-center w-full'>
-                    <CommnetCard userImage="/profile/power.jpg" username = 'Power' commentText = 'This is a comment' like ='0' ></CommnetCard>
-                    <CommnetCard userImage="/profile/power.jpg" username = 'Power' commentText = 'This steak is huge and cooked perfectly, so juicy and tender 😋' like ='1' ></CommnetCard>
-                    <CommnetCard userImage="/profile/power.jpg" username = 'Power' commentText = 'The Australian beef is top quality, cooked to perfection. The meat is tender and the black pepper sauce is flavorful' like ='1' ></CommnetCard>
-                    <CommnetCard userImage="/profile/power.jpg" username = 'Power' commentText = 'Beautiful presentation, served with salad and roasted potatoes, which enhances the overall taste.' like ='1' ></CommnetCard>
-                    <CommnetCard userImage="/profile/power.jpg" username = 'Power' commentText = 'Reasonably priced for the quality. Perfect for special dinners or a romantic night out , This steak melts in your mouth… but my wallet melted first , Seeing this steak makes me forget about dieting!' like ='1' ></CommnetCard>
-                    <CommnetCard userImage="/profile/power.jpg" username = 'Power' commentText = 'This is a comment' like ='0' ></CommnetCard>
-                    <CommnetCard userImage="/profile/power.jpg" username = 'Power' commentText = 'This steak is huge and cooked perfectly, so juicy and tender 😋' like ='1' ></CommnetCard>
-                    <CommnetCard userImage="/profile/power.jpg" username = 'Power' commentText = 'The Australian beef is top quality, cooked to perfection. The meat is tender and the black pepper sauce is flavorful' like ='1' ></CommnetCard>
-                    <CommnetCard userImage="/profile/power.jpg" username = 'Power' commentText = 'Beautiful presentation, served with salad and roasted potatoes, which enhances the overall taste.' like ='0' ></CommnetCard>
-                    <CommnetCard userImage="/profile/power.jpg" username = 'Power' commentText = 'Reasonably priced for the quality. Perfect for special dinners or a romantic night out , This steak melts in your mouth… but my wallet melted first , Seeing this steak makes me forget about dieting!' like ='1' ></CommnetCard>
+                    {datacomment.map((datacomment) => {
+                        if(datacomment.menuname === menuname){
+                            return(
+                                <CommnetCard userImage={datacomment.userImage} username = {datacomment.userName} commentText = {datacomment.content} like ={datacomment.like} ></CommnetCard>
+                            )
+                        }
+                        
+                    })}
+                    
                 </div>
             </div>
 

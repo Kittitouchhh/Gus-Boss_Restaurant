@@ -70,7 +70,7 @@ const Addcommentbox:React.FC<Props> = ({onClose ,image,menu_name}) => {
         console.log(commentlist)
         localStorage.setItem("comment", JSON.stringify(newcommentlist));
         onClose()
-        toast.success('สินค้าถูกใส่ตระกร้าเเล้ว!',{
+        toast.success('เพิ่มคอมเม้นต์เเล้ว!',{
                 position:"top-center",
                 autoClose:3000,
                 hideProgressBar:false,

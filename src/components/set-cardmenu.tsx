@@ -17,7 +17,6 @@ interface Post{
   imageMenu:string,
   menuOption:string[],
   menuPrice:string,
-  menuLike:string,
   datajson:string,
   description:string,
   status : number
@@ -34,7 +33,7 @@ const SetCardMenu:React.FC<filenameProps> = ({filename}) => {
         {filename.map((data) =>{
           return(
             <div>
-              <CardMenu name={data.menuName} image={data.imageMenu} option={data.menuOption} price={data.menuPrice} like={data.menuLike} datajson={data.datajson} description={data.description}></CardMenu>
+              <CardMenu name={data.menuName} image={data.imageMenu} option={data.menuOption} price={data.menuPrice}  datajson={data.datajson} description={data.description}></CardMenu>
             </div>
             
           )

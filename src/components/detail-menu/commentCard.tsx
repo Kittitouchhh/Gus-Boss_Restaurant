@@ -5,7 +5,7 @@ interface CommentCardProps {
     userImage : string,
     username : string ,
     commentText: string ,
-    like : '0' | '1'
+    like : boolean
 }
 
 
@@ -21,8 +21,8 @@ const CommnetCard:React.FC<CommentCardProps> = ({userImage,username , commentTex
             <p className='2xl:text-[16px] xl:text-[14px] lg:text-[14px] text-[12px] text-[#3D342F] font-semibold'>{commentText}</p>
 
             <div className='flex flex-row items-center gap-[10px] mt-auto'>
-                <img src={like === '1' ? '/logo/heart.png' : '/logo/dislike.png'} alt="" className='2xl:h-[35px] 2xl:w-[35px] xl:h-[25px] xl:w-[25px] lg:h-[20px] lg:w-[20px] md:h-[20px] md:w-[20px] w-[15px] h-[15px]' />
-                <p className='2xl:text-[16px] xl:text-[14px] lg:text-[14px] text-[12px] text-[#3D342F] font-semibold'>{like === '1' ? 'Like' : 'Dislike'}</p>
+                <img src={like? '/logo/heart.png' : '/logo/dislike.png'} alt="" className='2xl:h-[35px] 2xl:w-[35px] xl:h-[25px] xl:w-[25px] lg:h-[20px] lg:w-[20px] md:h-[20px] md:w-[20px] w-[15px] h-[15px]' />
+                <p className='2xl:text-[16px] xl:text-[14px] lg:text-[14px] text-[12px] text-[#3D342F] font-semibold'>{like?  'Like' : 'Dislike'}</p>
             </div>
             
         </div>

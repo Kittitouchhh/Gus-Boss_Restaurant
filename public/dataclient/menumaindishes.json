@@ -5,7 +5,6 @@
         "imageMenu" : "maindishes/burger.jpg",
         "menuOption" : ["Main Topping","Cheese","VegetableToppings"],
         "menuPrice" : "฿120",
-        "menuLike" : "507",
         "datajson" : "menumaindishes",
         "description" : "Juicy grilled patty served in a bun with fresh vegetables and sauce.",
         "status" : 1
@@ -17,7 +16,6 @@
         "imageMenu" : "maindishes/chickenfried.jpg",
         "menuOption" : ["VegetableToppings","Spice Level","Flavor"],
         "menuPrice" : "฿60",
-        "menuLike" : "496 ",
         "datajson" : "menumaindishes",
         "description" : "Crispy fried chicken with golden crust and tender meat inside.",
         "status" : 1
@@ -28,7 +26,6 @@
         "imageMenu" : "maindishes/Donburi.jpg",
         "menuOption" : ["Main Topping","VegetableToppings","Spice Level"],
         "menuPrice" : "฿90",
-        "menuLike" : "476",
         "datajson" : "menumaindishes",
         "description" : "Japanese rice bowl topped with meat, eggs, or vegetables.",
         "status" : 1
@@ -39,7 +36,6 @@
         "imageMenu" : "maindishes/Fried Rice.jpg",
         "menuOption" : ["Main Topping","Spice Level","Extra Topping"],
         "menuPrice" : "฿50",
-        "menuLike" : "396",
         "datajson" : "menumaindishes",
         "description" : "Stir-fried rice with eggs, vegetables, and savory seasoning.",
         "status" : 1
@@ -50,7 +46,6 @@
         "imageMenu" : "maindishes/Gyoza.jfif",
         "menuOption" : ["Main Topping","Spice Level","Extra Topping"],
         "menuPrice" : "฿60",
-        "menuLike" : "356",
         "datajson" : "menumaindishes",
         "description" : "Japanese-style dumplings filled with minced pork and vegetables.",
         "status" : 1
@@ -61,7 +56,6 @@
         "imageMenu" : "maindishes/papayasalad.jpg",
         "menuOption" : ["Spice Level","Papaya Style","Extra Topping"],
         "menuPrice" : "฿80",
-        "menuLike" : "325",
         "datajson" : "menumaindishes",
         "description" : "Spicy and tangy Thai salad made from shredded green papaya.",
         "status" : 1
@@ -72,7 +66,6 @@
         "imageMenu" : "maindishes/pizza.jpg",
         "menuOption" : ["Sauce","Cheese","Main Topping"],
         "menuPrice" : "฿200",
-        "menuLike" : "285",
         "datajson" : "menumaindishes",
         "description" : "Baked flatbread topped with cheese, tomato sauce, and various toppings.",
         "status" : 1
@@ -83,7 +76,6 @@
         "imageMenu" : "maindishes/sandwich.jpg",
         "menuOption" : ["Main Topping","Bread Type","VegetableToppings"],
         "menuPrice" : "฿30",
-        "menuLike" : "252",
         "datajson" : "menumaindishes",
         "description" : "Freshly baked, soft bread generously filled with a delicious combination of high-quality meats, crisp fresh vegetables, and a rich, flavorful sauce. Perfectly balanced in taste and texture, making every bite a satisfying experience.",
         "status" : 1
@@ -94,7 +86,6 @@
         "imageMenu" : "maindishes/steak.jpg",
         "menuOption" : ["Temperature","Main Topping","Doneness Level"],
         "menuPrice" : "฿180",
-        "menuLike" : "221",
         "datajson" : "menumaindishes",
         "description" : "Grilled beef steak cooked to your preferred doneness, juicy and flavorful.",
         "status" : 1
@@ -106,7 +97,6 @@
         "imageMenu" : "maindishes/greencurrychicken.jpg",
         "menuOption" : ["Main Topping","Spice Level","Extra Topping"],
         "menuPrice" : "฿100",
-        "menuLike" : "211",
         "datajson" : "menumaindishes",
         "description" : "Spicy Thai green curry with coconut milk, herbs, and tender meat.",
         "status" : 1

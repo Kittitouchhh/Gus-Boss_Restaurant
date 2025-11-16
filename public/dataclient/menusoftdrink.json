@@ -5,7 +5,6 @@
         "imageMenu" : "softdrink/7Up.jpg",
         "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
         "menuPrice" : "฿5",
-        "menuLike" : "402",
         "datajson" : "menusoftdrink",
         "description" : "Crisp and refreshing lemon-lime soda with a clean taste.",
         "status" : 1
@@ -17,7 +16,6 @@
         "imageMenu" : "softdrink/cocacola.jpg",
         "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
         "menuPrice" : "฿10",
-        "menuLike" : "396",
         "datajson" : "menusoftdrink",
         "description" : "Classic cola with a sweet and slightly spicy flavor.",
         "status" : 1
@@ -28,7 +26,6 @@
         "imageMenu" : "softdrink/DrPepper.jpg",
         "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
         "menuPrice" : "฿30",
-        "menuLike" : "387",
         "datajson" : "menusoftdrink",
         "description" : "Unique blend of 23 flavors with a bold, distinctive taste.",
         "status" : 1
@@ -39,7 +36,6 @@
         "imageMenu" : "softdrink/Fanta.jpeg",
         "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
         "menuPrice" : "฿5",
-        "menuLike" : "354",
         "datajson" : "menusoftdrink",
         "description" : "Fruity and bubbly soft drink available in many flavors.",
         "status" : 1
@@ -50,7 +46,6 @@
         "imageMenu" : "softdrink/MinuteMaid.jpg",
         "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
         "menuPrice" : "฿20",
-        "menuLike" : "297",
         "datajson" : "menusoftdrink",
         "description" : "Refreshing fruit juice drink made from real fruit.",
         "status" : 1
@@ -61,7 +56,6 @@
         "imageMenu" : "softdrink/Mirinda.png",
         "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
         "menuPrice" : "฿10",
-        "menuLike" : "286",
         "datajson" : "menusoftdrink",
         "description" : "Sweet and tangy orange-flavored soda with bright bubbles.",
         "status" : 1
@@ -72,7 +66,6 @@
         "imageMenu" : "softdrink/Mountain Dew.jpg",
         "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
         "menuPrice" : "฿15",
-        "menuLike" : "214",
         "datajson" : "menusoftdrink",
         "description" : "Citrus-flavored soft drink with a bold, energizing kick.",
         "status" : 1
@@ -83,7 +76,6 @@
         "imageMenu" : "softdrink/RedBull.jpg",
         "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
         "menuPrice" : "฿10",
-        "menuLike" : "180",
         "datajson" : "menusoftdrink",
         "description" : "Popular energy drink that boosts focus and alertness.",
         "status" : 1
@@ -94,7 +86,6 @@
         "imageMenu" : "softdrink/Schweppes.jpg",
         "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
         "menuPrice" : "฿5",
-        "menuLike" : "153",
         "datajson" : "menusoftdrink",
         "description" : "Sparkling beverage known for its crisp, slightly bitter taste.",
         "status" : 1
@@ -106,7 +97,6 @@
         "imageMenu" : "softdrink/Sprite.jfif",
         "menuOption" : ["Ice Level","Sweetness Level","Add-ons"],
         "menuPrice" : "฿25",
-        "menuLike" : "94",
         "datajson" : "menusoftdrink",
         "description" : "Refreshing lemon-lime soda with a light, clean sweetness.",
         "status" : 1

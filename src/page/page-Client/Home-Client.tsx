@@ -15,7 +15,6 @@ interface Post {
   imageMenu: string;
   menuOption: string[];
   menuPrice: string;
-  menuLike: string;
   datajson: string;
   description: string;
   status : number
