@@ -11,6 +11,8 @@ const Signup: React.FC = () => {
     password: "",
     showname: "",
     image: "",
+    isMember: false,
+    membership: null
   });
 
   const uploaderRef = useRef<{ openFileDialog: () => void }>(null);
@@ -28,10 +30,8 @@ const Signup: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // ดึง users เดิมจาก localStorage (หรือให้ [] ถ้าไม่มี)
     const users = JSON.parse(localStorage.getItem("users") || "[]");
 
-    // ตรวจว่า username ซ้ำไหม
     const isDuplicate = users.some(
       (u: any) => u.username.toLowerCase() === form.username.toLowerCase()
     );
@@ -40,7 +40,7 @@ const Signup: React.FC = () => {
       return;
     }
 
-    // ✅ สร้าง user ใหม่ (มี membership ตั้งต้น)
+    //  สร้าง user ใหม่ (มี membership ตั้งต้น)
     const newUser = {
       username: form.username,
       password: form.password,
@@ -50,11 +50,11 @@ const Signup: React.FC = () => {
       membership: { rank: "Bronze", level: 0, points: 0 },
     };
 
-    // ✅ เพิ่ม user ใหม่เข้า array แล้วบันทึกกลับ
+    //  เพิ่ม user ใหม่เข้า array แล้วบันทึกกลับ
     const updatedUsers = [...users, newUser];
     localStorage.setItem("users", JSON.stringify(updatedUsers));
 
-    // ✅ ตั้ง user ปัจจุบัน
+    //  ตั้ง user ปัจจุบัน
     localStorage.setItem("currentUser", form.username);
     localStorage.setItem("authToken", "true");
 

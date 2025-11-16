@@ -17,12 +17,22 @@ export default function EditMenu({ open, onClose, position, setMenus, menu, onEd
   if (!open || !position) return null;
 
   const handleDelete = () => {
-    const storedMenus = JSON.parse(localStorage.getItem("menus") || "[]");
+    const confirmDelete = window.confirm(
+      `คุณต้องการลบ "${menu.name}" ออกจากเมนูหรือไม่?`
+    );
+    if (!confirmDelete) return;
+    const storedMenus = JSON.parse(localStorage.getItem("menu") || "[]");
     const updatedMenus = storedMenus.filter(
       (item: MenuItem) => item.id !== menu.id
     );
-    localStorage.setItem("menus", JSON.stringify(updatedMenus));
-    setMenus(updatedMenus);
+
+    localStorage.setItem("menu", JSON.stringify(updatedMenus));
+    setMenus((prev) => prev.filter((m) => m.id !== menu.id));
+    
+    const deletedId = JSON.parse(localStorage.getItem("deletedMenus") || "[]");
+    const newDeleted = [...deletedId, menu.id];
+    localStorage.setItem("deletedMenus", JSON.stringify(newDeleted));
+
     onClose();
   };
 

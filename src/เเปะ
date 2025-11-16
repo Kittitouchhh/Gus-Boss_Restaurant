@@ -1,43 +1,9 @@
-import { Routes, Route, useLocation } from "react-router-dom";
-
-// 🔹 Components
-import Header from "./components/header"; // header ของลูกค้า
-import HeaderAdmin from "./components/Admin/CrudAdmin/headerAdmin"; // header ของแอดมิน
-import Footer from "./components/footer"; // ใช้ร่วมกัน
-
-// 🏠 Client Pages
-import HomeClient from    "./page/client/Home-Client";
-import PostIt from        "./page/client/Post-It-Client";
-import ProcessOrder from  "./page/client/Process-Client";
-import Constact from      "./page/client/Constact-Client";
-
-// ⚙️ Admin Pages
-import AdminPage from "./page/pagesAdmin/AdminPage";
-
-export default function App() {
-  const location = useLocation(); // ใช้ดู path ปัจจุบัน
-  const isAdmin = location.pathname.startsWith("/admin"); // ถ้า URL เริ่มด้วย /admin → ถือว่าเป็น admin
-
-  return (
-    <div>
-      {isAdmin ? <HeaderAdmin /> : <Header />}
-
-      <Routes>
-        {/* 🔹 Client Pages */}
-        <Route path="/" element={<HomeClient />} />
-        <Route path="/process" element={<ProcessOrder />} />
-        <Route path="/post-it" element={<PostIt />} />
-        <Route path="/contact" element={<Constact />} />
-
-        {/* 🔹 Admin Pages */}
-        <Route path="/admin" element={<AdminPage/>} />
-        <Route path="/admin/edit" element={<AdminPage />} />
-        <Route path="/admin/process" element={<ProcessOrder />} />
-        <Route path="/admin/postit" element={<PostIt />} />
-        <Route path="/admin/contact" element={<Constact />} />
-      </Routes>
-
-      <Footer />
-    </div>
-  );
-}
+; Swal.fire({
+;       position: "top",
+;       text: "กรุณากรอกชื่อ และ ราคาที่มากกว่า 0 บาท",
+;       titleText:"☕ GusBoss Resturant Says",
+;       icon: "warning",
+;       iconColor: "red",
+;       confirmButtonText: "ตกลง",
+;       confirmButtonColor: "#3D342F"
+;     });

@@ -68,7 +68,10 @@ export default function CardMenuAdmin({
   };
 
   const handleSave = () => {
-    if (!form.name || !form.price) return alert("กรอกข้อมูลให้ครบก่อนบันทึก");
+    if (!form.name || !form.price || Number(form.price) <= 0) {
+      return alert("กรอกข้อมูลให้ครบก่อนบันทึก");
+    }
+
 
     const newMenu: MenuItem = {
       id: mode === "add" ? Date.now() : menu.id,
@@ -78,15 +81,14 @@ export default function CardMenuAdmin({
       status: form.status as "Available" | "Sold Out",
       type: form.type,
     };
-
     if (onSave) {
-      onSave(newMenu);
+      onSave(newMenu)
     } else {
       setMenus(prev => {
         const updated = mode === "add"
           ? [...prev, newMenu]
           : prev.map(m => (m.id === menu.id ? newMenu : m));
-        localStorage.setItem("menu", JSON.stringify(updated));
+        localStorage.setItem("menu", JSON.stringify(updated)); 
         return updated;
       });
     }
@@ -179,13 +181,20 @@ export default function CardMenuAdmin({
             />
           </label>
         )}
-
         {mode === "add" && (
           form.image ? (
-            <img
-              src={form.image}
-              className="w-full h-full object-cover"
-            />
+            <>
+              <input
+                type="file"
+                className="hidden"
+                onChange={handleFileChange}
+              />
+              <img
+                src={form.image || "/drink/default.png"}
+                className="w-full h-full object-cover cursor-pointer"
+                onClick={(e) => (e.currentTarget.previousElementSibling as HTMLInputElement)?.click()}
+              />
+            </>
           ) : (
             <label className="cursor-pointer text-center text-gray-500">
               <input

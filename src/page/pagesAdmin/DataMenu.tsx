@@ -22,14 +22,19 @@ export default function DataMenupage() {
 
   useEffect(() => {
     const defaultMenus = MenuData as MenuItem[];
-    const localMenus: MenuItem[] = JSON.parse(localStorage.getItem("menus") || "[]");
+    const localMenus: MenuItem[] = JSON.parse(localStorage.getItem("menu") || "[]");
+    const deletedMenus: MenuItem[] = JSON.parse(localStorage.getItem("deletedMenus") || "[]");
 
+    const deletedIds = deletedMenus.map((d) => d.id);
+    const filteredDefault = defaultMenus.filter(
+    (m) => !deletedIds.includes(m.id)
+    );
+    
     const localMap = Object.fromEntries(localMenus.map(m => [m.id, m]));
-
-    const mergedMenus = defaultMenus.map(d => localMap[d.id] || d);
-
+    const mergedMenus = filteredDefault.map(d => localMap[d.id] || d);
+    
     const extraMenus = localMenus.filter(
-      (m: MenuItem) => !defaultMenus.some(d => d.id === m.id)
+      (m: MenuItem) => !filteredDefault.some(d => d.id === m.id)
     );
 
     const finalMenus = [...mergedMenus, ...extraMenus];
@@ -90,7 +95,7 @@ export default function DataMenupage() {
               <Button
                 height="mg" width="mg" color="green" stringColor="white"
                 stringSize="mg" onClick={() => {
-                  if (!adding) { setAdding(true); }
+                  if (!adding){ setAdding(true); }
                 }}
               >
                 Add Menu
