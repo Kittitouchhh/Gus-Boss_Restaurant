@@ -3,19 +3,25 @@ import { useState , useEffect } from 'react'
 import Tagmenu from '../../components/tagmenu'
 import TagPrice from '../../components/cart/tagprice'
 import Button from '../../components/button'
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 interface cart{
             menu_id : number,
             menu_name : string,
             menu_price : string,
             menu_image : string,
             order_description : string,
-            user_order : string,
             menu_option : { [key: string]: string } ,
             quantity : number,
+            
 }
 
-function Cart(){
 
+
+
+function Cart(){
+    const navigate = useNavigate();
     let [datacart,Setdatacart] = useState<cart[]>([])
     useEffect(() => {
         const datacartFromStorage = localStorage.getItem("cart");
@@ -40,6 +46,35 @@ function Cart(){
     const vat = (datacart.reduce((acc, item) => acc + formatNumber(item.menu_price) * item.quantity, 0) * 0.07);
 
 
+
+    const updateQuantity = (id: number, newQty: number) => {
+    Setdatacart(prev => {
+        const updated = prev.map(item =>
+            item.menu_id === id ? { ...item, quantity: newQty } : item
+        );
+        localStorage.setItem("cart", JSON.stringify(updated));
+        return updated;
+    });
+    };
+
+    
+    function checkcart(){
+        if(datacart.length > 0){
+            navigate('/cart/payment')
+        }
+        else{
+            navigate('/')
+            toast.error('สั่งผิดพลาด!',{
+                                    position:"top-center",
+                                    autoClose:3000,
+                                    hideProgressBar:false,
+                                    closeOnClick:false,
+                                    pauseOnHover:false,
+                                    draggable: false ,
+                                    theme:'colored'
+                        })
+        }
+    }
     
     return(
         
@@ -48,7 +83,7 @@ function Cart(){
             <div className=' flex flex-col gap-[30px] items-center'>
                  {datacart.map((data) => {
                     return(
-                        <Cartcom key={data.menu_id} imgUrl={data.menu_image} title={data.menu_name} onRemove={() => removeItem(data.menu_id)} option={data.menu_option} count={data.quantity} type={1}></Cartcom>
+                        <Cartcom key={data.menu_id} imgUrl={data.menu_image} title={data.menu_name} onRemove={() => removeItem(data.menu_id)} option={data.menu_option} count={data.quantity} type={1} onQuantityChange={(newQty) => updateQuantity(data.menu_id, newQty)}></Cartcom>
                     )
                  })}
             </div> 
@@ -60,7 +95,7 @@ function Cart(){
             </div> 
             
            <div className="w-full flex justify-center">
-                <div className='transform transition-transform duration-200 hover:scale-105 active:scale-95'>
+                <div className='transform transition-transform duration-200 hover:scale-105 active:scale-95' onClick={() => checkcart()}>
                     <Button height="xl" width='xl' color='white' stringColor='brown' stringSize='xl' linkdata='payment'>
                         BUY ALL
                     </Button>

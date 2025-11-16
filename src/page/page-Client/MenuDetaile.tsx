@@ -6,7 +6,7 @@ import Button from '../../components/button'
 import Tagmenu  from '../../components/tagmenu.tsx'
 import CommnetCard from '../../components/detail-menu/commentCard.tsx'
 import axios from 'axios'
-import usersData from "../../data/login.json";
+
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -28,7 +28,6 @@ interface cart{
             menu_price : string,
             menu_image : string,
             order_description : string,
-            user_order : string,
             menu_option : { [key: string]: string } ,
 }
 
@@ -86,17 +85,7 @@ function  Menudetaile(){
     },[datamenu, menuname])
 
 
-    const currentUsername = localStorage.getItem("username");
-
-    const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
-
-    const allUsers = [...usersData, ...localUsers];
-
-    const currentUser = allUsers.find(
-        (u) => u.username.toLowerCase() === currentUsername?.toLowerCase()
-    );
-
-    const displayName = currentUser?.showname || "Unknown";
+    
 
 
     
@@ -110,9 +99,9 @@ function  Menudetaile(){
             menu_price : selectedmenu?.menuPrice || "",
             menu_image : selectedmenu?.imageMenu || "",
             order_description : text ,
-            user_order : displayName,
             menu_option : selectedOptions ,
             quantity : 1,
+            
         }
         const updatedCart = [...datacart, order];
         Setdatacart(updatedCart);

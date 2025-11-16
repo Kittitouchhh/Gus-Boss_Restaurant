@@ -3,21 +3,29 @@ import Button from '../button'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import {Flex,Progress} from "@radix-ui/themes"
+import CountdownProgress from './CountdownProgress'
 
 interface CartProps{
-    imgUrl : string,
-    title : string,
+    imgUrl? : string,
+    title? : string,
     option?: { [key: string]: string },
     onRemove?: () => void,
     count? : number,
-    type : number
+    type? : number,
+    user_image? : string
+    user_name? : string
+    onQuantityChange?: (newQty: number) => void,
+    listmenu? : string[],
+    duration? : number,
+    onFinish?: () => void;
+
 }
 
 
 
 
 
-const Cartcom:React.FC<CartProps> = ({imgUrl , title,onRemove,option ,count,type}) =>{
+const Cartcom:React.FC<CartProps> = ({imgUrl , title,onRemove,option ,count,type ,user_name ,user_image,onQuantityChange,listmenu,duration,onFinish}) =>{
     const [quantity , setquantity] = useState<number>(count ?? 1)
 
 
@@ -38,6 +46,7 @@ const Cartcom:React.FC<CartProps> = ({imgUrl , title,onRemove,option ,count,type
             const newQty = quantity + 1;
             setquantity(newQty);
             updatelocalstorage(newQty);
+            onQuantityChange?.(newQty);
         }
 
     }
@@ -48,6 +57,7 @@ const Cartcom:React.FC<CartProps> = ({imgUrl , title,onRemove,option ,count,type
         if(quantity > 1){
             setquantity(newQty);
             updatelocalstorage(newQty)
+            onQuantityChange?.(newQty);
         }
         else{
             onRemove?.()
@@ -108,37 +118,27 @@ const Cartcom:React.FC<CartProps> = ({imgUrl , title,onRemove,option ,count,type
     }
     else if(type == 2){
         return(
-            <div className='w-[95%] lg:h-[250px] md:h-[180px]  h-auto bg-[#201c19] md:rounded-3xl rounded-xl grid md:grid-cols-3  grid-cols-1   border-amber-100 border-2 justify-center'>
-                <div className='w-full h-full flex flex-row md:p-[10px] p-[5px] lg:gap-[30px] md:gap-[15px] gap-[20px]'>
-                    <img src={imgUrl} alt=""  className='2xl:w-[40%] xl:w-[40%] lg:w-[40%] md:w-[40%] w-[35%] h-[90%] object-cover rounded-xl self-center aspect-[4/3]'/>
-                    <div className='flex flex-col'>
-                        <p className='2xl:text-[32px] xl:text-[26px] lg:text-[22px] md:text-[16px] text-[10px] font-bold'>ORDER USER</p>
-                        <p className='2xl:text-[28px] xl:text-[24px] lg:text-[16px] md:text-[11px] text-[7px]'>{title}</p>
+            <div className='w-[95%]   h-auto bg-[#201c19] md:rounded-3xl rounded-xl grid   grid-cols-3   border-amber-100 border-2 '>
+                <div className='w-full h-full flex md:flex-row flex-col   md:p-[10px] p-[5px] lg:gap-[10px] md:gap-[15px] gap-[10px] justify-center md:items-start'>
+                    <img src={user_image} alt=""  className='2xl:w-[200px] 2xl:h-[200px] xl:w-[200px] xl:h-[200px] lg:w-[150px] lg:h-[150px] md:w-[100px] md:h-[100px] w-[100px] h-[100px] object-cover rounded-full self-center aspect-auto'/>
+                    <div className='flex flex-col md:justify-center md:items-start items-center'>
+                        <p className='2xl:text-[32px] xl:text-[26px] lg:text-[22px] md:text-[16px] text-[8px] font-bold'>ORDER USER</p>
+                        <p className='2xl:text-[28px] xl:text-[24px] lg:text-[16px] md:text-[11px] text-[7px]'>{user_name}</p>
                     </div >
                 </div>
 
-                <div className='w-full h-full md:p-[10px] p-[5px] flex flex-row  lg:gap-[20px] md:gap-[10px] gap-[10px]'>
-                    <div className='2xl:w-[60%] xl:w-[50%] h-full flex flex-col gap-[10px]'>
+                <div className='w-full h-full xl:p-[10px] lg:p-[10px] md:p-[10px] p-[5px] flex flex-row  lg:gap-[20px] md:gap-[10px] gap-[10px]'>
+                    <div className=' h-full flex flex-col gap-[10px]'>
                         <p className='2xl:text-[32px] xl:text-[26px] lg:text-[22px] md:text-[16px] text-[10px] font-bold'>DETAILS</p>
-                        <div className='flex flex-row md:gap-[10px] gap-[5px] flex-wrap '>
-                            {Object.entries(option??{}).map(([key, value]) => (
-                                    <Button height="m" width="l" color="white" stringColor="brown" stringSize="s" > {`${key}: ${value}`}</Button>
-                                )
-                            )}
+                        <div className='w-full flex flex-row px-0 lg:px-[20px] xl:px-0  md:gap-[10px] gap-[5px] flex-wrap justify-center '>
+                           {listmenu?.map((data) => {
+                            return (<Button height="m" width="m" color="white" stringColor="brown" stringSize="s">{data}</Button>);})}
                         </div>
                     </div>
-
-                    <div className='2xl:w-[40%] xl:w-[50%] h-full flex flex-col lg:gap-[20px] md:gap-[10px] gap-[10px]'>
-                        <p className='2xl:text-[32px] xl:text-[26px] lg:text-[22px] md:text-[16px] text-[10px] font-bold'>DESCRIPTION</p>
-                        <Button height="l" width="l" color="brown" stringColor="white" stringSize="l" >EDIT DETIAL</Button>
-                    </div>
-                    
                 </div>
 
-                <div className='flex flex-row justify-center items-center md:m-[0px] m-[10px] '>
-                    <Flex direction="column" gap="4" maxWidth="300px" >
-                        <Progress variant="soft" size='3' duration="30s"/>
-                    </Flex>
+                <div className='flex flex-row justify-center items-center md:m-[0px] m-[10px] max-w-[80%]'>
+                    <CountdownProgress durationSeconds={duration || 30} onFinish={onFinish}></CountdownProgress>
                 </div>
 
             </div>

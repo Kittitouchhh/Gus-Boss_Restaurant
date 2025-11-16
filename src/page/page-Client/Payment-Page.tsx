@@ -6,6 +6,9 @@ import Cartcom  from '../../components/cart/cartcom';
 import  QRCodeStatic from '../../components/cart/qr_code'
 import Button from '../../components/button'
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import usersData from "../../data/login.json";
 
 interface cart{
     menu_id : number,
@@ -14,20 +17,41 @@ interface cart{
     menu_image : string,
     order_description : string,
     user_order : string,
+    userimage : string,
     menu_option : { [key: string]: string } ,
     quantity : number,
+    
+}
+
+interface process{
+    user :  string,
+    user_image : string
+    all_menu:  string[],
+    duration : number
 }
 
 
 
 
 const PaymentPage:React.FC = ({}) => {
+    const currentUsername = localStorage.getItem("username");
     
+    const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
+    
+    const allUsers = [...usersData, ...localUsers];
+    
+    const currentUser = allUsers.find(
+            (u) => u.username.toLowerCase() === currentUsername?.toLowerCase()
+    );
+    
+    const displayName = currentUser?.showname || "Unknown";
+    const displayImage = currentUser?.image || "https://cdn-icons-png.flaticon.com/512/6522/6522516.png";
 
     const navigate = useNavigate();
     
 
     const [datacart,Setdatacart] = useState<cart[]>([])
+    const [dataprocess , setprocss] = useState<process[]>([])
 
     useEffect(()=>{
         const datacartFromStorage = localStorage.getItem("cart");
@@ -38,8 +62,66 @@ const PaymentPage:React.FC = ({}) => {
         else{
             Setdatacart([])
         }
+
+        
+        const dataprocessFromStorage = localStorage.getItem("process");
+        if(dataprocessFromStorage){
+            setprocss(JSON.parse(dataprocessFromStorage))
+        }
+        else{
+            setprocss([])
+        }
             
     },[])
+
+    
+
+    function buysuccess( ) {
+        
+        const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+        if (cart.length > 0){
+                const newProcessItem = {
+                user :  displayName,
+                user_image : displayImage , 
+                all_menu:  cart.map((item: any) => item.menu_name),
+                duration : cart.length * 10,
+                }
+
+
+            const new_process = [...dataprocess, newProcessItem] 
+            setprocss(new_process);    
+            localStorage.setItem("process", JSON.stringify(new_process));
+
+            
+            localStorage.removeItem('cart');
+            Setdatacart([])
+
+            navigate('/process')
+
+            toast.success('สั่งซื้อสำเร็จ!',{
+                        position:"top-center",
+                        autoClose:3000,
+                        hideProgressBar:false,
+                        closeOnClick:false,
+                        pauseOnHover:false,
+                        draggable: false ,
+                        theme:'colored'
+            })
+        }
+        else{
+            navigate('/home')
+            toast.error('สั่งผิดพลาด!',{
+                        position:"top-center",
+                        autoClose:3000,
+                        hideProgressBar:false,
+                        closeOnClick:false,
+                        pauseOnHover:false,
+                        draggable: false ,
+                        theme:'colored'
+            })
+        }
+        
+    }
 
     function formatNumber(price : string): number{
         const numberString = price.replace(/[^\d.]/g, '');
@@ -77,7 +159,7 @@ const PaymentPage:React.FC = ({}) => {
                         BACK
                     </Button>
                 </div>
-                <div onClick={() => navigate('process')} className='transform transition-transform duration-200 hover:scale-105 active:scale-95'>
+                <div onClick={() => {buysuccess(); }} className='transform transition-transform duration-200 hover:scale-105 active:scale-95'>
                     <Button height="xl" width='xl' color='white' stringColor='brown' stringSize='xl'>
                         NEXT
                     </Button>
