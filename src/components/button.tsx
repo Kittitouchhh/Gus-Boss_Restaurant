@@ -4,11 +4,11 @@ import{Link} from 'react-router-dom'
 
 interface data {
     
-    height : 's' | 'm' | 'l' | 'xl',
-    width : 's' | 'sm' | 'm' | 'l'| 'xl',
+    height : 's' | 'm' | 'l' | 'xl' | 'mg' | 'mk',
+    width : 's' | 'sm' | 'm' | 'l'| 'xl' | 'mg' | 'mk',
     color : 'brown' | 'white' | 'orange' | 'darkbrown' | 'green' | 'red' | 'gray',
     stringColor : 'white' | 'brown' ,
-    stringSize : 's' | 'm' | 'l'| 'xl' ,
+    stringSize : 's' | 'm' | 'l'| 'xl' | 'mg' | 'mk' ,
     linkdata? : string,
     children: React.ReactNode;
 }
@@ -35,6 +35,13 @@ const Button: React.FC<data> = ({height , width ,color,stringColor,stringSize,li
     else if(stringSize == 'xl'){
         text_size = '2xl:text-[32px] xl:text-[26px] lg:text-[22px] md:text-[16px] text-[10px]'
     }
+     
+    else if (stringSize == 'mg') {
+        text_size = 'md:text-[18px] text-[11px] '
+    }
+    else if (stringSize == 'mk') {
+        text_size = 'text-[15px]  '
+    }
     else{
         text_size = '2xl:text-[28px] xl:text-[24px] lg:text-[16px] md:text-[11px] text-[7px]'
     }
@@ -47,21 +54,31 @@ const Button: React.FC<data> = ({height , width ,color,stringColor,stringSize,li
         color_button = 'bg-[#3D342F]'
     }
     else if (color == 'orange'){
-        color_button = 'bg-[#FFB458]'
+        color_button = 'bg-[#FFA537]'
     }
     else if (color == 'darkbrown'){
         color_button = 'bg-[#251F1D]'
+    }
+    else if (color == 'green') {
+        color_button = 'bg-green-500'
+    }
+    else if (color == 'red') {
+        color_button = 'bg-red-800'
+    }
+    else if (color == 'gray') {
+        color_button = 'bg-gray-700'
     }
     else{
         color_button = 'bg-[#EEDBC4]'
     }
 
 
+
+
     let height_button : string = '';
     if (height == 's'){
         height_button = 'md:max-h-[36px] max-h-[20px]';
     }
-    
     else if (height == 'm'){
         height_button = 'lg:h-[47px] md:h-[30px] h-[24px]';
     }
@@ -71,9 +88,18 @@ const Button: React.FC<data> = ({height , width ,color,stringColor,stringSize,li
     else if (height == 'xl'){
         height_button = '2xl:h-[80px] xl:h-[70px] lg:h-[60px] md:h-[40px] h-[25px]'
     }
+    else if (height == 'mg') {
+        height_button = 'lg:h-[47px] md:h-[50px] h-[40px]';
+    }
+    else if (height == 'mk') {
+        height_button = '';
+    }
     else{
         height_button = 'max-h-[500px]'
     }
+
+
+
 
 
 
@@ -95,6 +121,12 @@ const Button: React.FC<data> = ({height , width ,color,stringColor,stringSize,li
     }
     else if (width == 'xl'){
         width_button = '2xl:w-[500px] xl:w-[450px] lg:w-[350px] md:w-[250px] w-[130px]'
+    }
+    else if (width == 'mg') {
+        width_button = 'lg:w-[90px] xl:w-[140px] md:w-[120px] w-[90px] p-[5px]';
+    }
+    else if (width == 'mk') {
+        width_button = 'w-[90px] lg:w-[150px] p-[5px]';
     }
     else{
         width_button = 'max-w-[500px]';

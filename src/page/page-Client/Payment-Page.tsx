@@ -34,6 +34,7 @@ interface process{
 
 
 const PaymentPage:React.FC = ({}) => {
+
     const currentUsername = localStorage.getItem("username");
     
     const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
@@ -46,6 +47,8 @@ const PaymentPage:React.FC = ({}) => {
     
     const displayName = currentUser?.showname || "Unknown";
     const displayImage = currentUser?.image || "https://cdn-icons-png.flaticon.com/512/6522/6522516.png";
+    const discount = currentUser?.discount || 1 ;
+
 
     const navigate = useNavigate();
     
@@ -129,6 +132,8 @@ const PaymentPage:React.FC = ({}) => {
     }
     const subtotal = datacart.reduce((acc, item) => acc + formatNumber(item.menu_price) * item.quantity, 0);
     const vat = (datacart.reduce((acc, item) => acc + formatNumber(item.menu_price) * item.quantity, 0) * 0.07);
+    const discountcalculate = (subtotal + vat)*discount
+    const totalprice = (subtotal + vat) - discountcalculate
 
     return (
         <div className='w-screen h-screen mt-[150px] xl:mb-[600px] lg:mb-[200px]  mb-[0px]'>
@@ -150,7 +155,8 @@ const PaymentPage:React.FC = ({}) => {
             <div className='lg:gap-[80px] md:gap-[50px] gap-[20px] flex flex-col md:mt-[80px] mt-[50px]'>
                 <TagPrice title = 'Sub Total Price' price={subtotal}></TagPrice>
                 <TagPrice title = 'VAT' price={vat}></TagPrice>
-                <TagPrice title = 'Total Price' price={subtotal +vat}></TagPrice>
+                <TagPrice title = 'Discount Member' price={discountcalculate}></TagPrice>
+                <TagPrice title = 'Total Price' price={totalprice}></TagPrice>
             </div>
             
             <div className='flex flex-row mt-[30px] md:mt-[80px] justify-center md:gap-[30px] gap-[10px]'> 

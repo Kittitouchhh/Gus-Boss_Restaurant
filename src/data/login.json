@@ -1,15 +1,77 @@
 [
-    {
-        "username": "gus",
-        "password": "1111",
-        "role": "admin",
-        "image": "/user/Gus.jpg",
-        "showname": "GUSSUKE"
-    },
-    {
-        "username": "Boss",
-        "password": "2222",
-        "role": "client",
-        "showname": "Bossski"
+  {
+    "username": "gus",
+    "password": "1111",
+    "role": "admin",
+    "image": "/user/Gus.jpg",
+    "showname": "GUSSUKE",
+    "membership": null
+  },
+  {
+    "username": "a",
+    "password": "1111",
+    "role": "client",
+    "image": "/user/Gus.jpg",
+    "showname": "a",
+    "membership": {
+      "isMember": true,
+      "rank": "Bronze",
+      "level": 1,
+      "discount": 0.05,
+      "points": 10,
+      "nextTarget": 100
     }
+  },
+  {
+    "username": "b",
+    "password": "1111",
+    "role": "client",
+    "image": "/user/Gus.jpg",
+    "showname": "b",
+    "membership": {
+      "isMember": true,
+      "rank": "Silver",
+      "level": 2,
+      "discount": 0.10,
+      "points": 50,
+      "nextTarget": 200
+    }
+  },
+  {
+    "username": "c",
+    "password": "1111",
+    "role": "client",
+    "image": "/user/Gus.jpg",
+    "showname": "c",
+    "membership": {
+      "isMember": true,
+      "rank": "Commander",
+      "level": 3,
+      "discount": 0.15,
+      "points": 70,
+      "nextTarget": 300
+    }
+  },
+  {
+    "username": "d",
+    "password": "1111",
+    "role": "client",
+    "image": "/user/Gus.jpg",
+    "showname": "d",
+    "membership": {
+      "isMember": true,
+      "rank": "Conqueror",
+      "level": 4,
+      "discount": 0.20,
+      "points": 100,
+      "nextTarget": 400
+    }
+  },
+  {
+    "username": "Boss",
+    "password": "2222",
+    "role": "client",
+    "showname": "Bossski",
+    "membership": null
+  }
 ]

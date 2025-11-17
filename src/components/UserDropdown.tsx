@@ -34,6 +34,7 @@ const UserDropdown: React.FC<DropdownUserProps> = ({ name, image }) => {
     localStorage.removeItem("username");
     localStorage.removeItem("userRole");
     localStorage.removeItem("currentUser");
+    localStorage.removeItem("cart");
     navigate("/login", { replace: true });
   };
 
