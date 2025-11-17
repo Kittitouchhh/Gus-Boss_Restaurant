@@ -43,11 +43,21 @@ const QRCode: React.FC<QRCodeProps> = ({ amount }) => {
       u.username === currentUser
         ? {
           ...u,
-          points: 0,
-          membership: { rank: "Bronze", level: 1, discount: 0.05, percent: 0, nextTarget: 100, isMember: true }
+          membership: u.membership
+            ? { ...u.membership, isMember: true }      // มีอยู่แล้ว → ใช้เดิม
+            : {                                         // ไม่มี → สร้าง Bronze
+              rank: "Bronze",
+              level: 1,
+              discount: 0.05,
+              points: 0,
+              percent: 0,
+              nextTarget: 100,
+              isMember: true
+            }
         }
         : u
     );
+
     localStorage.setItem("users", JSON.stringify(updatedUsers));
 
 

@@ -13,17 +13,23 @@ export const ranks = [
 
 export default function Memberpage() {
     useEffect(() => {
-    const currentUser =
-        localStorage.getItem("currentUser") || localStorage.getItem("username");
+        const currentUser =
+            localStorage.getItem("currentUser") || localStorage.getItem("username");
 
-    const users = JSON.parse(localStorage.getItem("users") || "[]");
+        const users = JSON.parse(localStorage.getItem("users") || "[]");
 
-    const user = users.find((u: any) => u.username === currentUser);
+        const user = users.find((u: any) => u.username === currentUser);
 
-    if (user && user.membership) {
-        setUserMembership(user.membership);
-    } 
-}, []);
+        if (!user || !user.membership) {
+            setUserMembership(null);
+            return;
+        }
+
+        setUserMembership({
+            ...user.membership,
+            ...CalculateMembership(user.membership.points || 0),
+        });
+    }, []);
 
     const [userMembership, setUserMembership] = useState<any>(null);
 
@@ -70,7 +76,7 @@ export default function Memberpage() {
                         </div>
                     </div>
                 ) : (
-                <div className="hover:text-white transition duration-500  bg-[#D4B8A0] max-w-[739px] hover:bg-gray-800 border-20 border-white hover:border-black transition duration-500  w-[80%] py-5 rounded-xl hover:scale-101 cursor-pointer ">
+                    <div className="hover:text-white transition duration-500  bg-[#D4B8A0] max-w-[739px] hover:bg-gray-800 border-20 border-white hover:border-black transition duration-500  w-[80%] py-5 rounded-xl hover:scale-101 cursor-pointer ">
                         <div className="flex flex-col gap-3">
                             <div className="flex justify-center">
                                 <img src="member/bronze.png" alt="bronze"

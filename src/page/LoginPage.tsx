@@ -22,11 +22,11 @@ export default function LoginPage() {
 
     if (foundUser) {
       localStorage.setItem("currentUser", foundUser.username);
-       localStorage.setItem("authToken", "true");
+      localStorage.setItem("authToken", "true");
 
       // ถ้ายังไม่มี users ใน localStorage ให้สร้างใหม่่
       const savedUsers = JSON.parse(localStorage.getItem("users") || "[]");
-      
+
       const exists = savedUsers.some((u: any) => u.username === foundUser.username);
       if (!exists) {
         savedUsers.push({
@@ -35,8 +35,13 @@ export default function LoginPage() {
           role: foundUser.role || "client",
           showname: foundUser.showname || foundUser.username,
           image: foundUser.image || "",
-          membership: { rank: "Bronze", level: 0, points: 0 }, // default
+          membership: foundUser.membership
+            ? { ...foundUser.membership }
+            : {
+              isMember: false,
+            },
         });
+
         localStorage.setItem("users", JSON.stringify(savedUsers));
       }
       navigate("/");
