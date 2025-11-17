@@ -13,51 +13,20 @@ export const ranks = [
 
 export default function Memberpage() {
     useEffect(() => {
-        const users = JSON.parse(localStorage.getItem("users") || "[]");
+    const currentUser =
+        localStorage.getItem("currentUser") || localStorage.getItem("username");
 
-        const updatedUsers = users.map((u: any) => {
-            if (!u.membership) {
-                u.membership = {
-                    isMember: false,
-                    rank: "Bronze",
-                    level: 1,
-                    discount: 0.05,
-                    point: 0,
-                    nextTarget: 100
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
 
-                };
-            } else if (u.membership.isMember === undefined) {
-                u.membership.isMember = false;
-            }
-            return u;
-        });
+    const user = users.find((u: any) => u.username === currentUser);
 
-        localStorage.setItem("users", JSON.stringify(updatedUsers));
-    }, []);
+    if (user && user.membership) {
+        setUserMembership(user.membership);
+    } 
+}, []);
 
     const [userMembership, setUserMembership] = useState<any>(null);
 
-    useEffect(() => {
-        const currentUser =
-            localStorage.getItem("currentUser") || localStorage.getItem("username");
-
-        const users = JSON.parse(localStorage.getItem("users") || "[]");
-
-        const user = users.find((u: any) => u.username === currentUser);
-
-        if (user && user.membership) {
-            const calmember = CalculateMembership(user.points || 0);
-
-            const membership = {
-                ...calmember,
-                ...user.membership
-            };
-            setUserMembership(membership);
-        }
-        else {
-            setUserMembership(null);
-        }
-    }, []);
 
     return (
         <>
@@ -76,7 +45,7 @@ export default function Memberpage() {
                 </div>
             </div>
             <div className="my-10 flex justify-center  ">
-                {userMembership?.isMember === true ? (
+                {userMembership?.isMember ? (
                     <div className="hover:text-white transition duration-500  bg-[#D4B8A0] max-w-[739px] border-20 border-white hover:border-black transition duration-500  w-[80%] py-5 rounded-xl hover:scale-101 cursor-pointer ">
                         <div className=" flex flex-col items-center gap-4 text-white">
                             <img
