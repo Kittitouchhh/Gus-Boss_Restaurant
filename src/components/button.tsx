@@ -6,7 +6,7 @@ interface data {
     
     height : 's' | 'm' | 'l' | 'xl',
     width : 's' | 'sm' | 'm' | 'l'| 'xl',
-    color : 'brown' | 'white' | 'orange' | 'darkbrown',
+    color : 'brown' | 'white' | 'orange' | 'darkbrown' | 'green' | 'red' | 'gray',
     stringColor : 'white' | 'brown' ,
     stringSize : 's' | 'm' | 'l'| 'xl' ,
     linkdata? : string,

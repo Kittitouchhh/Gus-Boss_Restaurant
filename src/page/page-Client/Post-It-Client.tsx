@@ -27,15 +27,32 @@ interface Banner{
 function PostIt(){
     const [datapostit , Setdatapostit] = useState<PostitProps[]>([])
     let [databanner , Setbanner] = useState<Banner[]>([])
-     
     // popup postit
     const [isCommentOpen, setIsCommentOpen] = useState(false);
-    
+
+    const [rerender, setRerender] = useState<number>(0);
+
+   function loaddatapostit(){
+    setRerender(prev => prev + 1)
+   }
+
+   useEffect(()=>{
+    const postitFromLocal = localStorage.getItem("postit")
+    if(postitFromLocal){
+        Setdatapostit(JSON.parse(postitFromLocal))
+    }
+    else{
+        Setdatapostit([])
+    }
+   },[rerender])
+        
      
     useEffect( () => {
         const fetchMenu = async () => {
             try{
-                
+                loaddatapostit();
+
+
                 // banner local get
                 const bannerJson1 = await axios.get<Banner[]>("/dataclient/carousalitem.json")
                 const bannerJson2 = await axios.get<Banner[]>("/dataclient/carousalitempostit.json")
@@ -65,6 +82,8 @@ function PostIt(){
 
         fetchMenu()
 
+        
+
         const postitFromLocal = localStorage.getItem("postit")
         if(postitFromLocal){
             Setdatapostit(JSON.parse(postitFromLocal))
@@ -72,13 +91,11 @@ function PostIt(){
         else{
             Setdatapostit([])
         }
-
-
         
 
     },[])
 
-
+    
 
 
     return(
@@ -97,7 +114,7 @@ function PostIt(){
                 {
                     datapostit.map((data) => {
                         return(
-                            <PostItCard post_id={data.post_id} username ={data.username} imguser = {data.userImage} content={data.content} love={data.love} star={data.star} wow={data.wow} angry={data.angry} ></PostItCard>
+                            <PostItCard post_id={data.post_id} username ={data.username} imguser = {data.userImage} content={data.content} love={data.love} star={data.star} wow={data.wow} angry={data.angry}  update={loaddatapostit}></PostItCard>
                         )
                     })
                 }

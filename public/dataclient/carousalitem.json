@@ -2,19 +2,22 @@
     {
         "id" : 1 ,
         "image" : "/carousalHome/cafe store.jpg",
-        "page" : "home"
+        "page" : "home",
+        "status" : 1 
 
     },
     {
         "id" : 2 ,
         "image" : "/carousalHome/cafe store1.jpg",
-        "page" : "home"
+        "page" : "home",
+        "status" : 1 
 
     },
     {
         "id" : 3 ,
         "image" : "/carousalHome/cafe store2.jpg",
         "page" : "home"
+        ,"status" : 1 
 
     }
 ]

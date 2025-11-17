@@ -2,16 +2,19 @@
     {
         "id" : 1 ,
         "image" : "/carousalpostit/PostIt1.png",
-        "page" : "postit"
+        "page" : "postit",
+        "status" : 1
     },
     {
         "id" : 2 ,
         "image" : "/carousalpostit/PostIt2.png",
-        "page" : "postit"
+        "page" : "postit",
+        "status" : 1
     },
     {
         "id" : 3 ,
         "image" : "/carousalpostit/PostIt3.png",
-        "page" : "postit"
+        "page" : "postit",
+        "status" : 1 
     }
 ]

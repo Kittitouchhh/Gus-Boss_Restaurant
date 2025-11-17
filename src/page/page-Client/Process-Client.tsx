@@ -1,6 +1,7 @@
 import React , {useState , useEffect} from 'react'
 import Cartcom from '../../components/cart/cartcom'
 import { div } from 'framer-motion/client'
+import Tagmenu from '../../components/tagmenu'
 
 
 interface process{
@@ -38,7 +39,9 @@ function ProcessOrder(){
    
 
     return(
+
         <div className='mt-[120px] mb-[900px]'>
+            <Tagmenu title="PROCESS"></Tagmenu>
             <div className='flex flex-col items-center gap-[20px]'>
                 {dataprocess.map((data , index)=>{
                 return(

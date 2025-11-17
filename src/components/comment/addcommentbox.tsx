@@ -110,6 +110,7 @@ const Addcommentbox:React.FC<Props> = ({onClose ,image,menu_name,type}) => {
                 draggable: false ,// ลากไปวางที่อื่นไม่ได้
                 theme:'colored'})
             console.log(postitlist)
+            window.location.reload()
         }   
         else{
             toast.error('กรุณาพิมพ์ข้อความ!',{

@@ -1,7 +1,8 @@
 import React, { useState , useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, parseCSSVariable } from "framer-motion";
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import usersData from "../../data/login.json";
 
 interface PostItCardProps {
   post_id : number,
@@ -12,16 +13,28 @@ interface PostItCardProps {
   star: number;
   wow: number;
   angry: number;
+  update:() => void
   
 }
 
-const PostItCard: React.FC<PostItCardProps> = ({ post_id,username,imguser,content,love,star,wow,angry,}) => {
+interface savepostreaction{
+  post_id : number
+  hasreact : boolean ,
+  user : string,
+
+}
+
+const PostItCard: React.FC<PostItCardProps> = ({ post_id,username,imguser,content,love,star,wow,angry,update}) => {
   const [islove, Setlove] = useState<number>(love);
   const [iswow, Setwow] = useState<number>(wow);
   const [isstar, Setstar] = useState<number>(star);
   const [isangry, Setangry] = useState<number>(angry);
   const [hasreact , Sethasreact] = useState<boolean>(false)
   const [datapostit , Setdatapostit] = useState<PostItCardProps[]>([])
+  const [displayName , SetName] = useState<string>("")
+  const [displayImage , SetImage] = useState<string>("")
+  const [datahasreact , setdatareact] = useState<savepostreaction[]>([])
+
 
   useEffect(() =>{
 
@@ -32,9 +45,52 @@ const PostItCard: React.FC<PostItCardProps> = ({ post_id,username,imguser,conten
         else{
             Setdatapostit([])
         }
+
+
+        const currentUsername = localStorage.getItem("username");
+
+        const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
+
+        const allUsers = [...usersData, ...localUsers];
+
+        const currentUser = allUsers.find(
+            (u) => u.username.toLowerCase() === currentUsername?.toLowerCase()
+        );
+
+        SetName(currentUser?.showname || "Unknown");
+        SetImage(currentUser?.image || "https://cdn-icons-png.flaticon.com/512/6522/6522516.png");
+
+
+        // =======================================
+        const datahasreactFromStorage = localStorage.getItem("hasreact");
+        if(datahasreactFromStorage){
+            setdatareact(JSON.parse(datahasreactFromStorage))
+        }
+        else{
+            setdatareact([])
+        }
+
   },[])
 
   function reaction(type: "love" | "wow" | "star" | "angry") {
+  
+
+  const alreadyreact = datahasreact.find((item) => item.user === displayName && item.post_id === post_id);
+
+  if(alreadyreact){
+    toast.error('คุณโหวตไปแล้ว!', {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      theme: 'colored'
+    });
+    return;
+  }
+  
+
   if (hasreact) {
     toast.error('คุณโหวตไปแล้ว!', {
       position: "top-center",
@@ -48,7 +104,7 @@ const PostItCard: React.FC<PostItCardProps> = ({ post_id,username,imguser,conten
     return;
   }
 
-  let newvalue: number;
+  let newvalue: number ;
 
   switch(type) {
     case "love":
@@ -76,6 +132,35 @@ const PostItCard: React.FC<PostItCardProps> = ({ post_id,username,imguser,conten
   Setdatapostit(updated);
   localStorage.setItem("postit", JSON.stringify(updated));
   Sethasreact(true);
+
+  toast.success('โหวตเเล้ว!', {
+    position: "top-center",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: false,
+    pauseOnHover: false,
+    draggable: false,
+    theme: 'colored'
+  });
+
+
+  const oldData = JSON.parse(localStorage.getItem("hasreact") || "[]"); 
+
+
+  const newhasreact = {
+    post_id : post_id,
+    hasreact : true ,
+    user : displayName,
+  }
+  
+  const updatehasreact =  [...oldData, newhasreact]
+  setdatareact(updatehasreact)
+  localStorage.setItem("hasreact", JSON.stringify(updatehasreact));
+
+  update();
+  window.location.reload()
+
+
 }
 
 
