@@ -83,7 +83,7 @@ function Cart(){
             <div className=' flex flex-col gap-[30px] items-center'>
                  {datacart.map((data) => {
                     return(
-                        <Cartcom key={data.menu_id} id_menu={data.menu_id} imgUrl={data.menu_image} title={data.menu_name} onRemove={() => removeItem(data.menu_id)} option={data.menu_option} count={data.quantity} type={1} onQuantityChange={(newQty) => updateQuantity(data.menu_id, newQty)}></Cartcom>
+                        <Cartcom key={data.menu_id} id_menu={data.menu_id} imgUrl={data.menu_image} title={data.menu_name} onRemove={() => removeItem(data.menu_id)} option={data.menu_option} description={data.order_description} count={data.quantity} type={1} onQuantityChange={(newQty) => updateQuantity(data.menu_id, newQty)}></Cartcom>
                     )
                  })}
             </div> 

@@ -20,6 +20,7 @@ interface CartProps{
     listmenu? : string[],
     duration? : number,
     onFinish?: () => void;
+    description? : string
 
 }
 
@@ -27,9 +28,9 @@ interface CartProps{
 
 
 
-const Cartcom:React.FC<CartProps> = ({id_menu,imgUrl , title,onRemove,option ,count,type ,user_name ,user_image,onQuantityChange,listmenu,duration,onFinish}) =>{
+const Cartcom:React.FC<CartProps> = ({id_menu,imgUrl , title,onRemove,option ,count,type ,user_name ,user_image,onQuantityChange,listmenu,duration,onFinish , description }) =>{
     const [quantity , setquantity] = useState<number>(count ?? 1)
-
+    
 
 
     function updatelocalstorage(newQty : number){
@@ -82,6 +83,8 @@ const Cartcom:React.FC<CartProps> = ({id_menu,imgUrl , title,onRemove,option ,co
     // popup comment
     const [isCommentOpen, setIsCommentOpen] = useState(false);
 
+    const [isdescriptionpen, setdescriptionOpen] = useState(false);
+
 
 
     if(type == 1)
@@ -109,7 +112,10 @@ const Cartcom:React.FC<CartProps> = ({id_menu,imgUrl , title,onRemove,option ,co
 
                 <div className='2xl:w-[40%] xl:w-[50%] h-full flex flex-col lg:gap-[20px] md:gap-[10px] gap-[10px]'>
                     <p className='2xl:text-[32px] xl:text-[26px] lg:text-[22px] md:text-[16px] text-[10px] font-bold'>DESCRIPTION</p>
-                    <Button height="l" width="l" color="brown" stringColor="white" stringSize="l" >EDIT DETIAL</Button>
+                    <div onClick={() => {setdescriptionOpen(!isdescriptionpen)}}>
+                        <Button height="l" width="l" color="brown" stringColor="white" stringSize="l" >EDIT DETIAL</Button>
+                    </div>
+                    {isdescriptionpen && <Addcommentbox onClose={() => setdescriptionOpen(false)}  menucartid={id_menu} description={description} type={3}></Addcommentbox>}                    
                 </div>
                 
             </div>
@@ -125,6 +131,7 @@ const Cartcom:React.FC<CartProps> = ({id_menu,imgUrl , title,onRemove,option ,co
         </div>
     )
     }
+
     else if(type == 2){
         return(
             <div className='w-[95%]   h-auto bg-[#201c19] md:rounded-3xl rounded-xl grid   grid-cols-3   border-amber-100 border-2 '>

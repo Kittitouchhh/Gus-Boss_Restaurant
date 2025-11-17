@@ -9,6 +9,8 @@ interface Props {
     image? : string,
     menu_name? : string,
     type : number
+    menucartid? : number ,
+    description? : string
 
 }
 
@@ -31,9 +33,19 @@ interface PostitProps{
     content : string
 }
 
+interface cart{
+            menu_id : number,
+            menu_name : string,
+            menu_price : string,
+            menu_image : string,
+            order_description : string,
+            menu_option : { [key: string]: string } ,
+
+}
 
 
-const Addcommentbox:React.FC<Props> = ({onClose ,image,menu_name,type}) => {
+
+const Addcommentbox:React.FC<Props> = ({menucartid,onClose ,image,menu_name,type,description}) => {
     const [typefeel , setfeel ] = useState<boolean>(false)
     const [displayName , SetName] = useState<string>("")
     const [displayImage , SetImage] = useState<string>("")
@@ -41,6 +53,9 @@ const Addcommentbox:React.FC<Props> = ({onClose ,image,menu_name,type}) => {
     const [postitText, setpostitText] = useState<string>("");
     const [commentlist, setcomment] = useState<CommentProps[]>([])
     const [postitlist , setpostitlist] = useState<PostitProps[]>([])
+    const [datacart , Setdatacart] = useState<cart[]>([])
+
+    const [descriptionstate , setdescription] = useState<string>(description || "")
 
 
 
@@ -80,8 +95,17 @@ const Addcommentbox:React.FC<Props> = ({onClose ,image,menu_name,type}) => {
         }
 
 
+        const datacartFromStorage = localStorage.getItem("cart");
+        if(datacartFromStorage){
+            Setdatacart(JSON.parse(datacartFromStorage))
+        }
+        else{
+            Setdatacart([])
+        }
+
 
     },[])
+    
 
     function createPostit(){
         const newId = postitlist.length > 0 ? Math.max(...postitlist.map(item => item.post_id)) + 1 : 1;
@@ -126,6 +150,30 @@ const Addcommentbox:React.FC<Props> = ({onClose ,image,menu_name,type}) => {
         
 
     }
+
+//  อัปเดต description
+
+    function updatedescription() {
+
+        const updated = datacart.map(item =>
+        item.menu_id === menucartid
+            ? { ...item, order_description: descriptionstate }
+            : item);
+
+        Setdatacart(updated);
+        localStorage.setItem("cart", JSON.stringify(updated));
+        toast.success('เพิ่มคอมเม้นต์เเล้ว!',{
+                position:"top-center",
+                autoClose:3000,
+                hideProgressBar:false,
+                closeOnClick:false,
+                pauseOnHover:false,
+                draggable: false ,
+                theme:'colored'})
+        window.location.reload()
+    }
+
+
 
 
 
@@ -197,7 +245,7 @@ const Addcommentbox:React.FC<Props> = ({onClose ,image,menu_name,type}) => {
             </div>
         )
     }
-    else{
+    else if(type == 2){
         return (
             <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50 shadow-lg shadow-black/90">
                 <div className="bg-[#EEDBC4] xl:w-[40%] lg:w-[60%] md:w-[60%] w-[85%] xl:h-[70%] lg:h-[80%] md:h-[60%] h-[50%] border-4 border-[#251F1D] rounded-xl md:p-[30px] p-[20px] relative flex flex-col gap-[10px]">
@@ -228,6 +276,44 @@ const Addcommentbox:React.FC<Props> = ({onClose ,image,menu_name,type}) => {
 
                     <div className='flex flex-row justify-end items-center' >
                         <div className='transform transition-transform duration-200 hover:scale-105 active:scale-95'  onClick={() => createPostit()}>
+                            <Button height='m' width='m' color='brown' stringColor='white' stringSize='s'  >SUBMIT</Button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+    else{
+        return (
+            <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50 shadow-lg shadow-black/90">
+                <div className="bg-[#EEDBC4] xl:w-[40%] lg:w-[60%] md:w-[60%] w-[85%] xl:h-[70%] lg:h-[80%] md:h-[60%] h-[50%] border-4 border-[#251F1D] rounded-xl md:p-[30px] p-[20px] relative flex flex-col gap-[10px]">
+
+                    <button
+                        className="absolute top-3 right-3 text-[#251F1D] text-xl font-bold"
+                        onClick={() => {onClose() , toast.error('ยกเลิกการเขียน Description เเล้ว!',{
+                    position:"top-center",
+                    autoClose:3000,
+                    hideProgressBar:false,
+                    closeOnClick:false,
+                    pauseOnHover:false,
+                    draggable: false ,// ลากไปวางที่อื่นไม่ได้
+                    theme:'colored'})}}
+                    >
+                        ✕
+                    </button>
+
+                    <h1 className="md:text-xl text-[16px] font-bold text-[#251F1D]">
+                        Description : {displayName}
+                    </h1>
+
+                    <div className='w-[100%] h-[100%] bg-white rounded-xl'>
+                        <form className="w-full h-full">
+                            <textarea placeholder='บอกความรู้สึกของคุณให้คนอื่นรู้สิ' className='md:p-[10px] p-[5px] text-[#251F1D] w-full h-full  border-none outline-none resize-none  overflow-y-auto' value={descriptionstate}  onChange={(e) => setdescription(e.target.value)}></textarea>
+                        </form>
+                    </div>
+
+                    <div className='flex flex-row justify-end items-center' >
+                        <div className='transform transition-transform duration-200 hover:scale-105 active:scale-95'  onClick={() => updatedescription()}>
                             <Button height='m' width='m' color='brown' stringColor='white' stringSize='s'  >SUBMIT</Button>
                         </div>
                     </div>
