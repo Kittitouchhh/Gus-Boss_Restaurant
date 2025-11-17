@@ -16,6 +16,9 @@ import Paymenmberpage from "./page/paymemberPage";
 import LoginPage from "./page/LoginPage";
 import SignupPage from "./page/SignupPage";
 
+
+
+
 export default function App() {
   const location = useLocation(); 
   const isAuthPage =
