@@ -8,12 +8,12 @@ type CardBannerProps = {
 
 export default function CardBanner({ banner, setBanner }: CardBannerProps) {
   return (
-    <div className="flex justify-between ml-5 bg-[#fba542] w-270 items-center">
-      <div className="w-120 h-50 m-2 overflow-hidden">
-        <img className="shadow-2xl object-fill" src={banner.image} alt="banner" />
+    <div className=" m-3 pt-3 bg-black">
+      <div className="w-[90%] m-auto">
+        <img className="" src={banner.image} alt="banner" />
       </div>
 
-      <div className="mr-25 bg-black w-120 flex justify-center">
+      <div className="mt-2 flex items-center justify-center">
         <StatusButton item={banner}setItems={setBanner}storageKey="banner"/>
       </div>
     </div>

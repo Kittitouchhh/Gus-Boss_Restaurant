@@ -3,16 +3,18 @@ import { useState } from "react";
 type StatusButtonProps<T> = {
   item: T;
   setItems: React.Dispatch<React.SetStateAction<T[]>>;
-  storageKey: string; // "menu" หรือ "banner"
+  storageKey: string; 
+
 };
 
 export default function StatusButton<
   T extends { id: number | string; status: number }
->({
-  item,
-  setItems,
-  storageKey,
+>({item,setItems,storageKey,
+
+
+
 }: StatusButtonProps<T>) {
+
   const [status, setStatus] = useState<number>(item.status);
 
   const toggleStatus = () => {

@@ -29,8 +29,8 @@ export default function BannerPage() {
                     </div>
         
                 </div>
-                <div className="bg-[#fba542] h-screen">
-                    <div>
+                <div className="bg-[#2B2420]">
+                    <div className="grid md:grid-cols-2 p-3">
                         {banner.map((b)=>(
                             <CardBanner 
                             key={b.id}
