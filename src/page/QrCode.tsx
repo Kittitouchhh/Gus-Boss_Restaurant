@@ -44,7 +44,7 @@ const QRCode: React.FC<QRCodeProps> = ({ amount }) => {
         ? {
           ...u,
           points: 0,
-          membership: { rank: "Bronze", level: 1, discount: 0.05, percent: 0, nextTarget: 100 }
+          membership: { rank: "Bronze", level: 1, discount: 0.05, percent: 0, nextTarget: 100, isMember: true }
         }
         : u
     );
@@ -55,7 +55,7 @@ const QRCode: React.FC<QRCodeProps> = ({ amount }) => {
     setTimeout(() => {
       navigate("/memberpage");
       window.location.reload();
-    }, 2000);
+    }, 1000);
   };
 
   return (

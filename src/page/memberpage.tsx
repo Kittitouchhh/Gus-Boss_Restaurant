@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import RankCard from "../components/showdiscount"
+import RankCard from "../components/Rankcard";
 import { Link } from "react-router-dom"
 import CalculateMembership from "../utils/calculateMembership";
 
@@ -24,6 +24,7 @@ export default function Memberpage() {
                     discount: 0.05,
                     point: 0,
                     nextTarget: 100
+
                 };
             } else if (u.membership.isMember === undefined) {
                 u.membership.isMember = false;
@@ -37,14 +38,23 @@ export default function Memberpage() {
     const [userMembership, setUserMembership] = useState<any>(null);
 
     useEffect(() => {
-        const currentUser = localStorage.getItem("currentUser") || localStorage.getItem("username");
+        const currentUser =
+            localStorage.getItem("currentUser") || localStorage.getItem("username");
+
         const users = JSON.parse(localStorage.getItem("users") || "[]");
+
         const user = users.find((u: any) => u.username === currentUser);
 
         if (user && user.membership) {
-            const membership = CalculateMembership(user.points || 0);
+            const calmember = CalculateMembership(user.points || 0);
+
+            const membership = {
+                ...calmember,
+                ...user.membership
+            };
             setUserMembership(membership);
-        } else {
+        }
+        else {
             setUserMembership(null);
         }
     }, []);
@@ -66,26 +76,7 @@ export default function Memberpage() {
                 </div>
             </div>
             <div className="my-10 flex justify-center  ">
-            {!userMembership ? (
-                <div className="hover:text-white transition duration-500  bg-[#D4B8A0] max-w-[739px] hover:bg-gray-800 border-20 border-white hover:border-black transition duration-500  w-[80%] py-5 rounded-xl hover:scale-101 cursor-pointer ">
-                    <div className="flex flex-col gap-3">
-                            <div className="flex justify-center">
-                                <img src="member/bronze.png" alt="bronze"
-                                    className="cursor-pointer w-20 h-20 md:h-30 md:w-30 hover:scale-110" />
-                            </div>
-                            <div className=" text-center font-bold md:text-2xl ">
-                                <p className="hover:text-orange-500">YOUR MEMBERSHIP RANK</p>
-                                <p className="text-white hover:text-orange-500">RANK MEMBERSHIP</p>
-                            </div>
-                            <Link to={"/paymenmberpage"}>
-                                <button
-                                    className="transition duration-500  md:p-3 cursor-pointer hover:scale-110 bg-red-600 md:font-bold text-[#EEDBC4] px-2 py-1 rounded-xl flex m-auto">
-                                    BUY MEMBERSHIP
-                                </button>
-                            </Link>
-                        </div>
-                    </div>
-                    ) : (
+                {userMembership?.isMember === true ? (
                     <div className="hover:text-white transition duration-500  bg-[#D4B8A0] max-w-[739px] border-20 border-white hover:border-black transition duration-500  w-[80%] py-5 rounded-xl hover:scale-101 cursor-pointer ">
                         <div className=" flex flex-col items-center gap-4 text-white">
                             <img
@@ -109,9 +100,28 @@ export default function Memberpage() {
                             </p>
                         </div>
                     </div>
-                    )}
-                </div>
-            
+                ) : (
+                <div className="hover:text-white transition duration-500  bg-[#D4B8A0] max-w-[739px] hover:bg-gray-800 border-20 border-white hover:border-black transition duration-500  w-[80%] py-5 rounded-xl hover:scale-101 cursor-pointer ">
+                        <div className="flex flex-col gap-3">
+                            <div className="flex justify-center">
+                                <img src="member/bronze.png" alt="bronze"
+                                    className="cursor-pointer w-20 h-20 md:h-30 md:w-30 hover:scale-110" />
+                            </div>
+                            <div className=" text-center font-bold md:text-2xl ">
+                                <p className="hover:text-orange-500">YOUR MEMBERSHIP RANK</p>
+                                <p className="text-white hover:text-orange-500">RANK MEMBERSHIP</p>
+                            </div>
+                            <Link to={"/paymenmberpage"}>
+                                <button
+                                    className="transition duration-500  md:p-3 cursor-pointer hover:scale-110 bg-red-600 md:font-bold text-[#EEDBC4] px-2 py-1 rounded-xl flex m-auto">
+                                    BUY MEMBERSHIP
+                                </button>
+                            </Link>
+                        </div>
+                    </div>
+                )}
+            </div>
+
             <div className="bg-[#28221F] rounded-[25px] shadow-xl  mb-5 mx-2  ">
                 <div className="cursor-pointer hover:text-orange-500 transition duration-500  text-center text-white  text-[50px] font-bold">DisCount</div>
                 <div className=" md:pb-10 flex flex-wrap gap-3 items-center justify-center">

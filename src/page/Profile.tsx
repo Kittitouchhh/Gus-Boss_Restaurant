@@ -1,5 +1,4 @@
-import { useState, useEffect, useRef } from "react";
-import ImageUploader from "../components/ImageUploader";
+import { useState, useEffect } from "react";
 
 export default function ProfileSetting() {
   const [showFormPassword, setShowFormPassword] = useState(false);
@@ -9,7 +8,6 @@ export default function ProfileSetting() {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const uploaderRef = useRef<{ openFileDialog: () => void }>(null);
 
   // โหลดข้อมูลโปรไฟล์จาก localStorage
   useEffect(() => {
@@ -26,22 +24,29 @@ export default function ProfileSetting() {
     }
   }, []);
 
-  // อัปโหลดรูปใหม่
-  const handleImageUploaded = (url: string) => {
-    const username =
-      localStorage.getItem("currentUser") || localStorage.getItem("username");
-    if (!username) return;
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
 
-    setImageUrl(url);
+    const reader = new FileReader();
+    reader.onload = () => {
+      const base64Image = reader.result as string;
+      setImageUrl(base64Image);
 
-    const users = JSON.parse(localStorage.getItem("users") || "[]");
-    const idx = users.findIndex((u: any) => u.username === username);
+      const username =
+        localStorage.getItem("currentUser") || localStorage.getItem("username");
+      if (!username) return;
 
-    if (idx !== -1) {
-      users[idx].image = url;
-      localStorage.setItem("users", JSON.stringify(users));
-      alert("อัปโหลดรูปใหม่เรียบร้อยแล้ว!");
-    }
+      const users = JSON.parse(localStorage.getItem("users") || "[]");
+      const idx = users.findIndex((u: any) => u.username === username);
+
+      if (idx !== -1) {
+        users[idx].image = base64Image;
+        localStorage.setItem("users", JSON.stringify(users));
+        alert("อัปโหลดรูปใหม่เรียบร้อยแล้ว!");
+      }
+    };
+    reader.readAsDataURL(file);
   };
 
   // บันทึกชื่อใหม่
@@ -118,18 +123,16 @@ export default function ProfileSetting() {
             alt="Profile"
             className="w-[120px] h-[120px] rounded-full object-cover border-2 border-[#3D342F] mb-3"
           />
-          <button
-            onClick={() => uploaderRef.current?.openFileDialog()}
-            className="cursor-pointer bg-[#3D342F] text-white py-2 px-4 rounded hover:bg-[#6b5e55] duration-300"
-          >
+
+          <label className="cursor-pointer bg-[#3D342F] text-white py-2 px-4 rounded hover:bg-[#6b5e55] duration-300">
             Upload New Photo
-          </button>
-          <ImageUploader
-            ref={uploaderRef}
-            folder="profile"
-            label=""
-            onUploaded={handleImageUploaded}
-          />
+            <input
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={handleFileChange}
+            />
+          </label>
         </div>
 
         {/* ชื่อแสดงผล */}

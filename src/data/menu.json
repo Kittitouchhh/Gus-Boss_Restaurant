@@ -3,7 +3,7 @@
     "id": 1,
     "name": "GREEN TEA",
     "price": 25,
-    "status": "Available",
+    "status": 1,
     "image": "/drink/2.png",
     "type": "Tea"
   },
@@ -11,7 +11,7 @@
     "id": 2,
     "name": "Peppermint Tea ",
     "price": 35,
-    "status": "Available",
+    "status": 1,
     "image": "/drink/4.png",
     "type": "Tea"
   },
@@ -19,7 +19,7 @@
     "id": 3,
     "name": "THAI ICED TEA",
     "price": 15,
-    "status": "Available",
+    "status": 1,
     "image": "/drink/3.png",
     "type": "Tea"
   },
@@ -27,7 +27,7 @@
     "id": 4,
     "name": "CHAMOMILE TEA ",
     "price": 25,
-    "status": "Available",
+    "status": 1,
     "image": "/drink/1.png",
     "type": "Tea"
   },
@@ -35,7 +35,7 @@
     "id": 5,
     "name": "LEMON TEA",
     "price": 30,
-    "status": "Available",
+    "status": 1,
     "image": "/drink/5.png",
     "type": "Tea"
   },
@@ -43,7 +43,7 @@
     "id": 6,
     "name": "Oolong Tea",
     "price": 10,
-    "status": "Available",
+    "status": 1,
     "image": "/drink/6.png",
     "type": "Tea"
   },
@@ -51,7 +51,7 @@
     "id": 7,
     "name": "White Tea",
     "price": 25,
-    "status": "Available",
+    "status": 1,
     "image": "/drink/7.png",
     "type": "Tea"
   },
@@ -59,7 +59,7 @@
     "id": 8,
     "name": "Earl Grey Tea",
     "price": 10,
-    "status": "Available",
+    "status": 1,
     "image": "/drink/8.png",
     "type": "Tea"
   },
@@ -67,7 +67,7 @@
     "id": 9,
     "name": "Black Tea",
     "price": 20,
-    "status": "Available",
+    "status": 1,
     "image": "/drink/9.png",
     "type": "Tea"
   },
@@ -75,7 +75,7 @@
     "id": 10,
     "name": "Mint Tea",
     "price": 22,
-    "status": "Available",
+    "status": 1,
     "image": "/drink/10.png",
     "type": "Tea"
   },
@@ -83,7 +83,7 @@
     "id": 11,
     "name": "Latte",
     "price": 45,
-    "status": "Available",
+    "status": 1,
     "image": "/drink/coffee1.png",
     "type": "Coffee"
   },
@@ -91,7 +91,7 @@
     "id": 12,
     "name": "Iced Americano",
     "price": 40,
-    "status": "Available",
+    "status": 1,
     "image": "/drink/coffee2.png",
     "type": "Coffee"
   }

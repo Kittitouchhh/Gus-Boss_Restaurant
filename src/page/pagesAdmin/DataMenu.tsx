@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import MenuData from "../../data/menu.json"
 import CardMenuAdmin from "../../components/Admin/CrudAdmin/CardMenu";
 import SearchBar from "../../components/searchbarcomponent";
 import Select from "../../components/selecthbar";
@@ -9,7 +8,7 @@ export type MenuItem = {
   id: number;
   name: string;
   price: number;
-  status: "Available" | "Sold Out";
+  status: number;
   image: string;
   type: string;
 };
@@ -21,32 +20,14 @@ export default function DataMenupage() {
   const [type, setType] = useState("");
 
   useEffect(() => {
-    const defaultMenus = MenuData as MenuItem[];
-    const localMenus: MenuItem[] = JSON.parse(localStorage.getItem("menu") || "[]");
-    const deletedMenus: MenuItem[] = JSON.parse(localStorage.getItem("deletedMenus") || "[]");
-
-    const deletedIds = deletedMenus.map((d) => d.id);
-    const filteredDefault = defaultMenus.filter(
-    (m) => !deletedIds.includes(m.id)
-    );
-    
-    const localMap = Object.fromEntries(localMenus.map(m => [m.id, m]));
-    const mergedMenus = filteredDefault.map(d => localMap[d.id] || d);
-    
-    const extraMenus = localMenus.filter(
-      (m: MenuItem) => !filteredDefault.some(d => d.id === m.id)
-    );
-
-    const finalMenus = [...mergedMenus, ...extraMenus];
-
-    setMenus(finalMenus);
-    localStorage.setItem("menu", JSON.stringify(finalMenus));
-  }, []);
-
-  const filteredMenus = menu.filter((menu) => {
-    const matchType = type ? menu.type.toLowerCase() === type.toLowerCase() : true;
+  const localMenus: MenuItem[] = JSON.parse(localStorage.getItem("menu") || "[]");
+  setMenus(localMenus);
+}, []);
+  
+  const filteredMenus = menu.filter((item) => {
+    const matchType = type ? item.type.toLowerCase() === type.toLowerCase() : true;
     const matchKeyword = keyword
-      ? menu.name.toLowerCase().includes(keyword.toLowerCase())
+      ? item.name.toLowerCase().includes(keyword.toLowerCase())
       : true;
     return matchType && matchKeyword;
   });
@@ -93,18 +74,13 @@ export default function DataMenupage() {
             <div className="mt-1 flex justify-end mx-5  md:justify-center md:mt-5"
             >
               <Button
-                height="mg" width="mg" color="green" stringColor="white"
-                stringSize="mg" onClick={() => {
-                  if (!adding){ setAdding(true); }
-                }}
+                height="mg" width="mk" color="green" stringColor="white"
+                stringSize="mg" onClick={() => setAdding(true)}
               >
                 Add Menu
               </Button>
             </div>
           </div>
-
-
-
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:w-[60%] xl:m-auto  gap-6 p-6">
           {adding && (
@@ -115,7 +91,7 @@ export default function DataMenupage() {
                 name: "",
                 price: 0,
                 image: "",
-                status: "Available",
+                status: 1,
                 type: "Tea",
               }}
               setMenus={setMenus}

@@ -2,23 +2,49 @@ import { useState, useEffect } from "react";
 import BannerData from "../../data/BannerItem.json"
 import CardBanner from "../../components/Admin/BannerAdmin/CardBanner";
 import AddBanner from "../../components/Admin/BannerAdmin/AddBanner";
+import StatusButton from "../../components/Admin/CrudAdmin/statusbutton";
 
-export type BannerItem = {
-    id: number;
-    image: string;
-    set: string;
-};
+export interface BannerProps{
+  id : number ,
+  image : string,
+  page : string,
+  status: number
+}
 
-export default function Banner() {
-    const [open, setOpen] = useState<boolean>(false)
-    const [banner, setBanner] = useState<BannerItem[]>([]);
+export default function BannerPage() {
+    const [banner, setBanner] = useState<BannerProps[]>([]);
 
     useEffect(() => {
-        setBanner(BannerData as BannerItem[]);
-    }, []);
+    setBanner(BannerData); 
+  }, []);
+  
     return (
-        <div>
-            <div className="mt-15 mb-5 bg-black p-5">
+        <div >
+            <div className="bg-black px-5 pb-5 my-5 ">
+                <div className="w-full justify-center flex ">
+                    <div className="h-15 flex gap-3 justify-items-center">
+                        <button className="mt-2 h-3/4 px-5 text-white duration-500 hover:scale-105 text-[20px] shadow-xl border-3 border-orange-500 bg-black  hover:bg-orange-500 hover:border-orange-600">1</button>
+                        <button className="mt-2 h-3/4 px-5 text-white duration-500 hover:scale-105 text-[20px] shadow-xl border-3 border-orange-500 bg-black   hover:bg-orange-500 hover:border-orange-600">2</button>
+                        <button className="mt-2 h-3/4 px-5 text-white duration-500 hover:scale-105 text-[20px] shadow-xl border-3 border-orange-500 bg-black  hover:bg-orange-500 hover:border-orange-600">3</button>
+                    </div>
+        
+                </div>
+                <div className="bg-[#fba542] h-screen">
+                    <div>
+                        {banner.map((b)=>(
+                            <CardBanner 
+                            key={b.id}
+                            banner={b}
+                            setBanner={setBanner} 
+                            />
+                        ))}
+                    </div>
+                </div>
+                </div>
+            </div>
+    )
+}
+{/* <div className="mt-15 mb-5 bg-black p-5">
                 <h1 className="text-5xl font-bold text-white text-center mb-3 ">BANNER</h1>
                 <div className="justify-center flex gap-1">
                     <button className="mt-5 h-1 min-w-100 w-200 bg-white"></button>
@@ -54,8 +80,4 @@ export default function Banner() {
                         ))}
                     </div>
                 </div>
-            </div>
-
-        </div>
-    )
-}
+            </div> */}

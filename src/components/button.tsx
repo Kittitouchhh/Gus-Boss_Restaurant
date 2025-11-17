@@ -2,12 +2,11 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 interface data {
-
-    height: 's' | 'm' | 'l'| 'mg',
-    width: 's' | 'm' | 'l' | 'mg',
+    height: 's' | 'm' | 'l'| 'mg' | 'mk',
+    width: 's' | 'm' | 'l' | 'mg' | 'mk',
     color: 'brown' | 'white' | 'orange'  | 'green' | 'red' | 'gray',
     stringColor: 'white' | 'brown',
-    stringSize: 's' | 'm' | 'l' | 'mg',
+    stringSize: 's' | 'm' | 'l' | 'mg' | 'mk', 
     linkdata? : string,
     children: React.ReactNode;
     onClick?: () => void;
@@ -30,7 +29,10 @@ const Button: React.FC<data> = ({onClick, height, width, color, stringColor, str
         text_size = 'lg:text-[16px] xl:text-[18px] md:text-[14px] text-[8px]'
     }
     else if (stringSize == 'mg') {
-        text_size = 'lg:text-[16px] xl:text-[18px] md:text-[18px] text-[15px] '
+        text_size = 'md:text-[18px] text-[11px] '
+    }
+    else if (stringSize == 'mk') {
+        text_size = 'text-[15px]  '
     }
     else {
         text_size = 'text-[64px]'
@@ -70,6 +72,9 @@ const Button: React.FC<data> = ({onClick, height, width, color, stringColor, str
     else if (height == 'mg') {
         height_button = 'lg:h-[47px] md:h-[50px] h-[40px]';
     }
+    else if (height == 'mk') {
+        height_button = '';
+    }
     else if (height == 'l') {
         height_button = 'max-h-[80px]';
     }
@@ -84,12 +89,14 @@ const Button: React.FC<data> = ({onClick, height, width, color, stringColor, str
     if (width == 's') {
         width_button = 'xl:max-w-[150px] xl:p-[6px] md:max-w-[100px] md:p-[4px] p-[3px]';
     }
-    else if (height == 'm'){
-        height_button = 'lg:h-[47px] md:h-[30px] h-[24px]';
+    else if (width == 'm'){
+        width_button = 'lg:w-[47px] md:w-[30px] w-[24px]';
     }
     else if (width == 'mg') {
         width_button = 'lg:w-[90px] xl:w-[140px] md:w-[120px] w-[90px] p-[5px]';
-
+    }
+    else if (width == 'mk') {
+        width_button = 'w-[90px] lg:w-[150px] p-[5px]';
     }
     else if (width == 'l') {
         width_button = 'max-w-[300px]';
@@ -103,7 +110,7 @@ const Button: React.FC<data> = ({onClick, height, width, color, stringColor, str
     if (!linkdata) {
         return (
             <button onClick={onClick}
-            className={`${combinedClassName} cursor-pointer hover:scale-120 transition duration-500 rounded-full font-sans box-border`} >
+            className={`${combinedClassName} cursor-pointer hover:scale-105 transition duration-300 rounded-full font-sans box-border`} >
                 {children}
             </button>
         )
