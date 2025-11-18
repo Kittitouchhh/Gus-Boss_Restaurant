@@ -13,6 +13,17 @@ type CardMenuProps = {
   onCancel?: () => void;
 };
 
+interface Post {
+  id: number;
+  menuName: string;
+  imageMenu: string;
+  menuOption: string[];
+  menuPrice: number;
+  datajson: string;
+  description: string;
+  status : number
+}
+
 export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCancel,}: CardMenuProps) {
   const [open, setOpen] = useState<boolean>(false);
   const [editing, setEditing] = useState(false);
@@ -73,15 +84,15 @@ export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCanc
       return alert("กรอกข้อมูลให้ครบก่อนบันทึก");
     }
 
-    const newMenu: MenuItem = {
-      id: mode === "add" ? Date.now() : menu.id,
-      menuName: form.name,
-      menuPrice: Number(form.price),
-      imageMenu: form.image || "/drink/default.png",
-      status: Number(form.status),
-      description: form.description || "",
-      datajson: form.type,  
-    };
+    const newMenu: Post = {
+      id: mode === "add" ? Date.now() : menu.id,      
+      menuName: form.name,                             
+      imageMenu: form.image || "/drink/default.png",   
+      menuOption: menu.menuOption || [],              
+      menuPrice: Number(form.price),                  
+      datajson: form.type,                             
+      description: form.description || "",            
+      status: Number(form.status) }
 
 
     if (onSave) {
