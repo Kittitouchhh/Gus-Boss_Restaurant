@@ -8,7 +8,7 @@ interface DropdownUserProps {
   image: string;
 }
 
-const UserDropdown: React.FC<DropdownUserProps> = ({ name, image }) => {
+const UserDropdown: React.FC<DropdownUserProps> = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [position, setPosition] = useState({ top: 0, left: 0, width: 0 });
   const buttonRef = useRef<HTMLDivElement>(null); 
@@ -87,7 +87,7 @@ const UserDropdown: React.FC<DropdownUserProps> = ({ name, image }) => {
         className="relative cursor-pointer select-none"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <User name={name} image={image} />
+        <User />
       </div>
 
       {isOpen &&

@@ -12,26 +12,65 @@ export const ranks = [
 
 
 export default function Memberpage() {
+    const [userMembership, setUserMembership] = useState<any>(null);
+
+    const getRankColor = (rank: string) => {
+        switch (rank) {
+            case "Bronze":
+                return "text-[#3D3420] bg-[#D4B8A0] hover:bg-[#cba889] hover:shadow-[0_0_15px_rgba(203,168,137,0.7)]";
+            case "Silver":
+                return "bg-[#1B2A41] hover:bg-[#253C5A] hover:shadow-[0_0_15px_rgba(37,60,90,0.7)]";
+            case "Commander":
+                return "bg-yellow-600 hover:bg-yellow-500 hover:shadow-[0_0_15px_rgba(217,154,18,0.7)]";
+            case "Conqueror":
+                return "bg-[#8B0000]  hover:bg-[#b30000] hover:shadow-[0_0_15px_rgba(179,0,0,0.7)]";
+            default:
+                return "bg-[#D4B8A0]";
+        }
+        
+    };
+    const getRanktext = (rank: string) => {
+        switch (rank) {
+            case "Bronze":
+                return "text-[#3D342F]  ";
+            case "Silver":
+                return "text-white ";
+            case "Commander":
+                return "text-yellow-100 ";
+            case "Conqueror":
+                return "text-white ";
+            default:
+                return "text-[#3D3420] ";
+        }
+        
+    };
+
+
+    const normalizeMembership = (mem: any) => ({
+        isMember: mem?.isMember ?? false,
+        points: mem?.points ?? 0,
+        activatedAt: mem?.activatedAt ?? null,
+    });
+
     useEffect(() => {
-        const currentUser =
-            localStorage.getItem("currentUser") || localStorage.getItem("username");
+        const currentUser = localStorage.getItem("currentUser");
 
         const users = JSON.parse(localStorage.getItem("users") || "[]");
+        const user = users.find((u: any) => u.id?.toString() === currentUser);
 
-        const user = users.find((u: any) => u.username === currentUser);
-
-        if (!user || !user.membership) {
+        if (!user) {
             setUserMembership(null);
             return;
         }
+        const normalized = normalizeMembership(user.membership);
+
+        const calculateMember = CalculateMembership(normalized.points);
 
         setUserMembership({
-            ...user.membership,
-            ...CalculateMembership(user.membership.points || 0),
+            ...normalized,
+            ...calculateMember
         });
     }, []);
-
-    const [userMembership, setUserMembership] = useState<any>(null);
 
 
     return (
@@ -51,26 +90,35 @@ export default function Memberpage() {
                 </div>
             </div>
             <div className="my-10 flex justify-center  ">
-                {userMembership?.isMember ? (
-                    <div className="hover:text-white transition duration-500  bg-[#D4B8A0] max-w-[739px] border-20 border-white hover:border-black transition duration-500  w-[80%] py-5 rounded-xl hover:scale-101 cursor-pointer ">
+                {userMembership?.isMember === true ? (
+                    <div
+                        className={`hover:text-white transition duration-500 ${getRankColor(userMembership?.rank )} max-w-[739px] border-10 md:border-20 border-white hover:border-black w-[80%] py-5 rounded-xl hover:scale-101 cursor-pointer`}
+                    >
                         <div className=" flex flex-col items-center gap-4 text-white">
                             <img
                                 src={`member/${userMembership.rank.toLowerCase()}.png`}
                                 alt={userMembership.rank}
-                                className="w-22 h-22 hover:scale-105 transition"
+                                className="w-22 h-22 md:w-30 md:h-30 hover:scale-105 transition"
                             />
-                            <h2 className="text-3xl font-bold hover:text-black">{userMembership.rank}</h2>
-                            <p className="text-xl font-semibold hover:text-black">Level {userMembership.level}</p>
-                            <p className="text-xl hover:text-black">
-                                Discount: {(userMembership.discount * 100).toFixed(0)}%
-                            </p>
-                            <div className="w-3/4 bg-gray-700 rounded-full h-3 mt-2">
-                                <div
-                                    className="h-3 rounded-full transition-all duration-700"
-                                    style={{ width: `${userMembership.percent}%` }}
-                                ></div>
+                            <div className={`flex items-center gap-2 ${getRanktext(userMembership?.rank )} `} >
+                                <p className={`text-xl md:text-[25px]    font-bold hover:text-black`}>Level {userMembership.level}</p>
+                                <h2 className={`text-3xl md:text-[35px]  font-bold hover:text-black`}>{userMembership.rank}</h2>
                             </div>
-                            <p className="text-m hover:text-black ">
+                            
+                            <p className="text-xl font-semibold hover:text-black md:text-[23px]">
+                                Discount: {userMembership.discount * 100} %
+                            </p>
+                            <div className="w-3/4 bg-gray-900 rounded-full h-4 mt-2 relative overflow-hidden">
+                                <div
+                                    className="h-full rounded-full transition-all duration-700  "
+                                    style={{
+                                        width: `${userMembership.percent}%`,
+                                        background: `linear-gradient(90deg,red, orange, white)`,
+                                    }}
+                                    aria-hidden="true"
+                                />
+                            </div>
+                            <p className="text-sm font-semibold  hover:text-black md:text-[20px] ">
                                 {userMembership.points}/{userMembership.nextTarget} EXP
                             </p>
                         </div>
