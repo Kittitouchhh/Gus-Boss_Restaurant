@@ -11,7 +11,7 @@
     "username": "a",
     "password": "1111",
     "role": "client",
-    "image": "/user/Gus.jpg",
+    "image": "/profile/user3.jpg",
     "showname": "a",
     "membership": {
       "isMember": true,
@@ -78,8 +78,4 @@
     "showname": "Bossski",
     "membership": null
   }
-<<<<<<< HEAD
 ]
-=======
-]
->>>>>>> origin/admin-page

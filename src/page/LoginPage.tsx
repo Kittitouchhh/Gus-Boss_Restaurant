@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import logo from "/logo/logo.png";
+// import logo from "/public/logo/logo.png";
 import userData from "../data/login.json";
 
 export default function LoginPage() {
@@ -21,7 +21,7 @@ export default function LoginPage() {
     );
 
     if (foundUser) {
-      localStorage.setItem("currentUser", foundUser.username);
+      localStorage.setItem("username", foundUser.username);
       localStorage.setItem("authToken", "true");
 
       // ถ้ายังไม่มี users ใน localStorage ให้สร้างใหม่่
@@ -74,7 +74,7 @@ export default function LoginPage() {
 
         {/* ขวา: ฟอร์ม Login */}
         <div className="rounded-2xl md:w-1/2 bg-white flex flex-col items-center justify-center p-6 md:p-8">
-          <img src={logo} alt="logo" className="w-[200px] my-4" />
+          <img src='/logo/logo.png' alt="logo" className="w-[200px] my-4" />
           <h2 className="text-[#3D342F] font-bold text-[28px] md:text-[30px] mb-5 tracking-wide">
             USER LOGIN
           </h2>

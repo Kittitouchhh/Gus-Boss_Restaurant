@@ -23,7 +23,8 @@ interface Post {
 interface Banner{
   id : number ,
   image : string,
-  page : string
+  page : string,
+  status: number
 }
 
 
@@ -149,7 +150,7 @@ function HomeClient() {
         
 
       <div className="mt-[110px]">
-        <SwiperCom  key={databanner.length} databanner={databanner.filter((data)=>data.page === "home" )}></SwiperCom>
+        <SwiperCom  key={databanner.length} databanner={databanner.filter((data)=>data.page === "home" && data.status === 1)}></SwiperCom>
       </div>
 
       <div className="md:mt-[40px] mt-[10px]">
@@ -158,7 +159,7 @@ function HomeClient() {
       <div className="md:mt-[50px] md:mb-[50px] mb-[20px]">
         <Tagmenu title="Tea"></Tagmenu>
         <SetCardMenu
-          filename={datamenu.filter((data) => data.datajson === "menutea" && data.status === 1)}
+          filename={datamenu.filter((data) => data.datajson === "menutea" && data.status === 1).slice(0, 7)}
         ></SetCardMenu>
         <div className="mt-[30px] mb-[20px] mx-auto flex justify-center">
           <Button
@@ -187,7 +188,7 @@ function HomeClient() {
       <div className="md:mt-[50px] md:mb-[50px] mt-[20px] mb-[20px]">
         <Tagmenu title="COFFEE"></Tagmenu>
         <SetCardMenu
-          filename={datamenu.filter((data) => data.datajson === "menucoffee" && data.status === 1)}
+          filename={datamenu.filter((data) => data.datajson === "menucoffee" && data.status === 1).slice(0, 7)}
         ></SetCardMenu>
         <div className="mt-[30px] mb-[20px] mx-auto flex justify-center">
           <Button
@@ -217,7 +218,7 @@ function HomeClient() {
         <SetCardMenu
           filename={datamenu.filter(
             (data) => data.datajson === "menusoftdrink" && data.status === 1
-          )}
+          ).slice(0, 7)}
         ></SetCardMenu>
         <div className="mt-[30px] mb-[20px] mx-auto flex justify-center">
           <Button
@@ -238,7 +239,7 @@ function HomeClient() {
         <SetCardMenu
           filename={datamenu.filter(
             (data) => data.datajson === "menumaindishes" && data.status === 1
-          )}
+          ).slice(0, 7)}
         ></SetCardMenu>
         <div className="mt-[30px] mb-[20px] mx-auto flex justify-center">
           <Button
@@ -257,7 +258,7 @@ function HomeClient() {
       <div className="md:mt-[50px] md:mb-[50px] mt-[20px] mb-[20px]">
         <Tagmenu title="Desserts"></Tagmenu>
         <SetCardMenu
-          filename={datamenu.filter((data) => data.datajson === "menudesserts" && data.status === 1)}
+          filename={datamenu.filter((data) => data.datajson === "menudesserts" && data.status === 1).slice(0, 7)}
         ></SetCardMenu>
         <div className="mt-[30px] mb-[20px] mx-auto flex justify-center">
           <Button

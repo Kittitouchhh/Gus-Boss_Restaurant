@@ -1,6 +1,4 @@
 @import "tailwindcss";
-<<<<<<< HEAD
-=======
 
 /* ซ่อนลูกศรขึ้น-ลงของ input type=number */
 input::-webkit-outer-spin-button,
@@ -13,4 +11,3 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
->>>>>>> origin/admin-page

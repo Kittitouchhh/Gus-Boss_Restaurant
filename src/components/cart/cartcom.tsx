@@ -134,9 +134,9 @@ const Cartcom:React.FC<CartProps> = ({id_menu,imgUrl , title,onRemove,option ,co
 
     else if(type == 2){
         return(
-            <div className='w-[95%]   h-auto bg-[#201c19] md:rounded-3xl rounded-xl grid   grid-cols-3   border-amber-100 border-2 '>
+            <div className='w-[95%] p-[10px]   h-auto bg-[#201c19] md:rounded-3xl rounded-xl grid   grid-cols-3   border-amber-100 border-2 '>
                 <div className='w-full h-full flex md:flex-row flex-col   md:p-[10px] p-[5px] lg:gap-[10px] md:gap-[15px] gap-[10px] justify-center md:items-start'>
-                    <img src={user_image} alt=""  className='2xl:w-[200px] 2xl:h-[200px] xl:w-[200px] xl:h-[200px] lg:w-[150px] lg:h-[150px] md:w-[100px] md:h-[100px] w-[100px] h-[100px] object-cover rounded-full self-center aspect-auto'/>
+                    <img src={user_image} alt=""  className='2xl:w-[150px] 2xl:h-[150px] xl:w-[200px] xl:h-[200px] lg:w-[150px] lg:h-[150px] md:w-[100px] md:h-[100px] w-[100px] h-[100px] object-cover rounded-full self-center aspect-auto'/>
                     <div className='flex flex-col md:justify-center md:items-start items-center'>
                         <p className='2xl:text-[32px] xl:text-[26px] lg:text-[22px] md:text-[16px] text-[8px] font-bold'>ORDER USER</p>
                         <p className='2xl:text-[28px] xl:text-[24px] lg:text-[16px] md:text-[11px] text-[7px]'>{user_name}</p>

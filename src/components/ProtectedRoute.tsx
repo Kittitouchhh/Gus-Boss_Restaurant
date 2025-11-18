@@ -12,8 +12,4 @@ export default function ProtectedRoute({ children }: Props) {
   }
 
   return <>{children}</>;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/admin-page
