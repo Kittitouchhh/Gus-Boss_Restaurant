@@ -64,18 +64,19 @@ const Addcommentbox:React.FC<Props> = ({menucartid,onClose ,image,menu_name,type
     }
 
     useEffect(() => {
-        const currentUsername = localStorage.getItem("username");
+        const currentId = localStorage.getItem("currentUser");
+        if (!currentId) return;
 
-        const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
+        const users = JSON.parse(localStorage.getItem("users") || "[]");
 
-        const allUsers = [...usersData, ...localUsers];
-
-        const currentUser = allUsers.find(
-            (u) => u.username.toLowerCase() === currentUsername?.toLowerCase()
+        const foundUser = users.find(
+            (u: any) => u.id?.toString() === currentId
         );
 
-        SetName(currentUser?.showname || "Unknown");
-        SetImage(currentUser?.image || "https://cdn-icons-png.flaticon.com/512/6522/6522516.png");
+        
+
+        SetName(foundUser?.showname || "Unknown");
+        SetImage(foundUser?.image || "https://cdn-icons-png.flaticon.com/512/6522/6522516.png");
 
         const datacommentStorage = localStorage.getItem("comment");
         if (datacommentStorage) {

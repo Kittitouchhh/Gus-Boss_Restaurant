@@ -35,19 +35,20 @@ interface process{
 
 const PaymentPage:React.FC = ({}) => {
 
-    const currentUsername = localStorage.getItem("username");
-    
-    const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
-    
-    const allUsers = [...usersData, ...localUsers];
-    
-    const currentUser = allUsers.find(
-            (u) => u.username.toLowerCase() === currentUsername?.toLowerCase()
+    const currentId = localStorage.getItem("currentUser");
+    if (!currentId) return;
+
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+
+    const foundUser = users.find(
+        (u: any) => u.id?.toString() === currentId
     );
     
-    const displayName = currentUser?.showname || "Unknown";
-    const displayImage = currentUser?.image || "https://cdn-icons-png.flaticon.com/512/6522/6522516.png";
-    const discount = currentUser?.discount || 1 ;
+    
+    
+    const displayName = foundUser?.showname || "Unknown";
+    const displayImage = foundUser?.image || "https://cdn-icons-png.flaticon.com/512/6522/6522516.png";
+    const discount = foundUser?.discount || 1 ;
 
 
     const navigate = useNavigate();
