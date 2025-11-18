@@ -6,8 +6,8 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 // Page Admin
-// import AdminPage from "./page/pagesAdmin/AdminPage";
-// import NotFoundPage from "./page/NotfoundPage";
+import AdminPage from "./page/pagesAdmin/AdminPage";
+import NotFoundPage from "./page/NotfoundPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 
@@ -20,12 +20,12 @@ import Menudetaile from './page/page-Client/MenuDetaile'
 import Contact from './page/page-Client/Contact-Client'
 import Cart from './page/page-Client/Cart-Client' 
 import PaymentPage from './page/page-Client/Payment-Page'
-// import Profile from "./page/Profile";
-// import Memberpage from "./page/memberpage";
-// import Paymenmberpage from "./page/paymemberPage";
+import Profile from "./page/Profile";
+import Memberpage from "./page/memberpage";
+import Paymenmberpage from "./page/paymemberPage";
 
-// import LoginPage from "./page/LoginPage";
-// import SignupPage from "./page/SignupPage";
+import LoginPage from "./page/LoginPage";
+import SignupPage from "./page/SignupPage";
 
 function App() {
   const location = useLocation();
@@ -41,8 +41,8 @@ function App() {
         <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
 
-                {/* <Route path="/login" element={<motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}><LoginPage/></motion.div>} />
-                <Route path="/signuppage" element={<motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}><SignupPage /></motion.div>} /> */}
+                <Route path="/login" element={<motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}><LoginPage/></motion.div>} />
+                <Route path="/signuppage" element={<motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}><SignupPage /></motion.div>} />
 
                 <Route path='/' element={<ProtectedRoute><motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}><HomeClient></HomeClient></motion.div></ProtectedRoute>}></Route>
                 <Route path='process' element={<ProtectedRoute><motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}><ProcessOrder></ProcessOrder></motion.div></ProtectedRoute>}></Route>
@@ -56,11 +56,11 @@ function App() {
 
 
 
-                {/* <Route path="/profile" element={<motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}><Profile /></motion.div>} />
+                <Route path="/profile" element={<motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}><Profile /></motion.div>} />
                 <Route path="/memberpage" element={<motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}><Memberpage /></motion.div>} />
                 <Route path="/admin" element={<motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}><AdminPage /></motion.div>} />
                 <Route path="/paymenmberpage" element={<motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}><Paymenmberpage /></motion.div>} />
-                <Route path="*" element={<motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}><NotFoundPage /></motion.div>} /> */}
+                <Route path="*" element={<motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}><NotFoundPage /></motion.div>} />
 
             </Routes>
             {!isAuthPage && <motion.div initial={{ opacity: 0, y: 20}} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}><Footer></Footer></motion.div>}   

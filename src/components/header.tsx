@@ -6,8 +6,8 @@ import UserDropdown from "./UserDropdown";
 
 
 
-
-const Header: React.FC = () =>{
+const Header: React.FC = () => {
+    const [openMenu, setOpenMenu] = React.useState(false);
     const currentUsername = localStorage.getItem("username");
 
     const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
@@ -37,13 +37,13 @@ const Header: React.FC = () =>{
                     </>
                 )}
                 {role === "admin" && (
-                    <>
+                    <div className=" gap-[15px] flex flex-row">
                         <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata={"/"}>HOME</Button>
                         <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata={"/process"}>PROCESS</Button>
                         <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata={"/postit"}>POST IT!</Button>
                         <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata={"/constact"}>CONTACT</Button>
                         <Button height="m" width="m" color="orange" stringColor="white" stringSize="m" linkdata={"/admin"}>Admin</Button>
-                    </>
+                    </div>
                 )}
             </div>
 
@@ -51,13 +51,26 @@ const Header: React.FC = () =>{
                 <div className="rounded-2xl transition-all duration-300 ease-out hover:p-[5px] hover:bg-yellow-500 hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(231,198,153,0.3)]">
                     <UserDropdown name={displayName} image={displayImage} />
                 </div>
-                
-            </div>  
-            <button className='text-white ml-auto relative mr-[20px] text-[25px] md:hidden'>☰</button>
+            </div>
+                   
+            <button onClick={() => setOpenMenu(!openMenu)}
+                className="cursor-pointer hover:scale-130 text-white text-[25px] md:hidden ml-auto mr-[15px]">☰</button>
+            {openMenu && (
+                <div className="justify-center absolute top-[110px] left-0 w-full bg-[#3D342F] flex  p-5 gap-4  md:hidden">
+                    <Button height="m" width="mg" color="white" stringColor="brown" stringSize="m" linkdata="/">HOME</Button>
+                    <Button height="m" width="mg" color="white" stringColor="brown" stringSize="m" linkdata="/process">PROCESS</Button>
+                    <Button height="m" width="mg" color="white" stringColor="brown" stringSize="m" linkdata="/postit">POST IT!</Button>
+                    <Button height="m" width="mg" color="white" stringColor="brown" stringSize="m" linkdata="/constact">CONTACT</Button>
 
-            
-        </nav>
-    
+                    {role === "admin" && (
+                        <Button height="m" width="mg" color="orange" stringColor="white" stringSize="m" linkdata="/admin">ADMIN</Button>
+                    )}
+                </div>
+            )}
+
+        </nav >
+
+
     )
 }
 

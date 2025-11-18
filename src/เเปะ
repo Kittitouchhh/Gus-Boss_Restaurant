@@ -1,0 +1,9 @@
+; Swal.fire({
+;       position: "top",
+;       text: "กรุณากรอกชื่อ และ ราคาที่มากกว่า 0 บาท",
+;       titleText:"☕ GusBoss Resturant Says",
+;       icon: "warning",
+;       iconColor: "red",
+;       confirmButtonText: "ตกลง",
+;       confirmButtonColor: "#3D342F"
+;     });
