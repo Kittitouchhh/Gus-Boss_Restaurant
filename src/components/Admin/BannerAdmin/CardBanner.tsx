@@ -7,7 +7,7 @@ export type BannerItem = {
   id: number;
   image: string;
   status: number;
-  page: "home" | "client" | "menu";
+  page: "home" | "post-it";
   order: number;
 };
 
@@ -140,12 +140,12 @@ export default function CardBannerAdmin({
     <div
       className={
         mode === "add"
-          ? "min-w-[100%] m-auto p-4 bg-white rounded-lg shadow-md mb-4"
+          ? "min-w-[100%] h-[91%] m-auto p-4 bg-white rounded-lg shadow-md mb-4"
           : "w-[90%] bg-white rounded-2xl shadow-lg border p-4 m-3"
       }
     >
-      <div className="flex flex-col gap-3">
-        <div className="w-full h-[160px] bg-gray-200 rounded-lg overflow-hidden">
+      <div className="flex flex-col gap-3 h-[80%]">
+        <div className="w-full h-[160px] md:h-[80%] bg-gray-200 rounded-lg overflow-hidden">
           {!form.image ? (
             <label className="w-full h-full flex justify-center items-center text-gray-700 cursor-pointer">
               <input type="file" className="hidden" onChange={handleFileChange} />
@@ -166,8 +166,7 @@ export default function CardBannerAdmin({
             className="border rounded p-1"
           >
             <option value="home">Home</option>
-            <option value="client">Client</option>
-            <option value="menu">Menu</option>
+            <option value="post it">Post It</option>
           </select>
 
           <input

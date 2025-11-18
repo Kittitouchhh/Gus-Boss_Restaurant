@@ -25,7 +25,7 @@ export default function StatusButton<
 
   const themes = {
     menu: {
-      activeBg: "#4ECDD2",
+      activeBg: "#2c9599ff",
       inactiveBg: "#ccc",
       activeText: "#4ECDD2",
       inactiveText: "#555",
@@ -68,7 +68,7 @@ export default function StatusButton<
           />
 
           <div
-            className="mb-1 w-11 h-6 md:w-15 rounded-full transition-all relative"
+            className="mb-1 w-11 h-6  rounded-full transition-all relative"
             style={{
               backgroundColor:
                 status === 1 ? themes.activeBg : themes.inactiveBg,
@@ -77,10 +77,7 @@ export default function StatusButton<
             <div
               className="absolute top-[3px] left-[3px] w-4 h-4 rounded-full bg-white transition-all"
               style={{
-                transform:
-                  status === 1
-                    ? `translateX(${isMd ? 40 : 22}px)`
-                    : `translateX(0px)`,
+                transform: status === 1 ? "translateX(22px)" : "translateX(0px)",
               }}
             ></div>
           </div>

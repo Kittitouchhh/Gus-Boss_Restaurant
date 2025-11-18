@@ -86,7 +86,7 @@ export default function DataMenupage() {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:w-[60%] xl:m-auto  gap-6 p-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:w-[60%] xl:m-auto  gap-6 p-6">
           {adding && (
             <CardMenuAdmin mode="add" 
             menu={{ id:  Date.now(), menuName: "", menuPrice: 20, imageMenu: "", status: 1, datajson: "Tea", description:"",}}
