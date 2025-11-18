@@ -22,13 +22,10 @@ export default function StatusButton<
 
   const [status, setStatus] = useState(item.status);
 
-  const knobPos = status === 1
-    ? (isMd ? 60 - 16 - 6 : 44 - 16 - 6)  // track - knob - padding
-    : 0;
 
   const themes = {
     menu: {
-      activeBg: "#4ECDD2",
+      activeBg: "#2c9599ff",
       inactiveBg: "#ccc",
       activeText: "#4ECDD2",
       inactiveText: "#555",
@@ -71,7 +68,7 @@ export default function StatusButton<
           />
 
           <div
-            className="mb-1 w-11 h-6 md:w-15 rounded-full transition-all relative"
+            className="mb-1 w-11 h-6  rounded-full transition-all relative"
             style={{
               backgroundColor:
                 status === 1 ? themes.activeBg : themes.inactiveBg,
@@ -79,7 +76,9 @@ export default function StatusButton<
           >
             <div
               className="absolute top-[3px] left-[3px] w-4 h-4 rounded-full bg-white transition-all"
-              style={{ transform: `translateX(${knobPos}px)` }}
+              style={{
+                transform: status === 1 ? "translateX(22px)" : "translateX(0px)",
+              }}
             ></div>
           </div>
         </label>

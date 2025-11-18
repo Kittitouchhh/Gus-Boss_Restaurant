@@ -226,7 +226,7 @@ export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCanc
         <p className="text-[#C28B53] font-semibold mt-1">{menu.price}฿</p>
 
         <StatusButton item={menu} setItems={setMenus} 
-        storageKey="Menu" />
+        storageKey="menu" type="menu" />
       </div>
 
       {open && (
