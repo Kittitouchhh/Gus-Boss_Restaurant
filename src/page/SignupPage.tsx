@@ -69,7 +69,7 @@ const Signup: React.FC = () => {
   return (
     <div className="relative flex h-screen justify-center items-center overflow-hidden ">
       <img
-        src="/banner/login1.png"
+        src="/banner/horse.jpg"
         alt="background"
         className="absolute inset-0 w-1/2 h-full object-cover brightness-75 blur-[2px]"
       />
@@ -79,7 +79,7 @@ const Signup: React.FC = () => {
         
         <div className="hidden md:block rounded-2xl mx-2 w-full md:w-1/2 h-[250px] md:h-full bg-[#3D342F]">
           <img
-            src="/banner/login1.png"
+            src="/banner/horse.jpg"
             alt="coffee shop"
             className="w-full h-full object-cover brightness-90"
           />
