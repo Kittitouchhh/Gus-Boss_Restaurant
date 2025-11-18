@@ -38,7 +38,7 @@ const Button: React.FC<data> = ({height , width ,color,stringColor,stringSize,li
     }
      
     else if (stringSize == 'mg') {
-        text_size = 'md:text-[18px] text-[11px] '
+        text_size = 'md:text-[15px] text-[11px] '
     }
     else if (stringSize == 'mk') {
         text_size = 'text-[15px]  '

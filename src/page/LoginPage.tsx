@@ -60,7 +60,7 @@ export default function LoginPage() {
       <img
         src="/banner/horse.jpg"
         alt="background"
-        className="absolute inset-0 w-1/2 h-full object-cover brightness-75 blur-[2px]"
+        className="hidden md:block absolute inset-0 w-1/2 h-full object-cover brightness-75 blur-[2px]"
       />
       <div className="absolute inset-0 bg-black/30"></div>
 
