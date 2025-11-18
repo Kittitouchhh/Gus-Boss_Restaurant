@@ -63,7 +63,7 @@ const Signup: React.FC = () => {
     localStorage.setItem("authToken", "true");
 
     alert("สมัครสมาชิกสำเร็จ!");
-    navigate("/");
+    navigate("/login");
   };
 
   return (

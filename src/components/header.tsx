@@ -55,14 +55,16 @@ const Header: React.FC = () => {
             </div>
                    
             <button onClick={() => setOpenMenu(!openMenu)}
-                className="cursor-pointer hover:scale-130 text-white text-[25px] md:hidden ml-auto mr-[15px]">☰</button>
+                className="cursor-pointer hover:scale-130 text-white text-[25px] md:hidden ml-auto mr-[30px]">☰</button>
             {openMenu && (
-                <div className="justify-center absolute top-[110px] left-0 w-full bg-[#3D342F] flex  p-5 gap-4  md:hidden">
+                <div className="justify-center absolute top-[110px] left-0 w-full bg-[#3D342F] flex  p-5 gap-4  md:hidden">  
                     <Button height="m" width="mg" color="white" stringColor="brown" stringSize="m" linkdata="/">HOME</Button>
                     <Button height="m" width="mg" color="white" stringColor="brown" stringSize="m" linkdata="/process">PROCESS</Button>
                     <Button height="m" width="mg" color="white" stringColor="brown" stringSize="m" linkdata="/postit">POST IT!</Button>
                     <Button height="m" width="mg" color="white" stringColor="brown" stringSize="m" linkdata="/constact">CONTACT</Button>
-
+                    {role === "client" && (
+                        <Button height="m" width="mg" color="white" stringColor="brown" stringSize="m" linkdata="/constact">CONTACT</Button>
+                    )}
                     {role === "admin" && (
                         <Button height="m" width="mg" color="orange" stringColor="white" stringSize="m" linkdata="/admin">ADMIN</Button>
                     )}

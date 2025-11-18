@@ -14,7 +14,7 @@ interface data {
     onClick?: () => void;
 }
 
-const Button: React.FC<data> = ({height , width ,color,stringColor,stringSize,linkdata,children}) =>{
+const Button: React.FC<data> = ({height , width ,color,stringColor,stringSize,linkdata,children,onClick}) =>{
     let color_Text : string ='';
     if(stringColor == 'white'){
         color_Text = 'text-white';
@@ -138,14 +138,14 @@ const Button: React.FC<data> = ({height , width ,color,stringColor,stringSize,li
 
     if(!linkdata){
         return(
-            <button className={`${combinedClassName} rounded-full font-sans box-border `} >
+            <button className={`${combinedClassName} rounded-full font-sans box-border cursor-pointer`}  onClick={onClick}>
                 {children}
             </button>
         )
     }
     else{
         return( 
-            <Link to={linkdata} className={`${combinedClassName} rounded-full font-sans box-border  text-center flex items-center justify-center font-bold`}>{children}</Link>
+            <Link to={linkdata} className={`${combinedClassName} rounded-full font-sans box-border  text-center flex items-center justify-center font-bold cursor-pointer`}>{children}</Link>
         )
     }
     

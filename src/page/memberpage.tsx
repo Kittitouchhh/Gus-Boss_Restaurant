@@ -75,7 +75,7 @@ export default function Memberpage() {
 
     return (
         <>
-            <div className="grid md:grid-cols-2 md:flex md:justify-center md:mt-3">
+            <div className="grid md:grid-cols-2 md:flex md:justify-center  mt-[150px]">
                 <div className="md:max-w-[569px] md: w-full h-50 md:h-80 overflow-hidden">
                     <img src="/user/memberpic.png" alt="mem"
                         className="w-full h-full object-cover  " />

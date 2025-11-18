@@ -70,7 +70,7 @@ const QRCode: React.FC<QRCodeProps> = ({ amount }) => {
   };
 
   return (
-    <div className="w-full min-h-screen flex justify-center items-center bg-[#3D2F25] px-3 py-5">
+    <div className="w-full min-h-screen flex justify-center items-center bg-[#3D2F25] px-3 py-5 mt-[110px]">
       <div className="w-full max-w-[450px] sm:max-w-[500px] md:max-w-[520px] lg:max-w-[550px] bg-gradient-to-b from-blue-800 to-blue-900 text-white rounded-2xl shadow-2xl p-5 sm:p-6 md:p-8 relative">
 
         <h1 className="text-center text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-wide bg-blue-600 py-3 rounded-t-2xl shadow-inner">
