@@ -10,11 +10,8 @@ const Signup: React.FC = () => {
     password: "",
     showname: "",
     image: "",
-    isMember: false,
-    membership: null,
   });
 
-  // อัพโหลดรูปแบบ Base64
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -43,22 +40,30 @@ const Signup: React.FC = () => {
       alert("Username นี้ถูกใช้ไปแล้ว!");
       return;
     }
+    
+    const membershipDefault = {
+      isMember: false,
+      points: 0,
+      activatedAt: null,
+    };
 
-    const newUser = {
+     const newUser = {
+      id: Date.now(),
       username: form.username,
       password: form.password,
       showname: form.showname || form.username,
       image: form.image || "",
       role: "client",
-      membership: { rank: "Bronze", level: 0, points: 0 },
+      membership: membershipDefault,
     };
 
     localStorage.setItem("users", JSON.stringify([...users, newUser]));
-    localStorage.setItem("currentUser", form.username);
+    
+    localStorage.setItem("currentUser",newUser.id.toString());
     localStorage.setItem("authToken", "true");
 
     alert("สมัครสมาชิกสำเร็จ!");
-    navigate("/login");
+    navigate("/");
   };
 
   return (
@@ -72,7 +77,6 @@ const Signup: React.FC = () => {
 
       <div className="relative z-10 flex flex-col md:flex-row w-[90%] md:w-[1000px] h-auto md:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
         
-        {/* Left Image */}
         <div className="hidden md:block rounded-2xl mx-2 w-full md:w-1/2 h-[250px] md:h-full bg-[#3D342F]">
           <img
             src="/banner/login1.png"
@@ -89,7 +93,6 @@ const Signup: React.FC = () => {
 
           <form className="w-full flex flex-col items-center gap-4" onSubmit={handleSubmit}>
             
-            {/* Upload Profile */}
             <div className="flex flex-col items-center m-auto gap-2">
               <p className="font-semibold text-[18px] text-gray-600">Upload your Profile</p>
 
@@ -107,7 +110,6 @@ const Signup: React.FC = () => {
                   />
                 )}
 
-                {/* รูป preview ซ่อนด้วย opacity-0 */}
                 {form.image && (
                   <img
                     src={form.image}

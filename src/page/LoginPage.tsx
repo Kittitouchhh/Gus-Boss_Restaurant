@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-// import logo from "/public/logo/logo.png";
+import logo from "/logo/logo.png";
 import userData from "../data/login.json";
 
 export default function LoginPage() {
@@ -9,11 +9,20 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  const normalizeMembership = (membership: any) => {
+    return {
+      isMember: membership?.isMember ?? false,
+      points: membership?.points ?? 0,
+      activatedAt: membership?.activatedAt ?? null,
+    };
+  };
+
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
     const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
+    
     const allUsers = [...userData, ...localUsers];
 
     const foundUser = allUsers.find(
@@ -21,25 +30,21 @@ export default function LoginPage() {
     );
 
     if (foundUser) {
-      localStorage.setItem("username", foundUser.username);
+      localStorage.setItem("currentUser", foundUser.id.toString());
       localStorage.setItem("authToken", "true");
 
-      // ถ้ายังไม่มี users ใน localStorage ให้สร้างใหม่่
       const savedUsers = JSON.parse(localStorage.getItem("users") || "[]");
 
       const exists = savedUsers.some((u: any) => u.username === foundUser.username);
       if (!exists) {
         savedUsers.push({
+          id: foundUser.id,
           username: foundUser.username,
           password: foundUser.password,
           role: foundUser.role || "client",
           showname: foundUser.showname || foundUser.username,
           image: foundUser.image || "",
-          membership: foundUser.membership
-            ? { ...foundUser.membership }
-            : {
-              isMember: false,
-            },
+          membership: normalizeMembership(foundUser.membership),
         });
 
         localStorage.setItem("users", JSON.stringify(savedUsers));
@@ -52,7 +57,6 @@ export default function LoginPage() {
 
   return (
     <div className="relative flex h-screen justify-center items-center overflow-hidden">
-      {/* พื้นหลังซ้อน */}
       <img
         src="/banner/login1.png"
         alt="background"
@@ -60,10 +64,8 @@ export default function LoginPage() {
       />
       <div className="absolute inset-0 bg-black/30"></div>
 
-      {/* กล่องหลัก */}
       <div className="relative z-10 flex flex-col md:flex-row w-[90%] md:w-[1000px] h-auto md:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
 
-        {/* ซ้าย: รูป */}
         <div className="hidden md:block rounded-2xl mx-2 w-full md:w-1/2 h-[250px] md:h-full bg-[#3D342F]">
           <img
             src="/banner/login1.png"
@@ -72,9 +74,8 @@ export default function LoginPage() {
           />
         </div>
 
-        {/* ขวา: ฟอร์ม Login */}
         <div className="rounded-2xl md:w-1/2 bg-white flex flex-col items-center justify-center p-6 md:p-8">
-          <img src='/logo/logo.png' alt="logo" className="w-[200px] my-4" />
+          <img src={logo} alt="logo" className="w-[200px] my-4" />
           <h2 className="text-[#3D342F] font-bold text-[28px] md:text-[30px] mb-5 tracking-wide">
             USER LOGIN
           </h2>

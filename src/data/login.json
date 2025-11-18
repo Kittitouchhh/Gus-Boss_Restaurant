@@ -1,29 +1,32 @@
 [
   {
+    "id": 1,
     "username": "gus",
     "password": "1111",
     "role": "admin",
     "image": "/user/Gus.jpg",
     "showname": "GUSSUKE",
-    "membership": null
-  },
-  {
-    "username": "a",
-    "password": "1111",
-    "role": "client",
-    "image": "/profile/user3.jpg",
-    "showname": "a",
     "membership": {
       "isMember": true,
-      "rank": "Bronze",
-      "level": 1,
-      "discount": 0.05,
-      "points": 90,
-      "nextTarget": 100,
-      "percent": 10
+      "points": 300,
+      "activatedAt": "2025-11-18T10:30:00Z"
     }
   },
   {
+    "id": 2,
+    "username": "a",
+    "password": "1111",
+    "role": "client",
+    "image": "/user/Gus.jpg",
+    "showname": "a",
+    "membership": {
+      "isMember": true,
+      "points": 50,
+      "activatedAt": "2025-11-18T10:30:00Z"
+    }
+  },
+  {
+    "id": 3,
     "username": "b",
     "password": "1111",
     "role": "client",
@@ -31,15 +34,12 @@
     "showname": "b",
     "membership": {
       "isMember": true,
-      "rank": "Silver",
-      "level": 2,
-      "discount": 0.10,
-      "points": 150,
-      "nextTarget": 200,
-      "percent": 50
+      "points": 100,
+      "activatedAt": "2025-11-18T10:30:00Z"
     }
   },
   {
+    "id": 4,
     "username": "c",
     "password": "1111",
     "role": "client",
@@ -47,15 +47,12 @@
     "showname": "c",
     "membership": {
       "isMember": true,
-      "rank": "Commander",
-      "level": 3,
-      "discount": 0.15,
-      "points": 250,
-      "nextTarget": 300,
-      "percent": 70
+      "points": 200,
+      "activatedAt": "2025-11-18T12:30:00Z"
     }
   },
   {
+    "id": 5,
     "username": "d",
     "password": "1111",
     "role": "client",
@@ -63,19 +60,20 @@
     "showname": "d",
     "membership": {
       "isMember": true,
-      "rank": "Conqueror",
-      "level": 4,
-      "discount": 0.20,
-      "points": 350,
-      "nextTarget": 400,
-      "percent": 100
+      "points": 300,
+      "activatedAt": "2025-11-18T11:30:00Z"
     }
   },
   {
+    "id": 6,
     "username": "Boss",
     "password": "2222",
     "role": "client",
     "showname": "Bossski",
-    "membership": null
+    "membership": {
+      "isMember": false,
+      "points": 0,
+      "activatedAt": null
+    }
   }
 ]
