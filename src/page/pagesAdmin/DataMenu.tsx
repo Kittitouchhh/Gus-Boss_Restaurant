@@ -55,11 +55,11 @@ export default function DataMenupage() {
                 onChange={setType}
                 options={[
                   { value: "", label: "All" },
-                  { value: "Tea", label: "Tea" },
-                  { value: "Coffee", label: "Coffee" },
-                  { value: "SoftDrink", label: "Soft Drink" },
-                  { value: "MainDishes", label: "Main Dishes" },
-                  { value: "Desserts", label: "Desserts" },
+                  { value: "menutea", label: "Tea" },
+                  { value: "menucoffee","label": "Coffee" },
+                  { value: "menusoftdrink", label: "Soft Drink" },
+                  { value: "menumaindishes", label: "Main Dishes" },
+                  { value: "menudesserts", label: "Desserts" },
                 ]}
               />
             </div>
