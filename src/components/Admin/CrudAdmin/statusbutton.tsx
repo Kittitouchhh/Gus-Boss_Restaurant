@@ -3,17 +3,15 @@ import { useState } from "react";
 type StatusButtonProps<T> = {
   item: T;
   setItems: React.Dispatch<React.SetStateAction<T[]>>;
-  storageKey: string; 
+  storageKey: string;
+  type?: "menu" | "banner";
+  showLabel?: boolean;
 
 };
 
 export default function StatusButton<
   T extends { id: number | string; status: number }
->({item,setItems,storageKey,
-
-
-
-}: StatusButtonProps<T>) {
+>({ item, setItems, storageKey, type = "menu", showLabel = true }: StatusButtonProps<T>) {
 
   const [status, setStatus] = useState<number>(item.status);
 
@@ -50,13 +48,11 @@ export default function StatusButton<
           </div>
         </label>
 
-        <span
-          className={`font-medium ${
-            status === 1 ? "text-[#4ECDD2]" : "text-gray-800"
-          }`}
-        >
-          {status === 1 ? "Available" : "Sold Out"}
-        </span>
+        {showLabel && (
+          <span className={`font-medium ${status === 1 ? "text-[#4ECDD2]" : "text-gray-800"}`}>
+            {status === 1 ? "Available" : "Sold Out"}
+          </span>
+        )}
       </div>
     </div>
   );

@@ -47,7 +47,7 @@ const QRCode: React.FC<QRCodeProps> = ({ amount }) => {
     const users = JSON.parse(localStorage.getItem("users") || "[]");
 
     const updatedUsers = users.map((u: any) => {
-      if (u.username !== currentUser) return u;
+      if (u.id?.toString() !== currentUser) return u;
 
       const normalized = normalizeMembership(u.membership);
       return {

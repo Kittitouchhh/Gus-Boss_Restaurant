@@ -11,8 +11,9 @@ const Header: React.FC = () => {
     const users = JSON.parse(localStorage.getItem("users") || "[]");
     
     const currentUser = users.find(
-    (u: any) => u.username.toLowerCase() === currentUsername?.toLowerCase()
-  );
+    (u: any) => u.id?.toString() === currentUsername
+);
+
 
 
     const displayName = currentUser?.showname || "Unknown";
