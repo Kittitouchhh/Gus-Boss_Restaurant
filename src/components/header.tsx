@@ -37,13 +37,12 @@ const Header: React.FC = () => {
                     </>
                 )}
                 {role === "admin" && (
-                    <div className=" gap-[15px] flex flex-row">
+                    <>
                         <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata={"/"}>HOME</Button>
                         <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata={"/process"}>PROCESS</Button>
-                        <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata={"/postit"}>POST IT!</Button>
-                        <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata={"/constact"}>CONTACT</Button>
+                        <Button height="m" width="m" color="white" stringColor="brown" stringSize="m" linkdata={"/postit"}>POST IT!</Button>        
                         <Button height="m" width="m" color="orange" stringColor="white" stringSize="m" linkdata={"/admin"}>Admin</Button>
-                    </div>
+                    </>
                 )}
             </div>
 

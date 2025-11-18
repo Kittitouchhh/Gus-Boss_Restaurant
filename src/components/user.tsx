@@ -23,7 +23,7 @@ const User: React.FC<datauser> = ({name,image}) => {
             src="/member/crownlogo.png" alt="membership" />
 
             <img src={image || 'https://cdn-icons-png.flaticon.com/256/6522/6522516.png'} alt="" className='lg:w-[40px] lg:h-[40px] md:w-[30px] md:h-[30px] w-[30px] h-[30px] rounded-full self-center    2xl:w-[50px] 2xl:h-[50px] xl:w-[40px] xl:h-[40px] '/>
-            <p className='md:text-center text-start  text-white text-[12px] md:text-[18px]  lg:text-[20px] 2xl:text-[25px] xl:text-[20px]'>{name} </p>
+            <p className='md:text-center text-start  text-white text-[12px] md:text-[18px]   lg:text-[20px] 2xl:text-[25px] xl:text-[20px]'>{name} </p>
         </div>
     )
 }
