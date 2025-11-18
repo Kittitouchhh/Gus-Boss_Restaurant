@@ -8,16 +8,18 @@ import UserDropdown from "./UserDropdown";
 
 const Header: React.FC = () => {
     const [openMenu, setOpenMenu] = React.useState(false);
-    const currentUsername = localStorage.getItem("username");
+    
 
-    const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
+    const currentUsername = localStorage.getItem("currentUser");
+    
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    
+    const currentUser = users.find(
+    (u: any) => u.id?.toString() === currentUsername
+);
 
-    const allUsers = [...usersData, ...localUsers];
 
-    const currentUser = allUsers.find(
-        (u) => u.username.toLowerCase() === currentUsername?.toLowerCase()
-    );
-
+   
     const displayName = currentUser?.showname || "Unknown";
     const displayImage = currentUser?.image || "https://cdn-icons-png.flaticon.com/512/6522/6522516.png";
 

@@ -23,6 +23,14 @@ const QRCode: React.FC<QRCodeProps> = ({ amount }) => {
     if (file) setUploadedFile(file);
   };
 
+  const normalizeMembership = (mem: any) => {
+    return {
+      isMember: mem?.isMember ?? false,
+      points: mem?.points ?? 0,
+      activatedAt: mem?.activatedAt ?? null,
+    };
+  };
+
   const handleSubmit = () => {
     if (!uploadedFile) {
       alert("อัปโหลดสลิปก่อนนะครับสุดหล่อ ");
@@ -31,37 +39,30 @@ const QRCode: React.FC<QRCodeProps> = ({ amount }) => {
 
     const currentUser =
       localStorage.getItem("currentUser") || localStorage.getItem("username");
-
-    if (!currentUser) {
+      if (!currentUser) {
       alert("ไม่พบข้อมูลผู้ใช้ กรุณาเข้าสู่ระบบใหม่อีกครั้ง");
       return;
     }
 
     const users = JSON.parse(localStorage.getItem("users") || "[]");
 
-    const updatedUsers = users.map((u: any) =>
-      u.username === currentUser
-        ? {
-          ...u,
-          membership: u.membership
-            ? { ...u.membership, isMember: true }      // มีอยู่แล้ว → ใช้เดิม
-            : {                                         // ไม่มี → สร้าง Bronze
-              rank: "Bronze",
-              level: 1,
-              discount: 0.05,
-              points: 0,
-              percent: 0,
-              nextTarget: 100,
-              isMember: true
-            }
-        }
-        : u
-    );
+    const updatedUsers = users.map((u: any) => {
+      if (u.id?.toString() !== currentUser) return u;
+
+      const normalized = normalizeMembership(u.membership);
+      return {
+        ...u,
+        membership: {
+          ...normalized,
+          isMember: true,                 
+          activatedAt: new Date().toISOString(), 
+        },
+      };
+    });
 
     localStorage.setItem("users", JSON.stringify(updatedUsers));
-
-
     alert("ชำระเงินเรียบร้อยแล้ว ขอบคุณที่ใช้บริการ!");
+    
     setTimeout(() => {
       navigate("/memberpage");
       window.location.reload();

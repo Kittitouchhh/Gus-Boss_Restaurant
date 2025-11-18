@@ -4,7 +4,7 @@ import Banner from './BannerPage'
 export default function AdminPage() {
     return (
         <>
-            {/* <DataMenupage /> */}
+            <DataMenupage />
             <Banner />
         </>
     )

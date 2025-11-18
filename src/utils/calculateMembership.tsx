@@ -22,7 +22,7 @@ export default function CalculateMembership(points: number) {
   }
   
   const basePoints = (level - 1) * 100;
-  const nextTarget = level < 4 ? level * 100 : 300; 
+  const nextTarget = level < 4 ? level * 100 : 400; 
   let percent = ((points - basePoints) / 100) * 100;
   if (percent < 0) percent = 0;
   if (percent > 100) percent = 100;
