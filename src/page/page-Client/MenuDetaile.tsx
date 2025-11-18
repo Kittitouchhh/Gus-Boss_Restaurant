@@ -195,9 +195,7 @@ function  Menudetaile(){
                 <div onClick={() => {createOrder()}} className='transform transition-transform duration-200 hover:scale-105 active:scale-95'>
                     <Button height="xl" width='xl' color='orange' stringColor='white' stringSize='xl'>ADD TO CART</Button>
                 </div>
-                <div className='transform transition-transform duration-200 hover:scale-105 active:scale-95'>
-                    <Button height="xl" width='xl' color='orange' stringColor='white' stringSize='xl'  >BUY NOW</Button>
-                </div>
+                
                 
             </div>
 
