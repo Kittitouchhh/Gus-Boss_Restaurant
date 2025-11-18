@@ -87,6 +87,7 @@ const PostItCard: React.FC<PostItCardProps> = ({ post_id,username,imguser,conten
       draggable: false,
       theme: 'colored'
     });
+    console.log("alreadyreact")
     return;
   }
   
@@ -101,6 +102,7 @@ const PostItCard: React.FC<PostItCardProps> = ({ post_id,username,imguser,conten
       draggable: false,
       theme: 'colored'
     });
+    console.log("hasreact")
     return;
   }
 

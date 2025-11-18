@@ -10,17 +10,19 @@ import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import usersData from "../../data/login.json";
 
+
+
 interface cart{
-    menu_id : number,
-    menu_name : string,
-    menu_price : number,
-    menu_image : string,
-    order_description : string,
-    user_order : string,
-    userimage : string,
-    menu_option : { [key: string]: string } ,
-    quantity : number,
-    
+            order_id : number,
+            menu_id  : number,
+            menu_name : string,
+            menu_price : number,
+            menu_image : string,
+            order_description : string,
+            user_order : string,
+            userimage : string,
+            menu_option : { [key: string]: string } ,
+            quantity : number
 }
 
 interface process{
@@ -54,6 +56,7 @@ const PaymentPage:React.FC = ({}) => {
     const navigate = useNavigate();
     
 
+    // cart
     const [datacart,Setdatacart] = useState<cart[]>([])
     const [dataprocess , setprocss] = useState<process[]>([])
 
@@ -141,7 +144,7 @@ const PaymentPage:React.FC = ({}) => {
                     <p className='mx-2 font-bold text-[#EEDBC4] lg:text-[20px]  2xl:text-[30px] xl:text-[25px] md:text-[18px] text-[12px] self-start '>YOUR ORDER MENU</p>
                     {datacart.map((data) => {
                         return(
-                            <Cartcom title={data.menu_name} imgUrl={`/${data.menu_image}`} type={3}></Cartcom>
+                            <Cartcom order_id={data.order_id} menuid={data.menu_id} title={data.menu_name} imgUrl={`/${data.menu_image}`} type={3}></Cartcom>
                         )
                     })}
                 </div>

@@ -7,7 +7,8 @@ import CountdownProgress from './CountdownProgress'
 import Addcommentbox from '../comment/addcommentbox'
 
 interface CartProps{
-    id_menu?: number,
+    order_id?: number,
+    menuid? : number,
     imgUrl? : string,
     title? : string,
     option?: { [key: string]: string },
@@ -28,7 +29,7 @@ interface CartProps{
 
 
 
-const Cartcom:React.FC<CartProps> = ({id_menu,imgUrl , title,onRemove,option ,count,type ,user_name ,user_image,onQuantityChange,listmenu,duration,onFinish , description }) =>{
+const Cartcom:React.FC<CartProps> = ({order_id,menuid,imgUrl , title,onRemove,option ,count,type ,user_name ,user_image,onQuantityChange,listmenu,duration,onFinish , description }) =>{
     const [quantity , setquantity] = useState<number>(count ?? 1)
     
 
@@ -36,7 +37,7 @@ const Cartcom:React.FC<CartProps> = ({id_menu,imgUrl , title,onRemove,option ,co
     function updatelocalstorage(newQty : number){
         const cart = JSON.parse(localStorage.getItem("cart") || "[]")
         const update = cart.map((item:any) =>{
-            if (item.menu_name === title) {
+            if (item.order_id === order_id) {
                 return { ...item, quantity: newQty };
             }
             return item
@@ -66,7 +67,7 @@ const Cartcom:React.FC<CartProps> = ({id_menu,imgUrl , title,onRemove,option ,co
         else{
             onRemove?.()
             const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-            const update = cart.filter((item: any) => item.menu_name !== title);
+            const update = cart.filter((item: any) => item.order_id !== order_id);
             localStorage.setItem("cart", JSON.stringify(update));
             toast.error('สินค้าถูกลบจากตระกร้าเเล้ว!',{
                 position:"top-center",
@@ -86,7 +87,7 @@ const Cartcom:React.FC<CartProps> = ({id_menu,imgUrl , title,onRemove,option ,co
     const [isdescriptionpen, setdescriptionOpen] = useState(false);
 
 
-
+// cart page
     if(type == 1)
     {
         return(
@@ -115,7 +116,7 @@ const Cartcom:React.FC<CartProps> = ({id_menu,imgUrl , title,onRemove,option ,co
                     <div onClick={() => {setdescriptionOpen(!isdescriptionpen)}}>
                         <Button height="l" width="l" color="brown" stringColor="white" stringSize="l" >EDIT DETIAL</Button>
                     </div>
-                    {isdescriptionpen && <Addcommentbox onClose={() => setdescriptionOpen(false)}  menucartid={id_menu} description={description} type={3}></Addcommentbox>}                    
+                    {isdescriptionpen && <Addcommentbox onClose={() => setdescriptionOpen(false)}  order_id={order_id} description={description} type={3}></Addcommentbox>}                    
                 </div>
                 
             </div>
@@ -160,6 +161,8 @@ const Cartcom:React.FC<CartProps> = ({id_menu,imgUrl , title,onRemove,option ,co
             </div>
         )
     }
+
+    // Payment page
     else{
         return(
             <div className='w-[95%] lg:h-[250px] md:h-[180px]  h-auto bg-[#201c19] md:rounded-2xl rounded-md grid  grid-cols-[3fr_1fr]   border-amber-100 md:border-2 border-1 justify-center'>
@@ -173,7 +176,7 @@ const Cartcom:React.FC<CartProps> = ({id_menu,imgUrl , title,onRemove,option ,co
                 <div className='w-full h-full xl:p-[10px] lg:p-[10px] md:p-[10px] p-[5px] flex flex-row  lg:gap-[20px] md:gap-[10px] gap-[10px] justify-center items-center' onClick={()=> setIsCommentOpen(!isCommentOpen)}>         
                     <Button height="m" width="sm" color="white" stringColor="brown" stringSize="s">COMMENT</Button>
                 </div>
-                {isCommentOpen && <Addcommentbox onClose={() => setIsCommentOpen(false)} image={imgUrl} menu_name={title} type={1}></Addcommentbox>}
+                {isCommentOpen && <Addcommentbox onClose={() => setIsCommentOpen(false)} menu_id_from_comcart={menuid} image={imgUrl} menu_name={title} type={1}></Addcommentbox>}
             </div>
         )
         
