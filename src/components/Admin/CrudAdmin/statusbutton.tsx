@@ -22,6 +22,9 @@ export default function StatusButton<
 
   const [status, setStatus] = useState(item.status);
 
+  const knobPos = status === 1
+    ? (isMd ? 60 - 16 - 6 : 44 - 16 - 6)  // track - knob - padding
+    : 0;
 
   const themes = {
     menu: {
@@ -76,12 +79,7 @@ export default function StatusButton<
           >
             <div
               className="absolute top-[3px] left-[3px] w-4 h-4 rounded-full bg-white transition-all"
-              style={{
-                transform:
-                  status === 1
-                    ? `translateX(${isMd ? 40 : 22}px)`
-                    : `translateX(0px)`,
-              }}
+              style={{ transform: `translateX(${knobPos}px)` }}
             ></div>
           </div>
         </label>

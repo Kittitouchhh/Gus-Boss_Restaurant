@@ -9,7 +9,7 @@ export type BannerProps = BannerItem;
 export default function BannerPage() {
   const [banner, setBanner] = useState<BannerProps[]>([]);
   const [activePage, setActivePage] =
-    useState<"home" | "client" | "menu">("home");
+    useState<"home" | "postit">("home");
   const [openAdd, setOpenAdd] = useState(false);
 
 
@@ -70,7 +70,7 @@ export default function BannerPage() {
     <div>
       <div className="w-full  absolute bg-black px-5 pb-5 my-10">
         <div className="relative flex justify-center items-center  gap-3 mt-2 md:mt-5">
-          {["home", "client", "menu"].map((p) => (
+          {["home", "post it"].map((p) => (
             <button
               key={p}
               className={`cursor-pointer hover:scale-110 px-5 text-white text-[20px] border-3 shadow-xl duration-300 
