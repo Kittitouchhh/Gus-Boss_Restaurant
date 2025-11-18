@@ -46,7 +46,6 @@ export default function CardBannerAdmin({
     order: initial.order,
   });
 
-  // sync form ถ้าแก้ banner อื่น
   useEffect(() => {
     if (banner) {
       setForm({
@@ -81,7 +80,6 @@ export default function CardBannerAdmin({
       order: Number(form.order),
     };
 
-    // update state
     setBanner((prev) => {
       const updated = banner
         ? prev.map((b) => (b.id === banner.id ? newItem : b)) 
@@ -114,7 +112,7 @@ export default function CardBannerAdmin({
 
   if (!editing) {
     return (
-      <div className="m-3 pt-3 bg-black cursor-pointer">
+      <div className="m-3 pt-3 bg-black h-[90%] cursor-pointer">
         <div className="w-[90%] h-[80%] m-auto overflow-hidden" onClick={() => setEditing(true)}>
           <img
             src={form.image}
@@ -123,14 +121,14 @@ export default function CardBannerAdmin({
           />
         </div>
 
-        <div className="h-[18%] mt-2 flex items-center justify-center">
+        <div className="h-[15%]   mt-2 flex items-center justify-center">
           {banner && (
             <StatusButton
               type="banner"
               storageKey="banner"
               item={banner}
               setItems={setBanner}
-              showLabel={false}
+              showLabel={true}
             />
           )}
         </div>
@@ -142,13 +140,11 @@ export default function CardBannerAdmin({
     <div
       className={
         mode === "add"
-          ? "w-full p-4 bg-white rounded-lg shadow-md mb-4"
-          : "bg-white rounded-2xl shadow-lg border p-4 m-3"
+          ? "min-w-[100%] m-auto p-4 bg-white rounded-lg shadow-md mb-4"
+          : "w-[90%] bg-white rounded-2xl shadow-lg border p-4 m-3"
       }
     >
       <div className="flex flex-col gap-3">
-
-        {/* Upload */}
         <div className="w-full h-[160px] bg-gray-200 rounded-lg overflow-hidden">
           {!form.image ? (
             <label className="w-full h-full flex justify-center items-center text-gray-700 cursor-pointer">
@@ -163,8 +159,7 @@ export default function CardBannerAdmin({
           )}
         </div>
 
-        {/* Inputs */}
-        <div className="flex gap-3">
+        <div className="flex gap-3 w-full justify-center">
           <select
             value={form.page}
             onChange={(e) => setForm((f) => ({ ...f, page: e.target.value as BannerItem["page"] }))}
@@ -180,7 +175,7 @@ export default function CardBannerAdmin({
             min={1}
             value={form.order}
             onChange={(e) => setForm((f) => ({ ...f, order: Number(e.target.value) }))}
-            className="border rounded p-1 w-32"
+            className="border rounded p-1 w-13"
           />
 
           <select
@@ -193,8 +188,7 @@ export default function CardBannerAdmin({
           </select>
         </div>
 
-        {/* Buttons */}
-        <div className="flex justify-between mt-3">
+        <div className="flex justify-between mt-3 ">
           <Button
             height="mk"
             width="mk"
@@ -225,8 +219,8 @@ export default function CardBannerAdmin({
                 <Trash2 />
               </button>
             )}
-
-            <Button
+          </div>
+          <Button
               height="mk"
               width="mk"
               color="green"
@@ -236,7 +230,6 @@ export default function CardBannerAdmin({
             >
               Save
             </Button>
-          </div>
         </div>
       </div>
     </div>

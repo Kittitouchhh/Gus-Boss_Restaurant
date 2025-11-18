@@ -25,7 +25,7 @@ export default function BannerPage() {
     const initial: BannerProps[] = (saved || BannerData).map(
       (b: any, i: number) => ({
         ...b,
-        order: b.order ?? i + 1, 
+        order: b.order ?? i + 1,
       })
     );
 
@@ -39,45 +39,45 @@ export default function BannerPage() {
 
 
   const handleReorder = (id: number, newOrder: number) => {
-  setBanner((prev) => {
+    setBanner((prev) => {
 
-    const samePage = prev.filter((b) => b.page === activePage);
-    const others = prev.filter((b) => b.page !== activePage);
+      const samePage = prev.filter((b) => b.page === activePage);
+      const others = prev.filter((b) => b.page !== activePage);
 
-    const target = samePage.find((b) => b.id === id);
-    if (!target) return prev;
+      const target = samePage.find((b) => b.id === id);
+      if (!target) return prev;
 
-    const oldOrder = target.order;
-    if (oldOrder === newOrder) return prev;
+      const oldOrder = target.order;
+      if (oldOrder === newOrder) return prev;
 
-    const updated = samePage.map((b) => {
-      if (b.id === id) return { ...b, order: newOrder };
+      const updated = samePage.map((b) => {
+        if (b.id === id) return { ...b, order: newOrder };
 
-      if (b.order === newOrder) return { ...b, order: oldOrder };
+        if (b.order === newOrder) return { ...b, order: oldOrder };
 
-      return b;
+        return b;
+      });
+
+      const merged = [...others, ...updated].sort((a, b) => a.order - b.order);
+
+      localStorage.setItem("banner", JSON.stringify(merged));
+
+      return merged;
     });
-
-    const merged = [...others, ...updated].sort((a, b) => a.order - b.order);
-
-    localStorage.setItem("banner", JSON.stringify(merged));
-
-    return merged;
-  });
-};
+  };
 
   return (
     <div>
-      <div className="bg-black px-5 pb-5 my-10">
-        <div className="flex justify-center gap-3 mt-2">
+      <div className="w-full  absolute bg-black px-5 pb-5 my-10">
+        <div className="relative flex justify-center items-center  gap-3 mt-2 md:mt-5">
           {["home", "client", "menu"].map((p) => (
             <button
               key={p}
-              className={`px-5 text-white text-[20px] border-3 shadow-xl duration-300 ${
-                activePage === p
+              className={`cursor-pointer hover:scale-110 px-5 text-white text-[20px] border-3 shadow-xl duration-300 
+                ${activePage === p
                   ? "bg-orange-500 border-orange-600"
                   : "bg-black border-orange-500"
-              }`}
+                }`}
               onClick={() => setActivePage(p as any)}
             >
               {p.toUpperCase()}
@@ -85,19 +85,29 @@ export default function BannerPage() {
           ))}
         </div>
 
-        {openAdd && (
-          <div className="mt-4 px-3">
-            <CardBanner
-              setBanner={setBanner}
-              bannerList={filteredBanner as BannerItem[]}
-              mode="add"
-              onClose={() => setOpenAdd(false)}
-            />
-          </div>
-        )}
+        <div className="bg-[#2B2420] mt-5">
 
-        <div className="bg-[#2B2420] mt-3">
+          <div className="flex justify-center ">
+            <button
+              className="cursor-pointer hover:scale-103 mt-5 px-6 py-3 bg-orange-500 text-white text-xl rounded-lg shadow-md"
+              onClick={() => setOpenAdd(true)}
+            >
+              + Add Banner
+            </button>
+          </div>
+
           <div className="grid md:grid-cols-2 p-3">
+            {openAdd && (
+              <div className="mt-4 px-3">
+                <CardBanner
+                  setBanner={setBanner}
+                  bannerList={filteredBanner as BannerItem[]}
+                  mode="add"
+                  onClose={() => setOpenAdd(false)}
+                />
+              </div>
+            )}
+
             {filteredBanner.map((b) => (
               <CardBanner
                 key={b.id}
@@ -109,15 +119,6 @@ export default function BannerPage() {
               />
             ))}
           </div>
-        </div>
-
-        <div className="flex justify-center mt-5">
-          <button
-            className="px-6 py-3 bg-orange-500 text-white text-xl rounded-lg shadow-md"
-            onClick={() => setOpenAdd(true)}
-          >
-            + Add Banner
-          </button>
         </div>
       </div>
     </div>

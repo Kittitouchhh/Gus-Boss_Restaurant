@@ -1,19 +1,46 @@
 import { useState } from "react";
 
+const isMd = window.matchMedia("(min-width: 768px)").matches;
+
 type StatusButtonProps<T> = {
   item: T;
   setItems: React.Dispatch<React.SetStateAction<T[]>>;
   storageKey: string;
   type?: "menu" | "banner";
   showLabel?: boolean;
-
 };
 
 export default function StatusButton<
   T extends { id: number | string; status: number }
->({ item, setItems, storageKey, type = "menu", showLabel = true }: StatusButtonProps<T>) {
+>({
+  item,
+  setItems,
+  storageKey,
+  type = "menu",
+  showLabel = true,
+}: StatusButtonProps<T>) {
 
-  const [status, setStatus] = useState<number>(item.status);
+  const [status, setStatus] = useState(item.status);
+
+
+  const themes = {
+    menu: {
+      activeBg: "#4ECDD2",
+      inactiveBg: "#ccc",
+      activeText: "#4ECDD2",
+      inactiveText: "#555",
+      labelOn: "Available",
+      labelOff: "Sold Out",
+    },
+    banner: {
+      activeBg: "#e11d48",
+      inactiveBg: "#1f2937",
+      activeText: "#e11d48",
+      inactiveText: "#aaa",
+      labelOn: "ON",
+      labelOff: "OFF",
+    },
+  }[type];
 
   const toggleStatus = () => {
     const newStatus = status === 1 ? 0 : 1;
@@ -30,27 +57,44 @@ export default function StatusButton<
   };
 
   return (
-    <div className="p-3 text-center align-middle">
+    <div className="p-3 text-center">
       <div className="flex justify-center items-center gap-2">
         <label className="relative inline-flex items-center cursor-pointer">
           <input
             type="checkbox"
             checked={status === 1}
             onChange={toggleStatus}
-            className="sr-only peer"
+            className="sr-only"
           />
 
-          <div className="w-11 h-6 bg-gray-300 rounded-full peer-focus:outline-none
-                          peer-checked:bg-[#4ECDD2] after:content-[''] after:absolute
-                          after:top-[3px] after:left-[3px] after:bg-white after:h-4
-                          after:w-4 after:rounded-full after:transition-all
-                          peer-checked:after:translate-x-5">
+          <div
+            className="mb-1 w-11 h-6 md:w-15 rounded-full transition-all relative"
+            style={{
+              backgroundColor:
+                status === 1 ? themes.activeBg : themes.inactiveBg,
+            }}
+          >
+            <div
+              className="absolute top-[3px] left-[3px] w-4 h-4 rounded-full bg-white transition-all"
+              style={{
+                transform:
+                  status === 1
+                    ? `translateX(${isMd ? 40 : 22}px)`
+                    : `translateX(0px)`,
+              }}
+            ></div>
           </div>
         </label>
 
         {showLabel && (
-          <span className={`font-medium ${status === 1 ? "text-[#4ECDD2]" : "text-gray-800"}`}>
-            {status === 1 ? "Available" : "Sold Out"}
+          <span
+            className="mb-1 font-medium transition-all"
+            style={{
+              color:
+                status === 1 ? themes.activeText : themes.inactiveText,
+            }}
+          >
+            {status === 1 ? themes.labelOn : themes.labelOff}
           </span>
         )}
       </div>
