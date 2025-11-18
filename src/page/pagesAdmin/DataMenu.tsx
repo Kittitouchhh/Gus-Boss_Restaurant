@@ -15,8 +15,6 @@ export type MenuItem = {
 };
 
 
-
-
 export default function DataMenupage() {
   const [menu, setMenus] = useState<MenuItem[]>([]);
   const [adding, setAdding] = useState<boolean>(false);
@@ -66,10 +64,10 @@ export default function DataMenupage() {
           </div>
 
           <div className="flex justify-center gap-10">
-            <span className="bg-[#FFEED9]  rounded font-bold p-1 md:w-30 md:h-15   ">
+            <span className="bg-[#FFEED9] rounded font-bold p-1 md:w-30 md:h-15   ">
               <div className="flex">
-                <b className="bg-[#684A3A]  rounded text-white p-1 md:text-[30px]  ">{filteredMenus.length} </b>
-                <p className="text-[15px] m-auto p-1 md:text-[25px] md:m-auto"> Total</p>
+                <b className="bg-[#684A3A] rounded text-white p-1 md:text-[30px]  ">{filteredMenus.length} </b>
+                <p className="text-[15px] m-auto p-1 md:text-[25px] md:m-auto text-black"> Total</p>
               </div>
 
             </span>

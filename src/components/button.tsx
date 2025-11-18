@@ -138,7 +138,7 @@ const Button: React.FC<data> = ({height , width ,color,stringColor,stringSize,li
 
     if(!linkdata){
         return(
-            <button className={`${combinedClassName} rounded-full font-sans box-border cursor-pointer`}  onClick={onClick}>
+            <button className={`${combinedClassName} hover:scale-105 rounded-full font-sans box-border cursor-pointer`}  onClick={onClick}>
                 {children}
             </button>
         )

@@ -79,8 +79,8 @@ export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCanc
       menuPrice: Number(form.price),
       imageMenu: form.image || "/drink/default.png",
       status: Number(form.status),
-      datajson: form.type,
-      description: form.description || ""
+      description: form.description || "",
+      datajson: form.type,  
     };
 
 
@@ -138,7 +138,7 @@ export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCanc
             </>
           )}
         </div>
-        <div className="mt-3 flex flex-col gap-2">
+        <div className="mt-3 flex flex-col gap-2 text-black">
           <input
             type="text"
             placeholder="Menu name..."
@@ -167,7 +167,7 @@ export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCanc
           <select
             value={form.type}
             onChange={(e) => setForm({ ...form, type: e.target.value })}
-            className="border rounded px-2 py-1 text-sm"
+            className="border rounded px-2 py-1 text-sm "
           >
             <option value="Tea">Tea</option>
             <option value="Coffee">Coffee</option>
@@ -212,7 +212,7 @@ export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCanc
         />
       </div>
 
-      <div className="p-4 flex flex-col items-center text-center">
+      <div className="text-black p-4 flex flex-col items-center text-center">
         <button
           ref={buttonRef}
           className="cursor-pointer absolute top-3 right-3"
