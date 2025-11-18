@@ -6,7 +6,7 @@ interface datacard {
     name:string ,
     image : string,
     option : string[]
-    price : string
+    price : number
     datajson : string
     description:string
 }
@@ -57,7 +57,7 @@ const CardMenu: React.FC<datacard> = ({name,image,option,price,datajson}) => {
                 <div className='items-center justify-center relative mt-auto flex flex-row md:gap-[5px] gap-[2px]'>
                     <img src='logo/heart.png' alt='' className="xl:w-[20px] xl:h-auto md:w-[16px] w-[10px] "/>
                     <p className=' font-extrabold text-[#e64d26] xl:text-[18px] md:text-[14px] text-[8px]'>{countlike}</p>
-                    <p className=' font-extrabold ml-auto text-[#675D56] xl:text-[20px] md:text-[14px] text-[10px]'>{price}</p>
+                    <p className=' font-extrabold ml-auto text-[#675D56] xl:text-[20px] md:text-[14px] text-[10px]'>{`฿${price}`}</p>
                 </div>
 
             </div>

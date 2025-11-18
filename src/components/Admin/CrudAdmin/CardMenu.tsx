@@ -28,11 +28,12 @@ export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCanc
     };
 
   const [form, setForm] = useState({
-    name: menu.name || "",
-    price: menu.price?.toString() || "",
-    image: menu.image || "",
-    status: menu.status ?? 1,
-    type: menu.type || "Tea",
+    name: menu.menuName || "",
+    price: menu.menuPrice,
+    image: menu.imageMenu,
+    status: menu.status,
+    type: menu.datajson || "Tea",
+    description: menu.description || ""
   });
 
   const updatePosition = () => {
@@ -74,11 +75,12 @@ export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCanc
 
     const newMenu: MenuItem = {
       id: mode === "add" ? Date.now() : menu.id,
-      name: form.name,
-      price: Number(form.price),
-      image: form.image || "/drink/default.png",
+      menuName: form.name,
+      menuPrice: Number(form.price),
+      imageMenu: form.image || "/drink/default.png",
       status: Number(form.status),
-      type: form.type,
+      datajson: form.type,
+      description: form.description || ""
     };
 
 
@@ -149,7 +151,7 @@ export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCanc
             type="number"
             placeholder="Price..."
             value={form.price}
-            onChange={(e) => setForm({ ...form, price: e.target.value })}
+            onChange={(e) => setForm({ ...form, price:  Number(e.target.value) })}
             className="border rounded px-2 py-1 text-sm"
           />
 
@@ -204,8 +206,8 @@ export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCanc
     <div className="cursor-pointer max-w-100 grid grid-cols-2 md:grid-cols-1 relative bg-[#F8F5F2] rounded-2xl shadow-lg border border-[#E6D4C3] overflow-hidden">
       <div className="w-full h-40 overflow-hidden">
         <img
-          src={menu.image || "/drink/default.png"}
-          alt={menu.name}
+          src={menu.imageMenu || "/drink/default.png"}
+          alt={menu.menuName}
           className="w-full h-full object-cover"
         />
       </div>
@@ -222,8 +224,8 @@ export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCanc
           <EllipsisVertical />
         </button>
 
-        <h3 className="text-[#3D342F] font-bold text-lg truncate">{menu.name}</h3>
-        <p className="text-[#C28B53] font-semibold mt-1">{menu.price}฿</p>
+        <h3 className="text-[#3D342F] font-bold text-lg truncate">{menu.menuName}</h3>
+        <p className="text-[#C28B53] font-semibold mt-1">{menu.menuPrice}฿</p>
 
         <StatusButton item={menu} setItems={setMenus} 
         storageKey="Menu" />

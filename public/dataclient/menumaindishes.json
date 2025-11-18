@@ -1,102 +1,102 @@
 [
     {
-        "id" : 1,
+        "id" : 21,
         "menuName" : "Burger",
         "imageMenu" : "maindishes/burger.jpg",
         "menuOption" : ["Main Topping","Cheese","VegetableToppings"],
-        "menuPrice" : "฿120",
+        "menuPrice" : 120,
         "datajson" : "menumaindishes",
         "description" : "Juicy grilled patty served in a bun with fresh vegetables and sauce.",
         "status" : 1
         
     },
     {
-        "id" : 2,
+        "id" : 22,
         "menuName" : "Chicken Fried",
         "imageMenu" : "maindishes/chickenfried.jpg",
         "menuOption" : ["VegetableToppings","Spice Level","Flavor"],
-        "menuPrice" : "฿60",
+        "menuPrice" : 60,
         "datajson" : "menumaindishes",
         "description" : "Crispy fried chicken with golden crust and tender meat inside.",
         "status" : 1
     },
     {
-        "id" : 3,
+        "id" : 23,
         "menuName" : "Donburi",
         "imageMenu" : "maindishes/Donburi.jpg",
         "menuOption" : ["Main Topping","VegetableToppings","Spice Level"],
-        "menuPrice" : "฿90",
+        "menuPrice" : 90,
         "datajson" : "menumaindishes",
         "description" : "Japanese rice bowl topped with meat, eggs, or vegetables.",
         "status" : 1
     },
     {
-        "id" : 4,
+        "id" : 24,
         "menuName" : "Fried Rice",
         "imageMenu" : "maindishes/Fried Rice.jpg",
         "menuOption" : ["Main Topping","Spice Level","Extra Topping"],
-        "menuPrice" : "฿50",
+        "menuPrice" : 50,
         "datajson" : "menumaindishes",
         "description" : "Stir-fried rice with eggs, vegetables, and savory seasoning.",
         "status" : 1
     },
     {
-        "id" : 5,
+        "id" : 25,
         "menuName" : "Gyoza",
         "imageMenu" : "maindishes/Gyoza.jfif",
         "menuOption" : ["Main Topping","Spice Level","Extra Topping"],
-        "menuPrice" : "฿60",
+        "menuPrice" : 60,
         "datajson" : "menumaindishes",
         "description" : "Japanese-style dumplings filled with minced pork and vegetables.",
         "status" : 1
     },
     {
-        "id" : 6,
+        "id" : 26,
         "menuName" : "Papaya Salad",
         "imageMenu" : "maindishes/papayasalad.jpg",
         "menuOption" : ["Spice Level","Papaya Style","Extra Topping"],
-        "menuPrice" : "฿80",
+        "menuPrice" : 80,
         "datajson" : "menumaindishes",
         "description" : "Spicy and tangy Thai salad made from shredded green papaya.",
         "status" : 1
     },
     {
-        "id" : 7,
+        "id" : 27,
         "menuName" : "Pizza",
         "imageMenu" : "maindishes/pizza.jpg",
         "menuOption" : ["Sauce","Cheese","Main Topping"],
-        "menuPrice" : "฿200",
+        "menuPrice" : 200,
         "datajson" : "menumaindishes",
         "description" : "Baked flatbread topped with cheese, tomato sauce, and various toppings.",
         "status" : 1
     },
     {
-        "id" : 8,
+        "id" : 28,
         "menuName" : "Sandwich",
         "imageMenu" : "maindishes/sandwich.jpg",
         "menuOption" : ["Main Topping","Bread Type","VegetableToppings"],
-        "menuPrice" : "฿30",
+        "menuPrice" : 30,
         "datajson" : "menumaindishes",
         "description" : "Freshly baked, soft bread generously filled with a delicious combination of high-quality meats, crisp fresh vegetables, and a rich, flavorful sauce. Perfectly balanced in taste and texture, making every bite a satisfying experience.",
         "status" : 1
     },
     {
-        "id" : 9,
+        "id" : 29,
         "menuName" : "Steak",
         "imageMenu" : "maindishes/steak.jpg",
         "menuOption" : ["Temperature","Main Topping","Doneness Level"],
-        "menuPrice" : "฿180",
+        "menuPrice" : 180,
         "datajson" : "menumaindishes",
         "description" : "Grilled beef steak cooked to your preferred doneness, juicy and flavorful.",
         "status" : 1
     },
     {
         
-        "id" : 10,
+        "id" : 30,
         "menuName" : "Green Curry",
         "imageMenu" : "maindishes/greencurrychicken.jpg",
         "menuOption" : ["Main Topping","Spice Level","Extra Topping"],
-        "menuPrice" : "฿100",
+        "menuPrice" : 100,
         "datajson" : "menumaindishes",
         "description" : "Spicy Thai green curry with coconut milk, herbs, and tender meat.",
         "status" : 1

@@ -13,7 +13,7 @@ import usersData from "../../data/login.json";
 interface cart{
     menu_id : number,
     menu_name : string,
-    menu_price : string,
+    menu_price : number,
     menu_image : string,
     order_description : string,
     user_order : string,
@@ -126,12 +126,9 @@ const PaymentPage:React.FC = ({}) => {
         
     }
 
-    function formatNumber(price : string): number{
-        const numberString = price.replace(/[^\d.]/g, '');
-        return parseFloat(numberString) || 0;
-    }
-    const subtotal = datacart.reduce((acc, item) => acc + formatNumber(item.menu_price) * item.quantity, 0);
-    const vat = (datacart.reduce((acc, item) => acc + formatNumber(item.menu_price) * item.quantity, 0) * 0.07);
+     
+    const subtotal = datacart.reduce((acc, item) => acc + item.menu_price * item.quantity, 0);
+    const vat = (datacart.reduce((acc, item) => acc + item.menu_price * item.quantity, 0) * 0.07);
     const discountcalculate = (subtotal + vat)*discount
     const totalprice = (subtotal + vat) - discountcalculate
 

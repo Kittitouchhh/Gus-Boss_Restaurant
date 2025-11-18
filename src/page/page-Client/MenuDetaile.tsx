@@ -15,7 +15,7 @@ interface Post {
   menuName: string;
   imageMenu: string;
   menuOption: string[];
-  menuPrice: string;
+  menuPrice: number;
   menuLike: string;
   datajson: string;
   description: string;
@@ -25,7 +25,7 @@ interface Post {
 interface cart{
             menu_id : number,
             menu_name : string,
-            menu_price : string,
+            menu_price : number,
             menu_image : string,
             order_description : string,
             menu_option : { [key: string]: string } ,
@@ -117,7 +117,7 @@ function  Menudetaile(){
         const order = {
             menu_id : newId,
             menu_name : selectedmenu?.menuName || "",
-            menu_price : selectedmenu?.menuPrice || "",
+            menu_price : selectedmenu?.menuPrice || 0,
             menu_image : selectedmenu?.imageMenu || "",
             order_description : text ,
             menu_option : selectedOptions ,

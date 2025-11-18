@@ -5,13 +5,17 @@ import Select from "../../components/selecthbar";
 import Button from "../../components/button";
 
 export type MenuItem = {
-  id: number;
-  name: string;
-  price: number;
-  status: number;
-  image: string;
-  type: string;
+  id:  number;
+  menuName: string;
+  imageMenu: string;
+  menuPrice: number;
+  datajson: string;
+  description: string;
+  status : number
 };
+
+
+
 
 export default function DataMenupage() {
   const [menu, setMenus] = useState<MenuItem[]>([]);
@@ -25,9 +29,9 @@ export default function DataMenupage() {
 }, []);
   
   const filteredMenus = menu.filter((item) => {
-    const matchType = type ? item.type.toLowerCase() === type.toLowerCase() : true;
+    const matchType = type ? item.datajson.toLowerCase() === type.toLowerCase() : true;
     const matchKeyword = keyword
-      ? item.name.toLowerCase().includes(keyword.toLowerCase())
+      ? item.menuName.toLowerCase().includes(keyword.toLowerCase())
       : true;
     return matchType && matchKeyword;
   });
@@ -84,16 +88,8 @@ export default function DataMenupage() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:w-[60%] xl:m-auto  gap-6 p-6">
           {adding && (
-            <CardMenuAdmin
-              mode="add"
-              menu={{
-                id: Date.now(),
-                name: "",
-                price: 0,
-                image: "",
-                status: 1,
-                type: "Tea",
-              }}
+            <CardMenuAdmin mode="add" 
+            menu={{ id:  Date.now(), menuName: "", menuPrice: 20, imageMenu: "", status: 1, datajson: "Tea", description:"",}}
               setMenus={setMenus}
               onSave={(newMenu) => {
                 const updated = [...menu, newMenu];

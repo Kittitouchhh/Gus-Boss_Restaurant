@@ -1,102 +1,102 @@
 [
     {
-        "id" : 1,
+        "id" : 41,
         "menuName" : "BLACK TEA",
         "imageMenu" : "tea/black_Tea.png",
         "menuOption" : ["Temperature","Sweet","Brew strenght"],
-        "menuPrice" : "฿20",
+        "menuPrice" : 20,
         "datajson" : "menutea",
         "description" : "Bold and robust tea with a deep, rich flavor.",
         "status" : 1
         
     },
     {
-        "id" : 2,
+        "id" : 42,
         "menuName" : "GREEN TEA",
         "imageMenu" : "tea/GREEN TEA.jpg",
         "menuOption" : ["Temperature","Milk Option","Flavor add-on"],
-        "menuPrice" : "฿25",
+        "menuPrice" : 25,
         "datajson" : "menutea",
         "description" : "Fresh and slightly grassy tea rich in antioxidants.",
         "status" : 1
     },
     {
-        "id" : 3,
+        "id" : 43,
         "menuName" : "THAI ICED TED",
         "imageMenu" : "tea/ชาเย็น.jpg",
         "menuOption" : ["Topping Tea","Milk Option","Sweet"],
-        "menuPrice" : "฿15",
+        "menuPrice" : 15,
         "datajson" : "menutea",
         "description" : "Sweet and creamy Thai-style tea served over ice.",
         "status" : 1
     },
     {
-        "id" : 4,
+        "id" : 44,
         "menuName" : "LEMON TEA",
         "imageMenu" : "tea/lemon tea.jpg",
         "menuOption" : ["Temperature","Lemon level","Topping Tea"],
-        "menuPrice" : "฿25",
+        "menuPrice" : 25,
         "datajson" : "menutea",
         "description" : "Refreshing tea infused with the bright flavor of lemon.",
         "status" : 1
     },
     {
-        "id" : 5,
+        "id" : 45,
         "menuName" : "CHAMOMILE TEA",
         "imageMenu" : "tea/Chamomile tea.jpg",
         "menuOption" : ["Temperature","Ice Level","Flavor add-on"],
-        "menuPrice" : "฿25",
+        "menuPrice" : 25,
         "datajson" : "menutea",
         "description" : "Soothing herbal tea known for its calming aroma.",
         "status" : 1
     },
     {
-        "id" : 6,
+        "id" : 46,
         "menuName" : "Oolong Tea",
         "imageMenu" : "tea/Oolong Tea.jpg",
         "menuOption" : ["Temperature","Sweet","Brew strenght"],
-        "menuPrice" : "฿10",
+        "menuPrice" : 10,
         "datajson" : "menutea",
         "description" : "Smooth semi-fermented tea with floral and roasted notes.",
         "status" : 1
     },
     {
-        "id" : 7,
+        "id" : 47,
         "menuName" : "White Tea",
         "imageMenu" : "tea/White Tea.jpg",
         "menuOption" : ["Temperature","Milk Option","Flavor add-on"],
-        "menuPrice" : "฿25",
+        "menuPrice" : 25,
         "datajson" : "menutea",  
         "description" : "Delicate tea with a light, natural sweetness and subtle aroma.",
         "status" : 1
     },
     {
-        "id" : 8,
+        "id" : 48,
         "menuName" : "Earl Grey Tea",
         "imageMenu" : "tea/Earl Grey Tea.jpg",
         "menuOption" : ["Topping Tea","Milk Option","Brew strenght"],
-        "menuPrice" : "฿35",
+        "menuPrice" : 35,
         "datajson" : "menutea",
         "description" : "Black tea infused with bergamot for a citrusy fragrance.",
         "status" : 1
     },
     {
-        "id" : 9,
+        "id" : 49,
         "menuName" : "Peppermint Tea",
         "imageMenu" : "tea/Peppermint Tea.jpg",
         "menuOption" : ["Topping Tea","Lemon level","Brew strenght"],
-        "menuPrice" : "฿35",
+        "menuPrice" : 35,
         "datajson" : "menutea",
         "description" : "Cooling herbal tea with a refreshing minty taste.",
         "status" : 1
     },
     {
         
-        "id" : 10,
+        "id" : 50,
         "menuName" : "Hibiscus Tea",
         "imageMenu" : "tea/Chamomile tea.jpg",
         "menuOption" : ["Topping Tea","Lemon level","Brew strenght"],
-        "menuPrice" : "฿20",
+        "menuPrice" : 20,
         "datajson" : "menutea",
         "description" : "Tangy and vibrant red tea with a fruity, floral flavor.",
         "status" : 1
