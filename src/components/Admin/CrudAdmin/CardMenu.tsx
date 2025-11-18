@@ -29,14 +29,14 @@ export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCanc
   const [editing, setEditing] = useState(false);
   const [position, setPosition] = useState<{ x: number; y: number } | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
-  
+
   const handleCancel = () => {
-      if (onCancel) {
-        onCancel();         
-      } else {
-        setEditing(false);  
-      }
-    };
+    if (onCancel) {
+      onCancel();
+    } else {
+      setEditing(false);
+    }
+  };
 
   const [form, setForm] = useState({
     name: menu.menuName || "",
@@ -44,7 +44,8 @@ export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCanc
     image: menu.imageMenu,
     status: menu.status,
     type: menu.datajson || "Tea",
-    description: menu.description || ""
+    description: menu.description || "",
+    menuOption: menu.menuOption || [],
   });
 
   const updatePosition = () => {
@@ -84,15 +85,16 @@ export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCanc
       return alert("กรอกข้อมูลให้ครบก่อนบันทึก");
     }
 
-    const newMenu: Post = {
-      id: mode === "add" ? Date.now() : menu.id,      
-      menuName: form.name,                             
-      imageMenu: form.image || "/drink/default.png",   
-      menuOption: menu.menuOption || [],              
-      menuPrice: Number(form.price),                  
-      datajson: form.type,                             
-      description: form.description || "",            
-      status: Number(form.status) }
+    const newMenu: MenuItem = {
+      id: mode === "add" ? Date.now() : menu.id,
+      menuName: form.name,
+      menuPrice: Number(form.price),
+      imageMenu: form.image || "/drink/default.png",
+      status: Number(form.status),
+      description: form.description,
+      datajson: (form.type),
+      menuOption: form.menuOption,
+    };
 
 
     if (onSave) {
@@ -107,10 +109,14 @@ export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCanc
           : prev.map((m) => (m.id === menu.id ? newMenu : m));
 
       localStorage.setItem("menu", JSON.stringify(updated));
+      
+      setEditing(false);
+      setOpen(false);
+
       return updated;
     });
   };
-   
+
 
   if (mode === "add" || mode === "edit" || editing) {
     return (
@@ -162,7 +168,7 @@ export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCanc
             type="number"
             placeholder="Price..."
             value={form.price}
-            onChange={(e) => setForm({ ...form, price:  Number(e.target.value) })}
+            onChange={(e) => setForm({ ...form, price: Number(e.target.value) })}
             className="border rounded px-2 py-1 text-sm"
           />
 
@@ -180,24 +186,24 @@ export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCanc
             onChange={(e) => setForm({ ...form, type: e.target.value })}
             className="border rounded px-2 py-1 text-sm "
           >
-            <option value="Tea">Tea</option>
-            <option value="Coffee">Coffee</option>
-            <option value="SoftDrink">Soft Drink</option>
-            <option value="MainDishes">Main Dishes</option>
-            <option value="Desserts">Desserts</option>
+            <option value="menutea">Tea</option>
+            <option value="menucoffee">Coffee</option>
+            <option value="menusoftdrink">Soft Drink</option>
+            <option value="menumaindishes">Main Dishes</option>
+            <option value="menudesserts">Desserts</option>
           </select>
         </div>
         <div className="flex justify-between mt-3">
           <Button
-              height="mk"
-              width="mk"
-              color="gray"
-              stringColor="white"
-              stringSize="mk"
-              onClick={handleCancel}
-            >
-              Cancel
-            </Button>
+            height="mk"
+            width="mk"
+            color="gray"
+            stringColor="white"
+            stringSize="mk"
+            onClick={handleCancel}
+          >
+            Cancel
+          </Button>
 
           <Button
             height="mk"
@@ -238,8 +244,8 @@ export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCanc
         <h3 className="text-[#3D342F] font-bold text-lg truncate">{menu.menuName}</h3>
         <p className="text-[#C28B53] font-semibold mt-1">{menu.menuPrice}฿</p>
 
-        <StatusButton item={menu} setItems={setMenus} 
-        storageKey="menu" type="menu" />
+        <StatusButton item={menu} setItems={setMenus}
+          storageKey="menu" type="menu" />
       </div>
 
       {open && (
