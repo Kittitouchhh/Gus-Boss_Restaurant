@@ -5,9 +5,10 @@ import Select from "../../components/selecthbar";
 import Button from "../../components/button";
 
 export type MenuItem = {
-  id:  number;
+  id: number;
   menuName: string;
   imageMenu: string;
+  menuOption: string[];
   menuPrice: number;
   datajson: string;
   description: string;
@@ -87,7 +88,7 @@ export default function DataMenupage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:w-[60%] xl:m-auto  gap-6 p-6">
           {adding && (
             <CardMenuAdmin mode="add" 
-            menu={{ id:  Date.now(), menuName: "", menuPrice: 20, imageMenu: "", status: 1, datajson: "Tea", description:"",}}
+            menu={{ id:  Date.now(), menuName: "",menuOption: [], menuPrice: 20, imageMenu: "", status: 1, datajson: "Tea", description:""}}
               setMenus={setMenus}
               onSave={(newMenu) => {
                 const updated = [...menu, newMenu];

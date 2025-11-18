@@ -18,7 +18,7 @@ export default function EditMenu({ open, onClose, position, setMenus, menu, onEd
 
   const handleDelete = () => {
     const confirmDelete = window.confirm(
-      `คุณต้องการลบ "${menu.name}" ออกจากเมนูหรือไม่?`
+      `คุณต้องการลบ "${menu.menuName}" ออกจากเมนูหรือไม่?`
     );
     if (!confirmDelete) return;
     const storedMenus = JSON.parse(localStorage.getItem("menu") || "[]");

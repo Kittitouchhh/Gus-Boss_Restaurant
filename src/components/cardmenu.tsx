@@ -3,6 +3,7 @@ import Button from './button'
 import {Link} from 'react-router-dom'
 
 interface datacard {
+    id:number;
     name:string ,
     image : string,
     option : string[]
