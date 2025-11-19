@@ -1,6 +1,5 @@
 import React , {useState , useEffect} from 'react'
 import Cartcom from '../../components/cart/cartcom'
-import { div } from 'framer-motion/client'
 import Tagmenu from '../../components/tagmenu'
 
 

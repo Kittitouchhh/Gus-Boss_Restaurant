@@ -13,16 +13,6 @@ type CardMenuProps = {
   onCancel?: () => void;
 };
 
-interface Post {
-  id: number;
-  menuName: string;
-  imageMenu: string;
-  menuOption: string[];
-  menuPrice: number;
-  datajson: string;
-  description: string;
-  status: number
-}
 
 export default function CardMenuAdmin({ menu, setMenus, mode = "view", onSave, onCancel, }: CardMenuProps) {
   const [open, setOpen] = useState<boolean>(false);
