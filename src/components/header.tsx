@@ -60,7 +60,7 @@ const Header: React.FC = () => {
                     <Button height="m" width="mg" color="white" stringColor="brown" stringSize="m" linkdata="/">HOME</Button>
                     <Button height="m" width="mg" color="white" stringColor="brown" stringSize="m" linkdata="/process">PROCESS</Button>
                     <Button height="m" width="mg" color="white" stringColor="brown" stringSize="m" linkdata="/postit">POST IT!</Button>
-                    <Button height="m" width="mg" color="white" stringColor="brown" stringSize="m" linkdata="/constact">CONTACT</Button>
+                    
                     {role === "client" && (
                         <Button height="m" width="mg" color="white" stringColor="brown" stringSize="m" linkdata="/constact">CONTACT</Button>
                     )}
