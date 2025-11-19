@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import usersData from "../../data/login.json";
-
+import CalculateMembership from '../../utils/calculateMembership';
 
 
 interface cart{
@@ -129,7 +129,31 @@ const PaymentPage:React.FC = ({}) => {
         }
         
     }
+    // จัดการระบบสมาชิก
+    const [user, setUser] = useState<any>(null);
+    let discountpercentage ;
 
+    useEffect(()=>{
+        const currentId = localStorage.getItem("currentUser");
+        if (!currentId) return;
+
+        const users = JSON.parse(localStorage.getItem("users") || "[]");
+
+        const foundUser = users.find(
+            (u: any) => u.id?.toString() === currentId
+        );
+
+        setUser(foundUser || null);
+
+        if(user.membership.isMember === true){
+            discountpercentage = CalculateMembership(user.membership.point)
+        }
+
+    },[[localStorage.getItem("currentUser")]])
+
+
+    
+    
      
     const subtotal = datacart.reduce((acc, item) => acc + item.menu_price * item.quantity, 0);
     const vat = (datacart.reduce((acc, item) => acc + item.menu_price * item.quantity, 0) * 0.07);
