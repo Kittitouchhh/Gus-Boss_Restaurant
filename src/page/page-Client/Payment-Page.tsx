@@ -170,6 +170,7 @@ const PaymentPage: React.FC = ({ }) => {
                     <p className='mx-2 font-bold text-[#EEDBC4] lg:text-[20px]  2xl:text-[30px] xl:text-[25px] md:text-[18px] text-[12px] self-start '>YOUR ORDER MENU</p>
                     {datacart.map((data) => {
                         return (
+                            
                             <Cartcom order_id={data.order_id} menuid={data.menu_id} title={data.menu_name} imgUrl={`/${data.menu_image}`} type={3}></Cartcom>
                         )
                     })}
