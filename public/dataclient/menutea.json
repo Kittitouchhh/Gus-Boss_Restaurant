@@ -2,7 +2,7 @@
     {
         "id" : 41,
         "menuName" : "BLACK TEA",
-        "imageMenu" : "tea/black_Tea.png",
+        "imageMenu" : "/tea/black_Tea.png",
         "menuOption" : ["Temperature","Sweet","Brew strenght"],
         "menuPrice" : 20,
         "datajson" : "menutea",
@@ -13,7 +13,7 @@
     {
         "id" : 42,
         "menuName" : "GREEN TEA",
-        "imageMenu" : "tea/GREEN TEA.jpg",
+        "imageMenu" : "/tea/GREEN TEA.jpg",
         "menuOption" : ["Temperature","Milk Option","Flavor add-on"],
         "menuPrice" : 25,
         "datajson" : "menutea",
@@ -23,7 +23,7 @@
     {
         "id" : 43,
         "menuName" : "THAI ICED TED",
-        "imageMenu" : "tea/ชาเย็น.jpg",
+        "imageMenu" : "/tea/ชาเย็น.jpg",
         "menuOption" : ["Topping Tea","Milk Option","Sweet"],
         "menuPrice" : 15,
         "datajson" : "menutea",
@@ -33,7 +33,7 @@
     {
         "id" : 44,
         "menuName" : "LEMON TEA",
-        "imageMenu" : "tea/lemon tea.jpg",
+        "imageMenu" : "/tea/lemon tea.jpg",
         "menuOption" : ["Temperature","Lemon level","Topping Tea"],
         "menuPrice" : 25,
         "datajson" : "menutea",
@@ -43,7 +43,7 @@
     {
         "id" : 45,
         "menuName" : "CHAMOMILE TEA",
-        "imageMenu" : "tea/Chamomile tea.jpg",
+        "imageMenu" : "/tea/Chamomile tea.jpg",
         "menuOption" : ["Temperature","Ice Level","Flavor add-on"],
         "menuPrice" : 25,
         "datajson" : "menutea",
@@ -53,7 +53,7 @@
     {
         "id" : 46,
         "menuName" : "Oolong Tea",
-        "imageMenu" : "tea/Oolong Tea.jpg",
+        "imageMenu" : "/tea/Oolong Tea.jpg",
         "menuOption" : ["Temperature","Sweet","Brew strenght"],
         "menuPrice" : 10,
         "datajson" : "menutea",
@@ -63,7 +63,7 @@
     {
         "id" : 47,
         "menuName" : "White Tea",
-        "imageMenu" : "tea/White Tea.jpg",
+        "imageMenu" : "/tea/White Tea.jpg",
         "menuOption" : ["Temperature","Milk Option","Flavor add-on"],
         "menuPrice" : 25,
         "datajson" : "menutea",  
@@ -73,7 +73,7 @@
     {
         "id" : 48,
         "menuName" : "Earl Grey Tea",
-        "imageMenu" : "tea/Earl Grey Tea.jpg",
+        "imageMenu" : "/tea/Earl Grey Tea.jpg",
         "menuOption" : ["Topping Tea","Milk Option","Brew strenght"],
         "menuPrice" : 35,
         "datajson" : "menutea",
@@ -83,7 +83,7 @@
     {
         "id" : 49,
         "menuName" : "Peppermint Tea",
-        "imageMenu" : "tea/Peppermint Tea.jpg",
+        "imageMenu" : "/tea/Peppermint Tea.jpg",
         "menuOption" : ["Topping Tea","Lemon level","Brew strenght"],
         "menuPrice" : 35,
         "datajson" : "menutea",
@@ -94,7 +94,7 @@
         
         "id" : 50,
         "menuName" : "Hibiscus Tea",
-        "imageMenu" : "tea/Chamomile tea.jpg",
+        "imageMenu" : "/tea/Chamomile tea.jpg",
         "menuOption" : ["Topping Tea","Lemon level","Brew strenght"],
         "menuPrice" : 20,
         "datajson" : "menutea",

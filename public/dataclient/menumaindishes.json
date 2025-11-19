@@ -2,7 +2,7 @@
     {
         "id" : 21,
         "menuName" : "Burger",
-        "imageMenu" : "maindishes/burger.jpg",
+        "imageMenu" : "/maindishes/burger.jpg",
         "menuOption" : ["Main Topping","Cheese","VegetableToppings"],
         "menuPrice" : 120,
         "datajson" : "menumaindishes",
@@ -13,7 +13,7 @@
     {
         "id" : 22,
         "menuName" : "Chicken Fried",
-        "imageMenu" : "maindishes/chickenfried.jpg",
+        "imageMenu" : "/maindishes/chickenfried.jpg",
         "menuOption" : ["VegetableToppings","Spice Level","Flavor"],
         "menuPrice" : 60,
         "datajson" : "menumaindishes",
@@ -23,7 +23,7 @@
     {
         "id" : 23,
         "menuName" : "Donburi",
-        "imageMenu" : "maindishes/Donburi.jpg",
+        "imageMenu" : "/maindishes/Donburi.jpg",
         "menuOption" : ["Main Topping","VegetableToppings","Spice Level"],
         "menuPrice" : 90,
         "datajson" : "menumaindishes",
@@ -33,7 +33,7 @@
     {
         "id" : 24,
         "menuName" : "Fried Rice",
-        "imageMenu" : "maindishes/Fried Rice.jpg",
+        "imageMenu" : "/maindishes/Fried Rice.jpg",
         "menuOption" : ["Main Topping","Spice Level","Extra Topping"],
         "menuPrice" : 50,
         "datajson" : "menumaindishes",
@@ -43,7 +43,7 @@
     {
         "id" : 25,
         "menuName" : "Gyoza",
-        "imageMenu" : "maindishes/Gyoza.jfif",
+        "imageMenu" : "/maindishes/Gyoza.jfif",
         "menuOption" : ["Main Topping","Spice Level","Extra Topping"],
         "menuPrice" : 60,
         "datajson" : "menumaindishes",
@@ -53,7 +53,7 @@
     {
         "id" : 26,
         "menuName" : "Papaya Salad",
-        "imageMenu" : "maindishes/papayasalad.jpg",
+        "imageMenu" : "/maindishes/papayasalad.jpg",
         "menuOption" : ["Spice Level","Papaya Style","Extra Topping"],
         "menuPrice" : 80,
         "datajson" : "menumaindishes",
@@ -63,7 +63,7 @@
     {
         "id" : 27,
         "menuName" : "Pizza",
-        "imageMenu" : "maindishes/pizza.jpg",
+        "imageMenu" : "/maindishes/pizza.jpg",
         "menuOption" : ["Sauce","Cheese","Main Topping"],
         "menuPrice" : 200,
         "datajson" : "menumaindishes",
@@ -73,7 +73,7 @@
     {
         "id" : 28,
         "menuName" : "Sandwich",
-        "imageMenu" : "maindishes/sandwich.jpg",
+        "imageMenu" : "/maindishes/sandwich.jpg",
         "menuOption" : ["Main Topping","Bread Type","VegetableToppings"],
         "menuPrice" : 30,
         "datajson" : "menumaindishes",
@@ -83,7 +83,7 @@
     {
         "id" : 29,
         "menuName" : "Steak",
-        "imageMenu" : "maindishes/steak.jpg",
+        "imageMenu" : "/maindishes/steak.jpg",
         "menuOption" : ["Temperature","Main Topping","Doneness Level"],
         "menuPrice" : 180,
         "datajson" : "menumaindishes",
@@ -94,7 +94,7 @@
         
         "id" : 30,
         "menuName" : "Green Curry",
-        "imageMenu" : "maindishes/greencurrychicken.jpg",
+        "imageMenu" : "/maindishes/greencurrychicken.jpg",
         "menuOption" : ["Main Topping","Spice Level","Extra Topping"],
         "menuPrice" : 100,
         "datajson" : "menumaindishes",

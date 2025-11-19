@@ -2,7 +2,7 @@
     {
         "id" : 11,
         "menuName" : "Chocolate Cake",
-        "imageMenu" : "desserts/ChocolateCake.jpg",
+        "imageMenu" : "/desserts/ChocolateCake.jpg",
         "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
         "menuPrice" : 20,
         "datajson" : "menudesserts",
@@ -13,7 +13,7 @@
     {
         "id" : 12,
         "menuName" : "Strawberry Shortcake",
-        "imageMenu" : "desserts/StrawberryShortcake.jpg",
+        "imageMenu" : "/desserts/StrawberryShortcake.jpg",
         "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
         "menuPrice" : 25,
         "datajson" : "menudesserts",
@@ -23,7 +23,7 @@
     {
         "id" : 13,
         "menuName" : "Matcha Pudding",
-        "imageMenu" : "desserts/MatchaPudding.jpg",
+        "imageMenu" : "/desserts/MatchaPudding.jpg",
         "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
         "menuPrice" : 20,
         "datajson" : "menudesserts",
@@ -33,7 +33,7 @@
     {
         "id" : 14,
         "menuName" : "Chocolate Brownie",
-        "imageMenu" : "desserts/ChocolateBrownie.jpg",
+        "imageMenu" : "/desserts/ChocolateBrownie.jpg",
         "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
         "menuPrice" : 15,
         "datajson" : "menudesserts",
@@ -43,7 +43,7 @@
     {
         "id" : 15,
         "menuName" : "Fruit Tart",
-        "imageMenu" : "desserts/FruitTart.jpg",
+        "imageMenu" : "/desserts/FruitTart.jpg",
         "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
         "menuPrice" : 30,
         "datajson" : "menudesserts",
@@ -53,7 +53,7 @@
     {
         "id" : 16,
         "menuName" : "Vanilla Ice Cream",
-        "imageMenu" : "desserts/VanillaIceCream.jpg",
+        "imageMenu" : "/desserts/VanillaIceCream.jpg",
         "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
         "menuPrice" : 35,
         "datajson" : "menudesserts",
@@ -63,7 +63,7 @@
     {
         "id" : 17,
         "menuName" : "Tiramisu",
-        "imageMenu" : "desserts/Tiramisu.jpg",
+        "imageMenu" : "/desserts/Tiramisu.jpg",
         "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
         "menuPrice" : 40,
         "datajson" : "menudesserts",
@@ -73,7 +73,7 @@
     {
         "id" : 18,
         "menuName" : "Cheesecake",
-        "imageMenu" : "desserts/Cheesecake.jpg",
+        "imageMenu" : "/desserts/Cheesecake.jpg",
         "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
         "menuPrice" : 20,
         "datajson" : "menudesserts",
@@ -83,7 +83,7 @@
     {
         "id" : 19,
         "menuName" : "Mango Sticky Rice",
-        "imageMenu" : "desserts/MangoStickyRice.jpg",
+        "imageMenu" : "/desserts/MangoStickyRice.jpg",
         "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
         "menuPrice" : 10,
         "datajson" : "menudesserts",
@@ -94,7 +94,7 @@
         
         "id" : 20,
         "menuName" : "Chocolate Lava Cake",
-        "imageMenu" : "desserts/Chocolate Lava Cake.jpg",
+        "imageMenu" : "/desserts/Chocolate Lava Cake.jpg",
         "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
         "menuPrice" : 20,
         "datajson" : "menudesserts",

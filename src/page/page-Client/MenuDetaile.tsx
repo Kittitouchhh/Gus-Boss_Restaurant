@@ -166,7 +166,7 @@ function  Menudetaile(){
 
         <div className='mt-[110px]'>
             <div className="mb-[40px]">
-                <ParagraphMenu nameMenu={selectedmenu?.menuName || ""}  image={`/${selectedmenu?.imageMenu || ""}`} description={selectedmenu?.description || ""}></ParagraphMenu>
+                <ParagraphMenu nameMenu={selectedmenu?.menuName || ""}  image={`${selectedmenu?.imageMenu || ""}`} description={selectedmenu?.description || ""}></ParagraphMenu>
             </div>
             <div className="w-full p-[20px]  lg:mb-[40px] md:mb-[30px] mb-[20px] flex flex-row flex-wrap 2xl:gap-[20px] xl:gap-[50px] lg:gap-[20px] md:gap-[30px] gap-[10px] justify-start items-stretch mx-auto">
                 {selectedmenu?.menuOption.map(optionname => {

@@ -2,7 +2,7 @@
     {
         "id" : 1,
         "menuName" : "Espresso",
-        "imageMenu" : "coffee/Espresso.jpg ",
+        "imageMenu" : "/coffee/Espresso.jpg ",
         "menuOption" : ["Temperature","Sweet","Milk Options"],
         "menuPrice" : 25,
         "datajson" : "menucoffee",
@@ -14,7 +14,7 @@
     {
         "id" : 2,
         "menuName" : "Americano",
-        "imageMenu" : "coffee/Americano.jfif",
+        "imageMenu" : "/coffee/Americano.jfif",
         "menuOption" : ["Temperature","Milk Options","Flavor Add-ons"],
         "menuPrice" : 45,
         "datajson" : "menucoffee",
@@ -24,7 +24,7 @@
     {
         "id" : 3,
         "menuName" : "Latte",
-        "imageMenu" : "coffee/Latte.jpg",
+        "imageMenu" : "/coffee/Latte.jpg",
         "menuOption" : ["Brew Strenght","Sweet","Milk Options"],
         "menuPrice" : 20 ,
         "datajson" : "menucoffee",
@@ -34,7 +34,7 @@
     {
         "id" : 4,
         "menuName" : "Cappuccino",
-        "imageMenu" : "coffee/Cappuccino.jfif",
+        "imageMenu" : "/coffee/Cappuccino.jfif",
         "menuOption" : ["Temperature","Milk Options","Flavor Add-ons"],
         "menuPrice" : 35,
         "datajson" : "menucoffee",
@@ -44,7 +44,7 @@
     {
         "id" : 5,
         "menuName" : "Mocha",
-        "imageMenu" : "coffee/Mocha.jpg",
+        "imageMenu" : "/coffee/Mocha.jpg",
         "menuOption" : ["Temperature","Ice Level","Flavor Add-ons"],
         "menuPrice" : 30,
         "datajson" : "menucoffee",
@@ -54,7 +54,7 @@
     {
         "id" : 6,
         "menuName" : "Flat White",
-        "imageMenu" : "coffee/Flat White.jpg",
+        "imageMenu" : "/coffee/Flat White.jpg",
         "menuOption" : ["Temperature","Sweet","Brew Strenght"],
         "menuPrice" : 20,
         "datajson" : "menucoffee",
@@ -64,7 +64,7 @@
     {
         "id" : 7,
         "menuName" : "Macchiato",
-        "imageMenu" : "coffee/Macchiato.jpg",
+        "imageMenu" : "/coffee/Macchiato.jpg",
         "menuOption" : ["Temperature","Topping Coffee","Flavor Add-ons"],
         "menuPrice" : 25,
         "datajson" : "menucoffee",
@@ -74,7 +74,7 @@
     {
         "id" : 8,
         "menuName" : "Affogato",
-        "imageMenu" : "coffee/Affogato.jfif",
+        "imageMenu" : "/coffee/Affogato.jfif",
         "menuOption" : ["Topping Coffee","Milk Options","Brew Strenght"],
         "menuPrice" : 10,
         "datajson" : "menucoffee",
@@ -84,7 +84,7 @@
     {
         "id" : 9,
         "menuName" : "Cold Brew Coffee",
-        "imageMenu" : "coffee/Cold Brew.jfif",
+        "imageMenu" : "/coffee/Cold Brew.jfif",
         "menuOption" : ["Temperature","Milk Options","Brew Strenght"],
         "menuPrice" : 35,
         "datajson" : "menucoffee",
@@ -95,7 +95,7 @@
         
         "id" : 10,
         "menuName" : "Iced Coffee",
-        "imageMenu" : "coffee/Iced Coffee.jpg",
+        "imageMenu" : "/coffee/Iced Coffee.jpg",
         "menuOption" : ["Temperature","Flavor Add-ons","Brew Strenght"],
         "menuPrice" : 20,
         "datajson" : "menucoffee",
