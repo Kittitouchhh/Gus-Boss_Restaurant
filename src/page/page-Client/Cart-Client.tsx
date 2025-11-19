@@ -21,8 +21,6 @@ interface cart{
 }
 
 
-
-
 function Cart(){
     const navigate = useNavigate();
     let [datacart,Setdatacart] = useState<cart[]>([])
