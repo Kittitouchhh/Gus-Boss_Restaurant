@@ -22,6 +22,7 @@ interface Banner{
   id : number ,
   image : string,
   page : string
+  ,status : number
 }
 
 function PostIt(){
@@ -102,7 +103,7 @@ function PostIt(){
 
         <div>
             <div className='mt-[110px] '> 
-                <SwiperCom key={databanner.length} databanner={databanner.filter((data)=>data.page === "postit" )}></SwiperCom>
+                <SwiperCom key={databanner.length} databanner={databanner.filter((data)=>data.page === "postit" &&  data.status === 1)}></SwiperCom>
             </div>
             
             <div onClick={()=> setIsCommentOpen(!isCommentOpen)}>

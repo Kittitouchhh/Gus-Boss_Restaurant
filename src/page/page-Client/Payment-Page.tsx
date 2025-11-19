@@ -159,7 +159,7 @@ const PaymentPage:React.FC = ({}) => {
 
     const vat = subtotal * 0.07;
     
-    const totalprice = (subtotal + vat) 
+    const totalprice = (1) 
     return (
         <div className='w-screen h-screen mt-[150px] xl:mb-[600px] lg:mb-[200px]  mb-[0px]'>
             <Tagmenu title='ORDER SCAN'></Tagmenu>
