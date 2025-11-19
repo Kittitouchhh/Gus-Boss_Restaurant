@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import SetCardMenu from "../../components/set-cardmenu";
 import SetCategoryCard from "../../components/set-categorycard";
 import Button from "../../components/button";

@@ -1,8 +1,6 @@
 import SetCardMenu from '../../components/set-cardmenu'
 import Tagmenu from '../../components/tagmenu.tsx'
-import SetCategoryCard from '../../components/set-categorycard'
 import {useEffect , useState} from 'react'
-import React from 'react'
 import axios from 'axios'
 import CategoryCard from '../../components/categorycard'
 

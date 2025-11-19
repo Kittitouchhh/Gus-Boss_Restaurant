@@ -1,8 +1,7 @@
-import React , {useState , useEffect} from 'react'
+import React , {useState} from 'react'
 import Button from '../button'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import {Flex,Progress} from "@radix-ui/themes"
 import CountdownProgress from './CountdownProgress'
 import Addcommentbox from '../comment/addcommentbox'
 

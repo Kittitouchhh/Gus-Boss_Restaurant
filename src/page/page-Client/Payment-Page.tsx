@@ -1,4 +1,4 @@
-import { div } from 'framer-motion/client';
+
 import React ,{useState , useEffect}from 'react'
 import TagPrice from '../../components/cart/tagprice';
 import Tagmenu from '../../components/tagmenu';
@@ -8,7 +8,7 @@ import Button from '../../components/button'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import usersData from "../../data/login.json";
+
 import CalculateMembership from '../../utils/calculateMembership';
 import { Link } from "react-router-dom";
 

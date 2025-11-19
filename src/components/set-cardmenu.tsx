@@ -1,8 +1,5 @@
 import React from 'react'
-import {useEffect , useState} from 'react'
 import CardMenu from './cardmenu'
-import axios from 'axios'
-import {Routes,Route} from 'react-router-dom'
 
 
 

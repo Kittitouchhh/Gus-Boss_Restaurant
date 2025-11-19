@@ -1,7 +1,7 @@
-import { TextArea } from '@radix-ui/themes';
+
 import React , {useState,useEffect} from 'react';
 import Button from '../button'
-import usersData from "../../data/login.json";
+
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 interface Props {

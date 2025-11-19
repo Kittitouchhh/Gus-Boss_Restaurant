@@ -1,6 +1,5 @@
 import React from "react"
 import Button from "./button"
-import usersData from "../data/login.json";
 import UserDropdown from "./UserDropdown";
 
 

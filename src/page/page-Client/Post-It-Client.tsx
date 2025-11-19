@@ -1,10 +1,10 @@
-import React , {useState , useEffect} from 'react'
-import Header from "../../components/header"
+import {useState , useEffect} from 'react'
+
 import PostItCard from '../../components/post-it/post-it-card.tsx'
-import { div } from 'framer-motion/client'
+
 import SwiperCom from '../../components/swipercom'
 import axios from 'axios'
-import FormDemo from '../../components/post-it/formpostit.tsx'
+
 import Addcommentbox from '../../components/comment/addcommentbox.tsx'
 
 interface PostitProps{

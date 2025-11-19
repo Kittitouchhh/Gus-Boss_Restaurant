@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
 import User from "./user";
 
@@ -14,7 +14,7 @@ const UserDropdown: React.FC<DropdownUserProps> = () => {
   const buttonRef = useRef<HTMLDivElement>(null); 
   const menuRef = useRef<HTMLDivElement>(null);  
   const navigate = useNavigate();
-  const location = useLocation()
+  
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

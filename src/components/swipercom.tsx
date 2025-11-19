@@ -1,7 +1,5 @@
 import {Swiper , SwiperSlide} from 'swiper/react'
 import {Navigation ,Pagination , Autoplay} from "swiper/modules"
-import axios from 'axios'
-import {useState , useEffect} from 'react'
 import React from 'react'
 
 import 'swiper/swiper-bundle.css';

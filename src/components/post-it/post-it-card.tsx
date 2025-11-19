@@ -1,8 +1,7 @@
 import React, { useState , useEffect } from "react";
-import { motion, parseCSSVariable } from "framer-motion";
+import { motion} from "framer-motion";
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import usersData from "../../data/login.json";
 
 interface PostItCardProps {
   post_id : number,
