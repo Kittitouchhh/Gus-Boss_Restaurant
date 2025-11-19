@@ -169,7 +169,7 @@ const PaymentPage:React.FC = ({}) => {
                     {datacart.map((data) => {
                         return(
 
-                            <Cartcom order_id={data.order_id} menuid={data.menu_id} title={data.menu_name} imgUrl={`/${data.menu_image}`} type={3}></Cartcom>
+                            <Cartcom order_id={data.order_id} menuid={data.menu_id} title={data.menu_name} imgUrl={`${data.menu_image}`} type={3}></Cartcom>
                         )
                     })}
                 </div>
