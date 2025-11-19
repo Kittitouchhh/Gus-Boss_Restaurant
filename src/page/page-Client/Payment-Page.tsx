@@ -159,8 +159,8 @@ const PaymentPage: React.FC = ({ }) => {
     const subtotal = datacart.reduce((acc, item) => acc + item.menu_price * item.quantity, 0);
     const vat = subtotal * 0.07;
 
-    const discountcalculate = (subtotal + vat) * discountpercentage
-    const totalprice =  (subtotal + vat) - discountcalculate
+    const discountcalculate = (subtotal) * discountpercentage
+    const totalprice =  ( subtotal - discountcalculate ) +vat
 
     return (
         <div className='w-screen h-screen mt-[150px] xl:mb-[600px] lg:mb-[200px]  mb-[0px]'>
@@ -170,7 +170,7 @@ const PaymentPage: React.FC = ({ }) => {
                     <p className='mx-2 font-bold text-[#EEDBC4] lg:text-[20px]  2xl:text-[30px] xl:text-[25px] md:text-[18px] text-[12px] self-start '>YOUR ORDER MENU</p>
                     {datacart.map((data) => {
                         return (
-                            
+
                             <Cartcom order_id={data.order_id} menuid={data.menu_id} title={data.menu_name} imgUrl={`/${data.menu_image}`} type={3}></Cartcom>
                         )
                     })}

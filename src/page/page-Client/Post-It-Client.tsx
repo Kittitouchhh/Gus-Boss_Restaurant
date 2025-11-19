@@ -16,12 +16,14 @@ interface PostitProps{
     star : number ,
     angry : number,
     content : string,
+    
 }
 
 interface Banner{
   id : number ,
   image : string,
   page : string
+  status: number
 }
 
 function PostIt(){
@@ -102,7 +104,9 @@ function PostIt(){
 
         <div>
             <div className='mt-[110px] '> 
-                <SwiperCom key={databanner.length} databanner={databanner.filter((data)=>data.page === "postit" )}></SwiperCom>
+                <SwiperCom key={databanner.length} 
+                databanner={databanner.filter((data)=>data.page === "postit")
+                 .filter((data) => data.status === 1)}></SwiperCom>
             </div>
             
             <div onClick={()=> setIsCommentOpen(!isCommentOpen)}>
@@ -112,7 +116,8 @@ function PostIt(){
 
             <div className='mt-[40px] mb-[120px] flex flex-row flex-wrap gap-[20px] justify-center'>
                 {
-                    datapostit.map((data) => {
+                    datapostit
+                    .map((data) => {
                         return(
                             <PostItCard post_id={data.post_id} username ={data.username} imguser = {data.userImage} content={data.content} love={data.love} star={data.star} wow={data.wow} angry={data.angry}  update={loaddatapostit}></PostItCard>
                         )
