@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ParagraphMenu from '../../components/detail-menu/paragraphsMenu'
 import SetOption from "../../components/detail-menu/setoption"

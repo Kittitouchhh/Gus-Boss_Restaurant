@@ -31,7 +31,7 @@ const PostItCard: React.FC<PostItCardProps> = ({ post_id,username,imguser,conten
   const [hasreact , Sethasreact] = useState<boolean>(false)
   const [datapostit , Setdatapostit] = useState<PostItCardProps[]>([])
   const [displayName , SetName] = useState<string>("")
-  const [displayImage , SetImage] = useState<string>("")
+ 
   const [datahasreact , setdatareact] = useState<savepostreaction[]>([])
 
 
@@ -56,7 +56,7 @@ const PostItCard: React.FC<PostItCardProps> = ({ post_id,username,imguser,conten
         );
 
         SetName(foundUser?.showname || "Unknown");
-        SetImage(foundUser?.image || "https://cdn-icons-png.flaticon.com/512/6522/6522516.png");
+        
 
 
         // =======================================
@@ -82,7 +82,7 @@ const PostItCard: React.FC<PostItCardProps> = ({ post_id,username,imguser,conten
         );
 
         SetName(foundUser?.showname || "Unknown");
-        SetImage(foundUser?.image || "https://cdn-icons-png.flaticon.com/512/6522/6522516.png");
+        
 
   },[localStorage.getItem("currentUser")])
 
