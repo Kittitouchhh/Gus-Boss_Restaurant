@@ -182,11 +182,11 @@ const PaymentPage: React.FC = ({ }) => {
             <div className='lg:gap-[80px] md:gap-[50px] gap-[20px] flex flex-col md:mt-[80px] mt-[50px]'>
                 <TagPrice title='Sub Total Price' price={subtotal}></TagPrice>
                 <TagPrice title='VAT' price={vat}></TagPrice>
-                <TagPrice title='Discount Member' price={discountcalculate} percent={discountpercentage * 100`{}`}></TagPrice>
+                <TagPrice title='Discount Member' price={discountcalculate} percent={discountpercentage}></TagPrice>
                 <TagPrice title='Total Price' price={totalprice}></TagPrice>
             </div>
 
-            <div className='flex flex-row mt-[30px] md:mt-[80px] justify-center md:gap-[30px] gap-[10px]'>
+            <div className='flex flex-row mt-[30px] md:mt-[30px] justify-center md:gap-[30px] gap-[10px]'>
                 <div onClick={() => navigate('/cart')} className='transform transition-transform duration-200 hover:scale-105 active:scale-95'>
                     <Button height="xl" width='xl' color='white' stringColor='brown' stringSize='xl'>
                         BACK
