@@ -23,6 +23,7 @@ const QRCode: React.FC<QRCodeProps> = ({ amount }) => {
     if (file) setUploadedFile(file);
   };
 
+  // ฟังก์ชัน normalize ค่า membership ให้มีโครงสร้างที่ถูกต้อง
   const normalizeMembership = (mem: any) => {
     return {
       isMember: mem?.isMember ?? false,
@@ -46,6 +47,7 @@ const QRCode: React.FC<QRCodeProps> = ({ amount }) => {
 
     const users = JSON.parse(localStorage.getItem("users") || "[]");
 
+    // อัปเดตสถานะสมาชิกของ user ที่ตรงกับ currentUser
     const updatedUsers = users.map((u: any) => {
       if (u.id?.toString() !== currentUser) return u;
 
@@ -60,6 +62,7 @@ const QRCode: React.FC<QRCodeProps> = ({ amount }) => {
       };
     });
 
+    // เซฟกลับเข้า localStorage
     localStorage.setItem("users", JSON.stringify(updatedUsers));
     alert("ชำระเงินเรียบร้อยแล้ว ขอบคุณที่ใช้บริการ!");
     

@@ -10,15 +10,16 @@ export type BannerItem = {
   page: "home" | "postit";
   order: number;
 };
-
+// รับค่าจาก parent
 type CardBannerProps = {
-  banner?: BannerItem;
-  setBanner: React.Dispatch<React.SetStateAction<BannerItem[]>>;
-  bannerList: BannerItem[]; // items on current active page (filtered)
-  handleReorder?: (id: number, newOrder: number) => void;
-  mode: "view" | "edit" | "add";
+  banner?: BannerItem; // ถ้ามีแปลว่าเป็นโหมดแก้ไข
+  setBanner: React.Dispatch<React.SetStateAction<BannerItem[]>>; // ฟังก์ชันอัปเดต list ทั้งหมด
+  bannerList: BannerItem[]; 
+  handleReorder?: (id: number, newOrder: number) => void; // ฟังก์ชันจัดลำดับ
+  mode: "view" | "edit" | "add"; // โหมดการใช้งาน
   onClose?: () => void;
 };
+
 
 export default function CardBannerAdmin({
   banner,
@@ -28,15 +29,20 @@ export default function CardBannerAdmin({
   mode = "view",
   onClose,
 }: CardBannerProps) {
+
+  // ถ้ามี banner = ใช้ข้อมูลเดิม, ถ้าไม่มีก็สร้างใหม่พร้อมค่าพวกนี้
   const initial: BannerItem = banner ?? {
     id: Date.now(),
     image: "",
     status: 1,
     page: "home",
-    order: bannerList.length + 1, // default to end of current page list
+    order: bannerList.length + 1,  // ลำดับต่อจากตัวสุดท้าย ดูจาก baner[] item ว่ามีกี่ชิ้นนะจ๊ะ
   };
 
+  // สำหรับโหมดแก้ไข
   const [editing, setEditing] = useState(mode === "add");
+
+  // ไว้ใช้ในฟอร์ม
   const [form, setForm] = useState({
     image: initial.image,
     status: initial.status,
@@ -44,20 +50,22 @@ export default function CardBannerAdmin({
     order: initial.order,
   });
 
+  // banner bannerList เปลี่ยน ก็ อัปเดต
   useEffect(() => {
-    if (banner) {
-      setForm({
+    if (banner) { 
+      setForm({ // ถ้ามี bannerใช้ของเดิมตามนรี้
         image: banner.image,
         status: banner.status,
         page: banner.page,
         order: banner.order,
       });
     } else {
-      // if switching to add mode ensure order defaults to bannerList length+1
+      // add + 1 จะได้ต่อตูด
       setForm((f) => ({ ...f, order: bannerList.length + 1 }));
     }
   }, [banner, bannerList]);
 
+  // อัปโหลดไฟล์เป็น base64 เก็บใน form.image
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -72,7 +80,7 @@ export default function CardBannerAdmin({
       return;
     }
 
-    // prepare new item (note: order may be adjusted below)
+    //  เอาค่าform มาสร้าง banner ใหม่
     const newItem: BannerItem = {
       id: banner ? banner.id : Date.now(),
       image: form.image,
@@ -81,20 +89,22 @@ export default function CardBannerAdmin({
       order: Number(form.order),
     };
 
+    // อัปเดตรายการ banner ทั้งหมดใน state
     setBanner((prev) => {
-      // if editing existing and page changed => remove from old page then append to target page
+      // กรณีแก้ไข และย้ายหน้า  ต้องจัดลำดับใหม่ทั้งสองหน้า
       if (banner && banner.page !== newItem.page) {
-        // remove old
+        
+
         const withoutOld = prev.filter((p) => p.id !== banner.id);
-        // items already on target page
+        
         const targetList = withoutOld.filter((p) => p.page === newItem.page);
-        // assign order: if user set an order, use it (bounded), otherwise put at end
+       
         const desired = Number(newItem.order) || targetList.length + 1;
         const bounded = Math.max(1, Math.min(desired, targetList.length + 1));
         const itemToInsert = { ...newItem, order: bounded };
         const merged = [...withoutOld, itemToInsert];
 
-        // reindex per page so orders become consecutive starting 1
+        
         const pages = Array.from(new Set(merged.map((m) => m.page)));
         const reindexed = pages.flatMap((p) =>
           merged
@@ -107,22 +117,23 @@ export default function CardBannerAdmin({
         return reindexed;
       }
 
-      // if editing existing and same page => replace and swap if collision
+      // กรณีแก้ไขแต่ไม่เปลี่ยนหน้า
       if (banner) {
         const oldOrder = banner.order;
         const desiredOrder = Number(newItem.order);
 
-        // apply replace + swap logic
+        
         const replaced = prev.map((p) => {
           if (p.id === banner.id) return { ...newItem };
-          // if another item has desired order on same page -> swap to oldOrder
+          
+
           if (p.page === newItem.page && p.order === desiredOrder) {
             return { ...p, order: oldOrder };
           }
           return p;
         });
 
-        // ensure no duplicates in ordering for that page (sort + normalize)
+        // reindex ใหม่
         const pages = Array.from(new Set(replaced.map((m) => m.page)));
         const reindexed = pages.flatMap((p) =>
           replaced
@@ -135,15 +146,17 @@ export default function CardBannerAdmin({
         return reindexed;
       }
 
-      // add new item (mode === "add")
-      // if user specified order, insert at that index in that page; otherwise append
+      // กรณีเพิ่ม banner ใหม่
       const without = [...prev];
       const targetList = without.filter((p) => p.page === newItem.page).sort((a, b) => a.order - b.order);
+      
+      
       const desired = Number(newItem.order) || targetList.length + 1;
       const insertIndex = Math.max(0, Math.min(desired - 1, targetList.length));
-      // remove items of same page from main list temporarily
+      
+
       const others = without.filter((p) => p.page !== newItem.page);
-      // build new page list with inserted item
+      
       const newPageList = [
         ...targetList.slice(0, insertIndex),
         { ...newItem, order: insertIndex + 1 },
@@ -155,7 +168,7 @@ export default function CardBannerAdmin({
       return merged;
     });
 
-    // call handleReorder if parent provided (keeps parent-side reactions)
+    // เรียกฟังก์ชัน reorder ถ้ามี
     handleReorder?.(newItem.id, newItem.order);
 
     if (mode === "add") {
@@ -164,7 +177,7 @@ export default function CardBannerAdmin({
       return;
     }
 
-    setEditing(false);
+    setEditing(false); //ออกจากโหมดแก้ไข
   };
 
   const handleDelete = () => {
@@ -172,8 +185,8 @@ export default function CardBannerAdmin({
     if (!confirm("ต้องการลบ Banner นี้จริงหรือ?")) return;
 
     setBanner((prev) => {
-      const updated = prev.filter((b) => b.id !== banner.id);
-      // reindex pages to keep orders consecutive
+      const updated = prev.filter((b) => b.id !== banner.id); // ลบออกจากรายการ
+    
       const pages = Array.from(new Set(updated.map((m) => m.page)));
       const reindexed = pages.flatMap((p) =>
         updated
@@ -185,7 +198,8 @@ export default function CardBannerAdmin({
       return reindexed;
     });
   };
-
+  
+  // ถ้าไม่ได้อยู่ในโหมดแก้ไข  แสดงแบบ view อย่างเดียว กดรนูปเเล้วเป็นเเก้ไข
   if (!editing) {
     return (
       <div className="m-3 pt-3 bg-black h-[90%] cursor-pointer">

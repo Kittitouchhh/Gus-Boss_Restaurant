@@ -11,11 +11,15 @@ interface DropdownUserProps {
 const UserDropdown: React.FC<DropdownUserProps> = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [position, setPosition] = useState({ top: 0, left: 0, width: 0 });
-  const buttonRef = useRef<HTMLDivElement>(null); 
+  
+  const buttonRef = useRef<HTMLDivElement>(null);  // ใช้ useRef เพื่ออ้างอิงตำแหน่ง element
   const menuRef = useRef<HTMLDivElement>(null);  
+  
   const navigate = useNavigate();
-  const location = useLocation()
+  const location = useLocation() // ใช้ดู path ปัจจุบัน
 
+
+  // ตคลิกนอก dropdown - เพื่อปิดอัตโนมัติ
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -29,6 +33,7 @@ const UserDropdown: React.FC<DropdownUserProps> = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // logout ลบข้อมูลใน local กลับไป login
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     localStorage.removeItem("username");
@@ -38,6 +43,7 @@ const UserDropdown: React.FC<DropdownUserProps> = () => {
     navigate("/login", { replace: true });
   };
 
+  // คำนวณตำแหน่ง dropdown ให้ตรงกับตำแหน่งปุ่มที่คลิก
   useEffect(() => {
     if (buttonRef.current && isOpen) {
       const rect = buttonRef.current.getBoundingClientRect();
@@ -49,11 +55,13 @@ const UserDropdown: React.FC<DropdownUserProps> = () => {
     }
   }, [isOpen]);
 
+  // ไปหน้า Settings
   const handleSettings = () => {
     setIsOpen(false);
     navigate("/profile");
   };
 
+  
   const dropdownMenu = (
     <div
       ref={menuRef}
