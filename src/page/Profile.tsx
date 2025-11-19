@@ -9,14 +9,13 @@ export default function ProfileSetting() {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  // โหลดข้อมูลโปรไฟล์จาก localStorage
+
   useEffect(() => {
-    const username =
-      localStorage.getItem("currentUser") || localStorage.getItem("username");
-    if (!username) return;
+    const userId = localStorage.getItem("currentUser");
+    if (!userId) return;
 
     const users = JSON.parse(localStorage.getItem("users") || "[]");
-    const current = users.find((u: any) => u.username === username);
+    const current = users.find((u: any) => u.id.toString() === userId);
 
     if (current) {
       setShowname(current.showname || "");
@@ -33,12 +32,11 @@ export default function ProfileSetting() {
       const base64Image = reader.result as string;
       setImageUrl(base64Image);
 
-      const username =
-        localStorage.getItem("currentUser") || localStorage.getItem("username");
-      if (!username) return;
+      const userId = localStorage.getItem("currentUser");
+      if (!userId) return;
 
       const users = JSON.parse(localStorage.getItem("users") || "[]");
-      const idx = users.findIndex((u: any) => u.username === username);
+      const idx = users.findIndex((u: any) => u.id.toString() === userId);
 
       if (idx !== -1) {
         users[idx].image = base64Image;
@@ -49,11 +47,10 @@ export default function ProfileSetting() {
     reader.readAsDataURL(file);
   };
 
-  // บันทึกชื่อใหม่
+
   const handleSaveProfile = () => {
-    const username =
-      localStorage.getItem("currentUser") || localStorage.getItem("username");
-    if (!username) {
+    const userId = localStorage.getItem("currentUser");
+    if (!userId) {
       alert("ไม่พบข้อมูลผู้ใช้");
       return;
     }
@@ -64,7 +61,7 @@ export default function ProfileSetting() {
     }
 
     const users = JSON.parse(localStorage.getItem("users") || "[]");
-    const idx = users.findIndex((u: any) => u.username === username);
+    const idx = users.findIndex((u: any) => u.id.toString() === userId);
 
     if (idx !== -1) {
       users[idx].showname = showname;
@@ -73,12 +70,15 @@ export default function ProfileSetting() {
     }
   };
 
-  // เปลี่ยนรหัสผ่าน
+
   const handlePasswordChange = () => {
-    const username =
-      localStorage.getItem("currentUser") || localStorage.getItem("username");
+    const userId = localStorage.getItem("currentUser");
+    if (!userId) {
+      alert("ไม่พบผู้ใช้");
+      return;
+    }
     const users = JSON.parse(localStorage.getItem("users") || "[]");
-    const idx = users.findIndex((u: any) => u.username === username);
+    const idx = users.findIndex((u: any) => u.id.toString() === userId);
 
     if (idx === -1) {
       alert("ไม่พบข้อมูลผู้ใช้ในระบบ");
@@ -110,13 +110,13 @@ export default function ProfileSetting() {
   };
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-[#EEDBC4]">
+    <div className="mt-[150px] flex flex-col items-center min-h-screen bg-[#EEDBC4]">
       <div className="bg-white p-6 rounded-2xl shadow-xl w-[380px] mt-10">
         <h1 className="text-3xl font-bold text-center mb-6 text-[#3D342F]">
           Profile Settings
         </h1>
 
-        {/* รูปโปรไฟล์ */}
+
         <div className="flex flex-col items-center mb-5">
           <img
             src={imageUrl || "/user/default.png"}
@@ -135,7 +135,6 @@ export default function ProfileSetting() {
           </label>
         </div>
 
-        {/* ชื่อแสดงผล */}
         <div className="mb-5">
           <label className="block text-[#3D342F] font-semibold mb-2">
             Display Name
@@ -143,8 +142,15 @@ export default function ProfileSetting() {
           <input
             type="text"
             value={showname}
-            onChange={(e) => setShowname(e.target.value)}
-            className="w-full p-2 border rounded focus:ring focus:ring-[#3D342F]"
+            onChange={(e) => { 
+              const value = e.target.value;
+              if (value.length <= 9) {
+              setShowname(value)
+            } else {
+              alert("ตั้งชื่อได้ไม่เกิน 9 ตัวอักษร")
+            }
+            }}
+            className="text-black w-full p-2 border rounded focus:ring focus:ring-[#3D342F]"
           />
         </div>
 
@@ -155,7 +161,6 @@ export default function ProfileSetting() {
           Save Profile
         </button>
 
-        {/* เปลี่ยนรหัสผ่าน */}
         <div
           className="border-t border-gray-300 pt-4 flex justify-between"
           onClick={() => setShowFormPassword(!showFormPassword)}
@@ -169,7 +174,7 @@ export default function ProfileSetting() {
         </div>
 
         {showFormPassword && (
-          <>
+          <div className="text-black">
             <input
               type="password"
               placeholder="Old Password"
@@ -193,11 +198,11 @@ export default function ProfileSetting() {
             />
             <button
               onClick={handlePasswordChange}
-              className="cursor-pointer w-full bg-[#4ECDD2] text-white py-2 rounded hover:bg-[#38b9be] duration-300"
+              className="cursor-pointer w-full bg-[#3D342F] text-white py-2 rounded hover:bg-[#38b9be] duration-300"
             >
               Update Password
             </button>
-          </>
+          </div>
         )}
       </div>
     </div>
