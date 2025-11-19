@@ -71,23 +71,23 @@ const Signup: React.FC = () => {
       <img
         src="/banner/coffeshop.png"
         alt="background"
-        className="absolute inset-0 w-1/2 h-full object-cover brightness-75 blur-[2px]"
+        className="hidden md:block  absolute inset-0 w-1/2 h-full object-cover brightness-75 blur-[2px]"
       />
       <div className="absolute inset-0 bg-black/30"></div>
 
-      <div className="relative z-10 flex flex-col md:flex-row w-[90%] md:w-[1000px] h-auto md:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
+      <div className="relative justify-center z-10 flex flex-col md:flex-row w-[90%]  rounded-2xl overflow-hidden ">
         
-        <div className="hidden md:block rounded-2xl mx-2 w-full md:w-1/2 h-[250px] md:h-full bg-[#3D342F]">
+        <div className="max-w-[550px] m-auto max-h-[655px] hidden md:block rounded-2xl mx-2 w-full md:w-1/2 h-[250px] md:h-full bg-[#3D342F]">
           <img
             src="/banner/coffeshop.png"
             alt="coffee shop"
-            className="w-full h-full object-cover brightness-90"
+            className="object-cover w-full h-full  brightness-90 max-w-550 max-h-655"
           />
         </div>
 
-        <div className="rounded-2xl md:w-1/2 bg-white flex flex-col items-center p-6 md:p-3">
+        <div className="max-w-[550px] max-h-[655px] rounded-2xl md:w-1/2 bg-white flex flex-col items-center p-6 md:p-3">
           <img src={logo} alt="logo" className="w-[200px] my-4" />
-          <h2 className="text-[#3D342F] font-bold text-[28px] md:text-[30px] mb-5 tracking-wide">
+          <h2 className="text-[#3D342F] font-bold text-[28px] md:text-[30px] mb-5 ">
             CREATE ACCOUNT
           </h2>
 
@@ -126,7 +126,7 @@ const Signup: React.FC = () => {
                 />
               </label>
             </div>
-            <div className="flex flex-col gap-3 w-full flex flex-col items-center">
+            <div className="xl:w-[80%] flex flex-col gap-3 w-full flex flex-col items-center">
               
               <input
                 type="text"

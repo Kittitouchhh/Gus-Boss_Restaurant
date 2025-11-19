@@ -101,7 +101,7 @@ function PostIt(){
     return(
 
         <div>
-            <div className='mt-[110px]'> 
+            <div className='mt-[110px] min-h-screen'> 
                 <SwiperCom key={databanner.length} databanner={databanner.filter((data)=>data.page === "postit" )}></SwiperCom>
             </div>
             

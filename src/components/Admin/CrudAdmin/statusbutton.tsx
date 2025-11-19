@@ -1,7 +1,5 @@
 import { useState } from "react";
 
-const isMd = window.matchMedia("(min-width: 768px)").matches;
-
 type StatusButtonProps<T> = {
   item: T;
   setItems: React.Dispatch<React.SetStateAction<T[]>>;
