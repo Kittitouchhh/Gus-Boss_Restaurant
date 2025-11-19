@@ -13,26 +13,28 @@ type CardMenuProps = {
   onCancel?: () => void;
 };
 
-export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCancel,}: CardMenuProps) {
+export default function CardMenuAdmin({ menu, setMenus, mode = "view", onSave, onCancel, }: CardMenuProps) {
   const [open, setOpen] = useState<boolean>(false);
   const [editing, setEditing] = useState(false);
   const [position, setPosition] = useState<{ x: number; y: number } | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
-  
+
   const handleCancel = () => {
-      if (onCancel) {
-        onCancel();         
-      } else {
-        setEditing(false);  
-      }
-    };
+    if (onCancel) {
+      onCancel();
+    } else {
+      setEditing(false);
+    }
+  };
 
   const [form, setForm] = useState({
-    name: menu.name || "",
-    price: menu.price?.toString() || "",
-    image: menu.image || "",
-    status: menu.status ?? 1,
-    type: menu.type || "Tea",
+    name: menu.menuName || "",
+    price: menu.menuPrice,
+    image: menu.imageMenu,
+    status: menu.status,
+    type: menu.datajson || "Tea",
+    description: menu.description || "",
+    menuOption: menu.menuOption || [],
   });
 
   const updatePosition = () => {
@@ -74,11 +76,13 @@ export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCanc
 
     const newMenu: MenuItem = {
       id: mode === "add" ? Date.now() : menu.id,
-      name: form.name,
-      price: Number(form.price),
-      image: form.image || "/drink/default.png",
+      menuName: form.name,
+      menuPrice: Number(form.price),
+      imageMenu: form.image || "/drink/default.png",
       status: Number(form.status),
-      type: form.type,
+      description: form.description,
+      datajson: (form.type),
+      menuOption: form.menuOption,
     };
 
 
@@ -94,10 +98,14 @@ export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCanc
           : prev.map((m) => (m.id === menu.id ? newMenu : m));
 
       localStorage.setItem("menu", JSON.stringify(updated));
+      
+      setEditing(false);
+      setOpen(false);
+
       return updated;
     });
   };
-   
+
 
   if (mode === "add" || mode === "edit" || editing) {
     return (
@@ -136,7 +144,7 @@ export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCanc
             </>
           )}
         </div>
-        <div className="mt-3 flex flex-col gap-2">
+        <div className="mt-3 flex flex-col gap-2 text-black">
           <input
             type="text"
             placeholder="Menu name..."
@@ -149,7 +157,7 @@ export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCanc
             type="number"
             placeholder="Price..."
             value={form.price}
-            onChange={(e) => setForm({ ...form, price: e.target.value })}
+            onChange={(e) => setForm({ ...form, price: Number(e.target.value) })}
             className="border rounded px-2 py-1 text-sm"
           />
 
@@ -165,26 +173,26 @@ export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCanc
           <select
             value={form.type}
             onChange={(e) => setForm({ ...form, type: e.target.value })}
-            className="border rounded px-2 py-1 text-sm"
+            className="border rounded px-2 py-1 text-sm "
           >
-            <option value="Tea">Tea</option>
-            <option value="Coffee">Coffee</option>
-            <option value="SoftDrink">Soft Drink</option>
-            <option value="MainDishes">Main Dishes</option>
-            <option value="Desserts">Desserts</option>
+            <option value="menutea">Tea</option>
+            <option value="menucoffee">Coffee</option>
+            <option value="menusoftdrink">Soft Drink</option>
+            <option value="menumaindishes">Main Dishes</option>
+            <option value="menudesserts">Desserts</option>
           </select>
         </div>
         <div className="flex justify-between mt-3">
           <Button
-              height="mk"
-              width="mk"
-              color="gray"
-              stringColor="white"
-              stringSize="mk"
-              onClick={handleCancel}
-            >
-              Cancel
-            </Button>
+            height="mk"
+            width="mk"
+            color="gray"
+            stringColor="white"
+            stringSize="mk"
+            onClick={handleCancel}
+          >
+            Cancel
+          </Button>
 
           <Button
             height="mk"
@@ -204,13 +212,13 @@ export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCanc
     <div className="cursor-pointer max-w-100 grid grid-cols-2 md:grid-cols-1 relative bg-[#F8F5F2] rounded-2xl shadow-lg border border-[#E6D4C3] overflow-hidden">
       <div className="w-full h-40 overflow-hidden">
         <img
-          src={menu.image || "/drink/default.png"}
-          alt={menu.name}
+          src={menu.imageMenu || "/drink/default.png"}
+          alt={menu.menuName}
           className="w-full h-full object-cover"
         />
       </div>
 
-      <div className="p-4 flex flex-col items-center text-center">
+      <div className="text-black p-4 flex flex-col items-center text-center">
         <button
           ref={buttonRef}
           className="cursor-pointer absolute top-3 right-3"
@@ -222,11 +230,11 @@ export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCanc
           <EllipsisVertical />
         </button>
 
-        <h3 className="text-[#3D342F] font-bold text-lg truncate">{menu.name}</h3>
-        <p className="text-[#C28B53] font-semibold mt-1">{menu.price}฿</p>
+        <h3 className="text-[#3D342F] font-bold text-lg truncate">{menu.menuName}</h3>
+        <p className="text-[#C28B53] font-semibold mt-1">{menu.menuPrice}฿</p>
 
-        <StatusButton item={menu} setItems={setMenus} 
-        storageKey="Menu" />
+        <StatusButton item={menu} setItems={setMenus}
+          storageKey="menu" type="menu" />
       </div>
 
       {open && (

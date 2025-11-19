@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import ReactDOM from "react-dom";
 import User from "./user";
 
@@ -14,6 +14,7 @@ const UserDropdown: React.FC<DropdownUserProps> = () => {
   const buttonRef = useRef<HTMLDivElement>(null); 
   const menuRef = useRef<HTMLDivElement>(null);  
   const navigate = useNavigate();
+  const location = useLocation()
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -33,6 +34,7 @@ const UserDropdown: React.FC<DropdownUserProps> = () => {
     localStorage.removeItem("username");
     localStorage.removeItem("userRole");
     localStorage.removeItem("currentUser");
+    localStorage.removeItem("cart");
     navigate("/login", { replace: true });
   };
 
@@ -40,8 +42,8 @@ const UserDropdown: React.FC<DropdownUserProps> = () => {
     if (buttonRef.current && isOpen) {
       const rect = buttonRef.current.getBoundingClientRect();
       setPosition({
-        top: rect.bottom + window.scrollY , // 8px เว้นระยะจากปุ่ม
-        left: rect.left + window.scrollX ,
+        top: rect.bottom + window.scrollY + 8, // 8px เว้นระยะจากปุ่ม
+        left: rect.left,
         width: rect.width,
       });
     }

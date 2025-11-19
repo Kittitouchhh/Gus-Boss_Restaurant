@@ -1,0 +1,20 @@
+[
+    {
+        "id" : 4 ,
+        "image" : "/carousalpostit/PostIt1.png",
+        "page" : "postit",
+        "status" : 1
+    },
+    {
+        "id" : 5 ,
+        "image" : "/carousalpostit/PostIt2.png",
+        "page" : "postit",
+        "status" : 1
+    },
+    {
+        "id" : 6 ,
+        "image" : "/carousalpostit/PostIt3.png",
+        "page" : "postit",
+        "status" : 1 
+    }
+]

@@ -1,0 +1,107 @@
+[
+    {
+        "id" : 11,
+        "menuName" : "Chocolate Cake",
+        "imageMenu" : "desserts/ChocolateCake.jpg",
+        "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
+        "menuPrice" : 20,
+        "datajson" : "menudesserts",
+        "description" : "Rich and moist chocolate cake with a deep cocoa flavor.",
+        "status" : 1
+        
+    },
+    {
+        "id" : 12,
+        "menuName" : "Strawberry Shortcake",
+        "imageMenu" : "desserts/StrawberryShortcake.jpg",
+        "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
+        "menuPrice" : 25,
+        "datajson" : "menudesserts",
+        "description" : "Soft sponge cake layered with fresh strawberries and whipped cream.",
+        "status" : 1
+    },
+    {
+        "id" : 13,
+        "menuName" : "Matcha Pudding",
+        "imageMenu" : "desserts/MatchaPudding.jpg",
+        "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
+        "menuPrice" : 20,
+        "datajson" : "menudesserts",
+        "description" : "Creamy green tea pudding with a smooth and earthy taste.",
+        "status" : 1
+    },
+    {
+        "id" : 14,
+        "menuName" : "Chocolate Brownie",
+        "imageMenu" : "desserts/ChocolateBrownie.jpg",
+        "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
+        "menuPrice" : 15,
+        "datajson" : "menudesserts",
+        "description" : "Fudgy and dense brownie with an intense chocolate aroma.",
+        "status" : 1
+    },
+    {
+        "id" : 15,
+        "menuName" : "Fruit Tart",
+        "imageMenu" : "desserts/FruitTart.jpg",
+        "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
+        "menuPrice" : 30,
+        "datajson" : "menudesserts",
+        "description" : "Crispy tart crust filled with custard and topped with fresh fruits.",
+        "status" : 1
+    },
+    {
+        "id" : 16,
+        "menuName" : "Vanilla Ice Cream",
+        "imageMenu" : "desserts/VanillaIceCream.jpg",
+        "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
+        "menuPrice" : 35,
+        "datajson" : "menudesserts",
+        "description" : "Classic creamy ice cream with a smooth vanilla flavor.",
+        "status" : 1
+    },
+    {
+        "id" : 17,
+        "menuName" : "Tiramisu",
+        "imageMenu" : "desserts/Tiramisu.jpg",
+        "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
+        "menuPrice" : 40,
+        "datajson" : "menudesserts",
+        "description" : "Italian dessert made with espresso-soaked ladyfingers and mascarpone cream.",
+        "status" : 1
+    },
+    {
+        "id" : 18,
+        "menuName" : "Cheesecake",
+        "imageMenu" : "desserts/Cheesecake.jpg",
+        "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
+        "menuPrice" : 20,
+        "datajson" : "menudesserts",
+        "description" : "Creamy and rich cake with a buttery biscuit crust.",
+        "status" : 1
+    },
+    {
+        "id" : 19,
+        "menuName" : "Mango Sticky Rice",
+        "imageMenu" : "desserts/MangoStickyRice.jpg",
+        "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
+        "menuPrice" : 10,
+        "datajson" : "menudesserts",
+        "description" : "Sweet ripe mango served with coconut milk and sticky rice.",
+        "status" : 1
+    },
+    {
+        
+        "id" : 20,
+        "menuName" : "Chocolate Lava Cake",
+        "imageMenu" : "desserts/Chocolate Lava Cake.jpg",
+        "menuOption" : ["Topping Dessert","Texture","Add-ons Dessert"],
+        "menuPrice" : 20,
+        "datajson" : "menudesserts",
+        "description" : "Warm chocolate cake with a gooey molten center.",
+        "status" : 1
+    
+    }
+    
+
+]

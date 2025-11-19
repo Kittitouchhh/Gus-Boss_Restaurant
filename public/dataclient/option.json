@@ -1,0 +1,48 @@
+{
+    "menutea" : [
+        {"Temperature" : ["Hot" ,"Lukewarm", "Iced" ]},
+        {"Sweet" : ["No Sugar" , "Half Sugar" ,"Normal","Extra"  ]},
+        {"Ice Level" : ["Regular(R)" , "Less Ice(L)" , "No Ice(N)"]},
+        {"Brew strenght" : ["Light", "Medium", "Strong", "Extra Strong"]},
+        {"Milk Option": ["Regular", "Skim", "Soy", "Oat", "Almond", "No Milk"]},
+        {"Flavor add-on": ["Vanilla", "Caramel", "Hazelnut", "Chocolate", "Matcha"] },
+        {"Topping Tea": ["Boba", "Pudding", "Grass Jelly"]},
+        {"Lemon level": ["No Lemon", "Less", "Half", "Normal", "Extra"]}
+
+    ],
+    "menusoftdrink" : [
+        {"Ice Level" : ["Regular(R)" , "Less Ice(L)" , "No Ice(N)"]},
+        {"Sweetness Level" : ["No Sugar" , "Half Sugar" ,"Normal","Extra"  ]},
+        {"Add-ons" : ["Lime Slice", "Mint", "Boba / Tapioca"]}
+    ],
+    "menumaindishes" : [
+        {"Main Topping" : ["Beef Patty", "Chicken Breast", "Veggie Patty"]},
+        {"Cheese": ["Cheddar", "Swiss", "Mozzarella"]},
+        {"VegetableToppings": ["Lettuce", "Tomato", "Onion"]},
+        {"Spice Level": ["Mild", "Medium", "Hot"]},
+        {"Flavor": ["Original", "BBQ", "Teriyaki"]},
+        {"Extra Topping": ["Bacon", "Fried Egg", "Avocado"]},
+        {"Papaya Style": ["Shredded", "Pounded", "Pickled"]},
+        {"Sauce": ["Tomato", "Creamy Garlic", "Pesto"]},
+        {"Bread Type": ["White", "Whole Wheat", "Brioche"]},
+        {"Temperature": ["Rare", "Medium", "Well Done"]},
+        {"Doneness Level": ["Rare", "Medium Rare", "Medium Well"]}
+    ],
+    "menudesserts" : [
+        {"Topping Dessert": ["Chocolate Chips", "Strawberries", "Whipped Cream"]},
+        {"Texture": ["Soft Sponge", "Creamy", "Crunchy Crust"]},
+        {"Add-ons Dessert": ["Ice Cream Scoop", "Caramel Sauce", "Nuts"]}
+    ],
+    "menucoffee" : [
+        {"Temperature": ["Hot", "Warm", "Iced"]},
+        {"Sweet": ["No Sugar", "Less Sugar", "Regular Sugar"]},
+        {"Ice Level" : ["Regular(R)" , "Less Ice(L)" , "No Ice(N)"]},
+        {"Milk Options": ["Whole Milk", "Skim Milk", "Oat Milk"]},
+        {"Brew Strenght": ["Mild", "Medium", "Strong"]},
+        {"Flavor Add-ons": ["Vanilla Syrup", "Caramel Syrup", "Hazelnut Syrup"]},
+        {"Topping Coffee": ["Whipped Cream", "Chocolate Powder", "Cinnamon"]}
+    ]
+
+
+    
+}

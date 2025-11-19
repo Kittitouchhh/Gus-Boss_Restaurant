@@ -1,0 +1,89 @@
+[
+    {
+        "id" : "1",
+        "username" : "Power",
+        "imguser" : "/profile/power.jpg",
+        "content" : "I NEED GIRL FRIEND ,IG : SXN_BOXS",
+        "love" : 10,
+        "star" : 40,
+        "wow" : 20,
+        "angry" : 50
+
+
+    }
+    ,
+    {
+        "id" : "2",
+        "username" : "MOJI",
+        "imguser" : "/profile/user1.jpg",
+        "content" : "Sometimes we forget that small progress is still progress. Even when it feels like we’re standing still, every little step forward still counts.",
+        "love" : 30,
+        "star" : 90,
+        "wow" : 13,
+        "angry" : 24
+
+
+    },
+    {
+        "id" : "3",
+        "username" : "Shin",
+        "imguser" : "/profile/user2.jpg",
+        "content" : "There’s something beautiful about quiet mornings — the smell of coffee, soft sunlight, and the peace before the world starts to move.",
+        "love" : 30,
+        "star" : 90,
+        "wow" : 13,
+        "angry" : 24
+
+
+    },
+    {
+        "id" : "4",
+        "username" : "Ren",
+        "imguser" : "/profile/user3.jpg",
+        "content" : "My brain has too many tabs open and none of them are loading properly.”“I told myself I’d go to bed early. Then I remembered the internet exists. Currently in a committed relationship with my blanket and poor life decisions.",
+        "love" : 30,
+        "star" : 90,
+        "wow" : 13,
+        "angry" : 24
+
+
+    },
+    {
+        "id" : "5",
+        "username" : "Momo",
+        "imguser" : "/profile/user4.jfif",
+        "content" : "“There s something beautiful about quiet mornings — the smell of coffee, soft sunlight, and the peace before the world starts to move.",
+        "love" : 30,
+        "star" : 90,
+        "wow" : 13,
+        "angry" : 24
+
+
+    },
+    {
+        "id" : "6",
+        "username" : "DAN",
+        "imguser" : "/profile/user5.jpg",
+        "content" : "I NEED GIRL FRIEND ,IG : SXN_BOXS",
+        "love" : 30,
+        "star" : 90,
+        "wow" : 13,
+        "angry" : 24
+
+
+    },
+    {
+        "id" : "7",
+        "username" : "Mikasa",
+        "imguser" : "/profile/user6.jpg",
+        "content" : "Sometimes we forget that small progress is still progress. Even when it feels like we’re standing still, every little step forward still counts.",
+        "love" : 30,
+        "star" : 90,
+        "wow" : 13,
+        "angry" : 24
+
+
+    }
+]
+
+
