@@ -167,7 +167,12 @@ const PaymentPage:React.FC = ({}) => {
                 <div className='w-[50%] h-full bg-[#201c19] md:m-[10px] m-0 xl:rounded-4xl lg:rounded-2xl md:rounded-2xl rounded-xl md:border-3 border-2 border-amber-100 overflow-y-auto flex flex-col items-center xl:p-[30px] 2xl:p-[30px] lg:p-[20px] p-[10px] xl:gap-[30px] md:gap-[10px] gap-[5px]'>
                     <p className='mx-2 font-bold text-[#EEDBC4] lg:text-[20px]  2xl:text-[30px] xl:text-[25px] md:text-[18px] text-[12px] self-start '>YOUR ORDER MENU</p>
                     {datacart.map((data) => {
+<<<<<<< HEAD
                         return(
+=======
+                        return (
+                            
+>>>>>>> origin/gus-test-merge
                             <Cartcom order_id={data.order_id} menuid={data.menu_id} title={data.menu_name} imgUrl={`/${data.menu_image}`} type={3}></Cartcom>
                         )
                     })}
@@ -178,6 +183,7 @@ const PaymentPage:React.FC = ({}) => {
                 </div>
             </div>
             <div className='lg:gap-[80px] md:gap-[50px] gap-[20px] flex flex-col md:mt-[80px] mt-[50px]'>
+<<<<<<< HEAD
                 <TagPrice title = 'Sub Total Price' price={subtotal}></TagPrice>
                 <TagPrice title = 'VAT' price={vat}></TagPrice>
                 <TagPrice title = 'Discount Member' price={0}></TagPrice>
@@ -185,6 +191,15 @@ const PaymentPage:React.FC = ({}) => {
             </div>
             
             <div className='flex flex-row mt-[30px] md:mt-[80px] justify-center md:gap-[30px] gap-[10px]'> 
+=======
+                <TagPrice title='Sub Total Price' price={subtotal}></TagPrice>
+                <TagPrice title='VAT' price={vat}></TagPrice>
+                <TagPrice title='Discount Member' price={discountcalculate} percent={discountpercentage}></TagPrice>
+                <TagPrice title='Total Price' price={totalprice}></TagPrice>
+            </div>
+
+            <div className='flex flex-row mt-[30px] md:mt-[30px] justify-center md:gap-[30px] gap-[10px]'>
+>>>>>>> origin/gus-test-merge
                 <div onClick={() => navigate('/cart')} className='transform transition-transform duration-200 hover:scale-105 active:scale-95'>
                     <Button height="xl" width='xl' color='white' stringColor='brown' stringSize='xl'>
                         BACK
