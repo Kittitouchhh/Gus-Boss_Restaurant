@@ -25,11 +25,27 @@ const Signup: React.FC = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+
+    if (name === "showname" && value.length > 9) {
+      alert("Display Name ต้องไม่เกิน 9 ตัวอักษร");
+      return;
+    }
+
     setForm({ ...form, [name]: value });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (form.password.length < 6) {
+      alert("Password ต้องมีอย่างน้อย 6 ตัวอักษร");
+      return;
+    }
+
+    if (form.showname.length > 9) {
+      alert("Display Name ต้องไม่เกิน 9 ตัวอักษร");
+      return;
+    }
 
     const users = JSON.parse(localStorage.getItem("users") || "[]");
 
@@ -40,14 +56,14 @@ const Signup: React.FC = () => {
       alert("Username นี้ถูกใช้ไปแล้ว!");
       return;
     }
-    
+
     const membershipDefault = {
       isMember: false,
       points: 0,
       activatedAt: null,
     };
 
-     const newUser = {
+    const newUser = {
       id: Date.now(),
       username: form.username,
       password: form.password,
@@ -58,8 +74,7 @@ const Signup: React.FC = () => {
     };
 
     localStorage.setItem("users", JSON.stringify([...users, newUser]));
-    
-    localStorage.setItem("currentUser",newUser.id.toString());
+    localStorage.setItem("currentUser", newUser.id.toString());
     localStorage.setItem("authToken", "true");
 
     alert("สมัครสมาชิกสำเร็จ!");
@@ -76,7 +91,7 @@ const Signup: React.FC = () => {
       <div className="absolute inset-0 bg-black/30"></div>
 
       <div className="relative justify-center z-10 flex flex-col md:flex-row w-[90%]  rounded-2xl overflow-hidden ">
-        
+
         <div className="max-w-[550px] m-auto max-h-[655px] hidden md:block rounded-2xl mx-2 w-full md:w-1/2 h-[250px] md:h-full bg-[#3D342F]">
           <img
             src="/banner/coffeshop.png"
@@ -92,7 +107,7 @@ const Signup: React.FC = () => {
           </h2>
 
           <form className="w-full flex flex-col items-center gap-4" onSubmit={handleSubmit}>
-            
+
             <div className="flex flex-col items-center m-auto gap-2">
               <p className="font-semibold text-[18px] text-gray-600">Upload your Profile</p>
 
@@ -118,16 +133,16 @@ const Signup: React.FC = () => {
                   />
                 )}
 
-                <input 
-                  type="file" 
-                  accept="image/*" 
-                  className="hidden" 
-                  onChange={handleFileChange} 
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={handleFileChange}
                 />
               </label>
             </div>
             <div className="xl:w-[80%] flex flex-col gap-3 w-full flex flex-col items-center">
-              
+
               <input
                 type="text"
                 name="username"
