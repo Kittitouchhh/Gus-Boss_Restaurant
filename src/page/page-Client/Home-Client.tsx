@@ -10,7 +10,7 @@ import {Link} from 'react-router-dom'
 // page
 
 interface Post {
-  id: string;
+  id: number;
   menuName: string;
   imageMenu: string;
   menuOption: string[];

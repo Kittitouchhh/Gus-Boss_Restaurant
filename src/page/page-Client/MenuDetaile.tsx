@@ -23,12 +23,14 @@ interface Post {
 }
 
 interface cart{
-            menu_id : number,
+            order_id : number,
+            menu_id  : number,
             menu_name : string,
             menu_price : number,
             menu_image : string,
             order_description : string,
             menu_option : { [key: string]: string } ,
+            quantity : number
 }
 
 interface OptionProps{
@@ -40,69 +42,84 @@ interface OptionCategoryProps{
 }
 
 interface CommentProps {
-    menuname: string, 
+    menuid: number, 
     userName : string,
     userImage : string,
     content : string,
     like : boolean
+
 }
 
 
 function  Menudetaile(){
     let [datamenu, Setdata] = useState<Post []>([]);
-    const {menuname , menutype} = useParams<{menuname: string; menutype: string }>()
+    const {menuid , menutype} = useParams<{menuid: string; menutype: string }>()
     let [selectedmenu , Setselected] = useState<Post | undefined>(undefined);
     let [text, setText] = useState("");
     let [option , Setoption] = useState<OptionCategoryProps>({})
     let [datacart,Setdatacart] = useState<cart[]>([])
     let [datacomment,Setcomment] = useState<CommentProps[]>([])
+    
+    const menufixedtonumber = Number(menuid)
+
+        useEffect(() => {
+            axios.get('/dataclient/option.json')
+            .then((res) => { Setoption(res.data)
+            })
+            .catch((err) => {
+                console.log(`เกิดข้อผิดพลาด ${err}`)
+            })
 
 
-    useEffect(() => {
-        axios.get('/dataclient/option.json')
-        .then((res) => { Setoption(res.data)
-        })
-        .catch((err) => {
-            console.log(`เกิดข้อผิดพลาด ${err}`)
-        })
+            
+            const dataFromStorage = localStorage.getItem("menu");
+            if (dataFromStorage) {
+                Setdata(JSON.parse(dataFromStorage));
+                
+            } else {
+                Setdata([]) 
+            }
 
+            
 
-        
-        const dataFromStorage = localStorage.getItem("menu");
-        if (dataFromStorage) {
-            Setdata(JSON.parse(dataFromStorage));
-        } else {
-            Setdata([]) 
-        }
+            const datacartFromStorage = localStorage.getItem("cart");
+            if(datacartFromStorage){
+                Setdatacart(JSON.parse(datacartFromStorage))
+            }
+            else{
+                Setdatacart([])
+            }
 
-        const datacartFromStorage = localStorage.getItem("cart");
-        if(datacartFromStorage){
-            Setdatacart(JSON.parse(datacartFromStorage))
-        }
-        else{
-            Setdatacart([])
-        }
-
-        // ส่วนคอมเม้นต์
-        const datacommentFromStorage = localStorage.getItem("comment")
-        if(datacommentFromStorage){
-            Setcomment(JSON.parse(datacommentFromStorage))
-        }
-        else{
-            Setcomment([])
-        }
+            // ส่วนคอมเม้นต์
+            const datacommentFromStorage = localStorage.getItem("comment")
+            if(datacommentFromStorage){
+                Setcomment(JSON.parse(datacommentFromStorage))
+                console.log(datacomment)
+            }
+            else{
+                Setcomment([])
+            }
 
 
         }, []);
 
 
+    
+
+
+
+
+    useEffect(() => {
+            console.log("datamenu updated:", datamenu);
+    }, [datamenu]);
+
+
     useEffect(()=>{
-        const filteredMenu = datamenu.find((menu) => menu.menuName === menuname && menu.status === 1);
+        if(datamenu.length === 0) return;
+        const filteredMenu = datamenu.find((menu) => (menu.id).toString() === menuid && menu.status === 1);
+        console.log(`This is the filteredMenu: ${filteredMenu}`)
         Setselected(filteredMenu) ;
-
-
-
-    },[datamenu, menuname])
+    },[datamenu, menuid])
 
 
     
@@ -113,9 +130,10 @@ function  Menudetaile(){
 
 
     function createOrder(){
-        const newId = datacart.length > 0 ? Math.max(...datacart.map(item => item.menu_id)) + 1 : 1;
+        const newId = datacart.length > 0 ? Math.max(...datacart.map(item => item.order_id)) + 1 : 1;
         const order = {
-            menu_id : newId,
+            order_id : newId,
+            menu_id : selectedmenu?.id || 0,
             menu_name : selectedmenu?.menuName || "",
             menu_price : selectedmenu?.menuPrice || 0,
             menu_image : selectedmenu?.imageMenu || "",
@@ -142,19 +160,13 @@ function  Menudetaile(){
     }
 
 
-
-    // ส่วนคอมเม้นต์
-
-
-    
-
     return(
 
 
 
         <div className='mt-[110px]'>
             <div className="mb-[40px]">
-                <ParagraphMenu nameMenu={menuname || ""} image={`/${selectedmenu?.imageMenu || ""}`} description={selectedmenu?.description || ""}></ParagraphMenu>
+                <ParagraphMenu nameMenu={selectedmenu?.menuName || ""}  image={`/${selectedmenu?.imageMenu || ""}`} description={selectedmenu?.description || ""}></ParagraphMenu>
             </div>
             <div className="w-full p-[20px]  lg:mb-[40px] md:mb-[30px] mb-[20px] flex flex-row flex-wrap 2xl:gap-[20px] xl:gap-[50px] lg:gap-[20px] md:gap-[30px] gap-[10px] justify-start items-stretch mx-auto">
                 {selectedmenu?.menuOption.map(optionname => {
@@ -183,9 +195,7 @@ function  Menudetaile(){
                 <div onClick={() => {createOrder()}} className='transform transition-transform duration-200 hover:scale-105 active:scale-95'>
                     <Button height="xl" width='xl' color='orange' stringColor='white' stringSize='xl'>ADD TO CART</Button>
                 </div>
-                <div className='transform transition-transform duration-200 hover:scale-105 active:scale-95'>
-                    <Button height="xl" width='xl' color='orange' stringColor='white' stringSize='xl'  >BUY NOW</Button>
-                </div>
+                
                 
             </div>
 
@@ -195,7 +205,7 @@ function  Menudetaile(){
             <div className='flex flex-col justify-start items-center 2xl:w-[80%] xl:w-[100%] md:w-[95%] w-[95%] mx-auto'>
                 <div className='flex flex-row justify-center items-center flex-wrap mb-[30px] p-[10px] lg:gap-[15px] md:gap-[10px] gap-[15px] mx-center w-full'>
                     {datacomment.map((datacomment) => {
-                        if(datacomment.menuname === menuname){
+                        if(datacomment.menuid === menufixedtonumber){
                             return(
                                 <CommnetCard userImage={datacomment.userImage} username = {datacomment.userName} commentText = {datacomment.content} like ={datacomment.like} ></CommnetCard>
                             )

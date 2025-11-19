@@ -47,18 +47,17 @@ const PostItCard: React.FC<PostItCardProps> = ({ post_id,username,imguser,conten
         }
 
 
-        const currentUsername = localStorage.getItem("username");
+        const currentId = localStorage.getItem("currentUser");
+        if (!currentId) return;
 
-        const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
+        const users = JSON.parse(localStorage.getItem("users") || "[]");
 
-        const allUsers = [...usersData, ...localUsers];
-
-        const currentUser = allUsers.find(
-            (u) => u.username.toLowerCase() === currentUsername?.toLowerCase()
+        const foundUser = users.find(
+            (u: any) => u.id?.toString() === currentId
         );
 
-        SetName(currentUser?.showname || "Unknown");
-        SetImage(currentUser?.image || "https://cdn-icons-png.flaticon.com/512/6522/6522516.png");
+        SetName(foundUser?.showname || "Unknown");
+        SetImage(foundUser?.image || "https://cdn-icons-png.flaticon.com/512/6522/6522516.png");
 
 
         // =======================================
@@ -71,6 +70,22 @@ const PostItCard: React.FC<PostItCardProps> = ({ post_id,username,imguser,conten
         }
 
   },[])
+
+
+  useEffect(()=>{
+    const currentId = localStorage.getItem("currentUser");
+        if (!currentId) return;
+
+        const users = JSON.parse(localStorage.getItem("users") || "[]");
+
+        const foundUser = users.find(
+            (u: any) => u.id?.toString() === currentId
+        );
+
+        SetName(foundUser?.showname || "Unknown");
+        SetImage(foundUser?.image || "https://cdn-icons-png.flaticon.com/512/6522/6522516.png");
+
+  },[localStorage.getItem("currentUser")])
 
   function reaction(type: "love" | "wow" | "star" | "angry") {
   
@@ -87,6 +102,7 @@ const PostItCard: React.FC<PostItCardProps> = ({ post_id,username,imguser,conten
       draggable: false,
       theme: 'colored'
     });
+    console.log("alreadyreact")
     return;
   }
   
@@ -101,6 +117,7 @@ const PostItCard: React.FC<PostItCardProps> = ({ post_id,username,imguser,conten
       draggable: false,
       theme: 'colored'
     });
+    console.log("hasreact")
     return;
   }
 

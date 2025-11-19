@@ -5,17 +5,23 @@ import usersData from "../../data/login.json";
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 interface Props {
+    // menuid
+    menu_id_from_comcart? : number
+
     onClose: () => void;
     image? : string,
     menu_name? : string,
     type : number
-    menucartid? : number ,
+    order_id? : number ,
+
+
+    // description type 3
     description? : string
 
 }
 
 interface CommentProps {
-    menuname: string, 
+    menuid: number , 
     userName : string,
     userImage : string,
     content : string,
@@ -33,19 +39,25 @@ interface PostitProps{
     content : string
 }
 
+
+
+
 interface cart{
-            menu_id : number,
+            order_id : number,
+            menu_id  : number,
             menu_name : string,
-            menu_price : string,
+            menu_price : number,
             menu_image : string,
             order_description : string,
+            user_order : string,
+            userimage : string,
             menu_option : { [key: string]: string } ,
-
+            quantity : number
 }
 
 
 
-const Addcommentbox:React.FC<Props> = ({menucartid,onClose ,image,menu_name,type,description}) => {
+const Addcommentbox:React.FC<Props> = ({menu_id_from_comcart,order_id,onClose ,image,menu_name,type,description}) => {
     const [typefeel , setfeel ] = useState<boolean>(false)
     const [displayName , SetName] = useState<string>("")
     const [displayImage , SetImage] = useState<string>("")
@@ -54,6 +66,8 @@ const Addcommentbox:React.FC<Props> = ({menucartid,onClose ,image,menu_name,type
     const [commentlist, setcomment] = useState<CommentProps[]>([])
     const [postitlist , setpostitlist] = useState<PostitProps[]>([])
     const [datacart , Setdatacart] = useState<cart[]>([])
+
+
 
     const [descriptionstate , setdescription] = useState<string>(description || "")
 
@@ -64,18 +78,19 @@ const Addcommentbox:React.FC<Props> = ({menucartid,onClose ,image,menu_name,type
     }
 
     useEffect(() => {
-        const currentUsername = localStorage.getItem("username");
+        const currentId = localStorage.getItem("currentUser");
+        if (!currentId) return;
 
-        const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
+        const users = JSON.parse(localStorage.getItem("users") || "[]");
 
-        const allUsers = [...usersData, ...localUsers];
-
-        const currentUser = allUsers.find(
-            (u) => u.username.toLowerCase() === currentUsername?.toLowerCase()
+        const foundUser = users.find(
+            (u: any) => u.id?.toString() === currentId
         );
 
-        SetName(currentUser?.showname || "Unknown");
-        SetImage(currentUser?.image || "https://cdn-icons-png.flaticon.com/512/6522/6522516.png");
+        
+
+        SetName(foundUser?.showname || "Unknown");
+        SetImage(foundUser?.image || "https://cdn-icons-png.flaticon.com/512/6522/6522516.png");
 
         const datacommentStorage = localStorage.getItem("comment");
         if (datacommentStorage) {
@@ -156,13 +171,13 @@ const Addcommentbox:React.FC<Props> = ({menucartid,onClose ,image,menu_name,type
     function updatedescription() {
 
         const updated = datacart.map(item =>
-        item.menu_id === menucartid
+        item.order_id === order_id
             ? { ...item, order_description: descriptionstate }
             : item);
 
         Setdatacart(updated);
         localStorage.setItem("cart", JSON.stringify(updated));
-        toast.success('เพิ่มคอมเม้นต์เเล้ว!',{
+        toast.success('เพิ่ม description แล้ว!',{
                 position:"top-center",
                 autoClose:3000,
                 hideProgressBar:false,
@@ -180,12 +195,13 @@ const Addcommentbox:React.FC<Props> = ({menucartid,onClose ,image,menu_name,type
 
     function createComment(){
         const comment = {
-            menuname: menu_name || '', 
+            menuid: menu_id_from_comcart ?? 0, 
             userName : displayName,
             userImage : displayImage ,
             content : commentText,
             like : typefeel
         }
+        
         const newcommentlist = [...commentlist, comment]
         setcomment(newcommentlist)
         console.log(commentlist)
@@ -200,7 +216,9 @@ const Addcommentbox:React.FC<Props> = ({menucartid,onClose ,image,menu_name,type
                 draggable: false ,// ลากไปวางที่อื่นไม่ได้
                 theme:'colored'})
         
+        
     }
+    // comment
     if(type == 1){
         return (
             <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50 shadow-lg shadow-black/90">
@@ -283,6 +301,7 @@ const Addcommentbox:React.FC<Props> = ({menucartid,onClose ,image,menu_name,type
             </div>
         )
     }
+    // description
     else{
         return (
             <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50 shadow-lg shadow-black/90">

@@ -9,18 +9,20 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import usersData from "../../data/login.json";
+import CalculateMembership from '../../utils/calculateMembership';
+
 
 interface cart{
-    menu_id : number,
-    menu_name : string,
-    menu_price : number,
-    menu_image : string,
-    order_description : string,
-    user_order : string,
-    userimage : string,
-    menu_option : { [key: string]: string } ,
-    quantity : number,
-    
+            order_id : number,
+            menu_id  : number,
+            menu_name : string,
+            menu_price : number,
+            menu_image : string,
+            order_description : string,
+            user_order : string,
+            userimage : string,
+            menu_option : { [key: string]: string } ,
+            quantity : number
 }
 
 interface process{
@@ -35,24 +37,26 @@ interface process{
 
 const PaymentPage:React.FC = ({}) => {
 
-    const currentUsername = localStorage.getItem("username");
-    
-    const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
-    
-    const allUsers = [...usersData, ...localUsers];
-    
-    const currentUser = allUsers.find(
-            (u) => u.username.toLowerCase() === currentUsername?.toLowerCase()
+    const currentId = localStorage.getItem("currentUser");
+    if (!currentId) return;
+
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+
+    const foundUser = users.find(
+        (u: any) => u.id?.toString() === currentId
     );
     
-    const displayName = currentUser?.showname || "Unknown";
-    const displayImage = currentUser?.image || "https://cdn-icons-png.flaticon.com/512/6522/6522516.png";
-    const discount = currentUser?.discount || 1 ;
+    
+    
+    const displayName = foundUser?.showname || "Unknown";
+    const displayImage = foundUser?.image || "https://cdn-icons-png.flaticon.com/512/6522/6522516.png";
+    const discount = foundUser?.discount || 1 ;
 
 
     const navigate = useNavigate();
     
 
+    // cart
     const [datacart,Setdatacart] = useState<cart[]>([])
     const [dataprocess , setprocss] = useState<process[]>([])
 
@@ -125,7 +129,31 @@ const PaymentPage:React.FC = ({}) => {
         }
         
     }
+    // จัดการระบบสมาชิก
+    const [user, setUser] = useState<any>(null);
+    let discountpercentage ;
 
+    useEffect(()=>{
+        const currentId = localStorage.getItem("currentUser");
+        if (!currentId) return;
+
+        const users = JSON.parse(localStorage.getItem("users") || "[]");
+
+        const foundUser = users.find(
+            (u: any) => u.id?.toString() === currentId
+        );
+
+        setUser(foundUser || null);
+
+        if(user.membership.isMember === true){
+            discountpercentage = CalculateMembership(user.membership.point)
+        }
+
+    },[[localStorage.getItem("currentUser")]])
+
+
+    
+    
      
     const subtotal = datacart.reduce((acc, item) => acc + item.menu_price * item.quantity, 0);
     const vat = (datacart.reduce((acc, item) => acc + item.menu_price * item.quantity, 0) * 0.07);
@@ -140,7 +168,7 @@ const PaymentPage:React.FC = ({}) => {
                     <p className='mx-2 font-bold text-[#EEDBC4] lg:text-[20px]  2xl:text-[30px] xl:text-[25px] md:text-[18px] text-[12px] self-start '>YOUR ORDER MENU</p>
                     {datacart.map((data) => {
                         return(
-                            <Cartcom title={data.menu_name} imgUrl={`/${data.menu_image}`} type={3}></Cartcom>
+                            <Cartcom order_id={data.order_id} menuid={data.menu_id} title={data.menu_name} imgUrl={`/${data.menu_image}`} type={3}></Cartcom>
                         )
                     })}
                 </div>

@@ -5,7 +5,7 @@ import Select from "../../components/selecthbar";
 import Button from "../../components/button";
 
 export type MenuItem = {
-  id:  number;
+  id: number;
   menuName: string;
   imageMenu: string;
   menuPrice: number;

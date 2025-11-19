@@ -21,7 +21,7 @@ const Information:React.FC<informationTagProps> = ({style,image,textHeader,texti
                     <p className='font-bold md:text-[20px] lg:text-[30px] xl:text-[50px] 2xl:text-[60px] text-[#3D342F]'>{textHeader}</p>
                     <p className=' font-bold text-[6px] md:text-[9px] lg:text-[12px] xl:text-[15px] text-justify 2xl:text-[24px] text-[#3D342F]'>{textinformation}</p>
                     <div className='self-center'>
-                        <Button  height='l' width='l' color='brown' stringColor='white' stringSize='l' linkdata='contact'>LEARN MORE</Button>
+                        <Button  height='l' width='l' color='brown' stringColor='white' stringSize='l' linkdata='constact'>LEARN MORE</Button>
                     </div>
                     
                 </div>
@@ -38,7 +38,7 @@ const Information:React.FC<informationTagProps> = ({style,image,textHeader,texti
                     <p className='font-bold md:text-[20px] lg:text-[30px] xl:text-[50px] 2xl:text-[60px] text-[#3D342F]'>{textHeader}</p>
                     <p className=' font-bold text-[6px] md:text-[9px] lg:text-[12px] xl:text-[15px] text-justify 2xl:text-[24px] text-[#3D342F]'>{textinformation}</p>
                     <div className='self-center'>
-                        <Button  height='l' width='l' color='brown' stringColor='white' stringSize='l' linkdata='contact'>LEARN MORE</Button>
+                        <Button  height='l' width='l' color='brown' stringColor='white' stringSize='l' linkdata='constact'>LEARN MORE</Button>
                     </div>     
                 </div>
                 <div className='col-span-4 h-full overflow-hidden'>

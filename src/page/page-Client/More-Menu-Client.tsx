@@ -13,15 +13,14 @@ interface CategoryProps{
 }
 
 
-interface Post {
-  id: string;
-  menuName: string;
-  imageMenu: string;
-  menuOption: string[];
-  menuPrice: number;
-  menuLike: string;
-  datajson: string;
-  description: string;
+interface Post{
+  id:number,
+  menuName:string,
+  imageMenu:string,
+  menuOption:string[],
+  menuPrice:number,
+  datajson:string,
+  description:string,
   status : number
 }
 

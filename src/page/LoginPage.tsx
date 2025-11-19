@@ -58,7 +58,7 @@ export default function LoginPage() {
   return (
     <div className="relative flex h-screen justify-center items-center overflow-hidden">
       <img
-        src="/banner/horse.jpg"
+        src="/banner/coffeshop.png"
         alt="background"
         className="hidden md:block absolute inset-0 w-1/2 h-full object-cover brightness-75 blur-[2px]"
       />
@@ -68,7 +68,7 @@ export default function LoginPage() {
 
         <div className="hidden md:block rounded-2xl mx-2 w-full md:w-1/2 h-[250px] md:h-full bg-[#3D342F]">
           <img
-            src="/banner/horse.jpg"
+            src="/banner/coffeshop.png"
             alt="coffee shop"
             className="w-full h-full object-cover brightness-90"
           />

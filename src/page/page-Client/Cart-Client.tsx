@@ -7,13 +7,16 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 interface cart{
+            
+            order_id : number,
             menu_id : number,
             menu_name : string,
-            menu_price : string,
+            menu_price : number,
             menu_image : string,
             order_description : string,
             menu_option : { [key: string]: string } ,
             quantity : number,
+
             
 }
 
@@ -23,6 +26,7 @@ interface cart{
 function Cart(){
     const navigate = useNavigate();
     let [datacart,Setdatacart] = useState<cart[]>([])
+
     useEffect(() => {
         const datacartFromStorage = localStorage.getItem("cart");
         if(datacartFromStorage){
@@ -35,22 +39,19 @@ function Cart(){
 
 
      const removeItem = (id: number) => {
-        Setdatacart(prev => prev.filter(item => item.menu_id !== id));
+        Setdatacart(prev => prev.filter(item => item.order_id !== id));
     };
 
-    function formatNumber(price : string): number{
-        const numberString = price.replace(/[^\d.]/g, '');
-        return parseFloat(numberString) || 0;
-    }
-    const subtotal = datacart.reduce((acc, item) => acc + formatNumber(item.menu_price) * item.quantity, 0);
-    const vat = (datacart.reduce((acc, item) => acc + formatNumber(item.menu_price) * item.quantity, 0) * 0.07);
+
+    const subtotal = datacart.reduce((acc, item) => acc + item.menu_price * item.quantity, 0);
+    const vat = (datacart.reduce((acc, item) => acc + item.menu_price * item.quantity, 0) * 0.07);
 
 
 
     const updateQuantity = (id: number, newQty: number) => {
     Setdatacart(prev => {
         const updated = prev.map(item =>
-            item.menu_id === id ? { ...item, quantity: newQty } : item
+            item.order_id === id ? { ...item, quantity: newQty } : item
         );
         localStorage.setItem("cart", JSON.stringify(updated));
         return updated;
@@ -83,7 +84,7 @@ function Cart(){
             <div className=' flex flex-col gap-[30px] items-center'>
                  {datacart.map((data) => {
                     return(
-                        <Cartcom key={data.menu_id} id_menu={data.menu_id} imgUrl={data.menu_image} title={data.menu_name} onRemove={() => removeItem(data.menu_id)} option={data.menu_option} description={data.order_description} count={data.quantity} type={1} onQuantityChange={(newQty) => updateQuantity(data.menu_id, newQty)}></Cartcom>
+                        <Cartcom key={data.order_id} order_id={data.order_id} imgUrl={data.menu_image} title={data.menu_name} onRemove={() => removeItem(data.order_id)} option={data.menu_option} description={data.order_description} count={data.quantity} type={1} onQuantityChange={(newQty) => updateQuantity(data.order_id, newQty)}></Cartcom>
                     )
                  })}
             </div> 
