@@ -9,6 +9,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  // ฟังก์ชันป้องกัน membership จากการเป็น undefined
   const normalizeMembership = (membership: any) => {
     return {
       isMember: membership?.isMember ?? false,
@@ -21,7 +22,9 @@ export default function LoginPage() {
     e.preventDefault();
     setError("");
 
+    // เก็บใน Local
     const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
+    
     
     const allUsers = [...userData, ...localUsers];
 
@@ -29,12 +32,15 @@ export default function LoginPage() {
       (u: any) => u.username === username && u.password === password
     );
 
+
     if (foundUser) {
       localStorage.setItem("currentUser", foundUser.id.toString());
       localStorage.setItem("authToken", "true");
 
+      // เช็คว่าคนที่ login เคยถูกบันทึกใน localStorage แล้วมั้ย
       const savedUsers = JSON.parse(localStorage.getItem("users") || "[]");
 
+      // ถ้ายังก็บันทึกลง local
       const exists = savedUsers.some((u: any) => u.username === foundUser.username);
       if (!exists) {
         savedUsers.push({
@@ -47,10 +53,11 @@ export default function LoginPage() {
           membership: normalizeMembership(foundUser.membership),
         });
 
+        // อัปเดตข้อมูลกลับเข้า LocalStorage
         localStorage.setItem("users", JSON.stringify(savedUsers));
       }
       navigate("/");
-    } else {
+    } else {  // ถ้าไม่เจอ user -> แจ้ง error
       setError(" Username or password mismatch!");
     }
   };

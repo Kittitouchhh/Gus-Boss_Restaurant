@@ -3,10 +3,16 @@ import CardBanner from "../../components/Admin/BannerAdmin/CardBanner";
 import type { BannerItem } from "../../components/Admin/BannerAdmin/CardBanner";
 
 export default function BannerPage() {
+  // เก็บรายการ banner ทั้งหมด
   const [banner, setBanner] = useState<BannerItem[]>([]);
+  
+  // หน้าแสดงผลปัจจุบัน (home / postit)
   const [activePage, setActivePage] = useState<"home" | "postit">("home");
+  
+  // เปิด/ปิดการเพิ่ม Banner ใหม่
   const [openAdd, setOpenAdd] = useState(false);
 
+  // โหลดข้อมูลจาก localStorage ครั้งแรกเมื่อเปิดหน้า
   useEffect(() => {
     const savedRaw = localStorage.getItem("banner");
     let saved: BannerItem[] | null = null;
@@ -17,6 +23,7 @@ export default function BannerPage() {
       saved = null;
     }
 
+    // normalize ข้อมูลก่อนเซ็ตเข้า state เช่นแก้ชื่อ page และกำหนด order
     const initial: BannerItem[] = (saved || []).map((b: any, i: number) => ({
       ...b,
       page: b.page === "post-it" ? "postit" : b.page, 
@@ -26,29 +33,34 @@ export default function BannerPage() {
     setBanner(initial);
   }, []);
 
-  
+  // filter ตามหน้าที่เลือก และเรียงตาม order
   const filteredBanner = banner.filter((b) => b.page === activePage).sort((a, b) => a.order - b.order);
 
-  // reorder: move an item within same page to new order position (and reindex page)
+  // ฟังก์ชันจัดอันดับใหม่ในกลุ่มหน้าเดียวกัน
   const handleReorder = (id: number, newOrder: number) => {
     setBanner((prev) => {
+      // แยก banner ที่เป็นหน้าปัจจุบันและที่หน้าอื่น
       const samePage = prev.filter((b) => b.page === activePage).sort((a, b) => a.order - b.order);
+      
       const others = prev.filter((b) => b.page !== activePage);
 
       const currentIndex = samePage.findIndex((b) => b.id === id);
       if (currentIndex === -1) return prev;
 
-      // remove moving item
+      // นำ item ออกจาก array เดิม
       const [movingItem] = samePage.splice(currentIndex, 1);
 
-      // target index (0-based)
+      // คำนวณตำแหน่งใหม่ (ป้องกัน index หลุดขอบรายการ)
       const targetIndex = Math.max(0, Math.min(newOrder - 1, samePage.length));
       samePage.splice(targetIndex, 0, movingItem);
 
-      // reindex samePage
+      // อัปเดต order ใหม่ตามลำดับ
       const reindexed = samePage.map((b, i) => ({ ...b, order: i + 1 }));
-
+      
+      // รวมกลับกับรายการที่หน้าอื่น
       const merged = [...others, ...reindexed];
+      
+      // บันทึกกลับ localStorage
       localStorage.setItem("banner", JSON.stringify(merged));
       return merged;
     });

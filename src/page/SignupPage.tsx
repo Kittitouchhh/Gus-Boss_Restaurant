@@ -18,6 +18,7 @@ const Signup: React.FC = () => {
 
     const reader = new FileReader();
     reader.onload = () => {
+      // เเปลงรูปเป็น base644
       setForm((prev) => ({ ...prev, image: reader.result as string }));
     };
     reader.readAsDataURL(file);

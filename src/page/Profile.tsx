@@ -1,15 +1,19 @@
 import { useState, useEffect } from "react";
 
 export default function ProfileSetting() {
+  // state สำหรับแสดง/ซ่อนฟอร์มเปลี่ยนรหัสผ่าน
   const [showFormPassword, setShowFormPassword] = useState(false);
+
   const [showname, setShowname] = useState("");
   const [imageUrl, setImageUrl] = useState<string | null>(null);
 
+   // state เก็บค่า input การเปลี่ยนรหัสผ่าน
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
 
+  // โหลดข้อมูลผู้ใช้จาก localStorage เมื่อหน้าโหลดครั้งแรก
   useEffect(() => {
     const userId = localStorage.getItem("currentUser");
     if (!userId) return;
@@ -18,8 +22,8 @@ export default function ProfileSetting() {
     const current = users.find((u: any) => u.id.toString() === userId);
 
     if (current) {
-      setShowname(current.showname || "");
-      setImageUrl(current.image || null);
+      setShowname(current.showname || ""); // ตั้งชื่อเริ่มต้น
+      setImageUrl(current.image || null); // ตั้งรูปโปรไฟล์เริ่มต้น
     }
   }, []);
 
