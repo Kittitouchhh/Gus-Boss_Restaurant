@@ -21,10 +21,10 @@ interface Post {
   menuPrice: number;
   datajson: string;
   description: string;
-  status : number
+  status: number
 }
 
-export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCancel,}: CardMenuProps) {
+export default function CardMenuAdmin({ menu, setMenus, mode = "view", onSave, onCancel, }: CardMenuProps) {
   const [open, setOpen] = useState<boolean>(false);
   const [editing, setEditing] = useState(false);
   const [position, setPosition] = useState<{ x: number; y: number } | null>(null);
@@ -75,7 +75,14 @@ export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCanc
 
     const reader = new FileReader();
     reader.onload = () => {
-      setForm({ ...form, image: reader.result as string });
+      const result = reader.result as string;
+
+      let finalImage = result;
+      if (!result.startsWith("data:")) {
+        finalImage = `data:image/jpeg;base64,${result}`;
+      }
+
+      setForm({ ...form, image: finalImage });
     };
     reader.readAsDataURL(file);
   };
@@ -109,7 +116,7 @@ export default function CardMenuAdmin({menu,setMenus,mode = "view",onSave,onCanc
           : prev.map((m) => (m.id === menu.id ? newMenu : m));
 
       localStorage.setItem("menu", JSON.stringify(updated));
-      
+
       setEditing(false);
       setOpen(false);
 
