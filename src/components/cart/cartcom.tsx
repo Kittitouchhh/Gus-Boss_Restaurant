@@ -33,7 +33,7 @@ const Cartcom:React.FC<CartProps> = ({order_id,menuid,imgUrl , title,onRemove,op
     const [quantity , setquantity] = useState<number>(count ?? 1)
     
 
-
+    //  quantity ใหม่ ลง cart
     function updatelocalstorage(newQty : number){
         const cart = JSON.parse(localStorage.getItem("cart") || "[]")
         const update = cart.map((item:any) =>{
@@ -45,7 +45,7 @@ const Cartcom:React.FC<CartProps> = ({order_id,menuid,imgUrl , title,onRemove,op
         localStorage.setItem("cart", JSON.stringify(update));
 
     }
-
+    // เพิ่มจำนวน ของ cart
     function add(){
         if(quantity >= 0){
             const newQty = quantity + 1;
@@ -56,7 +56,7 @@ const Cartcom:React.FC<CartProps> = ({order_id,menuid,imgUrl , title,onRemove,op
 
     }
 
-    
+    // ลบจำนวน cart
     function sub(){
         const newQty = quantity - 1;
         if(quantity > 1){
@@ -83,13 +83,14 @@ const Cartcom:React.FC<CartProps> = ({order_id,menuid,imgUrl , title,onRemove,op
 
     // popup comment
     const [isCommentOpen, setIsCommentOpen] = useState(false);
-
+    // popup description
     const [isdescriptionpen, setdescriptionOpen] = useState(false);
 
 
 // cart page
     if(type == 1)
     {
+
         return(
         <div className='w-[95%] lg:h-[250px] md:h-[180px]  h-auto bg-[#201c19] md:rounded-3xl rounded-xl grid md:grid-cols-3  grid-cols-1   border-amber-100 border-2 justify-center'>
             <div className='w-full h-full flex flex-row md:p-[10px] p-[5px] lg:gap-[30px] md:gap-[15px] gap-[20px]'>
@@ -132,7 +133,7 @@ const Cartcom:React.FC<CartProps> = ({order_id,menuid,imgUrl , title,onRemove,op
         </div>
     )
     }
-
+    // process
     else if(type == 2){
         return(
             <div className='w-[95%] p-[10px]   h-auto bg-[#201c19] md:rounded-3xl rounded-xl grid   grid-cols-3   border-amber-100 border-2 '>

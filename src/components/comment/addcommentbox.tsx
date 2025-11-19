@@ -91,7 +91,7 @@ const Addcommentbox:React.FC<Props> = ({menu_id_from_comcart,order_id,onClose ,i
 
         SetName(foundUser?.showname || "Unknown");
         SetImage(foundUser?.image || "https://cdn-icons-png.flaticon.com/512/6522/6522516.png");
-
+        // ดึง local comment 
         const datacommentStorage = localStorage.getItem("comment");
         if (datacommentStorage) {
             setcomment(JSON.parse(datacommentStorage));
@@ -100,7 +100,7 @@ const Addcommentbox:React.FC<Props> = ({menu_id_from_comcart,order_id,onClose ,i
             setcomment([])
         }
 
-
+        // ดึงข้อมูล postit
         const datapostitStorage = localStorage.getItem("postit");
         if(datapostitStorage){
             setpostitlist(JSON.parse(datapostitStorage))
@@ -109,7 +109,7 @@ const Addcommentbox:React.FC<Props> = ({menu_id_from_comcart,order_id,onClose ,i
             setpostitlist([])
         }
 
-
+        // ดึงข้อมูล cart
         const datacartFromStorage = localStorage.getItem("cart");
         if(datacartFromStorage){
             Setdatacart(JSON.parse(datacartFromStorage))
@@ -123,6 +123,7 @@ const Addcommentbox:React.FC<Props> = ({menu_id_from_comcart,order_id,onClose ,i
     
 
     function createPostit(){
+        // สร้าง postit อันใหม่
         const newId = postitlist.length > 0 ? Math.max(...postitlist.map(item => item.post_id)) + 1 : 1;
         if(postitText){
             const postit = {
@@ -135,6 +136,7 @@ const Addcommentbox:React.FC<Props> = ({menu_id_from_comcart,order_id,onClose ,i
             angry : 0 ,
             content : postitText,
             }
+            // เซฟ postit ลง local
             const newpostitlist = [...postitlist , postit]
             setpostitlist(newpostitlist)
             
@@ -151,6 +153,7 @@ const Addcommentbox:React.FC<Props> = ({menu_id_from_comcart,order_id,onClose ,i
             console.log(postitlist)
             window.location.reload()
         }   
+        // ไม่มี postittext
         else{
             toast.error('กรุณาพิมพ์ข้อความ!',{
                 position:"top-center",
@@ -169,7 +172,7 @@ const Addcommentbox:React.FC<Props> = ({menu_id_from_comcart,order_id,onClose ,i
 //  อัปเดต description
 
     function updatedescription() {
-
+        // อัปเดต description
         const updated = datacart.map(item =>
         item.order_id === order_id
             ? { ...item, order_description: descriptionstate }
@@ -192,7 +195,7 @@ const Addcommentbox:React.FC<Props> = ({menu_id_from_comcart,order_id,onClose ,i
 
 
 
-
+// สร้าง comment ตามmenu id
     function createComment(){
         const comment = {
             menuid: menu_id_from_comcart ?? 0, 
@@ -263,6 +266,7 @@ const Addcommentbox:React.FC<Props> = ({menu_id_from_comcart,order_id,onClose ,i
             </div>
         )
     }
+    // post it
     else if(type == 2){
         return (
             <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50 shadow-lg shadow-black/90">

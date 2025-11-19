@@ -26,6 +26,7 @@ function Cart(){
     let [datacart,Setdatacart] = useState<cart[]>([])
 
     useEffect(() => {
+        // อ่านข้อมูล cart จาก localStorage
         const datacartFromStorage = localStorage.getItem("cart");
         if(datacartFromStorage){
             Setdatacart(JSON.parse(datacartFromStorage))
@@ -37,6 +38,7 @@ function Cart(){
 
 
      const removeItem = (id: number) => {
+        // ลบ cart ออกเมื่อ quantity ต่ำกว่า 1
         Setdatacart(prev => prev.filter(item => item.order_id !== id));
     };
 
@@ -47,6 +49,7 @@ function Cart(){
 
 
     const updateQuantity = (id: number, newQty: number) => {
+    // เซฟจำนวนใหม่cartของเมนูลง localstorage
     Setdatacart(prev => {
         const updated = prev.map(item =>
             item.order_id === id ? { ...item, quantity: newQty } : item
@@ -58,6 +61,7 @@ function Cart(){
 
     
     function checkcart(){
+        // เช็คว่า จะกดซื้อว่ามี cart ไหม
         if(datacart.length > 0){
             navigate('/cart/payment')
         }

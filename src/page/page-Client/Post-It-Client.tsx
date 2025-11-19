@@ -29,7 +29,7 @@ interface Banner{
 function PostIt(){
     const [datapostit , Setdatapostit] = useState<PostitProps[]>([])
     let [databanner , Setbanner] = useState<Banner[]>([])
-    // popup postit
+    // popup postit เพื่อสร้าง posit
     const [isCommentOpen, setIsCommentOpen] = useState(false);
 
     const [rerender, setRerender] = useState<number>(0);
@@ -54,7 +54,7 @@ function PostIt(){
             try{
                 loaddatapostit();
 
-
+                
                 // banner local get
                 const bannerJson1 = await axios.get<Banner[]>("/dataclient/carousalitem.json")
                 const bannerJson2 = await axios.get<Banner[]>("/dataclient/carousalitempostit.json")
@@ -85,7 +85,7 @@ function PostIt(){
         fetchMenu()
 
         
-
+        // ดึง data postit local
         const postitFromLocal = localStorage.getItem("postit")
         if(postitFromLocal){
             Setdatapostit(JSON.parse(postitFromLocal))

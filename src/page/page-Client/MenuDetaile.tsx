@@ -64,6 +64,7 @@ function Menudetaile() {
     const menufixedtonumber = Number(menuid)
 
     useEffect(() => {
+        // ดึงข้อมูล option ของทุกเมนู
         axios.get('/dataclient/option.json')
             .then((res) => {
                 Setoption(res.data)
@@ -73,7 +74,7 @@ function Menudetaile() {
             })
 
 
-
+            // ดึงข้อมูล local ของ menu
         const dataFromStorage = localStorage.getItem("menu");
         if (dataFromStorage) {
             Setdata(JSON.parse(dataFromStorage));
@@ -83,7 +84,7 @@ function Menudetaile() {
         }
 
 
-
+        // ดึงข้อมูล cart ที่เกิดจากการกดซื้อ menu
         const datacartFromStorage = localStorage.getItem("cart");
         if (datacartFromStorage) {
             Setdatacart(JSON.parse(datacartFromStorage))
@@ -117,6 +118,7 @@ function Menudetaile() {
 
 
     useEffect(() => {
+        // map ทำ เพื่อตรวจสอบ menu ว่ากดเข้าเมนูอะไร
         if (datamenu.length === 0) return;
         const filteredMenu = datamenu.find((menu) => (menu.id).toString() === menuid && menu.status === 1);
         console.log(`This is the filteredMenu: ${filteredMenu}`)
@@ -127,11 +129,12 @@ function Menudetaile() {
 
 
 
-
+    // เก็บว่า option อะไรที่เราเลือก
     const [selectedOptions, setSelectedOptions] = useState<{ [key: string]: string }>({});
 
 
     function createOrder() {
+        // ฟังก์ชั้นสร้าง order เมื่อกด add to cart
         const newId = datacart.length > 0 ? Math.max(...datacart.map(item => item.order_id)) + 1 : 1;
         const order = {
             order_id: newId,

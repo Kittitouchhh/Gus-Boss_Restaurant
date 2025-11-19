@@ -54,6 +54,7 @@ interface users{
 
 const PaymentPage:React.FC = ({}) => {
 
+    // ดึง user ที่ใช้งานล่าสุด
     const currentId = localStorage.getItem("currentUser");
     if (!currentId) return;
 
@@ -64,7 +65,7 @@ const PaymentPage:React.FC = ({}) => {
     );
     
     
-    
+    // เก็บชื่อเเละรูปภาพที่จะเเสดงหน้า process
     const displayName = foundUser?.showname || "Unknown";
     const displayImage = foundUser?.image || "https://cdn-icons-png.flaticon.com/512/6522/6522516.png";
    
@@ -78,6 +79,8 @@ const PaymentPage:React.FC = ({}) => {
     const [dataprocess , setprocss] = useState<process[]>([])
 
     useEffect(()=>{
+
+        // ดึงข้อมูล cart จาก localstorage
         const datacartFromStorage = localStorage.getItem("cart");
         if(datacartFromStorage){
             Setdatacart(JSON.parse(datacartFromStorage))
@@ -87,7 +90,7 @@ const PaymentPage:React.FC = ({}) => {
             Setdatacart([])
         }
 
-        
+        // ดึงข้อมูล process จาก localstorage
         const dataprocessFromStorage = localStorage.getItem("process");
         if(dataprocessFromStorage){
             setprocss(JSON.parse(dataprocessFromStorage))
@@ -102,13 +105,14 @@ const PaymentPage:React.FC = ({}) => {
 
     function buysuccess( ) {
         
-
+        // กดซื้อ
         
         const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-
+        // รวมจำนวนเมนูจากทุก cart
         let totalQuantity = cart.reduce((acc: number, item: cart) => acc + item.quantity, 0);
-
+        // ถ้า cart มากกว่า 1 ให้ซื้อสำเร็จ
         if (cart.length > 0){
+            // สร้าง process ของ user ที่ใช้งานล่าสุด
                 const newProcessItem = {
                 user :  displayName,
                 user_image : displayImage , 
@@ -116,7 +120,7 @@ const PaymentPage:React.FC = ({}) => {
                 duration : totalQuantity * 10,
                 }
 
-
+            // เซฟ process ลง local
             const new_process = [...dataprocess, newProcessItem] 
             setprocss(new_process);    
             localStorage.setItem("process", JSON.stringify(new_process));
@@ -133,7 +137,7 @@ const PaymentPage:React.FC = ({}) => {
                 localStorage.setItem("users", JSON.stringify(updatedUsers));
 
             }
-
+            // ล้าง cart เพราะ ซื้อสำเร็จ
             localStorage.removeItem('cart');
             Setdatacart([])
             totalQuantity = 0
@@ -154,7 +158,7 @@ const PaymentPage:React.FC = ({}) => {
             })
 
             // membership
-
+            // ถ้าตระกร้าไม่มีก็ให้ซื้อผิดพลาก
         }
         else{
             navigate('/home')
@@ -196,11 +200,12 @@ const PaymentPage:React.FC = ({}) => {
    
 
   
-     
+    // คำนวนราคาทั้งหมด
     const subtotal = datacart.reduce((acc, item) => acc + item.menu_price * item.quantity, 0)
-
+    // คำนวณราคา vat
     const vat = subtotal * 0.07;
 
+    //  หาว่าuserเป็นสมาชิกไหมเเละหาเปอร์เซ็นส่วนลด
     let discountpercentage = { points: 0, level: 0, rank: 'None', discount: 0, percent: 0, nextTarget: 0 };
     if(user?.membership.isMember == true){
         discountpercentage = user ? CalculateMembership(user.membership.points) : { points: 0, level: 1, rank: 'None', discount: 0, percent: 0, nextTarget: 0 };

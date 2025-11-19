@@ -21,10 +21,11 @@ interface CommentProps {
 }
 
 const CardMenu: React.FC<datacard> = ({id,name,image,option,price,datajson}) => {
+    // รับ comment จาก localStorage
     const [commentlist, setcomment] = useState<CommentProps[]>([])
 
     const [countlike , setcount] = useState<number>(0)
-
+    // รับ comment จาก localStorage
     useEffect(() => {
         const datacommentStorage = localStorage.getItem("comment");
         if (datacommentStorage) {
@@ -36,7 +37,7 @@ const CardMenu: React.FC<datacard> = ({id,name,image,option,price,datajson}) => 
         
     },[])
 
-
+    // เวลามี comment เพิ่มก็ให้ count โหลดค่าใหม่
     useEffect(() => {
     setcount(commentlist.filter(comment => comment.like && comment.menuid === id ).length);
     }, [commentlist,name])

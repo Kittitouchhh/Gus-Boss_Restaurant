@@ -37,6 +37,7 @@ function HomeClient() {
     const fetchMenu = async () => {
     
       try {
+        // ดึงข้อมูล json ของทุกเมนูมารวมกัน
         const response = await axios.get<Post[]>("/dataclient/menutea.json");
         
 
@@ -72,7 +73,7 @@ function HomeClient() {
         ];
 
 
-
+        // เช็คว่าเคยมี menu ใน local ไหม ถ้ามี ก็ให้เก็บลง usestate datamenu ถ้าไม่มีก็ให้ใช้ของ json ที่พึ่งดึงมา
         const dataFromStorage = localStorage.getItem("menu");
         if (dataFromStorage) {
         Setdata(JSON.parse(dataFromStorage));
@@ -84,7 +85,7 @@ function HomeClient() {
 
 
 
-
+        //  ดึง banner จาก json
         // banner local get
         const bannerJson1 = await axios.get<Banner[]>("/dataclient/carousalitem.json")
         const bannerJson2 = await axios.get<Banner[]>("/dataclient/carousalitempostit.json")
@@ -93,7 +94,7 @@ function HomeClient() {
           ...bannerJson1.data,
           ...bannerJson2.data
         ]
-
+        // เช็คว่าเคยมี ใน local ไหม banner ถ้ามีก็ databanner เก็บ local ถ้าไม่มีก็ให้เก็บ json
         const bannerFromStorage = localStorage.getItem("banner");
         if (bannerFromStorage){
           Setbanner(JSON.parse(bannerFromStorage))

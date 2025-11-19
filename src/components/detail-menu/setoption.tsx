@@ -11,13 +11,16 @@ interface SetOptionProps {
 
 
 const SetOption: React.FC<SetOptionProps> = ({title, option_choice ,onSelect}) => {
+  // เก็บ selecte เมนู choice
   const [selected, setSelected] = useState<string>(option_choice[0]);
 
   useEffect(()=>{
+    // เซ็ตค่าเริ่มต้นของ selectedOptions 
     if (onSelect) onSelect(title, option_choice[0]);
   },[])
 
   const handleClick = (option: string) => {
+    // selected เก็บค่าchoice ล่าสุด เเละเรียกฟังก์ชั้นที่ส่งเข้ามา เพื่อเซฟลง selectedOptions ที่เก็บทุกหัวข้อ option เเละ value
     setSelected(option);
     if (onSelect) onSelect(title, option);
   };
@@ -32,6 +35,7 @@ const SetOption: React.FC<SetOptionProps> = ({title, option_choice ,onSelect}) =
         {option_choice.map((option) => (
           <button
             key={option}
+            // เรียก  handleclicl เมื่อคลิ์กเปลี่ยน choice
             onClick={() => handleClick(option)}
             className={`font-bold lg:text-[12px] 2xl:text-[16px] xl:text-[14px] md:text-[11px] text-[8px] 2xl:w-[250px] xl:w-[140px] lg:w-[130px] md:w-[130px] w-[90px] 2xl:h-[70px] xl:h-[50px] lg:h-[50px] md:h-[40px] h-[35px] rounded-full px-3 py-1  border ${
               selected === option

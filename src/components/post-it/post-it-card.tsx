@@ -89,9 +89,9 @@ const PostItCard: React.FC<PostItCardProps> = ({ post_id,username,imguser,conten
 
   function reaction(type: "love" | "wow" | "star" | "angry") {
   
-
+  // เช็คว่าเคยกโหวต postit นี้หรือยัง
   const alreadyreact = datahasreact.find((item) => item.user === displayName && item.post_id === post_id);
-
+  
   if(alreadyreact){
     toast.error('คุณโหวตไปแล้ว!', {
       position: "top-center",
@@ -142,6 +142,7 @@ const PostItCard: React.FC<PostItCardProps> = ({ post_id,username,imguser,conten
       break;
   }
 
+  // เซ็ต emoji ใหม่ลง localstorage
   const updated = datapostit.map(item => 
     item.post_id === post_id ? { ...item, [type]: newvalue } : item
   );
@@ -160,7 +161,7 @@ const PostItCard: React.FC<PostItCardProps> = ({ post_id,username,imguser,conten
     theme: 'colored'
   });
 
-
+  // เซฟว่าใครเคยกด post it id นี้เเล้วบ้าง
   const oldData = JSON.parse(localStorage.getItem("hasreact") || "[]"); 
 
 

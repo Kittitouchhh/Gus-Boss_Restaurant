@@ -32,11 +32,12 @@ function MoreMenu(){
     const [data , Setdata] = useState<Post[]>([])
 
     useEffect(() => {
+        // ดึงข้อมูลเมนูมาจาก local เมื่อมีการคลิกที่รูปภาพ category
         const dataFromStorage = localStorage.getItem("menu");
         if (dataFromStorage) {
             Setdata(JSON.parse(dataFromStorage))};
         
-
+        // เก็บรูปภาพ category
         axios.get("/dataclient/categorycard.json")
         .then((res) => Setcategorydata(res.data))
         .catch((err) => console.log(`เกิดข้อผิดพลาด ${err}`))
@@ -60,6 +61,7 @@ function MoreMenu(){
             <div className='flex flex-row w-full justify-center md:mt-[40px] mt-[20px]'>
                 {categorydata.map((data)=>{
                 return(
+                // สร้าง categorycard เเละเมื่อมีการกดให้เรียก settagname
                 <div onClick={() => {Settagname(data.categoryName.toLowerCase().replace(/\s+/g, ''))}} className='md:mt-[110px] mt-[120px]'>
                     <CategoryCard image={data.imageCategory} name={data.categoryName}></CategoryCard>
                 </div>
