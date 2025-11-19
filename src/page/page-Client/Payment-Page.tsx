@@ -10,6 +10,8 @@ import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import usersData from "../../data/login.json";
 import CalculateMembership from '../../utils/calculateMembership';
+import { Link } from "react-router-dom";
+
 
 
 interface cart{
@@ -31,6 +33,21 @@ interface process{
     all_menu:  string[],
     duration : number
 }
+interface Membership {
+  isMember: boolean;
+  points: number;
+  activatedAt: string; // หรือ Date
+}
+interface users{
+    id:  number,
+    username: string,
+    password: string,
+    role: string,
+    image: string,
+    showname : string,
+    membership: Membership
+      
+}
 
 
 
@@ -50,7 +67,7 @@ const PaymentPage:React.FC = ({}) => {
     
     const displayName = foundUser?.showname || "Unknown";
     const displayImage = foundUser?.image || "https://cdn-icons-png.flaticon.com/512/6522/6522516.png";
-    const discount = foundUser?.discount || 1 ;
+   
 
 
     const navigate = useNavigate();
@@ -85,23 +102,44 @@ const PaymentPage:React.FC = ({}) => {
 
     function buysuccess( ) {
         
+
+        
         const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+        let totalQuantity = cart.reduce((acc: number, item: cart) => acc + item.quantity, 0);
+
         if (cart.length > 0){
                 const newProcessItem = {
                 user :  displayName,
                 user_image : displayImage , 
                 all_menu:  cart.map((item: any) => item.menu_name),
-                duration : cart.length * 10,
+                duration : totalQuantity * 10,
                 }
 
 
             const new_process = [...dataprocess, newProcessItem] 
             setprocss(new_process);    
             localStorage.setItem("process", JSON.stringify(new_process));
-
             
+
+            // อัปเเต้มสมาชิก
+            if (user && user.membership.isMember == true) {
+                user.membership.points += totalQuantity * 5;
+
+                const allUsers: users[] = JSON.parse(localStorage.getItem("users") || "[]");
+                const updatedUsers = allUsers.map(u => 
+                    u.id === user.id ? {...u, membership: {...u.membership, points: user.membership.points}} : u
+                );
+                localStorage.setItem("users", JSON.stringify(updatedUsers));
+
+            }
+
             localStorage.removeItem('cart');
             Setdatacart([])
+            totalQuantity = 0
+            
+            
+            
 
             navigate('/process')
 
@@ -114,6 +152,9 @@ const PaymentPage:React.FC = ({}) => {
                         draggable: false ,
                         theme:'colored'
             })
+
+            // membership
+
         }
         else{
             navigate('/home')
@@ -130,7 +171,8 @@ const PaymentPage:React.FC = ({}) => {
         
     }
     // จัดการระบบสมาชิก
-    const [user, setUser] = useState<any>(null);
+    const [user, setUser] = useState<users | null>(null);
+    
     
 
     useEffect(()=>{
@@ -145,23 +187,32 @@ const PaymentPage:React.FC = ({}) => {
 
         setUser(foundUser || null);
 
+
         
 
     },[[localStorage.getItem("currentUser")]])
 
-
+    
    
 
-    
-    
+  
      
     const subtotal = datacart.reduce((acc, item) => acc + item.menu_price * item.quantity, 0)
 
     const vat = subtotal * 0.07;
+
+    let discountpercentage = { points: 0, level: 0, rank: 'None', discount: 0, percent: 0, nextTarget: 0 };
+    if(user?.membership.isMember == true){
+        discountpercentage = user ? CalculateMembership(user.membership.points) : { points: 0, level: 1, rank: 'None', discount: 0, percent: 0, nextTarget: 0 };
+    }
+
     
-    const totalprice = (1) 
+    const discountcalculate = (subtotal) * discountpercentage.discount
+
+    const totalprice =  ( subtotal - discountcalculate ) +vat
+
     return (
-        <div className='w-screen h-screen mt-[150px] xl:mb-[600px] lg:mb-[200px]  mb-[0px]'>
+        <div className='w-screen h-screen mt-[150px] xl:mb-[900px] lg:mb-[600px]  mb-[100px]'>
             <Tagmenu title='ORDER SCAN'></Tagmenu>
             <div className='w-[90%] xl:h-[60vh] lg:h-[60vh] md:h-[40vh] h-[30vh] flex flex-row justify-center mx-auto md:gap-0 gap-[5px]'>
                 <div className='w-[50%] h-full bg-[#201c19] md:m-[10px] m-0 xl:rounded-4xl lg:rounded-2xl md:rounded-2xl rounded-xl md:border-3 border-2 border-amber-100 overflow-y-auto flex flex-col items-center xl:p-[30px] 2xl:p-[30px] lg:p-[20px] p-[10px] xl:gap-[30px] md:gap-[10px] gap-[5px]'>
@@ -175,22 +226,26 @@ const PaymentPage:React.FC = ({}) => {
                 </div>
                 
                 <div className='w-[40%]  h-full bg-[#201c19] md:m-[10px] m-0 xl:rounded-4xl lg:rounded-2xl md:rounded-2xl rounded-xl md:border-3 border-2 border-amber-100 overflow-y-auto flex flex-col justify-center items-center xl:p-[30px] 2xl:p-[30px] lg:p-[20px] p-[10px] '>
-                    <QRCodeStatic amount={subtotal+vat}></QRCodeStatic>
+                    <QRCodeStatic amount={totalprice}></QRCodeStatic>
                 </div>
             </div>
             <div className='lg:gap-[80px] md:gap-[50px] gap-[20px] flex flex-col md:mt-[80px] mt-[50px]'>
                 <TagPrice title = 'Sub Total Price' price={subtotal}></TagPrice>
                 <TagPrice title = 'VAT' price={vat}></TagPrice>
-                <TagPrice title = 'Discount Member' price={0}></TagPrice>
+                <TagPrice title = 'Discount Member' price={discountcalculate} percent={discountpercentage.discount}></TagPrice>
                 <TagPrice title = 'Total Price' price={totalprice}></TagPrice>
             </div>
             
             <div className='flex flex-row mt-[30px] md:mt-[80px] justify-center md:gap-[30px] gap-[10px]'> 
-                <div onClick={() => navigate('/cart')} className='transform transition-transform duration-200 hover:scale-105 active:scale-95'>
-                    <Button height="xl" width='xl' color='white' stringColor='brown' stringSize='xl'>
-                        BACK
-                    </Button>
-                </div>
+
+                <Link to="/cart" className='transform transition-transform duration-200 hover:scale-105 active:scale-95'>
+                    
+                        <Button height="xl" width='xl' color='white' stringColor='brown' stringSize='xl'>
+                            BACK
+                        </Button>
+                    
+                </Link>
+
                 <div onClick={() => {buysuccess(); }} className='transform transition-transform duration-200 hover:scale-105 active:scale-95'>
                     <Button height="xl" width='xl' color='white' stringColor='brown' stringSize='xl'>
                         NEXT

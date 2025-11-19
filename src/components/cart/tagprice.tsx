@@ -14,7 +14,7 @@ const TagPrice:React.FC<TagmenuProps> = ({title,price,percent}) => {
                 <p className="mx-2 font-bold text-[#EEDBC4] lg:text-[20px]  2xl:text-[30px] xl:text-[25px] md:text-[18px] text-[12px]">{title}</p>
                 <p className="mx-2 font-bold text-[#EEDBC4] lg:text-[20px]  2xl:text-[30px] xl:text-[25px] md:text-[18px] text-[12px]">{price.toFixed(2)}
                     {percent !== undefined && (
-                        <span className="ml-2 text-white text-sm md:text-md">
+                        <span className=" text-white text-[10px] md:text-md ml-[20px]">
                             ({(percent * 100).toFixed(0)}%)
                         </span>
                     )}
