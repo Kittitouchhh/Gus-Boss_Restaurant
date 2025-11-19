@@ -190,7 +190,7 @@ const PaymentPage:React.FC = ({}) => {
 
         
 
-    },[[localStorage.getItem("currentUser")]])
+    },[localStorage.getItem("currentUser")])
 
     
    
